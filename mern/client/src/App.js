@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
+import UserPage from "./components/user_page"
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
       <Route path="/create">
         <Create />
       </Route>
+        <Route path="/user_page">
+            <UserPage />
+        </Route>
     </div>
   );
 };
