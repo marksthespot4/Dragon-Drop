@@ -8,15 +8,15 @@ class Edit extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangePersonName = this.onChangePersonName.bind(this);
-    this.onChangePersonPosition = this.onChangePersonPosition.bind(this);
-    this.onChangePersonLevel = this.onChangePersonLevel.bind(this);
+    this.onChangePersonEmail = this.onChangePersonEmail.bind(this);
+    this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
+    this.onChangePersonPageName = this.onChangePersonPageName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      person_name: "",
-      person_position: "",
-      person_level: "",
+      person_email: "",
+      person_password: "",
+      person_pagename: "",
       records: [],
     };
   }
@@ -26,9 +26,9 @@ class Edit extends Component {
       .get("http://localhost:5000/record/" + this.props.match.params.id)
       .then((response) => {
         this.setState({
-          person_name: response.data.person_name,
-          person_position: response.data.person_position,
-          person_level: response.data.person_level,
+          person_email: response.data.person_email,
+          person_password: response.data.person_password,
+          person_pagename: response.data.person_pagename,
         });
       })
       .catch(function (error) {
@@ -37,21 +37,21 @@ class Edit extends Component {
   }
 
   // These methods will update the state properties.
-  onChangePersonName(e) {
+  onChangePersonEmail(e) {
     this.setState({
-      person_name: e.target.value,
+      person_email: e.target.value,
     });
   }
 
-  onChangePersonPosition(e) {
+  onChangePersonPassword(e) {
     this.setState({
-      person_position: e.target.value,
+      person_password: e.target.value,
     });
   }
 
-  onChangePersonLevel(e) {
+  onChangePersonPageName(e) {
     this.setState({
-      person_level: e.target.value,
+      person_pagename: e.target.value,
     });
   }
 
@@ -59,9 +59,9 @@ class Edit extends Component {
   onSubmit(e) {
     e.preventDefault();
     const newEditedperson = {
-      person_name: this.state.person_name,
-      person_position: this.state.person_position,
-      person_level: this.state.person_level,
+      person_email: this.state.person_email,
+      person_password: this.state.person_password,
+      person_pagename: this.state.person_pagename,
     };
     console.log(newEditedperson);
 
@@ -83,60 +83,31 @@ class Edit extends Component {
         <h3 align="center">Update Record</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Person's Name: </label>
+            <label>Email: </label>
             <input
               type="text"
               className="form-control"
-              value={this.state.person_name}
-              onChange={this.onChangePersonName}
+              value={this.state.person_email}
+              onChange={this.onChangePersonEmail}
             />
           </div>
           <div className="form-group">
-            <label>Position: </label>
+            <label>Password: </label>
             <input
               type="text"
               className="form-control"
-              value={this.state.person_position}
-              onChange={this.onChangePersonPosition}
+              value={this.state.person_password}
+              onChange={this.onChangePersonPassword}
             />
           </div>
           <div className="form-group">
-            <div className="form-check form-check-inline">
+            <label>Page Name: </label>
               <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityLow"
-                value="Intern"
-                checked={this.state.person_level === "Intern"}
-                onChange={this.onChangePersonLevel}
+                type="text"
+                className="form-control"
+                value={this.state.person_pagename}
+                onChange={this.onChangePersonPageName}
               />
-              <label className="form-check-label">Intern</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityMedium"
-                value="Junior"
-                checked={this.state.person_level === "Junior"}
-                onChange={this.onChangePersonLevel}
-              />
-              <label className="form-check-label">Junior</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityHigh"
-                value="Senior"
-                checked={this.state.person_level === "Senior"}
-                onChange={this.onChangePersonLevel}
-              />
-              <label className="form-check-label">Senior</label>
-            </div>
           </div>
           <br />
 
