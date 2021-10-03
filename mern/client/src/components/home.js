@@ -8,57 +8,53 @@ import Button from 'react-bootstrap/Button';
 import logo from './dragonNoText.png';
 import Modal from 'react-bootstrap/Modal'
 
+import ReactDOM from "react-dom";
+
+
 export default class Home extends Component {
-  // This is the constructor that stores the data.
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    // this.state = {
-    //     isOpen: false
-    // };
-  }
+        this.state = {
+            modal: false,
+            name: "",
+            modalInputName: ""
+        };
+    }
 
-// // This function will handle the submission.
-//   onSubmit(e) {
-//     e.preventDefault();
+    handleChange(e) {
+        const target = e.target;
+        const name = target.name;
+        const value = target.value;
 
-//     // When post request is sent to the create url, axios will add a new record(newperson) to the database.
-//     const newperson = {
-//       person_name: this.state.person_name,
-//       person_position: this.state.person_position,
-//       person_level: this.state.person_level,
-//     };
+        this.setState({
+            [name]: value
+        });
+    }
 
-//     axios
-//       .post("http://localhost:5000/record/add", newperson)
-//       .then((res) => console.log(res.data));
+    handleSubmit(e) {
+        this.setState({ name: this.state.modalInputName });
+        this.modalClose();
+    }
 
-//     // We will empty the state after posting the data to the database
-//     this.setState({
-//       person_name: "",
-//       person_position: "",
-//       person_level: "",
-//     });
-//   }
+    modalOpen() {
+        this.setState({ modal: true });
+    }
 
-  // This following section will display the form that takes the input from the user.
+    modalClose() {
+        this.setState({
+            modalInputName: "",
+            modal: false
+        });
+    }
+
   render() {
-    // const [isOpen, setIsOpen] = useState(false);
-
-    // const showModal = () => {
-    //   setIsOpen(true);
-    // };
-  
-    // const hideModal = () => {
-    //   setIsOpen(false);
-    // };
-
     document.body.style = 'background: wheat;';
 
     return (
-        <div>
+        <div className="Home">
             <div align="right">
-                <Button variant="blue">
+                <Button variant="blue" onClick={e => this.modalOpen(e)}>
                     Log In
                 </Button>
                 <Button variant="blue">Sign Up</Button>
@@ -69,19 +65,32 @@ export default class Home extends Component {
                 <span class="overlay-text">Welcome to Dragon Drop</span>
             </div>
 
-            {/* <div>
-                <Modal show={isOpen} onHide={hideModal}>
-                    <Modal.Header>
-                    <Modal.Title>Hi</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>The body</Modal.Body>
-                    <Modal.Footer>
-                    <button onClick={hideModal}>Cancel</button>
-                    <button>Save</button>
-                    </Modal.Footer>
-                </Modal>
-            </div> */}
+            {/* <a href="javascript:;" onClick={e => this.modalOpen(e)}>
+                Log in here
+            </a> */}
+            <Modal show={this.state.modal} handleClose={e => this.modalClose(e)}>
+                <h2>Log In</h2>
+                <div className="form-group">
+                <label>Enter Name:</label>
+                <input
+                    type="text"
+                    value={this.state.modalInputName}
+                    name="modalInputName"
+                    onChange={e => this.handleChange(e)}
+                    className="form-control"
+                />
+                </div>
+                <div className="form-group">
+                <button onClick={e => this.handleSubmit(e)} type="button">
+                    Save
+                </button>
+                </div>
+            </Modal>
+
         </div>
     );
   }
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Home />, rootElement);
