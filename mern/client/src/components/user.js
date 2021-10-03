@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Component } from "react";
-import { withRouter } from "react-router";
 
 class User extends Component{
     constructor(props) {
@@ -9,13 +8,13 @@ class User extends Component{
         this.email = "";
         this.password = "";
 
-        this.updateAccount = this.updateAccount.bind(this);
+        this.updateEmail = this.updateEmail.bind(this);
         this.updatePassword = this.updatePassword.bind(this);
         this.uploadUser = this.uploadUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
     }
 
-    updateAccount(newEmail){
+    updateEmail(newEmail){
         this.email = newEmail;
     }
 
@@ -52,5 +51,4 @@ class User extends Component{
         return null;
     }
 }
-
-export default  withRouter(User);
+export default User;

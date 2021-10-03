@@ -46,7 +46,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.person_email}
+              value={this.newuser.email}
               onChange={this.onChangePersonEmail}
             />
           </div>
@@ -55,7 +55,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.state.person_password}
+              value={this.newuser.password}
               onChange={this.onChangePersonPassword}
             />
           </div>
