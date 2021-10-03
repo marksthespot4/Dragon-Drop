@@ -7,6 +7,7 @@ import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
 import CreatePage from "./pages/create-page"
+import Home from "./components/home";
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
       <Route path="/edit/:id" component={Edit} />
       <Route path="/create" />
       <Route path="/create-page" component={CreatePage}>
+      </Route>
+      <Route path="/home">
+        <Home />
       </Route>
     </div>
   );
