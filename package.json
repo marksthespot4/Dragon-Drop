@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.4",
-    "mongo": "^0.1.0"
+    "grapesjs-preset-webpage": "^0.1.11",
+    "mongo": "^0.1.0",
+    "react-beautiful-dnd": "^13.1.0"
   }
 }

@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import grapesjs from "grapesjs";
 
-// We use Route in order to define the different routes of our application
-import { Route } from "react-router-dom";
-
-// We import all the components we need in our app
 import Navbar from "./components/navbar";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
+import CreatePage from "./pages/create-page"
 
 const App = () => {
   return (
@@ -17,8 +16,8 @@ const App = () => {
         <RecordList />
       </Route>
       <Route path="/edit/:id" component={Edit} />
-      <Route path="/create">
-        <Create />
+      <Route path="/create" />
+      <Route path="/create-page" component={CreatePage}>
       </Route>
     </div>
   );
