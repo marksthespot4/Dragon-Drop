@@ -70,11 +70,6 @@ export default class Home extends Component {
                 <img src={logo}/>
                 <span class="overlay-text">Welcome to Dragon Drop</span>
             </div>
-
-            <div class="home-buttons" align="center">
-                <Button variant="blue">Log In</Button>{' '}
-                <Button variant="blue">Sign Up</Button>{' '}
-            </div>
         </div>
     );
   }
