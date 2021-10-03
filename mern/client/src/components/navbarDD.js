@@ -2,7 +2,7 @@ import React from "react";
 
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
-
+import logo from "../imgs/SquareLogo.png";
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
 
@@ -12,7 +12,7 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <NavLink className="navbar-brand" to="/">
-          MongoDB
+          <img src={logo} className="img-fluid" style={{ height: 50, width: 50, margin:5}}/>
         </NavLink>
         <button
           className="navbar-toggler"
