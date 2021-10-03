@@ -23,6 +23,11 @@
 .btn-blue {
     background-color: #0071ce;
     color: white;
+    margin: 3px;
+} 
+
+.btn-blue:hover {
+    background-color: #ffc220;
 }
 
 .home-buttons {
