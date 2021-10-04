@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // This will require to npm install axios
-import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import User from "./user";
 
@@ -13,22 +12,32 @@ class Create extends Component {
     this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.newuser = new User();
+
+    this.state = {
+      email: "",
+      password: "",
+    }
   }
 
   // These methods will update the state properties.
   onChangePersonEmail(e) {
-    this.newuser.updateEmail(e.target.value);
+    this.setState({
+      email: e.target.value
+    });
   }
 
   onChangePersonPassword(e) {
-    this.newuser.updatePassword(e.target.value);
+    this.setState({
+      password: e.target.value
+    });
   }
 
 // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
 
-    // When post request is sent to the create url, axios will add a new record(newperson) to the database.
+    this.newuser.updateEmail(this.state.email);
+    this.newuser.updatePassword(this.state.password);
 
     this.newuser.uploadUser();
 
@@ -46,7 +55,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.newuser.email}
+              value={this.state.email}
               onChange={this.onChangePersonEmail}
             />
           </div>
@@ -55,7 +64,7 @@ class Create extends Component {
             <input
               type="text"
               className="form-control"
-              value={this.newuser.password}
+              value={this.state.password}
               onChange={this.onChangePersonPassword}
             />
           </div>

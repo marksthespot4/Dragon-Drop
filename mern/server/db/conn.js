@@ -13,7 +13,7 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
-        _db = db.db("ancilBranch");
+        _db = db.db("ancilData");
         console.log("Successfully connected to MongoDB.");
       }
       return callback(err);

@@ -12,6 +12,8 @@ class User extends Component{
         this.updatePassword = this.updatePassword.bind(this);
         this.uploadUser = this.uploadUser.bind(this);
         this.updateUser = this.updateUser.bind(this);
+        this.getEmail = this.getEmail.bind(this);
+        this.getPassword = this.getPassword.bind(this);
     }
 
     updateEmail(newEmail){
@@ -45,6 +47,32 @@ class User extends Component{
             newEditedPerson
             )
             .then((res) => console.log(res.data));
+    }
+
+    getEmail(id){
+        var email;
+        axios
+            .get("http://localhost:5000/record/" + id)
+            .then((response) => {
+                email = response.data.email;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        return email;
+    }
+
+    getPassword(id){
+        var password;
+        axios
+            .get("http://localhost:5000/record/" + id)
+            .then((response) => {
+                password = response.data.password;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        return password;
     }
 
     render() {
