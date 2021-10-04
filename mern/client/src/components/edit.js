@@ -21,9 +21,10 @@ class Edit extends Component {
   }
   // This will get the record based on the id from the database.
   componentDidMount() {
+    this.user.getUser(this.props.match.params.id);
     this.setState({
-      email: this.user.getEmail(this.props.match.params.id),
-      password: this.user.getPassword(this.props.match.params.id),
+      email: this.user.email,
+      password: this.user.password,
     });
   }
 
