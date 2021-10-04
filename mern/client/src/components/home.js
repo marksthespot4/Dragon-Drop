@@ -6,8 +6,10 @@ import "./styles.css";
 
 import Button from 'react-bootstrap/Button';
 import logo from './dragonNoText.png';
-import CloseButton from 'react-bootstrap/CloseButton'
 import Modal from 'react-bootstrap/Modal'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Tooltip from 'react-bootstrap/Tooltip'
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -146,6 +148,36 @@ export default class Home extends Component {
                         // onChange={e => this.handleChange(e)}
                         // className="form-control"
                     />
+
+                    {/* <OverlayTrigger
+                        placement="left"
+                        overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
+                    >
+                        {({ ref, ...triggerHandler }) => (
+                        <Button
+                            variant="light"
+                            {...triggerHandler}
+                            className="d-inline-flex align-items-center"
+                        >
+                            <span className="ms-1">Hover to see</span>
+                        </Button>
+                        )}
+                    </OverlayTrigger> */}
+
+                    <OverlayTrigger
+                        placement="right"
+                        overlay={
+                            <Tooltip >
+                                <b>Requires at least one:</b><br></br>
+                                Uppercase and lowercase <br></br>
+                                Number<br></br>
+                                Special character (!, @, etc.)<br></br>
+                                <b>Must be at least 8 characters</b>
+                            </Tooltip>
+                        }
+                        >
+                        <Button variant="secondary" size="sm">i</Button>
+                    </OverlayTrigger>
 
                     <h6>Confirm Password</h6>
                     <input
