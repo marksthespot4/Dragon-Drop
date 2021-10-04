@@ -96,7 +96,7 @@ export default class Home extends Component {
                 <Modal.Body>
                     <h6>Email</h6>
                     <input
-                        type="text"
+                        type="email"
                         // value={this.state.modalInputName}
                         // name="modalInputName"
                         // onChange={e => this.handleChange(e)}
@@ -105,7 +105,7 @@ export default class Home extends Component {
 
                     <h6>Password</h6>
                     <input
-                        type="text"
+                        type="password"
                         // value={this.state.modalInputName}
                         // name="modalInputName"
                         // onChange={e => this.handleChange(e)}
@@ -133,7 +133,7 @@ export default class Home extends Component {
                 <Modal.Body>
                     <h6>Email</h6>
                     <input
-                        type="text"
+                        type="email"
                         // value={this.state.modalInputName}
                         // name="modalInputName"
                         // onChange={e => this.handleChange(e)}
@@ -142,7 +142,7 @@ export default class Home extends Component {
 
                     <h6>Password</h6>
                     <input
-                        type="text"
+                        type="password"
                         // value={this.state.modalInputName}
                         // name="modalInputName"
                         // onChange={e => this.handleChange(e)}
@@ -181,7 +181,7 @@ export default class Home extends Component {
 
                     <h6>Confirm Password</h6>
                     <input
-                        type="text"
+                        type="password"
                         // value={this.state.modalInputName}
                         // name="modalInputName"
                         // onChange={e => this.handleChange(e)}
