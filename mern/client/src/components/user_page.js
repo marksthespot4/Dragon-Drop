@@ -1,14 +1,24 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import example from "../imgs/example_1.png"
 // This will require to npm install axios
 import axios from 'axios';
 
 const Page = (props) => (
-    <div>
-    <img src={example} />
-        <h1>{props.page.pageNumber}</h1>
+    <div className="col">
+        <div className="container-fluid">
+            <div className="flex-row">
+                <div className="flex-column">
+    <img src={example} className="img-fluid img-thumbnail yellowOutline" alt={props.page.pageNumber}/>
+                </div>
+                <div className="flex-column" onClick={setingsClick}>
+            <i className="bi bi-gear"></i>
+                </div>
+            </div>
+            <p>Project {props.page.pageNumber}</p>
+        </div>
     </div>
 )
 export default class UserPage extends Component {
@@ -47,8 +57,10 @@ export default class UserPage extends Component {
             <div  style={{ margin: 20}}>
                 <button type = "button" class = "btn - btn-outline-primary btn-lg" >Create a New Project</button>
             </div>
-                <div>
-                    {this.userProjects()};
+                <div className="container-fluid">
+                    <div className="row">
+                        {this.userProjects()};
+                    </div>
                 </div>
             </div>
             );
