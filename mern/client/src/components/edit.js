@@ -1,77 +1,51 @@
 import React, { Component } from "react";
 // This will require to npm install axios
-import axios from 'axios';
 import { withRouter } from "react-router";
+import User from "./user";
 
 class Edit extends Component {
   // This is the constructor that stores the data.
   constructor(props) {
     super(props);
 
-    this.onChangePersonName = this.onChangePersonName.bind(this);
-    this.onChangePersonPosition = this.onChangePersonPosition.bind(this);
-    this.onChangePersonLevel = this.onChangePersonLevel.bind(this);
+    this.onChangePersonEmail = this.onChangePersonEmail.bind(this);
+    this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.user = new User();
 
     this.state = {
-      person_name: "",
-      person_position: "",
-      person_level: "",
+      email: "",
+      password: "",
       records: [],
     };
   }
   // This will get the record based on the id from the database.
   componentDidMount() {
-    axios
-      .get("http://localhost:5000/record/" + this.props.match.params.id)
-      .then((response) => {
-        this.setState({
-          person_name: response.data.person_name,
-          person_position: response.data.person_position,
-          person_level: response.data.person_level,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    this.setState({
+      email: this.user.getEmail(this.props.match.params.id),
+      password: this.user.getPassword(this.props.match.params.id),
+    });
   }
 
   // These methods will update the state properties.
-  onChangePersonName(e) {
+  onChangePersonEmail(e) {
     this.setState({
-      person_name: e.target.value,
+      email: e.target.value,
     });
   }
 
-  onChangePersonPosition(e) {
+  onChangePersonPassword(e) {
     this.setState({
-      person_position: e.target.value,
-    });
-  }
-
-  onChangePersonLevel(e) {
-    this.setState({
-      person_level: e.target.value,
+      password: e.target.value,
     });
   }
 
   // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
-    const newEditedperson = {
-      person_name: this.state.person_name,
-      person_position: this.state.person_position,
-      person_level: this.state.person_level,
-    };
-    console.log(newEditedperson);
-
-    // This will send a post request to update the data in the database.
-    axios
-      .post(
-        "http://localhost:5000/update/" + this.props.match.params.id,
-        newEditedperson
-      )
-      .then((res) => console.log(res.data));
+    this.user.updateEmail(this.state.email);
+    this.user.updatePassword(this.state.password);
+    this.user.updateUser(this.props.match.params.id);
 
     this.props.history.push("/");
   }
@@ -83,60 +57,22 @@ class Edit extends Component {
         <h3 align="center">Update Record</h3>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Person's Name: </label>
+            <label>Email: </label>
             <input
               type="text"
               className="form-control"
-              value={this.state.person_name}
-              onChange={this.onChangePersonName}
+              value={this.state.email}
+              onChange={this.onChangePersonEmail}
             />
           </div>
           <div className="form-group">
-            <label>Position: </label>
+            <label>Password: </label>
             <input
               type="text"
               className="form-control"
-              value={this.state.person_position}
-              onChange={this.onChangePersonPosition}
+              value={this.state.password}
+              onChange={this.onChangePersonPassword}
             />
-          </div>
-          <div className="form-group">
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityLow"
-                value="Intern"
-                checked={this.state.person_level === "Intern"}
-                onChange={this.onChangePersonLevel}
-              />
-              <label className="form-check-label">Intern</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityMedium"
-                value="Junior"
-                checked={this.state.person_level === "Junior"}
-                onChange={this.onChangePersonLevel}
-              />
-              <label className="form-check-label">Junior</label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="priorityOptions"
-                id="priorityHigh"
-                value="Senior"
-                checked={this.state.person_level === "Senior"}
-                onChange={this.onChangePersonLevel}
-              />
-              <label className="form-check-label">Senior</label>
-            </div>
           </div>
           <br />
 
