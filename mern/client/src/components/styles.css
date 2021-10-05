@@ -38,6 +38,13 @@
     margin: 3px;
 }
 
+.btn-secondary:hover {
+    background-color: white;
+    border: 2px solid #ffc220;
+    color: #ffc220;
+    margin: 3px;
+}
+
 .home-buttons {
     position: fixed;
     /* justify-content: space-around; */

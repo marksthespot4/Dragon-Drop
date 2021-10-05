@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 
@@ -51,12 +51,12 @@ export default class Home extends Component {
     }
 
     updateActiveModal(active) {
-        if(active == "login") {
+        if(active === "login") {
             this.setState({
                 modal: true,
                 activeModal: "signup"
             });
-        } else if(active == "signup") {
+        } else if(active === "signup") {
             this.setState({
                 modal: true,
                 activeModal: "login"
