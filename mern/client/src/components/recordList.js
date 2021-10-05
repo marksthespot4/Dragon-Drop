@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 
 const Record = (props) => (
   <tr>
-    <td>{props.record.person_name}</td>
-    <td>{props.record.person_position}</td>
-    <td>{props.record.person_level}</td>
+    <td>{props.record.email}</td>
+    <td>{props.record.password}</td>
     <td>
       <Link to={"/edit/" + props.record._id}>Edit</Link> |
       <a
@@ -74,9 +73,8 @@ export default class RecordList extends Component {
         <table className="table table-striped" style={{ marginTop: 20 }}>
           <thead>
           <tr>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Level</th>
+            <th>Email</th>
+            <th>Password</th>
             <th>Action</th>
           </tr>
           </thead>
