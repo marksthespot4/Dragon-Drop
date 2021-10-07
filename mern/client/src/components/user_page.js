@@ -16,18 +16,19 @@ const Page = (props) => (
     <img src={example} className="img-fluid img-thumbnail yellowOutline" alt={props.page.pageNumber}/>
                 </div>
                 <div className="flex-column">
-            <i className={"bi bi-gear"} style={{cursor:"pointer"}}/>
                     <div className="dropdown">
-                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
+                                id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                            Project Settings
-                        </button>
+                            <span className="visually-hidden"> Toggle Dropdown</span>
+                        </i>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li><a className="dropdown-item" href="#">Edit</a></li>
                             <li><a className="dropdown-item" href="#">Toggle Private</a></li>
                             <li><a className="dropdown-item" href="#">Delete</a></li>
                         </ul>
                     </div>
+                    
                 </div>
             </div>
             <p>Project {props.page.pageNumber}</p>
