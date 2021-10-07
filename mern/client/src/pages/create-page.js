@@ -1,33 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import grapesjs from "grapesjs";
-import gjsPresetWebpage from "grapesjs-preset-webpage";
+import "../styles/globals.css";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
-
-import Navbar from "../components/navbar";
-import Edit from "../components/edit";
-import Create from "../components/create";
-import RecordList from "../components/recordList";
-
-
-function CreatePage() {
-    const [editor, setEditor] = useState(null);
-    useEffect(() => {
-        const editor = grapesjs.init({
-            container: "#editor",
-            plugins:  [gjsPresetWebpage],
-            pluginOpts: {
-                gjsPresetWebpage: {}
-            }
-        });
-        setEditor(editor);
-    }, []);
-
-    return (
-        <div className="App">
-            <div id="editor"></div>
-        </div>
-    );
+function CreatePage({ Component, pageProps }) {
+  return (
+    <DndProvider backend={HTML5Backend}>
+      <Component {...pageProps} />
+    </DndProvider>
+  );
 }
 
 export default CreatePage;

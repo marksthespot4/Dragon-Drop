@@ -10,10 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.4",
+    "bootstrap": "^5.1.1",
     "grapesjs-preset-webpage": "^0.1.11",
     "mongo": "^0.1.0",
     "react-beautiful-dnd": "^13.1.0",
-    "bootstrap": "^5.1.1",
-    "react-bootstrap": "^2.0.0-rc.0"
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dnd": "^14.0.4",
+    "react-dnd-html5-backend": "^14.0.2"
   }
 }
