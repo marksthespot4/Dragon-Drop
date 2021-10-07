@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { useRef, useState, Component } from "react";
+
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
+import 'bootstrap/js/dist/dropdown';
 import example from "../imgs/example_1.png"
 // This will require to npm install axios
 import axios from 'axios';
@@ -14,20 +16,34 @@ const Page = (props) => (
     <img src={example} className="img-fluid img-thumbnail yellowOutline" alt={props.page.pageNumber}/>
                 </div>
                 <div className="flex-column">
-            <i className="bi bi-gear"></i>
+            <i className={"bi bi-gear"} style={{cursor:"pointer"}}/>
+                    <div className="dropdown">
+                        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Project Settings
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a className="dropdown-item" href="#">Edit</a></li>
+                            <li><a className="dropdown-item" href="#">Toggle Private</a></li>
+                            <li><a className="dropdown-item" href="#">Delete</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <p>Project {props.page.pageNumber}</p>
         </div>
     </div>
 )
+
+
+
+
 export default class UserPage extends Component {
 
     constructor(props){
         super(props);
         this.state = {pages: []}
     }
-
     componentDidMount() {
         axios
             .get("http://localhost:5000/page/")
@@ -49,6 +65,8 @@ export default class UserPage extends Component {
             );
         });
     }
+
+    renderM
 
     render() {
         document.body.style = 'background: wheat';
