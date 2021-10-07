@@ -21,7 +21,9 @@ recordRoutes.route("/page").get(function(req,res) {
         res.json(result);
       });
 });
-// This section will help you get a list of all the users.
+
+// This section will help you get a list of all the records.
+
 recordRoutes.route("/record").get(function (req, res) {
   let db_connect = dbo.getDb();
   db_connect
