@@ -7,6 +7,7 @@ const Record = (props) => (
   <tr>
     <td>{props.record.email}</td>
     <td>{props.record.password}</td>
+    <td>{props.record.pagecount}</td>
     <td>
       <Link to={"/edit/" + props.record._id}>Edit</Link> |
       <a
@@ -75,6 +76,7 @@ export default class RecordList extends Component {
           <tr>
             <th>Email</th>
             <th>Password</th>
+            <th>Page Count</th>
             <th>Action</th>
           </tr>
           </thead>
