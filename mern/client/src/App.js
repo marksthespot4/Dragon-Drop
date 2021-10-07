@@ -6,7 +6,7 @@ import Navbar from "./components/navbar";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
-import CreatePage from "./pages/create-page"
+import CreatePageGrapes from "./pages/create-page-grapes"
 import Home from "./components/home";
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
       </Route>
       <Route path="/edit/:id" component={Edit} />
       <Route path="/create" />
-      <Route path="/create-page" component={CreatePage}>
+      <Route path="/create-page" component={CreatePageGrapes}>
       </Route>
       <Route path="/home">
         <Home />

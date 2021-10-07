@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 // This will require to npm install axios
 import axios from 'axios';
 
-import "./styles.css";
+import "../styles/styles.css";
 
 import Button from 'react-bootstrap/Button';
 import logo from './dragonNoText.png';
