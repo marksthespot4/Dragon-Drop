@@ -42,6 +42,7 @@ recordRoutes.route("/record/add").post(function (req, response) {
   let myobj = {
     email: req.body.email,
     password: req.body.password,
+    pagecount: req.body.pagecount,
   };
   db_connect.collection("users").insertOne(myobj, function (err, res) {
     if (err) throw err;
@@ -57,6 +58,7 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     $set: {
       email: req.body.email,
       password: req.body.password,
+      pagecount: req.body.pagecount,
     },
   };
   db_connect

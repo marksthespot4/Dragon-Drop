@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import { withRouter } from "react-router";
-import User from "./user";
+import  { getUser, updateUser } from "./user";
 
 class Edit extends Component {
   // This is the constructor that stores the data.
@@ -11,21 +11,25 @@ class Edit extends Component {
     this.onChangePersonEmail = this.onChangePersonEmail.bind(this);
     this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.user = new User();
 
     this.state = {
       email: "",
       password: "",
+      pagecount: 0,
       records: [],
     };
   }
   // This will get the record based on the id from the database.
   componentDidMount() {
-    this.user.getUser(this.props.match.params.id);
-    this.setState({
-      email: this.user.email,
-      password: this.user.password,
+    getUser(this.props.match.params.id).then(data=>{
+      this.setState({
+        email: data.email,
+        password: data.password,
+        pagecount: data.pagecount,
+      });
     });
+    //console.log("email "+this.state.email);
+    //console.log("password "+this.state.password);
   }
 
   // These methods will update the state properties.
@@ -44,9 +48,7 @@ class Edit extends Component {
   // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
-    this.user.updateEmail(this.state.email);
-    this.user.updatePassword(this.state.password);
-    this.user.updateUser(this.props.match.params.id);
+    updateUser(this.state.email, this.state.password, this.state.pagecount, this.props.match.params.id);
 
     this.props.history.push("/");
   }

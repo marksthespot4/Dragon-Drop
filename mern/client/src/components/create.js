@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import { withRouter } from "react-router-dom";
-import User from "./user";
+import {uploadUser} from "./user";
 
 class Create extends Component {
   // This is the constructor that stores the data.
@@ -11,11 +11,11 @@ class Create extends Component {
     this.onChangePersonEmail = this.onChangePersonEmail.bind(this);
     this.onChangePersonPassword = this.onChangePersonPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.newuser = new User();
 
     this.state = {
       email: "",
       password: "",
+      pagecount: 0,
     }
   }
 
@@ -36,10 +36,7 @@ class Create extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    this.newuser.updateEmail(this.state.email);
-    this.newuser.updatePassword(this.state.password);
-
-    this.newuser.uploadUser();
+    uploadUser(this.state.email, this.state.password, this.state.pagecount);
 
     this.props.history.push("/");
   }
