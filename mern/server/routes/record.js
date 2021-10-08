@@ -13,7 +13,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 
 // This section will help you get a list of all the users.
-recordRoutes.route("/record").get(function (req, res) {
+recordRoutes.route("/record/users").get(function (req, res) {
   let db_connect = dbo.getDb();
   db_connect
     .collection("users")
@@ -25,7 +25,7 @@ recordRoutes.route("/record").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/record/:id").get(function (req, res) {
+recordRoutes.route("/record/users/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -36,8 +36,19 @@ recordRoutes.route("/record/:id").get(function (req, res) {
     });
 });
 
+recordRoutes.route("/record/pages/:id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId( req.params.id )};
+  db_connect
+    .collection("pages")
+    .findOne(myquery, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+
 // This section will help you create a new record.
-recordRoutes.route("/record/add").post(function (req, response) {
+recordRoutes.route("/record/users/add").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myobj = {
     email: req.body.email,
@@ -50,8 +61,21 @@ recordRoutes.route("/record/add").post(function (req, response) {
   });
 });
 
+recordRoutes.route("/record/pages/add").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myobj = {
+    user: req.body.user,
+    pagename: req.body.pagename,
+    pagedata: req.body.pagedata,
+  };
+  db_connect.collection("pages").insertOne(myobj, function (err, res) {
+    if (err) throw err;
+    response.json(res);
+  });
+});
+
 // This section will help you update a record by id.
-recordRoutes.route("/update/:id").post(function (req, response) {
+recordRoutes.route("/update/users/:id").post(function (req, response) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   let newvalues = {
@@ -70,8 +94,27 @@ recordRoutes.route("/update/:id").post(function (req, response) {
     });
 });
 
+recordRoutes.route("/update/pages/:id").post(function (req, response) {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId( req.params.id )};
+  let newvalues = {
+    $set: {
+      user: req.body.user,
+      pagename: req.body.pagename,
+      pagedata: req.body.pagedata,
+    },
+  };
+  db_connect
+    .collection("pages")
+    .updateOne(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log("1 document updated");
+      response.json(res);
+    });
+});
+
 // This section will help you delete a record
-recordRoutes.route("/:id").delete((req, response) => {
+recordRoutes.route("/users/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("users").deleteOne(myquery, function (err, obj) {
