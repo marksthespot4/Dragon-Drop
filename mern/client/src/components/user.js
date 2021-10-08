@@ -8,7 +8,7 @@ export function uploadUser(email, password, pagecount) {
         pagecount: pagecount,
     }
     axios
-        .post("http://localhost:5000/record/add", newuser)
+        .post("http://localhost:5000/record/users/add", newuser)
         .then((res) => console.log(res.data));
 }
 
@@ -19,15 +19,12 @@ export function updateUser(email, password, pagecount, id) {
         pagecount: pagecount,
     }
     axios
-        .post(
-        "http://localhost:5000/update/" + id,
-        updatedUser
-        )
+        .post("http://localhost:5000/update/users/" + id, updatedUser)
         .then((res) => console.log(res.data));
 }
 
 export function getUser(id) {
-        return axios.get("http://localhost:5000/record/" + id)
+        return axios.get("http://localhost:5000/record/users/" + id)
             .then(res => res.data)
             .catch(function (error) {
                 console.log(error);
