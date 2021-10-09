@@ -1,16 +1,16 @@
-// import React, { createContext, useContext, useState } from "react";
-// const ComponentsContext = createContext([]);
+import React, { createContext, useContext, useState } from "react";
+const ComponentsContext = createContext([]);
 
-// const ComponentsProvider = ({ children }) => {
-//   const [components, setComponents] = useState([]);
+const ComponentsProvider = ({ children }) => {
+  const [components, setComponents] = useState([]);
 
-//   return (
-//     <ComponentsContext.Provider value={{ components, setComponents }}>
-//       {children}
-//     </ComponentsContext.Provider>
-//   );
-// };
+  return (
+    <ComponentsContext.Provider value={{ components, setComponents }}>
+      {children}
+    </ComponentsContext.Provider>
+  );
+};
 
-// const useComponents = () => useContext(ComponentsContext);
+const useComponents = () => useContext(ComponentsContext);
 
-// export { ComponentsContext, ComponentsProvider, useComponents };
+export { ComponentsContext, ComponentsProvider, useComponents };
