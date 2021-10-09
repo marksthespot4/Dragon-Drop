@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
+import { MyBuilder } from "./MyBuilder"
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <RecordList />
       </Route>
       <Route path="/edit/:id" component={Edit} />
+      <Route path="/create-page" component={MyBuilder} />
       <Route path="/create">
         <Create />
       </Route>
