@@ -16,7 +16,7 @@ const App = () => {
     <div>
       <Navbar />
       <Route exact path="/">
-        <RecordList />
+        <Home />
       </Route>
       <Route path="/edit/:id" component={Edit} />
       <Route path="/create">
@@ -25,9 +25,6 @@ const App = () => {
       <Route path="/user_page">
             <UserPage />
        </Route>
-      <Route path="/home">
-        <Home />
-      </Route>
     </div>
   );
 };

@@ -10,15 +10,14 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import CloseButton from 'react-bootstrap/CloseButton'
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            modal: false,
+            show: false,
             activeModal: "",
             name: "",
             modalInputName: ""
@@ -35,19 +34,19 @@ export default class Home extends Component {
         });
     }
 
-    handleSubmit(e) {
-        this.setState({ name: this.state.modalInputName });
-        this.modalClose();
-    }
+    // handleSubmit(e) {
+    //     this.setState({ name: this.state.modalInputName });
+    //     this.modalClose();
+    // }
 
     modalOpen(active) {
-        this.setState({ modal: true, activeModal: active });
+        this.setState({ show: true, activeModal: active });
     }
 
     modalClose() {
         this.setState({
             modalInputName: "",
-            modal: false,
+            show: false,
             activeModal: ""
         });
     }
@@ -55,12 +54,12 @@ export default class Home extends Component {
     updateActiveModal(active) {
         if(active === "login") {
             this.setState({
-                modal: true,
+                show: true,
                 activeModal: "signup"
             });
         } else if(active === "signup") {
             this.setState({
-                modal: true,
+                show: true,
                 activeModal: "login"
             });
         }
@@ -96,8 +95,9 @@ export default class Home extends Component {
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">
-                        Log In
+                            Log In
                         </Modal.Title>
+                        <CloseButton onClick={e => this.modalClose(e)}></CloseButton>
                     </Modal.Header>
                     <Modal.Body>
                         <h6>Email</h6>
@@ -119,12 +119,14 @@ export default class Home extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.updateActiveModal("login")}>Don't have a Dragon Drop account?</Button>
-                        <Button onClick={e => this.modalClose(e)}>
-                            <NavLink className="navbar-brand" to="/user_page" className="nav">
-                                Log In
-                            </NavLink>
+                        <Button variant="secondary" onClick={() => this.updateActiveModal("login")}>
+                            Don't have a Dragon Drop account?
                         </Button>
+                        <NavLink className="navbar-brand" to="/user_page" className="nav">
+                            <Button onClick={e => this.modalClose(e)}>
+                                    Log In
+                            </Button>
+                        </NavLink>
                     </Modal.Footer>
                 </Modal>
 
@@ -137,8 +139,9 @@ export default class Home extends Component {
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">
-                        Sign Up
+                            Sign Up
                         </Modal.Title>
+                        <CloseButton onClick={e => this.modalClose(e)}></CloseButton>
                     </Modal.Header>
                     <Modal.Body>
                         <h6>Email</h6>
@@ -158,21 +161,6 @@ export default class Home extends Component {
                             // onChange={e => this.handleChange(e)}
                             // className="form-control"
                         />
-
-                        {/* <OverlayTrigger
-                            placement="left"
-                            overlay={<Tooltip id="button-tooltip-2">Check out this avatar</Tooltip>}
-                        >
-                            {({ ref, ...triggerHandler }) => (
-                            <Button
-                                variant="light"
-                                {...triggerHandler}
-                                className="d-inline-flex align-items-center"
-                            >
-                                <span className="ms-1">Hover to see</span>
-                            </Button>
-                            )}
-                        </OverlayTrigger> */}
 
                         <OverlayTrigger
                             placement="right"
@@ -199,12 +187,15 @@ export default class Home extends Component {
                         />
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.updateActiveModal("signup")}>Already have a Dragon Drop account?</Button>
-                        <Button onClick={e => this.modalClose(e)}>
-                            <NavLink className="navbar-brand" to="/user_page" className="nav">
+                        <Button variant="secondary" onClick={() => this.updateActiveModal("signup")}>
+                            Already have a Dragon Drop account?
+                        </Button>
+                        <NavLink className="navbar-brand" to="/user_page" className="nav">
+                            <Button onClick={e => this.modalClose(e)}>
                                 Sign Up
-                            </NavLink>
-                        </Button>                    </Modal.Footer>
+                            </Button>
+                        </NavLink>                  
+                    </Modal.Footer>
                 </Modal>
 
             </div>
