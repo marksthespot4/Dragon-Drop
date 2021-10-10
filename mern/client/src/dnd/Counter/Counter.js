@@ -1,6 +1,10 @@
 import { useState } from "react"
 
-export const Counter = ({initialCount = 0, counterText = "My counter value is:"},) => {
+export const Counter = ({initialCount = 0,
+                         counterText = "My counter value is:",
+                         onAdd = () => {},
+                         onSubtract = () => {}
+                         }) => {
     const [count, setCount] = useState(initialCount);
     const handleAdd = () => setCount(
         count => count + 1

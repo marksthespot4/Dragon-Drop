@@ -8,7 +8,7 @@ import Navbar from "./components/navbar";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
-import { MyBuilder } from "./MyBuilder"
+import MyBuilder from "./dnd/MyBuilder"
 
 const App = () => {
   return (
