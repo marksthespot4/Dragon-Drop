@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 import "../CSS/home.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import Button from 'react-bootstrap/Button';
 import logo from '../imgs/dragonNoText.png';
@@ -10,7 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
-import CloseButton from 'react-bootstrap/CloseButton'
+import CloseButton from 'react-bootstrap/CloseButton';
 
 export default class Home extends Component {
     constructor(props) {
@@ -109,7 +110,7 @@ export default class Home extends Component {
                             // className="form-control"
                         />
 
-                        <h6>Password</h6>
+                        <h6><br></br>Password</h6>
                         <input
                             type="password"
                             // value={this.state.modalInputName}
@@ -117,6 +118,9 @@ export default class Home extends Component {
                             // onChange={e => this.handleChange(e)}
                             // className="form-control"
                         />
+
+                        {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
+                        
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={() => this.updateActiveModal("login")}>
@@ -152,16 +156,7 @@ export default class Home extends Component {
                             // onChange={e => this.handleChange(e)}
                             // className="form-control"
                         />
-
-                        <h6>Password</h6>
-                        <input
-                            type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
-                            // className="form-control"
-                        />
-
+                        <h6><br></br>Password&nbsp;
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -173,11 +168,18 @@ export default class Home extends Component {
                                     <b>Must be at least 8 characters</b>
                                 </Tooltip>
                             }
-                            >
-                            <Button variant="secondary" size="sm">i</Button>
+                        >
+                            <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>
-
-                        <h6>Confirm Password</h6>
+                        </h6>
+                        <input
+                            type="password"
+                            // value={this.state.modalInputName}
+                            // name="modalInputName"
+                            // onChange={e => this.handleChange(e)}
+                            // className="form-control"
+                        />
+                        <h6><br></br>Confirm Password</h6>
                         <input
                             type="password"
                             // value={this.state.modalInputName}

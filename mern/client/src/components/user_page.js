@@ -6,6 +6,8 @@ import example from "../imgs/example_1.png"
 // This will require to npm install axios
 import axios from 'axios';
 
+import Preview from "./preview_screenshot";
+
 const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
@@ -54,6 +56,7 @@ export default class UserPage extends Component {
         document.body.style = 'background: wheat';
         return (
             <div>
+                <Preview> </Preview>
             <div  style={{ margin: 20}}>
                 <button type = "button" class = "btn - btn-outline-primary btn-lg" >Create a New Project</button>
             </div>
