@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/home">
           <img src={logo} className="img-fluid" style={{ width: 50, margin:2}}/>
         </NavLink>
         <button
