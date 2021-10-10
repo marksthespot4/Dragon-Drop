@@ -11,6 +11,7 @@ import RecordList from "./components/recordList";
 // import UserPage from "./components/user_page";
 import Home from "./components/home";
 import Preview from "./components/save";
+import EditPage from "./components/edit_page"
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
       <Route path="/user_page">
             <Preview />
        </Route>
+        <Route path="/edit_page">
+            <EditPage/>
+        </Route>
     </div>
   );
 };
