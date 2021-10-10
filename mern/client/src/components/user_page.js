@@ -5,6 +5,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
 import example from "../imgs/example_1.png"
+import { NavLink } from "react-router-dom";
 // This will require to npm install axios
 import axios from 'axios';
 
@@ -20,7 +21,7 @@ const Page = (props) => (
                     <span className="visually-hidden"> Toggle Dropdown</span>
                 </i>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a className="dropdown-item" href="#">Edit</a></li>
+                    <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
                     <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
@@ -81,7 +82,7 @@ export default class UserPage extends Component {
         return (
             <div>
                 <div style={{margin: 20}}>
-                    <button type="button" className="btn - btn-outline-primary btn-lg">Create a New Project</button>
+                    <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
