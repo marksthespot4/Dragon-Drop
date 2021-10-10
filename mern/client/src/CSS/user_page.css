@@ -1,7 +1,9 @@
 .yellowOutline {
+    border-style: solid;
     border-color: goldenrod;
     border-width: thick;
     max-height: 20rem;
+    max-width: 80%;
 }
 
 .checkOutline {
@@ -11,4 +13,8 @@
 .show>.dropdown-menu {
     display: block;
     position: absolute;
+}
+
+.imgSize {
+
 }
