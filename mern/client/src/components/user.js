@@ -23,10 +23,18 @@ export function updateUser(email, password, pagecount, id) {
         .then((res) => console.log(res.data));
 }
 
-export function getUser(id) {
+export function getUserID(id) {
         return axios.get("http://localhost:5000/record/users/" + id)
             .then(res => res.data)
             .catch(function (error) {
                 console.log(error);
             });
+}
+
+export function getUser(email) {
+    return axios.get("http://localhost:5000/record/users/" + email)
+        .then(res => res.data)
+        .catch(function (error) {
+            console.log(error);
+        });
 }

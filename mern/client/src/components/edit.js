@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // This will require to npm install axios
 import { withRouter } from "react-router";
-import  { getUser, updateUser } from "./user";
+import  { getUserID, updateUser } from "./user";
 
 class Edit extends Component {
   // This is the constructor that stores the data.
@@ -21,7 +21,7 @@ class Edit extends Component {
   }
   // This will get the record based on the id from the database.
   componentDidMount() {
-    getUser(this.props.match.params.id).then(data=>{
+    getUserID(this.props.match.params.id).then(data=>{
       this.setState({
         email: data.email,
         password: data.password,

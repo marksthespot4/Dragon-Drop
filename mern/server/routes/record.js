@@ -48,6 +48,16 @@ recordRoutes.route("/record/users/:id").get(function (req, res) {
     });
 });
 
+recordRoutes.route("/record/users/:email").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = {email: req.params.email};
+  db_connect.collection("users")
+  .findOne(myquery, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
 recordRoutes.route("/record/pages/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
