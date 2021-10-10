@@ -8,8 +8,10 @@ import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
-import UserPage from "./components/user_page";
+// import UserPage from "./components/user_page";
 import Home from "./components/home";
+import Preview from "./components/save";
+import EditPage from "./components/edit_page"
 
 const App = () => {
   return (
@@ -23,8 +25,11 @@ const App = () => {
         <Create />
       </Route>
       <Route path="/user_page">
-            <UserPage />
+            <Preview />
        </Route>
+        <Route path="/edit_page">
+            <EditPage/>
+        </Route>
     </div>
   );
 };
