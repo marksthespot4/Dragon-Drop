@@ -24,6 +24,7 @@
     background-color: #0071ce;
     color: white;
     margin: 3px;
+    /* padding:0; */
 } 
 
 .btn:hover {
@@ -45,12 +46,9 @@
     margin: 3px;
 }
 
-.home-buttons {
-    position: fixed;
-    /* justify-content: space-around; */
-    margin: 0 auto;
-    bottom: 0;
-    width: 300px;
-    border: 3px solid #73AD21;
+.nav {
+    color:white;
+    text-decoration: none;
+    /* padding:10px; */
 }
 

@@ -25,9 +25,6 @@ const App = () => {
       <Route path="/user_page">
             <UserPage />
        </Route>
-      <Route path="/home">
-        <Home />
-      </Route>
     </div>
   );
 };
