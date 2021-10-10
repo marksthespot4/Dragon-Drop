@@ -10,6 +10,7 @@ import Create from "./components/create";
 import RecordList from "./components/recordList";
 import UserPage from "./components/user_page";
 import Home from "./components/home";
+import EditPage from "./components/edit_page"
 
 const App = () => {
   return (
@@ -25,6 +26,9 @@ const App = () => {
       <Route path="/user_page">
             <UserPage />
        </Route>
+        <Route path="/edit_page">
+            <EditPage/>
+        </Route>
     </div>
   );
 };
