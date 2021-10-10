@@ -1,0 +1,10 @@
+.yellowOutline {
+    border-color: goldenrod;
+    border-width: thick;
+    max-height: 20rem;
+}
+
+.checkOutline {
+    border-color: black;
+    border-width: thick;
+}
