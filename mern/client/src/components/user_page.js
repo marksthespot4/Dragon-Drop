@@ -13,7 +13,7 @@ const Page = (props) => (
                 <div className="flex-column">
     <img src={example} className="img-fluid img-thumbnail yellowOutline" alt={props.page.pageNumber}/>
                 </div>
-                <div className="flex-column" onClick={setingsClick}>
+                <div className="flex-column">
             <i className="bi bi-gear"></i>
                 </div>
             </div>

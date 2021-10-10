@@ -5,7 +5,7 @@ import axios from 'axios';
 import "./styles.css";
 
 import Button from 'react-bootstrap/Button';
-import logo from './dragonNoText.png';
+import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Tooltip from 'react-bootstrap/Tooltip'
