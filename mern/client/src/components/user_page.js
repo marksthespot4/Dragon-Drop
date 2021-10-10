@@ -6,7 +6,6 @@ import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
 import example from "../imgs/example_1.png"
 import { NavLink } from "react-router-dom";
-import Page from
 // This will require to npm install axios
 import axios from 'axios';
 
