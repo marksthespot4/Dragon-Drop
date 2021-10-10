@@ -1,11 +1,12 @@
 import React, {useRef, useState, Component} from "react";
-
+import {uploadPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
 import example from "../imgs/example_1.png"
 import { NavLink } from "react-router-dom";
+import Page from
 // This will require to npm install axios
 import axios from 'axios';
 
@@ -24,13 +25,13 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
-                    <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
+                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
         </div>
     </div>
 )
-
+//edit page should be replaced.
 
 export default class UserPage extends Component {
 
