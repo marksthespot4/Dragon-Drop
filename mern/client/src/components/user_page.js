@@ -23,7 +23,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="#">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
-                    <li><a className="dropdown-item" href="#">Delete</a></li>
+                    <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
         </div>
@@ -35,12 +35,13 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: []}
+        this.state = {pages: []};
+        this.deletePage = this.deletePage.bind(this);
     }
 
     componentDidMount() {
         axios
-            .get("http://localhost:5000/page/")
+            .get("http://localhost:5000/record/pages")
             .then((response) => {
                 this.setState({pages: response.data});
             })
@@ -49,11 +50,24 @@ export default class UserPage extends Component {
             });
     }
 
+
+    deletePage(id) {
+        axios.delete("http://localhost:5000/page/" + id).then((response) => {
+            console.log(response.data);
+        });
+
+        this.setState({
+            pages: this.state.pages.filter((el) => el._id !== id),
+        });
+        this.render();
+    }
+
     userProjects() {
         return this.state.pages.map((current) => {
             return (
                 <Page
                     page={current}
+                    deletePage = {this.deletePage}
                     key={current._id}
                 />
             );
