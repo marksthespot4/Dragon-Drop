@@ -93,6 +93,7 @@ export default class Home extends Component {
                     aria-labelledby="contained-modal-title-vcenter" 
                     centered
                     show={this.state.activeModal === 'login'}
+                    onEscapeKeyDown={e => this.modalClose(e)}
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">
@@ -140,6 +141,7 @@ export default class Home extends Component {
                     aria-labelledby="contained-modal-title-vcenter" 
                     centered
                     show={this.state.activeModal === 'signup'}
+                    onEscapeKeyDown={e => this.modalClose(e)}
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">

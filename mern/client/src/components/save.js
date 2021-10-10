@@ -1,6 +1,9 @@
 import React, { createRef, useState } from "react";
 
 import { useScreenshot } from "use-react-screenshot";
+import Button from 'react-bootstrap/Button';
+
+import UserPage from "./user_page";
 
 export default () => {
   const ref = createRef(null);
@@ -12,9 +15,9 @@ export default () => {
   return (
     <div>
       <div>
-        <button style={{ marginBottom: "10px" }} onClick={getImage}>
+        <Button onClick={getImage}>
           Take screenshot
-        </button>
+        </Button>
         <label style={{ display: "block", margin: "10px 0" }}>
           Width:
           <input value={width} onChange={e => setWidth(e.target.value)} />
@@ -29,7 +32,10 @@ export default () => {
           marginTop: "20px"
         }}
       >
-        <h1>Lorem ipsum</h1>
+
+        {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
+
+        {/* <h1>Lorem ipsum</h1>
         <h3>What is Lorem Ipsum?</h3>
         <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -41,7 +47,8 @@ export default () => {
         sheets containing Lorem Ipsum passages, and more recently with desktop
         publishing software like Aldus PageMaker including versions of Lorem
         Ipsum.
-        </p>
+        </p> */}
+        <UserPage></UserPage>
           </div>
     </div>
   );
