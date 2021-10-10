@@ -13,7 +13,11 @@ module.exports = {
       // Verify we got a good "db" object
       if (db)
       {
+<<<<<<< HEAD
         _db = db.db("lucyData");
+=======
+        _db = db.db("marksdatadonotouch");
+>>>>>>> 4c55513f16f4b79837719be9e01ac363346f1749
         console.log("Successfully connected to MongoDB.");
       }
       return callback(err);

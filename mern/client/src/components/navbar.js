@@ -5,15 +5,21 @@ import "bootstrap/dist/css/bootstrap.css";
 
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
-import logo from "./dragonNoText.png"
+import logo from "../imgs/dragonNoText.png"
 
 // Here, we display our Navbar
 const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
+<<<<<<< HEAD
         <NavLink className="navbar-brand" to="/">
           Dragon Drop
+=======
+        {/* change to "/" route later */}
+        <NavLink className="navbar-brand" to="/home"> 
+          <img src={logo} height="80"/>
+>>>>>>> 4c55513f16f4b79837719be9e01ac363346f1749
         </NavLink>
         <button
           className="navbar-toggler"
