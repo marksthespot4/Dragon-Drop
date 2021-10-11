@@ -9,10 +9,17 @@ export default class SwitchButton extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(checked) {
-    this.setState({checked});
+  handleChange() {
+    // this.setState({checked : });
+    this.changePrivacy();
   }
-
+  changePrivacy() {
+    this.setState((state) => {
+      // Important: read `state` instead of `this.state` when updating.
+      console.log(!state.checked);
+      return {checked: !state.checked}
+    });
+  }
   render() {
     return (
       <label>

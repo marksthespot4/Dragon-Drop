@@ -28,7 +28,9 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
-            <SwitchButton></SwitchButton>
+            <SwitchButton>
+            </SwitchButton>
+
         </div>
     </div>
 )
@@ -88,7 +90,7 @@ export default class UserPage extends Component {
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        {this.userProjects()};
+                        {this.userProjects()}
                     </div>
                 </div>
             </div>
