@@ -11,7 +11,7 @@ export default class SwitchButton extends Component {
 
   handleChange() {
     // this.setState({checked : });
-    this.changePrivacy();
+    return this.changePrivacy();
   }
   changePrivacy() {
     this.setState((state) => {
