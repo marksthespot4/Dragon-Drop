@@ -8,6 +8,7 @@ import example from "../imgs/example_1.png"
 import { NavLink } from "react-router-dom";
 // This will require to npm install axios
 import axios from 'axios';
+import SwitchButton from "./switch_button";
 
 const Page = (props) => (
     <div className="col">
@@ -27,6 +28,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
+            <SwitchButton></SwitchButton>
         </div>
     </div>
 )
