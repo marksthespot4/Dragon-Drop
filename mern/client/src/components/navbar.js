@@ -12,14 +12,9 @@ const Navbar = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-<<<<<<< HEAD
-        <NavLink className="navbar-brand" to="/">
-          Dragon Drop
-=======
         {/* change to "/" route later */}
         <NavLink className="navbar-brand" to="/home"> 
           <img src={logo} height="80"/>
->>>>>>> 4c55513f16f4b79837719be9e01ac363346f1749
         </NavLink>
         <button
           className="navbar-toggler"

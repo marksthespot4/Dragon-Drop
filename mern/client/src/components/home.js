@@ -11,6 +11,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton'
+import { getUser } from "./user";
 
 export default class Home extends Component {
     constructor(props) {
@@ -20,8 +21,40 @@ export default class Home extends Component {
             show: false,
             activeModal: "",
             name: "",
-            modalInputName: ""
+            modalInputName: "",
+            email: "",
+            password: "",
         };
+    }
+
+    //example from https://www.mongodb.com/languages/mern-stack-tutorial
+    /*onSubmit(e) {
+        e.preventDefault();
+        const newEditedperson = {
+          person_name: this.state.person_name,
+          person_position: this.state.person_position,
+          person_level: this.state.person_level,
+        };
+        console.log(newEditedperson);
+     
+        // This will send a post request to update the data in the database.
+        axios
+          .post(
+            "http://localhost:5000/login/" + this.props.match.params.id,
+            newEditedperson
+          )
+          .then((res) => console.log(res.data));
+     
+        this.props.history.push("/");
+    } */
+    onSubmit(e) {
+        console.log("submitted");
+        console.log(this.state.email);
+        this.modalClose(e);
+     
+        getUser(this.props.match.params.id).then(res=> console.log(res));
+     
+        this.props.history.push("/");
     }
 
     handleChange(e) {
@@ -97,12 +130,13 @@ export default class Home extends Component {
                         <Modal.Title id="contained-modal-title-vcenter">
                             Log In
                         </Modal.Title>
-                        <CloseButton onClick={e => this.modalClose(e)}></CloseButton>
+                        <CloseButton onClick={e => this.onSubmit(e)}></CloseButton>
                     </Modal.Header>
                     <Modal.Body>
                         <h6>Email</h6>
                         <input
                             type="email"
+
                             // value={this.state.modalInputName}
                             // name="modalInputName"
                             // onChange={e => this.handleChange(e)}
@@ -112,6 +146,7 @@ export default class Home extends Component {
                         <h6>Password</h6>
                         <input
                             type="password"
+
                             // value={this.state.modalInputName}
                             // name="modalInputName"
                             // onChange={e => this.handleChange(e)}
@@ -147,7 +182,6 @@ export default class Home extends Component {
                         <h6>Email</h6>
                         <input
                             type="email"
-                            // value={this.state.modalInputName}
                             // name="modalInputName"
                             // onChange={e => this.handleChange(e)}
                             // className="form-control"
