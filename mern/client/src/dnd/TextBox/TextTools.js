@@ -8,11 +8,11 @@ const TextTools = () => {
             Title: "Insert Title",
             mainText: 'Insert body text'
         }
-        const counter = item({
+        const text = item({
             type: 'Text',
             props: TextProps
         })
-        const data = branch(counter);
+        const data = branch(text);
         tools.triggerDragStart({
             data: data
         });

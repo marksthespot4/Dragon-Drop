@@ -12,13 +12,15 @@ import SectionView from "./Section/SectionView";
 
 const MyBuilder = () => {
     const view = {
+        Text: TextView,
+
         Counter: CounterView,
+        Section: SectionView,
         // TextBox: TextView,
-        Section: SectionView
     };
     const panel = {
         Counter: CounterPanel,
-        // TextBox: TextPanel
+        Text: TextPanel
     };
     const tree = branch(
         item({
@@ -29,7 +31,7 @@ const MyBuilder = () => {
         <Workspace view = {view}/>
         <Panel view = {panel} />
         <CounterTools />
-        {/* <TextTools /> */}
+        <TextTools />
     </Builder>
 }
 
