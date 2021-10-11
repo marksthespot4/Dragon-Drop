@@ -9,7 +9,6 @@ import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 
@@ -23,11 +22,11 @@ export default class Home extends Component {
             name: "",
             email: "",
             password: "",
-            confirmPaswword: ""
+            confirmPassword: ""
         };
     }
 
-    handleEmailChange(e) {
+    handleEmailChange = (e) => {
         const target = e.target;
         const email = target.email;
 
@@ -36,7 +35,7 @@ export default class Home extends Component {
         });
     }
 
-    handlePasswordChange(e) {
+    handlePasswordChange = (e) => {
         const target = e.target;
         const password = target.password;
 
@@ -45,7 +44,7 @@ export default class Home extends Component {
         })
     }
 
-    handleConfirmPasswordChange(e) {
+    handleConfirmPasswordChange = (e) => {
         const target = e.target;
         const confirmPassword = target.confirmPassword;
 
@@ -59,58 +58,62 @@ export default class Home extends Component {
     //     this.modalClose();
     // }
 
-    modalOpen(active) {
+    modalOpen = (active) => {
         this.setState({ show: true, activeModal: active });
     }
 
-    modalClose() {
+    modalClose = () => {
         this.setState({
             email: "",
             password: "",
-            confirmPaswword: "",
+            confirmPassword: "",
             show: false,
             activeModal: ""
         });
     }
 
-    modalSignup() {
-        if (this.password != this.confirmPaswword) { // Passwords don't match
-
+    modalSignup = () => {
+        var password = "" + this.state.password;
+        var confirmPassword =  "" + this.state.confirmPassword;
+        console.log("pswd: "+password);
+        console.log("cnfpswd: "+confirmPassword);
+        if (password !== confirmPassword) { // Passwords don't match
+            alert("Passwords do not match");
         }
-        else if (this.password.length < 8) { // Password too short
-
+        else if (password.length < 8) { // Password too short
+            alert("Passwords must be at least 8 characters long")
         }
-        else if (!this.password.includes('!') && !this.password.includes('@') && !this.password.includes('#') 
-                && !this.password.includes('$') && !this.password.includes('%') && !this.password.includes('^') 
-                && !this.password.includes('&') && !this.password.includes('*')) { // Password doesn't contain any special characters
-
+        else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
+                && !password.includes('$') && !password.includes('%') && !password.includes('^') 
+                && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
+                    alert("Password must include at least one special character");
         }
-        else if (this.password == this.password.toUpperCase() || this.password == this.password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-
+        else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
+            alert("Password must have at least one upper case and lower case character");
         }
         else {
-            uploadUser(this.email, this.password, 0);
+            uploadUser(this.state.email, this.state.password, 0);
             this.modalClose();
             this.props.history.push("/user_page");
         }
     }
 
-    modalLogin() {
-        getUser(this.email).then(data =>{
+    modalLogin = (e) => {
+        getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
-
+                alert("Account under given email not found");
             }
-            else if (data.password == this.password) { // Account was found, password was correct
+            else if (data.password === this.state.password) { // Account was found, password was correct
                 this.modalClose();
                 this.props.history.push("/user_page");
             }
             else { // Account was found, password was incorrect
-
+                alert("Incorrect password");
             }
         });
     }
 
-    updateActiveModal(active) {
+    updateActiveModal = (active) => {
         if(active === "login") {
             this.setState({
                 show: true,
@@ -181,11 +184,9 @@ export default class Home extends Component {
                         <Button variant="secondary" onClick={() => this.updateActiveModal("login")}>
                             Don't have a Dragon Drop account?
                         </Button>
-                        <NavLink className="navbar-brand" to="/user_page" className="nav">
-                            <Button onClick={() => this.modalLogin()}>
-                                    Log In
-                            </Button>
-                        </NavLink>
+                        <Button onClick={() => this.modalLogin()}>
+                                Log In
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -239,7 +240,7 @@ export default class Home extends Component {
                         <h6>Confirm Password</h6>
                         <input
                             type="password"
-                            value={this.state.confirmPaswword}
+                            value={this.state.confirmPassword}
                             name="confirmPassword"
                             onChange={e => this.handleConfirmPasswordChange(e)}
                             // className="form-control"
@@ -249,11 +250,9 @@ export default class Home extends Component {
                         <Button variant="secondary" onClick={() => this.updateActiveModal("signup")}>
                             Already have a Dragon Drop account?
                         </Button>
-                        <NavLink className="navbar-brand" to="/user_page" className="nav">
-                            <Button onClick={() => this.modalSignup()}>
-                                Sign Up
-                            </Button>
-                        </NavLink>                  
+                        <Button onClick={() => this.modalSignup()}>
+                            Sign Up
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
