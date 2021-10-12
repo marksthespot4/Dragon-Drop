@@ -11,8 +11,9 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
+import { withRouter } from "react-router";
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
 
@@ -27,29 +28,20 @@ export default class Home extends Component {
     }
 
     handleEmailChange = (e) => {
-        const target = e.target;
-        const email = target.email;
-
         this.setState({
-            email: email,
+            email: e.target.value,
         });
     }
 
     handlePasswordChange = (e) => {
-        const target = e.target;
-        const password = target.password;
-
         this.setState({
-            password: password,
+            password: e.target.value,
         })
     }
 
     handleConfirmPasswordChange = (e) => {
-        const target = e.target;
-        const confirmPassword = target.confirmPassword;
-
         this.setState({
-            confirmPassword: confirmPassword,
+            confirmPassword: e.target.value,
         })
     }
 
@@ -98,7 +90,7 @@ export default class Home extends Component {
         }
     }
 
-    modalLogin = (e) => {
+    modalLogin = () => {
         getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
@@ -167,7 +159,7 @@ export default class Home extends Component {
                             type="email"
                             value={this.state.email}
                             name="email"
-                            onChange={e => this.handleEmailChange(e)}
+                            onChange={this.handleEmailChange}
                             // className="form-control"
                         />
 
@@ -176,7 +168,7 @@ export default class Home extends Component {
                             type="password"
                             value={this.state.password}
                             name="password"
-                            onChange={e => this.handlePasswordChange(e)}
+                            onChange={this.handlePasswordChange}
                             // className="form-control"
                         />
                     </Modal.Body>
@@ -206,11 +198,9 @@ export default class Home extends Component {
                     <Modal.Body>
                         <h6>Email</h6>
                         <input
-                            type="email"
+                            type="text"
                             value={this.state.email}
-                            name="email"
-                            onChange={e => this.handleEmailChange(e)}
-                            // className="form-control"
+                            onChange={this.handleEmailChange}
                         />
 
                         <h6>Password</h6>
@@ -218,8 +208,7 @@ export default class Home extends Component {
                             type="password"
                             value={this.state.password}
                             name="password"
-                            onChange={e => this.handlePasswordChange(e)}
-                            // className="form-control"
+                            onChange={this.handlePasswordChange}
                         />
 
                         <OverlayTrigger
@@ -242,7 +231,7 @@ export default class Home extends Component {
                             type="password"
                             value={this.state.confirmPassword}
                             name="confirmPassword"
-                            onChange={e => this.handleConfirmPasswordChange(e)}
+                            onChange={this.handleConfirmPasswordChange}
                             // className="form-control"
                         />
                     </Modal.Body>
@@ -260,3 +249,5 @@ export default class Home extends Component {
         );
     }
 }
+
+export default withRouter(Home);
