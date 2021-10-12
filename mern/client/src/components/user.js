@@ -24,7 +24,7 @@ export function updateUser(email, password, pagecount, id) {
 }
 
 export function getUserID(id) {
-        return axios.get("http://localhost:5000/record/users/" + id)
+        return axios.get("http://localhost:5000/record/users/id/" + id)
             .then(res => res.data)
             .catch(function (error) {
                 console.log(error);
@@ -32,7 +32,7 @@ export function getUserID(id) {
 }
 
 export function getUser(email) {
-    return axios.get("http://localhost:5000/record/users/" + email)
+    return axios.get("http://localhost:5000/record/users/email/" + email)
         .then(res => res.data)
         .catch(function (error) {
             console.log(error);

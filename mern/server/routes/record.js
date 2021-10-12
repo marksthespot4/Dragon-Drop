@@ -49,7 +49,7 @@ recordRoutes.route("/record/users").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/record/users/:id").get(function (req, res) {
+recordRoutes.route("/record/users/id/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -60,9 +60,10 @@ recordRoutes.route("/record/users/:id").get(function (req, res) {
     });
 });
 
-recordRoutes.route("/record/users/:email").get(function (req, res) {
+recordRoutes.route("/record/users/email/:email").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = {email: req.params.email};
+  console.log("query: "+myquery);
   db_connect.collection("users")
   .findOne(myquery, function (err, result) {
     if (err) throw err;
