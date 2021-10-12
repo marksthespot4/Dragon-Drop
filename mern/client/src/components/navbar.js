@@ -38,6 +38,11 @@ const Navbar = () => {
                 home
               </NavLink>
             </li>
+            <li classNmae="nav-item">
+              <NavLink className="nav-link" to="/create-page">
+                Create Page
+              </NavLink>
+            </li>
           </ul>
         </div>
       </nav>
