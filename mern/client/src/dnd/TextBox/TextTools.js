@@ -1,4 +1,5 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
+import { Button } from "@material-ui/core"
 
 const TextTools = () => {
     const tools = useTools();
@@ -22,7 +23,7 @@ const TextTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        Text Box
+        <Button> Text Box </Button>
     </DnDBuilder>
 }
 

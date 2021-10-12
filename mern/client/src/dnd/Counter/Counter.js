@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Button } from "@material-ui/core"
 
 export const Counter = ({initialCount = 0,
                          counterText = "My counter value is:",
@@ -14,12 +15,12 @@ export const Counter = ({initialCount = 0,
     );
 
     return <div>
-        <button onClick = {handleSubtract}>
+        <Button variant="outlined" onClick = {handleSubtract}>
             -
-        </button>
+        </Button>
         <span> {counterText} {count} </span>
-        <button onClick = {handleAdd}>
+        <Button variant="outlined" onClick = {handleAdd}>
             +
-        </button>
+        </Button>
     </div>
 }
