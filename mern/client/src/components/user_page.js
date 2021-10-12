@@ -83,10 +83,11 @@ export default class UserPage extends Component {
             <div>
                 <div style={{margin: 20}}>
                     <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <div className="btn btn-lg">Generate Project</div>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        {this.userProjects()};
+                        {this.userProjects()}
                     </div>
                 </div>
             </div>
