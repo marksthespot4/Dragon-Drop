@@ -31,13 +31,14 @@ const MyBuilder = () => {
             type: 'Section',
         })
     );
-    return <Builder initialTree = {tree}>
-        <Workspace view = {view}/>
-        <Panel view = {panel} />
-        <CounterTools />
-        <TextTools />
-        <ImageTools />
-    </Builder>
+    return 
+        <Builder initialTree = {tree}>
+            <Workspace view = {view}/>
+            <Panel view = {panel} />
+            <CounterTools />
+            <TextTools />
+            <ImageTools />
+        </Builder>
 }
 
 export default MyBuilder;
