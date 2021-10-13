@@ -61,16 +61,7 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
-        //uploadPage("user", "New Page", "true", "DATA", "img");
-        axios
-            .get("http://localhost:5000/record/pages")
-            .then((response) => {
-                this.setState({pages: response.data});
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        this.render();
+        uploadPage("user", "New Page", "true", "DATA", "img");
     }
 
     deleteMyPage(id) {
@@ -96,7 +87,7 @@ export default class UserPage extends Component {
         });
     }
 
-    // renderM
+    renderM
 
     render() {
         document.body.style = 'background: wheat';
