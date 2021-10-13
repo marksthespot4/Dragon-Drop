@@ -14,7 +14,8 @@ export const Counter = ({initialCount = 0,
         count => count - 1
     );
 
-    return <div>
+    return (
+    <div>
         <Button variant="outlined" onClick = {handleSubtract}>
             -
         </Button>
@@ -23,4 +24,5 @@ export const Counter = ({initialCount = 0,
             +
         </Button>
     </div>
+    )
 }
