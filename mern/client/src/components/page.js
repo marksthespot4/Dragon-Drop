@@ -6,6 +6,7 @@ export function uploadPage(user, pagename, isPublic, pagedata, pagepreview) {
         pagename: pagename,
         public: isPublic,
         pagedata: pagedata,
+        pub: true,
         pagepreview: pagepreview,
     };
 
@@ -14,11 +15,11 @@ export function uploadPage(user, pagename, isPublic, pagedata, pagepreview) {
         .then((res) => console.log(res.data));
 }
 
-export function updatePage(user, pagename, isPublic, pagedata, pagepreview, id) {
+export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
     const updatedPage = {
         user: user,
         pagename: pagename,
-        public: isPublic,
+        pub: pub,
         pagedata: pagedata,
         pagepreview: pagepreview,
     };
