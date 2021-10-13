@@ -231,13 +231,6 @@ class Home extends Component {
                             name="password"
                             onChange={this.handlePasswordChange}
                         />
-                        <input
-                            type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
-                            // className="form-control"
-                        />
                         <h6><br></br>Confirm Password</h6>
                         <input
                             type="password"

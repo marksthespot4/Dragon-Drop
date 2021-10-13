@@ -31,7 +31,7 @@ export default class SwitchButton extends Component {
       // console.log(this.props.id);
 
       getPage(this.props.id).then(data=>{
-        updatePage(data.user, data.pagename, data.pagedata, !data.pub, this.props.id);
+        updatePage(data.user, data.pagename, !data.pub, data.pagedata, data.pagepreview, this.props.id);
       });
       return {checked: !state.checked}
     });

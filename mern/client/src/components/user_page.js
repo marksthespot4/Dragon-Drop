@@ -30,7 +30,6 @@ const Page = (props) => (
                 </ul>
             </div>
             <SwitchButton id = {props.page._id}>
-
             </SwitchButton>
         </div>
     </div>
