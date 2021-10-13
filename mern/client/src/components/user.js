@@ -38,3 +38,9 @@ export function getUser(email) {
             console.log(error);
         });
 }
+
+export function removeUser(id) {
+    axios.delete("http://localhost:5000/delete/users/" +id).then((response) => {
+        console.log(response.data);
+    });
+}
