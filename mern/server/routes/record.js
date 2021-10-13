@@ -11,7 +11,19 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-recordRoutes.route("/page").get(function(req,res) {
+// This section will help you delete a record specifically.
+recordRoutes.route("/page/:id").delete((req, response) => {
+  let db_connect = dbo.getDb();
+  let myquery = { _id: ObjectId( req.params.id )};
+  db_connect.collection("Pages").deleteOne(myquery, function (err, obj) {
+    if (err) throw err;
+    console.log("1 page deleted");
+    response.status(obj);
+  });
+});
+
+//list of all pages
+recordRoutes.route("/record/pages").get(function(req,res) {
   let db_connect = dbo.getDb();
   db_connect
       .collection("Pages")
@@ -37,7 +49,7 @@ recordRoutes.route("/record/users").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/record/users/:id").get(function (req, res) {
+recordRoutes.route("/record/users/id/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -46,6 +58,17 @@ recordRoutes.route("/record/users/:id").get(function (req, res) {
       if (err) throw err;
       res.json(result);
     });
+});
+
+recordRoutes.route("/record/users/email/:email").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = {email: req.params.email};
+  console.log("query: "+myquery);
+  db_connect.collection("users")
+  .findOne(myquery, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
 });
 
 recordRoutes.route("/record/pages/:id").get(function (req, res) {

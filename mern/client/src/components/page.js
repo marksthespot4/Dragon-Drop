@@ -1,9 +1,10 @@
 import axios from "axios";
 
-export function uploadPage(user, pagename, pagedata) {
+export function uploadPage(user, pagename, isPublic, pagedata) {
     const newPage = {
         user: user,
         pagename: pagename,
+        public: isPublic,
         pagedata: pagedata,
     };
 
@@ -12,10 +13,11 @@ export function uploadPage(user, pagename, pagedata) {
         .then((res) => console.log(res.data));
 }
 
-export function updatePage(user, pagename, pagedata, id) {
+export function updatePage(user, pagename, isPublic, pagedata, id) {
     const updatedPage = {
         user: user,
         pagename: pagename,
+        public: isPublic,
         pagedata: pagedata,
     };
 
