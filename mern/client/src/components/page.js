@@ -5,6 +5,7 @@ export function uploadPage(user, pagename, pagedata) {
         user: user,
         pagename: pagename,
         pagedata: pagedata,
+        pub: true,
     };
 
     axios
@@ -12,11 +13,12 @@ export function uploadPage(user, pagename, pagedata) {
         .then((res) => console.log(res.data));
 }
 
-export function updatePage(user, pagename, pagedata, id) {
+export function updatePage(user, pagename, pagedata, pub, id) {
     const updatedPage = {
         user: user,
         pagename: pagename,
         pagedata: pagedata,
+        pub: pub,
     };
 
     axios

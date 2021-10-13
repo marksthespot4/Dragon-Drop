@@ -1,22 +1,38 @@
 import React, { Component, useState } from "react";
 import Switch from "react-switch";
+import { updatePage } from "./page";
+import { getPage } from "./page";
 // import axios from 'axios';
 
 export default class SwitchButton extends Component {
   constructor() {
     super();
-    this.state = {checked: true };
+    this.state = {checked: true};
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount() {
+    getPage(this.props.id).then(data=>{
+      this.setState({
+        checked: data.pub,
+      });
+    });
+    //console.log("email "+this.state.email);
+    //console.log("password "+this.state.password);
+  }
+
   handleChange() {
-    // this.setState({checked : });
     return this.changePrivacy();
   }
   changePrivacy() {
     this.setState((state) => {
       // Important: read `state` instead of `this.state` when updating.
-      console.log(!state.checked);
+      // console.log(!state.checked);
+      // console.log(this.props.id);
+
+      getPage(this.props.id).then(data=>{
+        updatePage(data.user, data.pagename, data.pagedata, !data.pub, this.props.id);
+      });
       return {checked: !state.checked}
     });
   }
