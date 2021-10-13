@@ -12,7 +12,7 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you delete a record specifically.
-recordRoutes.route("/page/:id").delete((req, response) => {
+recordRoutes.route("/delete/pages/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("pages").deleteOne(myquery, function (err, obj) {
@@ -149,7 +149,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
 });
 
 // This section will help you delete a record
-recordRoutes.route("/users/:id").delete((req, response) => {
+recordRoutes.route("/delete/users/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("users").deleteOne(myquery, function (err, obj) {
