@@ -11,6 +11,7 @@ import RecordList from "./components/recordList";
 import MyBuilder from "./dnd/MyBuilder"
 import UserPage from "./components/user_page";
 import Home from "./components/home";
+import Preview from "./components/save";
 import EditPage from "./components/edit_page"
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
         <Create />
       </Route>
       <Route path="/user_page">
-            <UserPage />
+            <Preview />
        </Route>
         <Route path="/edit_page">
             <EditPage/>

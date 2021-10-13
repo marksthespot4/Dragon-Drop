@@ -137,6 +137,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
       user: req.body.user,
       pagename: req.body.pagename,
       pagedata: req.body.pagedata,
+      pub: req.body.pub,
     },
   };
   db_connect

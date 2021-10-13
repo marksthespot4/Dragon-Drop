@@ -11,6 +11,8 @@ import { NavLink } from "react-router-dom";
 
 // This will require to npm install axios
 import axios from 'axios';
+import SwitchButton from "./switch_button";
+// import Page from './pageTest';
 
 const Page = (props) => (
     <div className="col">
@@ -30,6 +32,8 @@ const Page = (props) => (
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
+            <SwitchButton id = {props.page._id}>
+            </SwitchButton>
         </div>
     </div>
 )
@@ -84,13 +88,15 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deletePage = {this.deletePage}
+                    updatePub = {this.updatePub}
                     key={current._id}
+                    pub={true}
                 />
             );
         });
     }
 
-    renderM
+    // renderM
 
     render() {
         document.body.style = 'background: wheat';
