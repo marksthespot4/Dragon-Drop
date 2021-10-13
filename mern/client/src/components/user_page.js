@@ -96,7 +96,7 @@ export default class UserPage extends Component {
                 <div style={{margin: 20}}>
 
                     <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
-                    <div className="btn btn-lg" onClick={this.createNewPage()}>Generate Project</div>
+                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
                 </div>
                 <div className="container-fluid">
                     <ToastContainer
