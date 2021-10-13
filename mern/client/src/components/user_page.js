@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-
+import {uploadPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -26,7 +26,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
-                    <li><a className="dropdown-item" href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
+                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
             <SwitchButton id = {props.page._id}>
@@ -35,7 +35,7 @@ const Page = (props) => (
         </div>
     </div>
 )
-
+//edit page should be replaced.
 
 export default class UserPage extends Component {
 
@@ -89,7 +89,7 @@ export default class UserPage extends Component {
         return (
             <div>
                 <div style={{margin: 20}}>
-                    <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
                 </div>
                 <div className="container-fluid">
                     <div className="row">

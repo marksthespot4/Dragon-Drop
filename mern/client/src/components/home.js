@@ -12,8 +12,10 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton';
+import { getUser, uploadUser } from "./user";
+import { withRouter } from "react-router";
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
 
@@ -21,18 +23,28 @@ export default class Home extends Component {
             show: false,
             activeModal: "",
             name: "",
-            modalInputName: ""
+            email: "",
+            password: "",
+            confirmPassword: ""
         };
     }
 
-    handleChange(e) {
-        const target = e.target;
-        const name = target.name;
-        const value = target.value;
-
+    handleEmailChange = (e) => {
         this.setState({
-            [name]: value
+            email: e.target.value,
         });
+    }
+
+    handlePasswordChange = (e) => {
+        this.setState({
+            password: e.target.value,
+        })
+    }
+
+    handleConfirmPasswordChange = (e) => {
+        this.setState({
+            confirmPassword: e.target.value,
+        })
     }
 
     // handleSubmit(e) {
@@ -40,19 +52,62 @@ export default class Home extends Component {
     //     this.modalClose();
     // }
 
-    modalOpen(active) {
+    modalOpen = (active) => {
         this.setState({ show: true, activeModal: active });
     }
 
-    modalClose() {
+    modalClose = () => {
         this.setState({
-            modalInputName: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
             show: false,
             activeModal: ""
         });
     }
 
-    updateActiveModal(active) {
+    modalSignup = () => {
+        var password = "" + this.state.password;
+        var confirmPassword =  "" + this.state.confirmPassword;
+        console.log("pswd: "+password);
+        console.log("cnfpswd: "+confirmPassword);
+        if (password !== confirmPassword) { // Passwords don't match
+            alert("Passwords do not match");
+        }
+        else if (password.length < 8) { // Password too short
+            alert("Passwords must be at least 8 characters long")
+        }
+        else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
+                && !password.includes('$') && !password.includes('%') && !password.includes('^') 
+                && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
+                    alert("Password must include at least one special character");
+        }
+        else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
+            alert("Password must have at least one upper case and lower case character");
+        }
+        else {
+            uploadUser(this.state.email, this.state.password, 0);
+            this.modalClose();
+            this.props.history.push("/user_page");
+        }
+    }
+
+    modalLogin = () => {
+        getUser(this.state.email).then(data =>{
+            if (data == null) { // Account was not found
+                alert("Account under given email not found");
+            }
+            else if (data.password === this.state.password) { // Account was found, password was correct
+                this.modalClose();
+                this.props.history.push("/user_page");
+            }
+            else { // Account was found, password was incorrect
+                alert("Incorrect password");
+            }
+        });
+    }
+
+    updateActiveModal = (active) => {
         if(active === "login") {
             this.setState({
                 show: true,
@@ -105,18 +160,18 @@ export default class Home extends Component {
                         <h6>Email</h6>
                         <input
                             type="email"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
+                            value={this.state.email}
+                            name="email"
+                            onChange={this.handleEmailChange}
                             // className="form-control"
                         />
 
                         <h6><br></br>Password</h6>
                         <input
                             type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
                             // className="form-control"
                         />
 
@@ -127,11 +182,9 @@ export default class Home extends Component {
                         <Button variant="secondary" onClick={() => this.updateActiveModal("login")}>
                             Don't have a Dragon Drop account?
                         </Button>
-                        <NavLink className="navbar-brand" to="/user_page" className="nav">
-                            <Button onClick={e => this.modalClose(e)}>
-                                    Log In
-                            </Button>
-                        </NavLink>
+                        <Button onClick={() => this.modalLogin()}>
+                                Log In
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -152,13 +205,12 @@ export default class Home extends Component {
                     <Modal.Body>
                         <h6>Email</h6>
                         <input
-                            type="email"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
-                            // className="form-control"
+                            type="text"
+                            value={this.state.email}
+                            onChange={this.handleEmailChange}
                         />
-                        <h6><br></br>Password&nbsp;
+
+                        <h6>Password</h6>
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -173,7 +225,12 @@ export default class Home extends Component {
                         >
                             <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>
-                        </h6>
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
+                        />
                         <input
                             type="password"
                             // value={this.state.modalInputName}
@@ -184,9 +241,9 @@ export default class Home extends Component {
                         <h6><br></br>Confirm Password</h6>
                         <input
                             type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
+                            value={this.state.confirmPassword}
+                            name="confirmPassword"
+                            onChange={this.handleConfirmPasswordChange}
                             // className="form-control"
                         />
                     </Modal.Body>
@@ -194,11 +251,9 @@ export default class Home extends Component {
                         <Button variant="secondary" onClick={() => this.updateActiveModal("signup")}>
                             Already have a Dragon Drop account?
                         </Button>
-                        <NavLink className="navbar-brand" to="/user_page" className="nav">
-                            <Button onClick={e => this.modalClose(e)}>
-                                Sign Up
-                            </Button>
-                        </NavLink>                  
+                        <Button onClick={() => this.modalSignup()}>
+                            Sign Up
+                        </Button>
                     </Modal.Footer>
                 </Modal>
 
@@ -206,3 +261,5 @@ export default class Home extends Component {
         );
     }
 }
+
+export default withRouter(Home);

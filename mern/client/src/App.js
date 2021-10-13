@@ -8,7 +8,8 @@ import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
-// import UserPage from "./components/user_page";
+import MyBuilder from "./dnd/MyBuilder"
+import UserPage from "./components/user_page";
 import Home from "./components/home";
 import Preview from "./components/save";
 import EditPage from "./components/edit_page"
@@ -21,6 +22,7 @@ const App = () => {
         <Home />
       </Route>
       <Route path="/edit/:id" component={Edit} />
+      <Route path="/create-page" component={MyBuilder} />
       <Route path="/create">
         <Create />
       </Route>

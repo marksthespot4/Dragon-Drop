@@ -1,11 +1,13 @@
 import axios from "axios";
 
-export function uploadPage(user, pagename, pagedata) {
+export function uploadPage(user, pagename, isPublic, pagedata, pagepreview) {
     const newPage = {
         user: user,
         pagename: pagename,
+        public: isPublic,
         pagedata: pagedata,
         pub: true,
+        pagepreview: pagepreview,
     };
 
     axios
@@ -13,12 +15,13 @@ export function uploadPage(user, pagename, pagedata) {
         .then((res) => console.log(res.data));
 }
 
-export function updatePage(user, pagename, pagedata, pub, id) {
+export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
     const updatedPage = {
         user: user,
         pagename: pagename,
-        pagedata: pagedata,
         pub: pub,
+        pagedata: pagedata,
+        pagepreview: pagepreview,
     };
 
     axios
@@ -32,4 +35,10 @@ export function getPage(id) {
             .catch(function (error) {
                 console.log(error);
             });
+}
+
+export function deletePage(id) {
+    axios.delete("http://localhost:5000/delete/pages/" + id).then((response) => {
+        console.log(response.data);
+    });
 }

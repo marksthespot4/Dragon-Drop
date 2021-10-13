@@ -12,7 +12,7 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you delete a record specifically.
-recordRoutes.route("/page/:id").delete((req, response) => {
+recordRoutes.route("/delete/pages/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("pages").deleteOne(myquery, function (err, obj) {
@@ -49,7 +49,7 @@ recordRoutes.route("/record/users").get(function (req, res) {
 });
 
 // This section will help you get a single record by id
-recordRoutes.route("/record/users/:id").get(function (req, res) {
+recordRoutes.route("/record/users/id/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -58,6 +58,17 @@ recordRoutes.route("/record/users/:id").get(function (req, res) {
       if (err) throw err;
       res.json(result);
     });
+});
+
+recordRoutes.route("/record/users/email/:email").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = {email: req.params.email};
+  console.log("query: "+myquery);
+  db_connect.collection("users")
+  .findOne(myquery, function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
 });
 
 recordRoutes.route("/record/pages/:id").get(function (req, res) {
@@ -139,7 +150,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
 });
 
 // This section will help you delete a record
-recordRoutes.route("/users/:id").delete((req, response) => {
+recordRoutes.route("/delete/users/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("users").deleteOne(myquery, function (err, obj) {

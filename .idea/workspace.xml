@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Sass File" />
+        <option value="SCSS File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Mark" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="User_Page" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
+  <component name="ProjectId" id="1yrfQPsMF8AcvQsQaMQki7RNOHn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mern/client/src/components" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mark\WebstormProjects\Dragon-Drop\mern\client\src\components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="" />
+      <created>1633014616184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1633014616184</updated>
+      <workItem from="1633014618286" duration="15546000" />
+      <workItem from="1633311583322" duration="13000" />
+      <workItem from="1633439316959" duration="7386000" />
+      <workItem from="1633563173826" duration="7075000" />
+      <workItem from="1633640447631" duration="14345000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
+      <created>1633100662982</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633100662982</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
+      <created>1633205570042</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1633205570042</updated>
+    </task>
+    <task id="LOCAL-00003" summary="what is goingon.">
+      <created>1633223926726</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633223926726</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Database integration added to user page.">
+      <created>1633293793640</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1633293793640</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Edited UI and made easier to read">
+      <created>1633442518297</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633442518297</updated>
+    </task>
+    <task id="LOCAL-00006" summary="messed with icons">
+      <created>1633568257815</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1633568257815</updated>
+    </task>
+    <task id="LOCAL-00007" summary="integrated with sarah branch">
+      <created>1633571188862</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1633571188862</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added a dropdown menu to each project.&#10;installed popper.">
+      <created>1633640866395</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1633640866395</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added a GEAR dropdown menu">
+      <created>1633646281804</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1633646281804</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Redid formatting on the project previews">
+      <created>1633889367983</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1633889367983</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added delete functionality for the dropdown.">
+      <created>1633895886198</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1633895886198</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Make the edit button and create button redirect to new page.">
+      <created>1633896675418</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1633896675418</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added dependency to page.js">
+      <created>1633903873768</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1633903873768</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixed dependency">
+      <created>1633903893500</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1633903893500</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass" />
+    <MESSAGE value="what is goingon." />
+    <MESSAGE value="Database integration added to user page." />
+    <MESSAGE value="Edited UI and made easier to read" />
+    <MESSAGE value="messed with icons" />
+    <MESSAGE value="integrated with sarah branch" />
+    <MESSAGE value="Added a dropdown menu to each project.&#10;installed popper." />
+    <MESSAGE value="Added a GEAR dropdown menu" />
+    <MESSAGE value="Redid formatting on the project previews" />
+    <MESSAGE value="Added delete functionality for the dropdown." />
+    <MESSAGE value="Make the edit button and create button redirect to new page." />
+    <MESSAGE value="added dependency to page.js" />
+    <MESSAGE value="fixed dependency" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed dependency" />
+  </component>
+</project>
