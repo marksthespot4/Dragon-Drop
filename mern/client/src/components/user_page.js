@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage} from "./page"
+import {uploadPage, deletePage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -15,8 +15,8 @@ import axios from 'axios';
 const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
-            <h2>Project {props.page.pageNumber}</h2>
-            <img src={example} className="yellowOutline float-start" alt={props.page.pageNumber}/>
+            <h2>{props.page.projectName}</h2>
+            <img src={example} className="yellowOutline float-start"/>
 
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
@@ -27,7 +27,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
-                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deletePage(props.page._id); delete_notify();}}>Delete</a></li>
+                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,8 @@ export default class UserPage extends Component {
     constructor(props) {
         super(props);
         this.state = {pages: []};
-        this.deletePage = this.deletePage.bind(this);
+        this.deleteMyPage = this.deleteMyPage.bind(this);
+        this.createNewPage = this.createNewPage.bind(this);
     }
 
     componentDidMount() {
@@ -55,12 +56,22 @@ export default class UserPage extends Component {
             });
     }
 
+    createNewPage() {
+        //uploadPage("user", "New Page", "true", "DATA", "img");
+        axios
+            .get("http://localhost:5000/record/pages")
+            .then((response) => {
+                this.setState({pages: response.data});
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        this.render();
+    }
 
-    deletePage(id) {
-        axios.delete("http://localhost:5000/page/" + id).then((response) => {
-            console.log(response.data);
-        });
+    deleteMyPage(id) {
 
+        deletePage(id);
         this.setState({
             pages: this.state.pages.filter((el) => el._id !== id),
         });
@@ -88,7 +99,7 @@ export default class UserPage extends Component {
                 <div style={{margin: 20}}>
 
                     <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
-                    <div className="btn btn-lg">Generate Project</div>
+                    <div className="btn btn-lg" onClick={this.createNewPage()}>Generate Project</div>
                 </div>
                 <div className="container-fluid">
                     <ToastContainer
