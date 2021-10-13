@@ -105,6 +105,10 @@ class Home extends Component {
         getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
+                this.setState({
+                    email: '',
+                    password: ''
+                });
             }
             else if (data.password === this.state.password) { // Account was found, password was correct
                 this.modalClose();
@@ -112,6 +116,9 @@ class Home extends Component {
             }
             else { // Account was found, password was incorrect
                 alert("Incorrect password");
+                this.setState({
+                    password: ''
+                });
             }
         });
     }
