@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 recordRoutes.route("/page/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("Pages").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("pages").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 page deleted");
     response.status(obj);
@@ -26,7 +26,7 @@ recordRoutes.route("/page/:id").delete((req, response) => {
 recordRoutes.route("/record/pages").get(function(req,res) {
   let db_connect = dbo.getDb();
   db_connect
-      .collection("Pages")
+      .collection("pages")
       .find({})
       .toArray(function (err, result) {
         if (err) throw err;

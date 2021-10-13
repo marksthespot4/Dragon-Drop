@@ -5,7 +5,10 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
 import example from "../imgs/example_1.png"
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+
 // This will require to npm install axios
 import axios from 'axios';
 
@@ -24,13 +27,14 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
-                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
+                    <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deletePage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
         </div>
     </div>
 )
-//edit page should be replaced.
+
+const delete_notify = () => toast.info('Page Successfully Deleted!');
 
 export default class UserPage extends Component {
 
@@ -82,10 +86,18 @@ export default class UserPage extends Component {
         return (
             <div>
                 <div style={{margin: 20}}>
+
                     <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
                     <div className="btn btn-lg">Generate Project</div>
                 </div>
                 <div className="container-fluid">
+                    <ToastContainer
+                        position="top-center"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                    />
                     <div className="row">
                         {this.userProjects()}
                     </div>
