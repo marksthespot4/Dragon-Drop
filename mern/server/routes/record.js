@@ -103,7 +103,7 @@ recordRoutes.route("/record/pages/add").post(function (req, response) {
     pagename: req.body.pagename,
     pagedata: req.body.pagedata,
     pub: req.body.pub,
-    pagepreview: pagepreview,
+    pagepreview: req.body.pagepreview,
   };
   db_connect.collection("pages").insertOne(myobj, function (err, res) {
     if (err) throw err;

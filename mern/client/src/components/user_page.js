@@ -64,6 +64,12 @@ export default class UserPage extends Component {
     createNewPage() {
         console.log("created");
         uploadPage("user", "New Page", "DATA", "img");
+        getPages().then(data=>{
+            this.setState({
+                pages: data,
+            });
+        });
+        this.render();
     }
 
     deleteMyPage(id) {
