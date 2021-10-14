@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export function uploadPage(user, pagename, isPublic, pagedata, pagepreview) {
+export function uploadPage(user, pagename, pagedata, pagepreview) {
     const newPage = {
         user: user,
         pagename: pagename,
-        public: isPublic,
         pagedata: pagedata,
         pub: true,
         pagepreview: pagepreview,

@@ -65,7 +65,7 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
-        uploadPage("user", "New Page", "true", "DATA", "img");
+        uploadPage("user", "New Page", "DATA", "img");
         getPages().then(data=>{
             this.setState({
                 pages: data,
