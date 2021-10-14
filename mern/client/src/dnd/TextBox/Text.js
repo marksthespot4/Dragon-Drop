@@ -5,22 +5,14 @@ import RichTextMenu from "./RichTextMenu";
 export const Text = ({titleText = "Insert title", mainText = "Insert text here"}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
-    const CustomMenu = () => (
-        <ul className="menu">
-          <li>Login</li>
-          <li>Register</li>
-          <li>Open Profile</li>
-        </ul>
-      );
-      
+    //alert(JSON.stringify(mainText));
 
     return <div>
         <h2 className="heading"> Hi this is some text </h2>
         <p>
         <span className="ptag"> {mainText} </span>
         </p>
-        <RichTextMenu>
+        <RichTextMenu input = {JSON.stringify(mainText)}>
         </RichTextMenu>
-        
     </div>
 }
