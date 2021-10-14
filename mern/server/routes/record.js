@@ -12,10 +12,10 @@ const dbo = require("../db/conn");
 const ObjectId = require("mongodb").ObjectId;
 
 // This section will help you delete a record specifically.
-recordRoutes.route("/page/:id").delete((req, response) => {
+recordRoutes.route("/delete/pages/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
-  db_connect.collection("Pages").deleteOne(myquery, function (err, obj) {
+  db_connect.collection("pages").deleteOne(myquery, function (err, obj) {
     if (err) throw err;
     console.log("1 page deleted");
     response.status(obj);
@@ -26,7 +26,7 @@ recordRoutes.route("/page/:id").delete((req, response) => {
 recordRoutes.route("/record/pages").get(function(req,res) {
   let db_connect = dbo.getDb();
   db_connect
-      .collection("Pages")
+      .collection("pages")
       .find({})
       .toArray(function (err, result) {
         if (err) throw err;
@@ -137,6 +137,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
       user: req.body.user,
       pagename: req.body.pagename,
       pagedata: req.body.pagedata,
+      pub: req.body.pub,
     },
   };
   db_connect
@@ -149,7 +150,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
 });
 
 // This section will help you delete a record
-recordRoutes.route("/users/:id").delete((req, response) => {
+recordRoutes.route("/delete/users/:id").delete((req, response) => {
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect.collection("users").deleteOne(myquery, function (err, obj) {

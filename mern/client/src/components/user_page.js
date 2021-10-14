@@ -8,6 +8,8 @@ import example from "../imgs/example_1.png"
 import { NavLink } from "react-router-dom";
 // This will require to npm install axios
 import axios from 'axios';
+import SwitchButton from "./switch_button";
+// import Page from './pageTest';
 
 const Page = (props) => (
     <div className="col">
@@ -27,6 +29,8 @@ const Page = (props) => (
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => props.deletePage(props.page._id)}>Delete</a></li>
                 </ul>
             </div>
+            <SwitchButton id = {props.page._id}>
+            </SwitchButton>
         </div>
     </div>
 )
@@ -69,24 +73,26 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deletePage = {this.deletePage}
+                    updatePub = {this.updatePub}
                     key={current._id}
+                    pub={true}
                 />
             );
         });
     }
 
-    renderM
+    // renderM
 
     render() {
         document.body.style = 'background: wheat';
         return (
             <div>
                 <div style={{margin: 20}}>
-                    <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
                 </div>
                 <div className="container-fluid">
                     <div className="row">
-                        {this.userProjects()};
+                        {this.userProjects()}
                     </div>
                 </div>
             </div>

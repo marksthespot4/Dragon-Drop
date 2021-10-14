@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@popperjs/core": "^2.10.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -10,6 +12,7 @@
     "axios": "^0.21.4",
     "bootstrap": "^5.1.2",
     "bootstrap-icons": "^1.5.0",
+    "build-ui": "^0.1.0-alpha.10",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",
     "react": "^17.0.2",

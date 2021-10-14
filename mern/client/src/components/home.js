@@ -3,13 +3,15 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 import "../CSS/home.css";
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import Button from 'react-bootstrap/Button';
 import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import CloseButton from 'react-bootstrap/CloseButton'
+import { NavLink } from "react-router-dom";
+import CloseButton from 'react-bootstrap/CloseButton';
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
 //const bcrypt = require("bcryptjs");
@@ -164,6 +166,7 @@ class Home extends Component {
                     aria-labelledby="contained-modal-title-vcenter" 
                     centered
                     show={this.state.activeModal === 'login'}
+                    onEscapeKeyDown={e => this.modalClose(e)}
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">
@@ -181,7 +184,7 @@ class Home extends Component {
                             // className="form-control"
                         />
 
-                        <h6>Password</h6>
+                        <h6><br></br>Password</h6>
                         <input
                             type={this.state.hidden ? "password" : "text"}
                             value={this.state.password}
@@ -190,6 +193,8 @@ class Home extends Component {
                             // className="form-control"
                         />
                         <button onClick={this.toggleShow}>Show / Hide</button>
+
+                        {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
                         
                     </Modal.Body>
                     <Modal.Footer>
@@ -208,6 +213,7 @@ class Home extends Component {
                     aria-labelledby="contained-modal-title-vcenter" 
                     centered
                     show={this.state.activeModal === 'signup'}
+                    onEscapeKeyDown={e => this.modalClose(e)}
                 >
                     <Modal.Header>
                         <Modal.Title id="contained-modal-title-vcenter">
@@ -224,13 +230,6 @@ class Home extends Component {
                         />
 
                         <h6>Password</h6>
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handlePasswordChange}
-                        />
-
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -242,11 +241,16 @@ class Home extends Component {
                                     <b>Must be at least 8 characters</b>
                                 </Tooltip>
                             }
-                            >
-                            <Button variant="secondary" size="sm">i</Button>
+                        >
+                            <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>
-
-                        <h6>Confirm Password</h6>
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
+                        />
+                        <h6><br></br>Confirm Password</h6>
                         <input
                             type="password"
                             value={this.state.confirmPassword}
