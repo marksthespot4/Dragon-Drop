@@ -42,3 +42,12 @@ export function deletePage(id) {
         console.log(response.data);
     });
 }
+
+export function getPages() {
+    return axios
+        .get("http://localhost:5000/record/pages")
+        .then(response => response.data)
+        .catch(function (error) {
+            console.log(error);
+        });
+}
