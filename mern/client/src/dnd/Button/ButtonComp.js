@@ -3,8 +3,11 @@ import { Button } from "@material-ui/core"
 
 export const ButtonComp = ({buttonText = "Click Me!"
                         }) => {
+    const buttonFunction = () => {
+        alert("function done!");
+    }
     return <div>
-        <Button variant="contained">
+        <Button onClick={() => buttonFunction()} variant="contained">
             <div> {buttonText} </div>
         </Button>
     </div>
