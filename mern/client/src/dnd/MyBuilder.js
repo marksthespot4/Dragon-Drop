@@ -31,8 +31,7 @@ const MyBuilder = () => {
             type: 'Section',
         })
     );
-    return 
-        <Builder initialTree = {tree}>
+    return <Builder initialTree = {tree}>
             <Workspace view = {view}/>
             <Panel view = {panel} />
             <CounterTools />
