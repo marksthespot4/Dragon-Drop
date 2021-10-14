@@ -1,4 +1,6 @@
 import { TextField, Button} from "@material-ui/core";
+import {DropdownButton, Dropdown} from "react-bootstrap";
+import Select from '@material-ui/core/Select';
 //import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor} from "build-ui"
 
@@ -12,19 +14,24 @@ const ShapePanel = ({id}) => {
             value = {editor.props.shapeText}
             onChange = {editor.handleUpdate}
         />
-        <span>Height</span>
-        <TextField
-            name = 'shapeHeight'
-            value = {editor.props.heightProp}
+        <Select
+            variant = 'outlined'
+            native = {true}
+            name = 'shapeType'
+            id = 'shapeType'
+            value = {editor.props.shapeType || ''}
             onChange = {editor.handleUpdate}
-        />
-        <span>Width</span>
-        <TextField
-            name = 'shapeWidth'
-            value = {editor.props.widthProp}
-            onChange = {editor.handleUpdate}
-        />
-        <Button/>
+        >
+            <option value = 'Rectangle'>
+                Rectangle
+            </option>
+            <option value = 'Triangle'>
+                Triangle
+            </option>
+            <option value = 'Circle'>
+                Circle
+            </option>
+        </Select>
     </div>
 }
 

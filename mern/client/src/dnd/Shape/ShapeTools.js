@@ -8,8 +8,9 @@ const ShapeTools = () => {
         const shapeProps = {
             shapeType: "Rectangle",
             shapeText: 'Click Me!',
-            heightProp: 200,
-            widthProp: 300
+            heightProp: 100,
+            widthProp: 200,
+            radius: 50
         }
         const shape = item({
             type: 'Shape',
