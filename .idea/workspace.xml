@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="did some refactoring to fit with page class">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Added triangle and circle, no resizing or customization currently.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +206,42 @@
       <option name="project" value="LOCAL" />
       <updated>1634087262811</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Pushing the multiple creation bug to get help from chang.">
+      <created>1634097765604</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1634097765604</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixed button generating on refresh.">
+      <created>1634099743569</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1634099743569</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Created basic button for the drag and drop editor.">
+      <created>1634174795964</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1634174795964</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Basic shape functionality">
+      <created>1634179791492</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1634179791492</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Added triangle and circle, no resizing or customization currently.">
+      <created>1634183525655</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1634183525655</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +275,11 @@
     <MESSAGE value="xml files" />
     <MESSAGE value="Added a generate button to the page." />
     <MESSAGE value="merged wih main." />
-    <option name="LAST_COMMIT_MESSAGE" value="merged wih main." />
+    <MESSAGE value="Pushing the multiple creation bug to get help from chang." />
+    <MESSAGE value="Fixed button generating on refresh." />
+    <MESSAGE value="Created basic button for the drag and drop editor." />
+    <MESSAGE value="Basic shape functionality" />
+    <MESSAGE value="Added triangle and circle, no resizing or customization currently." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added triangle and circle, no resizing or customization currently." />
   </component>
 </project>

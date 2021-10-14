@@ -10,6 +10,14 @@ import TextTools from "./TextBox/TextTools";
 import ImagePanel from "./Image/ImagePanel";
 import ImageTools from "./Image/ImageTools";
 import ImageView from "./Image/ImageView";
+import ButtonComp from "./Button/ButtonComp";
+import ButtonPanel from "./Button/ButtonPanel";
+import ButtonView from "./Button/ButtonView"
+import ButtonTools from "./Button/ButtonTools";
+import Shape from "./Shape/Shape";
+import ShapePanel from "./Shape/ShapePanel";
+import ShapeView from "./Shape/ShapeView"
+import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
 //import TopBar from './TopBar';
 
@@ -19,12 +27,16 @@ const MyBuilder = () => {
         Image: ImageView,
         Counter: CounterView,
         Section: SectionView,
+        ButtonComp: ButtonView,
+        Shape: ShapeView
         // TextBox: TextView,
     };
     const panel = {
         Counter: CounterPanel,
         Image: ImagePanel,
-        Text: TextPanel
+        Text: TextPanel,
+        ButtonComp: ButtonPanel,
+        Shape: ShapePanel
     };
     const tree = branch(
         item({
@@ -38,6 +50,8 @@ const MyBuilder = () => {
             <CounterTools />
             <TextTools />
             <ImageTools />
+            <ButtonTools />
+            <ShapeTools />
         </Builder>
     )
 }

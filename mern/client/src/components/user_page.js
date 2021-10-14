@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage, deletePage} from "./page"
+import {uploadPage, deletePage, getPages} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -17,16 +17,19 @@ import SwitchButton from "./switch_button";
 const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
-            <h2>{props.page.projectName}</h2>
-            <img src={example} className="yellowOutline float-start"/>
-
+            <h2>{props.page.pagename}</h2>
+            <a href={"/create-page"}>
+                <img src={example} className="yellowOutline float-start"/>
+            </a>
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <span className="visually-hidden"> Toggle Dropdown</span>
                 </i>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a className="dropdown-item" href="/edit_page">Edit</a></li>
+                    <li><a className="dropdown-item" href="/create-page">Edit</a></li>
+                    <li><a className="dropdown-item" href="#">Rename</a></li>
+                    <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href="#">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
@@ -50,14 +53,11 @@ export default class UserPage extends Component {
     }
 
     componentDidMount() {
-        axios
-            .get("http://localhost:5000/record/pages")
-            .then((response) => {
-                this.setState({pages: response.data});
-            })
-            .catch(function (error) {
-                console.log(error);
+        getPages().then(data=>{
+            this.setState({
+                pages: data,
             });
+        });
     }
 
     createNewPage() {
@@ -65,10 +65,8 @@ export default class UserPage extends Component {
     }
 
     deleteMyPage(id) {
-
         deletePage(id);
-        this.setState({
-            pages: this.state.pages.filter((el) => el._id !== id),
+        this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
         });
         this.render();
     }
@@ -78,7 +76,7 @@ export default class UserPage extends Component {
             return (
                 <Page
                     page={current}
-                    deletePage = {this.deletePage}
+                    deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={true}
@@ -87,16 +85,14 @@ export default class UserPage extends Component {
         });
     }
 
-    renderM
-
     render() {
         document.body.style = 'background: wheat';
         return (
             <div>
                 <div style={{margin: 20}}>
 
-                    <NavLink to="/edit_page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
-                    <div className="btn btn-lg" onClick={this.createNewPage()}>Generate Project</div>
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
                 </div>
                 <div className="container-fluid">
                     <ToastContainer
