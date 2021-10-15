@@ -21,16 +21,6 @@ export const Counter = ({initialCount = 0,
         count => count - 1
     );
 
-    const state = {
-        color: ""
-    }
-
-    // callback = (child) => {
-    //     this.setState({color:child})
-    // }
-
-    // const[color, setColor] = useState('white');
-
     return (
     <Rnd default={{
         x: 0,

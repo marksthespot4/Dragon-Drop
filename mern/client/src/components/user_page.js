@@ -126,11 +126,11 @@ export default class UserPage extends Component {
     }
 
     userSearch = () => {
-        getPages().then(data=>{
-            this.setState({
-                pages: data || [],
-            });
-        });
+        // getPages().then(data=>{
+        //     this.setState({
+        //         pages: data || [],
+        //     });
+        // });
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {

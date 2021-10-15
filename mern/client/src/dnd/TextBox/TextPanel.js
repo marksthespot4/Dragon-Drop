@@ -1,4 +1,5 @@
 import {useEditor} from "build-ui"
+import Color from "../color";
 
 const TextPanel = ({id}) => {
     const editor = useEditor({
@@ -12,6 +13,7 @@ const TextPanel = ({id}) => {
             value = {editor.props.mainText}
             onChange = {editor.handleUpdate}
         />
+        <Color/>
     </div>
 }
 
