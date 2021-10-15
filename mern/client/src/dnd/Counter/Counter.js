@@ -1,5 +1,6 @@
 import { useState, useRef } from "react"
 import { Button } from "@material-ui/core"
+import Color from "../color";
 
 // import { SketchPicker } from 'react-color'
 // import Color from "../color"
@@ -17,6 +18,14 @@ export const Counter = ({initialCount = 0,
     const handleSubtract = () => setCount(
         count => count - 1
     );
+
+    const state = {
+        color: ""
+    }
+
+    // callback = (child) => {
+    //     this.setState({color:child})
+    // }
 
     // const[color, setColor] = useState('white');
 
@@ -36,7 +45,8 @@ export const Counter = ({initialCount = 0,
             />
             <div style={{color}}>sdfghjk</div>
         </div> */}
-        {/* <Color></Color> */}
+        {/* <Color pCallback = {this.callback}/>
+        <div> {this.state.color} </div> */}
     </div>
     )
 }

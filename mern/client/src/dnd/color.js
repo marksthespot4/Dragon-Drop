@@ -8,9 +8,13 @@ import Form from 'react-bootstrap/Form'
 // http://casesandberg.github.io/react-color/
 export default class Color extends Component {
     // const[color, setColor] = useState('green');
-    state = {
-        color:""
-    };
+    constructor() {
+        super();
+        this.state = {
+            color:""
+        };
+    }
+
 
     render() {
         return (
