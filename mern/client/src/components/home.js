@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
-import CloseButton from 'react-bootstrap/CloseButton';
+import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
 
@@ -126,7 +126,6 @@ class Home extends Component {
     }
 
     render() {
-        document.body.style = 'background: wheat;';
         return (
             <div className="Home">
                 <div align="right">
@@ -211,6 +210,13 @@ class Home extends Component {
                         />
 
                         <h6>Password</h6>
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
+                        />
+
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -227,9 +233,10 @@ class Home extends Component {
                         </OverlayTrigger>
                         <input
                             type="password"
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handlePasswordChange}
+                            // value={this.state.modalInputName}
+                            // name="modalInputName"
+                            // onChange={e => this.handleChange(e)}
+                            // className="form-control"
                         />
                         <h6><br></br>Confirm Password</h6>
                         <input
