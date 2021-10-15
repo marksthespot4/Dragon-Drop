@@ -13,6 +13,8 @@ import Button from 'react-bootstrap/Button';
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
+import { getUser, updateUser } from "./user";
+
 
 const Page = (props) => (
     <div className="col">
@@ -47,10 +49,21 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
+
+        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
+        localStorage.setItem( 'localEmail', email );
+        console.log(email);
+
+        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
+
+    // setState(state) {
+    //     window.localStorage.setItem('state', JSON.stringify(state));
+    //     super.setState(state);
+    // }
 
     componentDidMount() {
         getPages().then(data=>{
@@ -61,20 +74,28 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
-        if (this.state.pages.length === 5) {
-            alert("Cannot create new page: Reached maximum page count!");
-            return;
-        }
-        uploadPage(this.state.currentUser, "New Page", "DATA", "img");
-        getPages().then(data=>{
-            this.setState({
-                pages: data,
-            });
-        });
-        this.render();
+        getUser(this.state.currentUser).then(data =>{
+            if(data.pagecount >= 5) {
+                alert("Cannot create new page: Reached maximum page count!");
+                return;
+            }
+            else {
+                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                uploadPage(this.state.currentUser, "New Page", "DATA", "img");
+                getPages().then(data=>{
+                    this.setState({
+                        pages: data,
+                    });
+                });
+                this.render();
+            }
+        });        
     }
 
     deleteMyPage(id) {
+        getUser(this.state.currentUser).then(data =>{
+            updateUser(data.email, data.password, data.pagecount - 1, data._id);
+        });        
         deletePage(id);
         this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
         });
@@ -95,50 +116,25 @@ export default class UserPage extends Component {
         });
     }
 
-    // userSearch = () => {
-    //     var text = document.getElementById("userQuery").value;
-    //     // this.setState({user : text});
-    //     getPagesByUser(text).then(data=>{
-    //         this.setState({
-    //             pages: data,
-    //         });
-    //     });
-
-    //     console.log(this.state.pages[0].pagename);
-
-    //     this.render();
-    //     console.log(text);
-    // }
-
-    // search(pages) {
-    //     return pages.filter(page => page.user.toLowerCase().indexOf(this.state.user) > -1)
-    // }
-
     setUser() {
         var userInp = document.getElementById("userQuery").value;
         this.setState({searchUser: userInp});
     }
+
     userSearch = () => {
-        // console.log("fucking please");
-        // var userInp = document.getElementById("userQuery").value;
-        // var userInp = "mark";
-        // this.setState({user: userInp});
-        // console.log(userInp);
-
-        // this.setState({user: userInp});
-
-        // var data = this.search(this.state.pages);
-        // this.setState({pages: data});
-        // this.render();
-
+        getPages().then(data=>{
+            this.setState({
+                pages: data,
+            });
+        });
         return this.state.pages
         .filter((current) => {
-            if (this.state.searchUser === this.state.currentUser) {
-                if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
+            if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase() === this.state.searchUser.toLowerCase()) {
                     return current
                 }
             }
-            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1 && current.pub === true) {
+            else if(current.user.toLowerCase() === this.state.searchUser.toLowerCase() && current.pub === true) {
                 return current
             }
         })
@@ -155,6 +151,10 @@ export default class UserPage extends Component {
         });
     }
 
+    backToAccount() {
+        this.setState({searchUser: this.state.currentUser});
+    }
+
     render() {
         return (
             <div>
@@ -167,6 +167,9 @@ export default class UserPage extends Component {
                     {/* <Button onClick={() => this.userSearch()}> */}
                     <Button onClick={() => this.setUser()}>
                         Search User
+                    </Button>
+                    <Button onClick={() => this.backToAccount()}>
+                        Back to Account
                     </Button>
                 </div>
                 <div style={{margin: 20}}>
