@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage, deletePage, getPages} from "./page"
+import {uploadPage, deletePage, getPages, getPagesByUser, updatePage, getPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -13,7 +13,6 @@ import Button from 'react-bootstrap/Button';
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
-// import Page from './pageTest';
 
 const Page = (props) => (
     <div className="col">
@@ -48,7 +47,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], user: "", pagecount: 0};
+        this.state = {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -66,8 +65,7 @@ export default class UserPage extends Component {
             alert("Cannot create new page: Reached maximum page count!");
             return;
         }
-        console.log("created");
-        uploadPage("user", "New Page", "DATA", "img");
+        uploadPage(this.state.currentUser, "New Page", "DATA", "img");
         getPages().then(data=>{
             this.setState({
                 pages: data,
@@ -91,16 +89,70 @@ export default class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
-                    pub={true}
+                    pub={current.pub}
                 />
             );
         });
     }
 
+    // userSearch = () => {
+    //     var text = document.getElementById("userQuery").value;
+    //     // this.setState({user : text});
+    //     getPagesByUser(text).then(data=>{
+    //         this.setState({
+    //             pages: data,
+    //         });
+    //     });
+
+    //     console.log(this.state.pages[0].pagename);
+
+    //     this.render();
+    //     console.log(text);
+    // }
+
+    // search(pages) {
+    //     return pages.filter(page => page.user.toLowerCase().indexOf(this.state.user) > -1)
+    // }
+
+    setUser() {
+        var userInp = document.getElementById("userQuery").value;
+        this.setState({searchUser: userInp});
+    }
     userSearch = () => {
-        var text = document.getElementById("userQuery").value;
-        this.setState({user : text});
-        console.log(text);
+        // console.log("fucking please");
+        // var userInp = document.getElementById("userQuery").value;
+        // var userInp = "mark";
+        // this.setState({user: userInp});
+        // console.log(userInp);
+
+        // this.setState({user: userInp});
+
+        // var data = this.search(this.state.pages);
+        // this.setState({pages: data});
+        // this.render();
+
+        return this.state.pages
+        .filter((current) => {
+            if (this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
+                    return current
+                }
+            }
+            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1 && current.pub === true) {
+                return current
+            }
+        })
+        .map((current) => {
+            return (
+                <Page
+                    page={current}
+                    deleteMyPage = {this.deleteMyPage}
+                    updatePub = {this.updatePub}
+                    key={current._id}
+                    pub={current.pub}
+                />
+            );
+        });
     }
 
     render() {
@@ -112,7 +164,8 @@ export default class UserPage extends Component {
                         type="text"
                     >
                     </input>
-                    <Button onClick={() => this.userSearch()}>
+                    {/* <Button onClick={() => this.userSearch()}> */}
+                    <Button onClick={() => this.setUser()}>
                         Search User
                     </Button>
                 </div>
@@ -130,7 +183,8 @@ export default class UserPage extends Component {
                         closeOnClick
                     />
                     <div className="row">
-                        {this.userProjects()}
+                        {/* {this.userProjects()} */}
+                        {this.userSearch()}
                     </div>
                 </div>
             </div>
