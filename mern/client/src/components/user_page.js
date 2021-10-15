@@ -104,7 +104,6 @@ export default class UserPage extends Component {
     }
 
     render() {
-        document.body.style = 'background: wheat';
         return (
             <div>
                 <div>
@@ -125,7 +124,7 @@ export default class UserPage extends Component {
                 <div className="container-fluid">
                     <ToastContainer
                         position="top-center"
-                        autoClose={5000}
+                        autoClose={3000}
                         hideProgressBar={false}
                         newestOnTop={false}
                         closeOnClick

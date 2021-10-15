@@ -1,5 +1,10 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@material-ui/core"
+import Color from "../color";
+
+// import { SketchPicker } from 'react-color'
+// import Color from "../color"
+// import Form from 'react-bootstrap/Form'
 import {Rnd} from "react-rnd"
 
 export const Counter = ({initialCount = 0,
@@ -14,6 +19,16 @@ export const Counter = ({initialCount = 0,
     const handleSubtract = () => setCount(
         count => count - 1
     );
+
+    const state = {
+        color: ""
+    }
+
+    // callback = (child) => {
+    //     this.setState({color:child})
+    // }
+
+    // const[color, setColor] = useState('white');
 
     return (
     <Rnd default={{
@@ -31,6 +46,15 @@ export const Counter = ({initialCount = 0,
         <Button variant="outlined" onClick = {handleAdd}>
             +
         </Button>
+        {/* <div>
+            <SketchPicker
+                color={color}
+                onChangeComplete= { (color) => {setColor(color.hex)}}
+            />
+            <div style={{color}}>sdfghjk</div>
+        </div> */}
+        {/* <Color pCallback = {this.callback}/>
+        <div> {this.state.color} </div> */}
     </div>
     </Rnd>
     )
