@@ -11,7 +11,7 @@ import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { NavLink } from "react-router-dom";
-import CloseButton from 'react-bootstrap/CloseButton';
+import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
 
@@ -86,6 +86,8 @@ class Home extends Component {
             alert("Password must have at least one upper case and lower case character");
         }
         else {
+            console.log(this.state.email);
+            this.props.setEmail(this.state.email);
             uploadUser(this.state.email, this.state.password, 0);
             this.modalClose();
             this.props.history.push("/user_page");
@@ -98,6 +100,8 @@ class Home extends Component {
                 alert("Account under given email not found");
             }
             else if (data.password === this.state.password) { // Account was found, password was correct
+                console.log(this.state.email);
+                this.props.setEmail(this.state.email);
                 this.modalClose();
                 this.props.history.push("/user_page");
             }
@@ -122,11 +126,12 @@ class Home extends Component {
     }
 
     login(props) {
+        console.log(this.state.email);
+        this.props.setEmail(this.state.email);
         props.history.push("/user_page");
     }
 
     render() {
-        document.body.style = 'background: wheat;';
         return (
             <div className="Home">
                 <div align="right">
@@ -211,6 +216,13 @@ class Home extends Component {
                         />
 
                         <h6>Password</h6>
+                        <input
+                            type="password"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
+                        />
+
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -227,9 +239,10 @@ class Home extends Component {
                         </OverlayTrigger>
                         <input
                             type="password"
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handlePasswordChange}
+                            // value={this.state.modalInputName}
+                            // name="modalInputName"
+                            // onChange={e => this.handleChange(e)}
+                            // className="form-control"
                         />
                         <h6><br></br>Confirm Password</h6>
                         <input

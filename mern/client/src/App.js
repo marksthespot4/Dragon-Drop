@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // We use Route in order to define the different routes of our application
 import { Route } from "react-router-dom";
@@ -11,23 +11,26 @@ import RecordList from "./components/recordList";
 import MyBuilder from "./dnd/MyBuilder"
 import UserPage from "./components/user_page";
 import Home from "./components/home";
-import Preview from "./components/save";
 import EditPage from "./components/edit_page"
+import Save from "./components/save";
 
 const App = () => {
+
+  const [email, setEmail] = useState("");
+  document.body.style = 'background: wheat;';
   return (
     <div>
       <Navbar />
       <Route exact path="/">
-        <Home />
+        <Home setEmail={setEmail}/>
       </Route>
       <Route path="/edit/:id" component={Edit} />
-      <Route path="/create-page" component={MyBuilder} />
+      <Route path="/create-page" component={Save} />
       <Route path="/create">
         <Create />
       </Route>
       <Route path="/user_page">
-            <Preview />
+            <UserPage email={email}/>
        </Route>
         <Route path="/edit_page">
             <EditPage/>

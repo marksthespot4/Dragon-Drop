@@ -36,6 +36,15 @@ export function getPage(id) {
             });
 }
 
+// export function getPagesByUser(user) {
+//     return axios
+//         .get("http://localhost:5000/record/pages/userSearch")
+//         .then(res => res.data)
+//         .catch(function (error) {
+//             console.log(error);
+//         });
+// }
+
 export function deletePage(id) {
     axios.delete("http://localhost:5000/delete/pages/" + id).then((response) => {
         console.log(response.data);

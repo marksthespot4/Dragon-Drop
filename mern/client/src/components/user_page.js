@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage, deletePage, getPages} from "./page"
+import {uploadPage, deletePage, getPages, getPagesByUser, updatePage, getPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -8,13 +8,14 @@ import example from "../imgs/example_1.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
-import { saveAs} from 'file-saver'
 
+import Button from 'react-bootstrap/Button';
 
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
-// import Page from './pageTest';
+import { getUser, updateUser } from "./user";
+
 
 const Page = (props) => (
     <div className="col">
@@ -51,31 +52,54 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: []};
+
+        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
+        localStorage.setItem( 'localEmail', email );
+        console.log(email);
+
+        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
 
+    // setState(state) {
+    //     window.localStorage.setItem('state', JSON.stringify(state));
+    //     super.setState(state);
+    // }
+
     componentDidMount() {
         getPages().then(data=>{
             this.setState({
-                pages: data,
+                pages: data || [],
             });
         });
     }
 
     createNewPage() {
-        uploadPage("user", "New Page", "DATA", "img");
-        getPages().then(data=>{
-            this.setState({
-                pages: data,
-            });
-        });
-        this.render();
 
+        getUser(this.state.currentUser).then(data =>{
+            if(data.pagecount >= 5) {
+                alert("Cannot create new page: Reached maximum page count!");
+                return;
+            }
+            else {
+                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                uploadPage(this.state.currentUser, "New Page", "DATA", "img");
+                getPages().then(data=>{
+                    this.setState({
+                        pages: data || [],
+                    });
+                });
+                this.render();
+            }
+        });        
     }
 
     deleteMyPage(id) {
+        getUser(this.state.currentUser).then(data =>{
+            updateUser(data.email, data.password, data.pagecount - 1, data._id);
+        });        
         deletePage(id);
         this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
         });
@@ -90,16 +114,68 @@ export default class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
-                    pub={true}
+                    pub={current.pub}
                 />
             );
         });
     }
 
+    setUser() {
+        var userInp = document.getElementById("userQuery").value;
+        this.setState({searchUser: userInp});
+    }
+
+    userSearch = () => {
+        getPages().then(data=>{
+            this.setState({
+                pages: data || [],
+            });
+        });
+        return this.state.pages
+        .filter((current) => {
+            if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase() === this.state.searchUser.toLowerCase()) {
+                    return current
+                }
+            }
+            else if(current.user.toLowerCase() === this.state.searchUser.toLowerCase() && current.pub === true) {
+                return current
+            }
+        })
+        .map((current) => {
+            return (
+                <Page
+                    page={current}
+                    deleteMyPage = {this.deleteMyPage}
+                    updatePub = {this.updatePub}
+                    key={current._id}
+                    pub={current.pub}
+                />
+            );
+        });
+    }
+
+    backToAccount() {
+        this.setState({searchUser: this.state.currentUser});
+    }
+
     render() {
-        document.body.style = 'background: wheat';
         return (
             <div>
+                <div>
+                    <input
+                        id="userQuery"
+                        type="text"
+                    >
+                    </input>
+                    {/* <Button onClick={() => this.userSearch()}> */}
+                    <Button onClick={() => this.setUser()}>
+                        Search User
+                    </Button>
+                    <Button onClick={() => this.backToAccount()}>
+                        Back to Account
+                    </Button>
+                </div>
                 <div style={{margin: 20}}>
 
                     <NavLink to="/create-page" onClick={() => this.createNewPage()} className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
@@ -108,13 +184,14 @@ export default class UserPage extends Component {
                 <div className="container-fluid">
                     <ToastContainer
                         position="top-center"
-                        autoClose={5000}
+                        autoClose={3000}
                         hideProgressBar={false}
                         newestOnTop={false}
                         closeOnClick
                     />
                     <div className="row">
-                        {this.userProjects()}
+                        {/* {this.userProjects()} */}
+                        {this.userSearch()}
                     </div>
                 </div>
             </div>

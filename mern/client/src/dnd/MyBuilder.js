@@ -1,4 +1,5 @@
 import {useState} from "react";
+import "./styles/builder.css"
 import {Builder, Workspace, Panel, branch, item} from 'build-ui';
 import Counter from "./Counter/Counter";
 import CounterPanel from "./Counter/CounterPanel";
@@ -19,6 +20,7 @@ import ShapePanel from "./Shape/ShapePanel";
 import ShapeView from "./Shape/ShapeView"
 import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
+import TopBar from "./TopBar/TopBar";
 //import TopBar from './TopBar';
 
 const MyBuilder = () => {
@@ -45,13 +47,16 @@ const MyBuilder = () => {
     );
     return (
         <Builder initialTree = {tree}>
+            <TopBar />
             <Workspace view = {view}/>
             <Panel view = {panel} />
+            <div className="container-row">
             <CounterTools />
             <TextTools />
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
+            </div>
         </Builder>
     )
 }

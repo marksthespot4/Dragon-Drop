@@ -5,14 +5,16 @@ const ImageTools = () => {
     const tools = useTools();
     const handleDragTool = event => {
         event.stopPropagation();
-        // const imageProps = {
-        //     initialCount: 0,
-        //     counterText: 'My value is:'
-        // }
+
+        const imageProps = {
+            imageUrl: "https://e7.pngegg.com/pngimages/660/375/png-clipart-mario-mario.png"
+        }
         const image = item({
             type: 'Image',
+            props: imageProps
         })
         const data = branch(image);
+        console.log(image.props)
         tools.triggerDragStart({
             data: data
         });
@@ -22,7 +24,7 @@ const ImageTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Add image </Button>
+        <Button> Image </Button>
     </DnDBuilder>
 }
 

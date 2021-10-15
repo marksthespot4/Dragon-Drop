@@ -6,6 +6,8 @@ const TextPanel = ({id}) => {
     })
     return <div>
         <input
+            type="text"
+            class="textbox"
             name = 'mainText'
             value = {editor.props.mainText}
             onChange = {editor.handleUpdate}
