@@ -4,6 +4,10 @@ import {Rnd} from "react-rnd"
 
 export const ButtonComp = ({buttonText = "Click Me!"
                         }) => {
+    const buttonFunction = () => {
+        alert("function done!");
+    }
+
     return <Rnd default={{
         x: 0,
         y: 0,
@@ -12,7 +16,7 @@ export const ButtonComp = ({buttonText = "Click Me!"
       }}
     >
         <div>
-        <Button variant="contained">
+        <Button onClick={() => buttonFunction()} variant="contained">
             <div> {buttonText} </div>
         </Button>
     </div>

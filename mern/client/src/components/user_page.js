@@ -8,6 +8,7 @@ import example from "../imgs/example_1.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 
 // This will require to npm install axios
@@ -33,7 +34,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="#">Rename</a></li>
                     <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
-                    <li><a className="dropdown-item" href="#">Download as Image </a></li>
+                    <li><a className="dropdown-item" href="/static/media/example_1.b420d62f.png" download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
@@ -43,6 +44,8 @@ const Page = (props) => (
     </div>
 )
 
+const download = () => {
+};
 const delete_notify = () => toast.info('Page Successfully Deleted!');
 
 export default class UserPage extends Component {
@@ -74,6 +77,7 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
+
         getUser(this.state.currentUser).then(data =>{
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
@@ -174,7 +178,7 @@ export default class UserPage extends Component {
                 </div>
                 <div style={{margin: 20}}>
 
-                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <NavLink to="/create-page" onClick={() => this.createNewPage()} className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
                     <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
                 </div>
                 <div className="container-fluid">
