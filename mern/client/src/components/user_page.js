@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage, deletePage, getPages} from "./page"
+import {uploadPage, deletePage, getPages, getPagesByUser, updatePage, getPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -49,6 +49,7 @@ export default class UserPage extends Component {
     constructor(props) {
         super(props);
         this.state = {pages: [], user: ""};
+        // this.state = {pages: []};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -93,10 +94,57 @@ export default class UserPage extends Component {
         });
     }
 
+    // userSearch = () => {
+    //     var text = document.getElementById("userQuery").value;
+    //     // this.setState({user : text});
+    //     getPagesByUser(text).then(data=>{
+    //         this.setState({
+    //             pages: data,
+    //         });
+    //     });
+
+    //     console.log(this.state.pages[0].pagename);
+
+    //     this.render();
+    //     console.log(text);
+    // }
+
+    // search(pages) {
+    //     return pages.filter(page => page.user.toLowerCase().indexOf(this.state.user) > -1)
+    // }
+
     userSearch = () => {
-        var text = document.getElementById("userQuery").value;
-        this.setState({user : text});
-        console.log(text);
+        console.log("fucking please");
+        var userInp = document.getElementById("userQuery").value;
+        // var userInp = "mark";
+        // this.setState({user: userInp});
+        // console.log(userInp);
+
+        // this.setState({user: userInp});
+
+        // var data = this.search(this.state.pages);
+        // this.setState({pages: data});
+        // this.render();
+
+        return this.state.pages
+        .filter((current) => {
+            console.log(userInp)
+            if(current.user.toLowerCase().indexOf(userInp.toLowerCase()) > -1) {
+                console.log("the if statement");
+                return current
+            }
+        })
+        .map((current) => {
+            return (
+                <Page
+                    page={current}
+                    deleteMyPage = {this.deleteMyPage}
+                    updatePub = {this.updatePub}
+                    key={current._id}
+                    pub={true}
+                />
+            );
+        });
     }
 
     render() {
@@ -127,7 +175,8 @@ export default class UserPage extends Component {
                         closeOnClick
                     />
                     <div className="row">
-                        {this.userProjects()}
+                        {/* {this.userProjects()} */}
+                        {/* {this.userSearch()} */}
                     </div>
                 </div>
             </div>
