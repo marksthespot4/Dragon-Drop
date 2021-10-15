@@ -8,6 +8,7 @@ import example from "../imgs/example_1.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
 
 // This will require to npm install axios
 import axios from 'axios';
@@ -47,7 +48,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: []};
+        this.state = {pages: [], user: ""};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -61,7 +62,14 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
-        uploadPage("user", "New Page", "true", "DATA", "img");
+        console.log("created");
+        uploadPage("user", "New Page", "DATA", "img");
+        getPages().then(data=>{
+            this.setState({
+                pages: data,
+            });
+        });
+        this.render();
     }
 
     deleteMyPage(id) {
@@ -85,9 +93,25 @@ export default class UserPage extends Component {
         });
     }
 
+    userSearch = () => {
+        var text = document.getElementById("userQuery").value;
+        this.setState({user : text});
+        console.log(text);
+    }
+
     render() {
         return (
             <div>
+                <div>
+                    <input
+                        id="userQuery"
+                        type="text"
+                    >
+                    </input>
+                    <Button onClick={() => this.userSearch()}>
+                        Search User
+                    </Button>
+                </div>
                 <div style={{margin: 20}}>
 
                     <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
