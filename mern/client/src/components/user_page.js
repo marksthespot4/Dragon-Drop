@@ -34,7 +34,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="#">Rename</a></li>
                     <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
-                    <li><a className="dropdown-item" href="/static/media/example_1.b420d62f.png" download="image.jpg">Download as Image </a></li>
+                    <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
