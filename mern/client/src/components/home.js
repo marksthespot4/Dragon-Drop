@@ -231,13 +231,6 @@ class Home extends Component {
                         >
                             <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>
-                        <input
-                            type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
-                            // className="form-control"
-                        />
                         <h6><br></br>Confirm Password</h6>
                         <input
                             type="password"
