@@ -51,10 +51,16 @@ const delete_notify = () => toast.info('Page Successfully Deleted!');
 export default class UserPage extends Component {
 
     constructor(props) {
-        super(props);
-        //TODO: fix saving to local storage will causing new registered users to use local data.
-        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
-        localStorage.setItem( 'localEmail', email );
+        super(props);        
+        var email;
+        if(this.props.email != "") {
+            email = this.props.email; 
+            localStorage.setItem( 'localEmail', email);
+        }
+        else {
+            email = localStorage.getItem( 'localEmail' );
+        }
+
         console.log(email);
 
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
@@ -121,6 +127,9 @@ export default class UserPage extends Component {
     }
 
     userSearch = () => {
+        //TODO: currently, when a user searches, they don't pull from data base. So if a diff user has added a new page/deleted a new page
+        //since the last DB call, the search will not have the most recent data.
+        //the following code fixes it, but also runs constantly and breaks the code.
         // getPages().then(data=>{
         //     this.setState({
         //         pages: data || [],
@@ -151,6 +160,7 @@ export default class UserPage extends Component {
     }
 
     backToAccount() {
+        console.log(this.state.currentUser);
         this.setState({searchUser: this.state.currentUser});
     }
 
