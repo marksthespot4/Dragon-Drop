@@ -48,7 +48,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], user: ""};
+        this.state = {pages: [], signedInUser: "", searchUser: ""};
         // this.state = {pages: []};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
@@ -88,7 +88,7 @@ export default class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
-                    pub={true}
+                    pub={current.pub}
                 />
             );
         });
@@ -113,9 +113,13 @@ export default class UserPage extends Component {
     //     return pages.filter(page => page.user.toLowerCase().indexOf(this.state.user) > -1)
     // }
 
-    userSearch = () => {
-        console.log("fucking please");
+    setUser() {
         var userInp = document.getElementById("userQuery").value;
+        this.setState({searchUser: userInp});
+    }
+    userSearch = () => {
+        // console.log("fucking please");
+        // var userInp = document.getElementById("userQuery").value;
         // var userInp = "mark";
         // this.setState({user: userInp});
         // console.log(userInp);
@@ -128,9 +132,10 @@ export default class UserPage extends Component {
 
         return this.state.pages
         .filter((current) => {
-            console.log(userInp)
-            if(current.user.toLowerCase().indexOf(userInp.toLowerCase()) > -1) {
-                console.log("the if statement");
+            if (this.state.searchUser == "") {
+                return current
+            }
+            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
                 return current
             }
         })
@@ -141,7 +146,7 @@ export default class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
-                    pub={true}
+                    pub={current.pub}
                 />
             );
         });
@@ -157,7 +162,8 @@ export default class UserPage extends Component {
                         type="text"
                     >
                     </input>
-                    <Button onClick={() => this.userSearch()}>
+                    {/* <Button onClick={() => this.userSearch()}> */}
+                    <Button onClick={() => this.setUser()}>
                         Search User
                     </Button>
                 </div>
@@ -176,7 +182,7 @@ export default class UserPage extends Component {
                     />
                     <div className="row">
                         {/* {this.userProjects()} */}
-                        {/* {this.userSearch()} */}
+                        {this.userSearch()}
                     </div>
                 </div>
             </div>
