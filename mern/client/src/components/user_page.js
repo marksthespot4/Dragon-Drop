@@ -15,6 +15,7 @@ import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
 
+
 const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
@@ -48,13 +49,13 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        // this.state = JSON.parse(window.localStorage.getItem('state')) || 
-        //             {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
+
         var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
         localStorage.setItem( 'localEmail', email );
         console.log(email);
 
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
