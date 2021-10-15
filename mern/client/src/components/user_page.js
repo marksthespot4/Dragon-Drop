@@ -48,10 +48,21 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
+        // this.state = JSON.parse(window.localStorage.getItem('state')) || 
+        //             {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
+        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
+        localStorage.setItem( 'localEmail', email );
+        console.log(email);
+
+        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
+
+    // setState(state) {
+    //     window.localStorage.setItem('state', JSON.stringify(state));
+    //     super.setState(state);
+    // }
 
     componentDidMount() {
         getPages().then(data=>{
@@ -117,12 +128,12 @@ export default class UserPage extends Component {
         });
         return this.state.pages
         .filter((current) => {
-            if (this.state.searchUser === this.state.currentUser) {
-                if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
+            if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase() === this.state.searchUser.toLowerCase()) {
                     return current
                 }
             }
-            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1 && current.pub === true) {
+            else if(current.user.toLowerCase() === this.state.searchUser.toLowerCase() && current.pub === true) {
                 return current
             }
         })
