@@ -32,8 +32,7 @@ export default class Color extends Component {
                     value={this.state.color}
                     onChange={(e) => this.setState({ color: e.target.value })}
                 />
-                <div style={{color:this.state.color}}>sdfghjkyhtgr</div>
-
+                {/* <div style={{color:this.state.color}}>sdfghjkyhtgr</div> */}
             </div>
         )
     }
