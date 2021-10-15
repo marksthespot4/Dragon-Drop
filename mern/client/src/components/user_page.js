@@ -166,6 +166,7 @@ export default class UserPage extends Component {
                     <input
                         id="userQuery"
                         type="text"
+                        placeholder="Search user"
                     >
                     </input>
                     {/* <Button onClick={() => this.userSearch()}> */}
@@ -178,12 +179,12 @@ export default class UserPage extends Component {
                 </div>
                 <div style={{margin: 20}}>
 
-                    {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
-                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div> */}
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
 
-                    <NavLink to="/create-page">
+                    {/* <NavLink to="/create-page">
                         <Button onClick={() => this.createNewPage()}> Generate & Create</Button>
-                    </NavLink>
+                    </NavLink> */}
                 </div>
 
                 <div className="container-fluid">
