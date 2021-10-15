@@ -9,7 +9,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import { User } from "./home"
 
 // This will require to npm install axios
 import axios from 'axios';
@@ -49,7 +48,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], signedInUser: "", searchUser: ""};
+        this.state = {pages: [], signedInUser: this.props.currentEmail, searchUser: ""};
         // this.state = {pages: []};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
@@ -119,6 +118,7 @@ export default class UserPage extends Component {
         this.setState({searchUser: userInp});
     }
     userSearch = () => {
+        console.log(this.state.currentEmail);
         // console.log("fucking please");
         // var userInp = document.getElementById("userQuery").value;
         // var userInp = "mark";
