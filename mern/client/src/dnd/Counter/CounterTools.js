@@ -23,7 +23,7 @@ const CounterTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Counter Drag </Button>
+        <Button>Counter</Button>
     </DnDBuilder>
 }
 

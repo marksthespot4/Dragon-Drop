@@ -26,7 +26,7 @@ const ShapeTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Drag Shape</Button>
+        <Button>Shape</Button>
     </DnDBuilder>
 }
 
