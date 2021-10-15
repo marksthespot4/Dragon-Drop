@@ -23,7 +23,7 @@ const TextTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button> Text Box </Button>
+        <Button>Text </Button>
     </DnDBuilder>
 }
 

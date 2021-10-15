@@ -8,11 +8,12 @@ export const Image = ({imageUrl = "https://e7.pngegg.com/pngimages/660/375/png-c
         console.log(imageUrl)
     )
 
-    return <Rnd default={{
+    return <Rnd 
+    default={{
         x: 0,
         y: 0,
-        width: 600,
-        height: 600,
+        width: 200,
+        height: 200,
       }}
     >
         <div>

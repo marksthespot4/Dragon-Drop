@@ -22,7 +22,7 @@ const ButtonTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Button Drag</Button>
+        <Button>Button</Button>
     </DnDBuilder>
 }
 

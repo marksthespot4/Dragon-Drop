@@ -24,7 +24,7 @@ const ImageTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button> Add image </Button>
+        <Button> Image </Button>
     </DnDBuilder>
 }
 
