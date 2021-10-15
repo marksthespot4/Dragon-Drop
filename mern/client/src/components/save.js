@@ -1,27 +1,40 @@
-import React, { createRef, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 
 import { useScreenshot } from "use-react-screenshot";
 import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 // import UserPage from "./user_page";
 import MyBuilder from "../dnd/MyBuilder";
+
+import { updatePage, getPage } from "./page";
 
 export default () => {
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
+  const [imgFromDB, setDBImage] = useState(image);
 
   const getImage = () => {
     takeScreenShot(ref.current);
   }
 
+  useEffect(() => { 
+    save();
+  }, [image])
+
   // const [show, setShow] = useState(false);
 
   const notify = () => { 
     toast.success('Project Saved');
+  }
+
+  const save = () => {
+    // console.log("save");
+    getPage("6169d37d3879ce0833b16e68").then(data => {
+      updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
+    });
   }
 
   return (
@@ -52,7 +65,8 @@ export default () => {
           <input value={width} onChange={e => setWidth(e.target.value)} />
         </label> */}
       </div>
-      <img width={width} src={image} alt={"ScreenShot"} />
+      <img width={width} src={image} alt={""} />
+      {/* <div>{image}</div> */}
       <div
         ref={ref}
         style={{
@@ -65,7 +79,7 @@ export default () => {
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
         <MyBuilder></MyBuilder>
-          </div>
+      </div>
     </div>
   );
 };
