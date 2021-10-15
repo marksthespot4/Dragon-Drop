@@ -22,7 +22,7 @@ const Page = (props) => (
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
             <a href={"/create-page"}>
-                <img src={example} className="yellowOutline float-start"/>
+                <img src={props.page.pagepreview} className="yellowOutline float-start"/>
             </a>
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
@@ -86,7 +86,7 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", "DATA", "img");
+                uploadPage(this.state.currentUser, "New Page", "DATA", example);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],
@@ -147,6 +147,7 @@ export default class UserPage extends Component {
             }
         })
         .map((current) => {
+            console.log(current.pagepreview);
             return (
                 <Page
                     page={current}

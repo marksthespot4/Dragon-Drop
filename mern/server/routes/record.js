@@ -165,6 +165,7 @@ recordRoutes.route("/update/pages/:id").post(function (req, response) {
       pagename: req.body.pagename,
       pagedata: req.body.pagedata,
       pub: req.body.pub,
+      pagepreview: req.body.pagepreview,
     },
   };
   db_connect
