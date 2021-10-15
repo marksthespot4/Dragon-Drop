@@ -13,7 +13,6 @@ import Button from 'react-bootstrap/Button';
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
-// import Page from './pageTest';
 
 const Page = (props) => (
     <div className="col">
@@ -48,7 +47,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], searchUser: "", pagecount: 0};
+        this.state = {pages: [], currentUser: this.props.email, searchUser: this.props.email, pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -66,8 +65,7 @@ export default class UserPage extends Component {
             alert("Cannot create new page: Reached maximum page count!");
             return;
         }
-        console.log("created");
-        uploadPage("user", "New Page", "DATA", "img");
+        uploadPage(this.state.currentUser, "New Page", "DATA", "img");
         getPages().then(data=>{
             this.setState({
                 pages: data,
@@ -121,7 +119,6 @@ export default class UserPage extends Component {
         this.setState({searchUser: userInp});
     }
     userSearch = () => {
-        console.log(this.state.currentEmail);
         // console.log("fucking please");
         // var userInp = document.getElementById("userQuery").value;
         // var userInp = "mark";
@@ -136,8 +133,10 @@ export default class UserPage extends Component {
 
         return this.state.pages
         .filter((current) => {
-            if (this.state.searchUser == "") {
-                return current
+            if (this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
+                    return current
+                }
             }
             else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1 && current.pub === true) {
                 return current

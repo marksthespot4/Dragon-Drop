@@ -86,6 +86,8 @@ class Home extends Component {
             alert("Password must have at least one upper case and lower case character");
         }
         else {
+            console.log(this.state.email);
+            this.props.setEmail(this.state.email);
             uploadUser(this.state.email, this.state.password, 0);
             this.modalClose();
             this.props.history.push("/user_page");
@@ -98,6 +100,8 @@ class Home extends Component {
                 alert("Account under given email not found");
             }
             else if (data.password === this.state.password) { // Account was found, password was correct
+                console.log(this.state.email);
+                this.props.setEmail(this.state.email);
                 this.modalClose();
                 this.props.history.push("/user_page");
             }
@@ -122,6 +126,8 @@ class Home extends Component {
     }
 
     login(props) {
+        console.log(this.state.email);
+        this.props.setEmail(this.state.email);
         props.history.push("/user_page");
     }
 
