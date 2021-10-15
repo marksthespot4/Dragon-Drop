@@ -7,7 +7,7 @@ const ImageTools = () => {
         event.stopPropagation();
 
         const imageProps = {
-            imageUrl: "https://e7.pngegg.com/pngimages/660/375/png-clipart-mario-mario.png"
+            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png"
         }
         const image = item({
             type: 'Image',
