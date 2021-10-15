@@ -108,6 +108,7 @@ export default class UserPage extends Component {
         var userInp = document.getElementById("userQuery").value;
         this.setState({searchUser: userInp});
     }
+
     userSearch = () => {
         getPages().then(data=>{
             this.setState({
@@ -138,6 +139,10 @@ export default class UserPage extends Component {
         });
     }
 
+    backToAccount() {
+        this.setState({searchUser: this.state.currentUser});
+    }
+
     render() {
         return (
             <div>
@@ -150,6 +155,9 @@ export default class UserPage extends Component {
                     {/* <Button onClick={() => this.userSearch()}> */}
                     <Button onClick={() => this.setUser()}>
                         Search User
+                    </Button>
+                    <Button onClick={() => this.backToAccount()}>
+                        Back to Account
                     </Button>
                 </div>
                 <div style={{margin: 20}}>
