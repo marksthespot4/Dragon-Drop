@@ -7,6 +7,7 @@ const CounterPanel = ({id}) => {
     const editor = useEditor({
         id: id
     })
+
     return <div>
         <TextField
             name = 'counterText'
