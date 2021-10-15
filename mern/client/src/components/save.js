@@ -2,8 +2,9 @@ import React, { createRef, useState } from "react";
 
 import { useScreenshot } from "use-react-screenshot";
 import Button from 'react-bootstrap/Button';
+import MyBuilder from "../dnd/MyBuilder";
 
-import UserPage from "./user_page";
+// import UserPage from "./user_page";
 
 export default () => {
   const ref = createRef(null);
@@ -48,7 +49,7 @@ export default () => {
         publishing software like Aldus PageMaker including versions of Lorem
         Ipsum.
         </p> */}
-        <UserPage></UserPage>
+        <MyBuilder></MyBuilder>
           </div>
     </div>
   );
