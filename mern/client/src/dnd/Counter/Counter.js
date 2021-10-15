@@ -11,6 +11,7 @@ export const Counter = ({initialCount = 0,
         count => count + 1
     );
     const handleSubtract = () => setCount(
+        console.log(counterText),
         count => count - 1
     );
 

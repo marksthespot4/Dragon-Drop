@@ -19,7 +19,6 @@ const MyBuilder = () => {
         Image: ImageView,
         Counter: CounterView,
         Section: SectionView,
-        // TextBox: TextView,
     };
     const panel = {
         Counter: CounterPanel,

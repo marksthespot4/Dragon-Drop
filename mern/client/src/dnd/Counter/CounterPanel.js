@@ -6,13 +6,16 @@ const CounterPanel = ({id}) => {
     const editor = useEditor({
         id: id
     })
+    const thing = () => {
+        console.log(editor.props.counterText)
+    }
     return <div>
         <TextField
             name = 'counterText'
             value = {editor.props.counterText}
             onChange = {editor.handleUpdate}
         />
-        <Button variant="contained"> Delete </Button>
+        <Button onClick={thing} variant="contained"> Delete </Button>
 
     </div>
 }
