@@ -86,7 +86,6 @@ export default class UserPage extends Component {
     }
 
     render() {
-        document.body.style = 'background: wheat';
         return (
             <div>
                 <div style={{margin: 20}}>

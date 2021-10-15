@@ -15,6 +15,7 @@ import EditPage from "./components/edit_page"
 import Save from "./components/save";
 
 const App = () => {
+  document.body.style = 'background: wheat;';
   return (
     <div>
       <Navbar />
