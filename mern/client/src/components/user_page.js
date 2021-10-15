@@ -52,7 +52,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-
+        //TODO: fix saving to local storage will causing new registered users to use local data.
         var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
         localStorage.setItem( 'localEmail', email );
         console.log(email);
@@ -62,11 +62,6 @@ export default class UserPage extends Component {
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
-
-    // setState(state) {
-    //     window.localStorage.setItem('state', JSON.stringify(state));
-    //     super.setState(state);
-    // }
 
     componentDidMount() {
         getPages().then(data=>{
@@ -126,11 +121,11 @@ export default class UserPage extends Component {
     }
 
     userSearch = () => {
-        getPages().then(data=>{
-            this.setState({
-                pages: data || [],
-            });
-        });
+        // getPages().then(data=>{
+        //     this.setState({
+        //         pages: data || [],
+        //     });
+        // });
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
