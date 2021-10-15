@@ -9,9 +9,7 @@ const ImagePanel = ({id}) => {
     })
     const actions = useActions()
     const [textField, setTextField] = useState(editor.props.imageUrl)
-    const changeUrl = () => {
-        console.log(textField)
-    }
+
     const handleSourceChange = () => {
         console.log(textField)
         actions.timeBatched.triggerUpdate({
