@@ -1,5 +1,6 @@
-import {branch, item, useTools, DnDBuilder} from "build-ui";
+import {branch, item, useTools, DnDBuilder, useDnDHelpers} from "build-ui";
 import { Button } from "@material-ui/core"
+import RichTextMenu from "./RichTextMenu";
 
 const TextTools = () => {
     const tools = useTools();
@@ -7,11 +8,11 @@ const TextTools = () => {
         event.stopPropagation();
         const TextProps = {
             Title: "Insert Title",
-            mainText: 'Insert body text'
+            mainText: 'Insert body text',
         }
         const text = item({
             type: 'Text',
-            props: TextProps
+            props: TextProps,
         })
         const data = branch(text);
         tools.triggerDragStart({
@@ -21,10 +22,13 @@ const TextTools = () => {
     return <DnDBuilder
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
+        //onDragOver = {handleDragOver}
         draggable = {true}
+        
     >
         <Button>Text </Button>
     </DnDBuilder>
+    
 }
 
 export default TextTools;
