@@ -1,10 +1,10 @@
 import {DnDBuilder, useEditor} from "build-ui";
-import { Image } from "./Image";
+import { ButtonComp } from "./ButtonComp";
 
-const ImageView = ({
-    id,
-    ...props
-}) => {
+const ButtonView = ({
+                         id,
+                         ...props
+                     }) => {
     const handleButton = event => {
         event.stopPropagation();
     }
@@ -22,8 +22,10 @@ const ImageView = ({
         onDragEnd = {handleDragEnd}
         draggable = {true}
     >
-        <Image {...props} />
+        <ButtonComp
+            {...props}
+        />
     </DnDBuilder>
 }
 
-export default ImageView;
+export default ButtonView;

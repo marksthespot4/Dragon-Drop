@@ -1,10 +1,9 @@
 import axios from "axios";
 
-export function uploadPage(user, pagename, isPublic, pagedata, pagepreview) {
+export function uploadPage(user, pagename, pagedata, pagepreview) {
     const newPage = {
         user: user,
         pagename: pagename,
-        public: isPublic,
         pagedata: pagedata,
         pub: true,
         pagepreview: pagepreview,
@@ -37,8 +36,26 @@ export function getPage(id) {
             });
 }
 
+// export function getPagesByUser(user) {
+//     return axios
+//         .get("http://localhost:5000/record/pages/userSearch")
+//         .then(res => res.data)
+//         .catch(function (error) {
+//             console.log(error);
+//         });
+// }
+
 export function deletePage(id) {
     axios.delete("http://localhost:5000/delete/pages/" + id).then((response) => {
         console.log(response.data);
     });
+}
+
+export function getPages() {
+    return axios
+        .get("http://localhost:5000/record/pages")
+        .then(response => response.data)
+        .catch(function (error) {
+            console.log(error);
+        });
 }

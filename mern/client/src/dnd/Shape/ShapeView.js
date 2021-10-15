@@ -1,10 +1,10 @@
 import {DnDBuilder, useEditor} from "build-ui";
-import { Image } from "./Image";
+import { Shape } from "./Shape";
 
-const ImageView = ({
-    id,
-    ...props
-}) => {
+const ShapeView = ({
+                         id,
+                         ...props
+                     }) => {
     const handleButton = event => {
         event.stopPropagation();
     }
@@ -22,8 +22,10 @@ const ImageView = ({
         onDragEnd = {handleDragEnd}
         draggable = {true}
     >
-        <Image {...props} />
+        <Shape
+            {...props}
+        />
     </DnDBuilder>
 }
 
-export default ImageView;
+export default ShapeView;

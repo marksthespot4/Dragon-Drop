@@ -72,6 +72,7 @@ recordRoutes.route("/record/users/email/:email").get(function (req, res) {
 });
 
 recordRoutes.route("/record/pages/:id").get(function (req, res) {
+  console.log("pageSearch");
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
@@ -81,6 +82,30 @@ recordRoutes.route("/record/pages/:id").get(function (req, res) {
       res.json(result);
     });
 });
+
+// recordRoutes.route("/record/pages/userSearch").get(function(req, res) {
+//   let db_connect = dbo.getDb();
+//   let myquery = { user: "mark"};
+//   db_connect
+//       .collection("pages")
+//       .find(myquery)
+//       .toArray(function (err, result) {
+//         if (err) throw err;
+//         res.json(result);
+//       });
+// });
+
+// recordRoutes.route("/record/pages/userSearch").get(function (req, res) {
+//   console.log("correct record");
+//   let db_connect = dbo.getDb();
+//   let myquery = { user: "sarah" };
+//   db_connect
+//     .collection("pages")
+//     .find(myquery, function (err, result) {
+//       if (err) throw err;
+//       res.json(result);
+//     });
+// });
 
 // This section will help you create a new record.
 recordRoutes.route("/record/users/add").post(function (req, response) {
@@ -102,6 +127,8 @@ recordRoutes.route("/record/pages/add").post(function (req, response) {
     user: req.body.user,
     pagename: req.body.pagename,
     pagedata: req.body.pagedata,
+    pub: req.body.pub,
+    pagepreview: req.body.pagepreview,
   };
   db_connect.collection("pages").insertOne(myobj, function (err, res) {
     if (err) throw err;

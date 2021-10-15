@@ -1,19 +1,22 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import { Button } from "@material-ui/core"
 
-const CounterTools = () => {
+const ShapeTools = () => {
     const tools = useTools();
     const handleDragTool = event => {
         event.stopPropagation();
-        const counterProps = {
-            initialCount: 0,
-            counterText: 'My value is:'
+        const shapeProps = {
+            shapeType: "Rectangle",
+            shapeText: 'Click Me!',
+            heightProp: 100,
+            widthProp: 200,
+            radius: 50
         }
-        const counter = item({
-            type: 'Counter',
-            props: counterProps
+        const shape = item({
+            type: 'Shape',
+            props: shapeProps
         })
-        const data = branch(counter);
+        const data = branch(shape);
         tools.triggerDragStart({
             data: data
         });
@@ -23,8 +26,8 @@ const CounterTools = () => {
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Counter</Button>
+        <Button>Shape</Button>
     </DnDBuilder>
 }
 
-export default CounterTools;
+export default ShapeTools;

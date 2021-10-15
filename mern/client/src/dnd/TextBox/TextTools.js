@@ -26,8 +26,7 @@ const TextTools = () => {
         draggable = {true}
         
     >
-    <Button> Text Box </Button>
-   
+        <Button>Text </Button>
     </DnDBuilder>
     
 }
