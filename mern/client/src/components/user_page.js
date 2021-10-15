@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import { User } from "./home"
 
 // This will require to npm install axios
 import axios from 'axios';
@@ -135,7 +136,7 @@ export default class UserPage extends Component {
             if (this.state.searchUser == "") {
                 return current
             }
-            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1) {
+            else if(current.user.toLowerCase().indexOf(this.state.searchUser.toLowerCase()) > -1 && current.pub === true) {
                 return current
             }
         })
