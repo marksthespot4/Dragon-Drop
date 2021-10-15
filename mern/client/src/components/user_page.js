@@ -48,7 +48,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], user: ""};
+        this.state = {pages: [], user: "", pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -62,6 +62,10 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
+        if (this.state.pages.length === 5) {
+            alert("Cannot create new page: Reached maximum page count!");
+            return;
+        }
         console.log("created");
         uploadPage("user", "New Page", "DATA", "img");
         getPages().then(data=>{

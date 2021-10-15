@@ -5,6 +5,7 @@ import Color from "../color";
 // import { SketchPicker } from 'react-color'
 // import Color from "../color"
 // import Form from 'react-bootstrap/Form'
+import {Rnd} from "react-rnd"
 
 export const Counter = ({initialCount = 0,
                          counterText = "My counter value is:",
@@ -30,6 +31,13 @@ export const Counter = ({initialCount = 0,
     // const[color, setColor] = useState('white');
 
     return (
+    <Rnd default={{
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 200,
+      }}
+    >
     <div>
         <Button variant="outlined" onClick = {handleSubtract}>
             -
@@ -48,5 +56,6 @@ export const Counter = ({initialCount = 0,
         {/* <Color pCallback = {this.callback}/>
         <div> {this.state.color} </div> */}
     </div>
+    </Rnd>
     )
 }
