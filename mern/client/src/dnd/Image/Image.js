@@ -3,7 +3,7 @@ import "../styles/image.css"
 import { useState } from "react"
 import {Rnd} from "react-rnd"
 
-export const Image = ({imageUrl = "https://e7.pngegg.com/pngimages/660/375/png-clipart-mario-mario.png"}) => {
+export const Image = ({imageUrl}) => {
     const update = () => (
         console.log(imageUrl)
     )
