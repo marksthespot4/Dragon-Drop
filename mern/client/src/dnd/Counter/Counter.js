@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button } from "@material-ui/core"
+import {Rnd} from "react-rnd"
 
 export const Counter = ({initialCount = 0,
                          counterText = "My counter value is:",
@@ -15,6 +16,13 @@ export const Counter = ({initialCount = 0,
     );
 
     return (
+    <Rnd default={{
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 200,
+      }}
+    >
     <div>
         <Button variant="outlined" onClick = {handleSubtract}>
             -
@@ -24,5 +32,6 @@ export const Counter = ({initialCount = 0,
             +
         </Button>
     </div>
+    </Rnd>
     )
 }
