@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
+//const bcrypt = require("bcryptjs");
 
 class Home extends Component {
     constructor(props) {
@@ -25,8 +26,14 @@ class Home extends Component {
             name: "",
             email: "",
             password: "",
-            confirmPassword: ""
+            confirmPassword: "",
+            hidden: true
         };
+
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.toggleShow = this.toggleShow.bind(this);
+        //this.handleConfirmPasswordChange = this.handleConfirmPasswordChange(this);
     }
 
     handleEmailChange = (e) => {
@@ -45,6 +52,10 @@ class Home extends Component {
         this.setState({
             confirmPassword: e.target.value,
         })
+    }
+
+    toggleShow() {
+        this.setState({ hidden: !this.state.hidden });
     }
 
     // handleSubmit(e) {
@@ -98,6 +109,10 @@ class Home extends Component {
         getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
+                this.setState({
+                    email: '',
+                    password: ''
+                });
             }
             else if (data.password === this.state.password) { // Account was found, password was correct
                 console.log(this.state.email);
@@ -107,6 +122,9 @@ class Home extends Component {
             }
             else { // Account was found, password was incorrect
                 alert("Incorrect password");
+                this.setState({
+                    password: ''
+                });
             }
         });
     }
@@ -173,12 +191,13 @@ class Home extends Component {
 
                         <h6><br></br>Password</h6>
                         <input
-                            type="password"
+                            type={this.state.hidden ? "password" : "text"}
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
                             // className="form-control"
                         />
+                        <button onClick={this.toggleShow}>Show / Hide</button>
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
                         

@@ -22,7 +22,7 @@ const Page = (props) => (
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
             <a href={"/create-page"}>
-                <img src={example} className="yellowOutline float-start"/>
+                <img src={props.page.pagepreview} className="yellowOutline float-start"/>
             </a>
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
@@ -51,10 +51,16 @@ const delete_notify = () => toast.info('Page Successfully Deleted!');
 export default class UserPage extends Component {
 
     constructor(props) {
-        super(props);
-        //TODO: fix saving to local storage will causing new registered users to use local data.
-        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
-        localStorage.setItem( 'localEmail', email );
+        super(props);        
+        var email;
+        if(this.props.email != "") {
+            email = this.props.email; 
+            localStorage.setItem( 'localEmail', email);
+        }
+        else {
+            email = localStorage.getItem( 'localEmail' );
+        }
+
         console.log(email);
 
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
@@ -80,7 +86,7 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", "DATA", "img");
+                uploadPage(this.state.currentUser, "New Page", "DATA", example);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],
@@ -121,6 +127,9 @@ export default class UserPage extends Component {
     }
 
     userSearch = () => {
+        //TODO: currently, when a user searches, they don't pull from data base. So if a diff user has added a new page/deleted a new page
+        //since the last DB call, the search will not have the most recent data.
+        //the following code fixes it, but also runs constantly and breaks the code.
         // getPages().then(data=>{
         //     this.setState({
         //         pages: data || [],
@@ -138,6 +147,7 @@ export default class UserPage extends Component {
             }
         })
         .map((current) => {
+            console.log(current.pagepreview);
             return (
                 <Page
                     page={current}
@@ -151,6 +161,7 @@ export default class UserPage extends Component {
     }
 
     backToAccount() {
+        console.log(this.state.currentUser);
         this.setState({searchUser: this.state.currentUser});
     }
 
