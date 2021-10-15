@@ -53,15 +53,16 @@ export default class UserPage extends Component {
     constructor(props) {
         super(props);
         //TODO: fix saving to local storage will causing new registered users to use local data.
-
+        
         var email;
-        if(this.props.email != null) {
+        if(this.props.email != "") {
             email = this.props.email; 
             localStorage.setItem( 'localEmail', email);
         }
         else {
             email = localStorage.getItem( 'localEmail' );
         }
+
         console.log(email);
 
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
