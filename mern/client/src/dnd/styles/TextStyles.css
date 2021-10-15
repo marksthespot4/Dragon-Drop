@@ -9,6 +9,8 @@
 
 .ptag { color: #4c4a37; font-family: 'Source Sans Pro', sans-serif; font-size: 18px; line-height: 32px; margin: 0 0 24px; }
 
+.textbox {width: 250px; height: 20px}
+
 /* span { color: #4c4a37; font-family: 'Source Sans Pro', sans-serif; font-size: 18px; line-height: 32px; margin: 0 0 24px; }
 
 a { color: #ff9900; background: #fff4a3; text-decoration: none; }

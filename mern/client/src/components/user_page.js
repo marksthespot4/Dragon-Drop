@@ -48,8 +48,7 @@ export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], signedInUser: this.props.currentEmail, searchUser: ""};
-        // this.state = {pages: []};
+        this.state = {pages: [], searchUser: "", pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
@@ -63,6 +62,10 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
+        if (this.state.pages.length === 5) {
+            alert("Cannot create new page: Reached maximum page count!");
+            return;
+        }
         console.log("created");
         uploadPage("user", "New Page", "DATA", "img");
         getPages().then(data=>{
@@ -154,7 +157,6 @@ export default class UserPage extends Component {
     }
 
     render() {
-        document.body.style = 'background: wheat';
         return (
             <div>
                 <div>
@@ -176,7 +178,7 @@ export default class UserPage extends Component {
                 <div className="container-fluid">
                     <ToastContainer
                         position="top-center"
-                        autoClose={5000}
+                        autoClose={3000}
                         hideProgressBar={false}
                         newestOnTop={false}
                         closeOnClick
