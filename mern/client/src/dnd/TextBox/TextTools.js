@@ -1,5 +1,6 @@
 import {branch, item, useTools, DnDBuilder, useDnDHelpers} from "build-ui";
 import { Button } from "@material-ui/core"
+import RichTextMenu from "./RichTextMenu";
 
 const TextTools = () => {
     const tools = useTools();
@@ -11,22 +12,13 @@ const TextTools = () => {
         }
         const text = item({
             type: 'Text',
-            props: TextProps
+            props: TextProps,
         })
         const data = branch(text);
         tools.triggerDragStart({
             data: data
         });
-        
-
     }
-    /*const helpers = useDnDHelpers();
-    function handleDragOver(event) {
-        const {getDnDEventPosition} = helpers;
-        const position = getDnDEventPosition(event);
-        alert(position.coords)
-    }*/
-
     return <DnDBuilder
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
@@ -35,7 +27,7 @@ const TextTools = () => {
         
     >
     <Button> Text Box </Button>
-
+   
     </DnDBuilder>
     
 }

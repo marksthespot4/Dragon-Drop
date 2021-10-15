@@ -2,20 +2,21 @@ import {Motion, spring} from 'react-motion';
 import {Component} from 'react';
 import { Button } from "@material-ui/core";
 
-class RichEditorMenu extends Component {
-    constructor() {
-        super();
+class RichTextMenu extends Component {
+    constructor(props) {
+        super(props);
         this.onBoldClick = this.onBoldClick.bind(this);
         this.onItalicsClick = this.onItalicsClick.bind(this);
         this.onUnderlineClick = this.onUnderlineClick.bind(this);
-    }
-    state = {
-        xPos: "0px",
-        yPos: "0px",
-        showMenu: false,
-        bold: false,
-        italized: false,
-        underlined: false
+        this.state = {
+          xPos: "0px",
+          yPos: "0px",
+          showMenu: false,
+          bold: false,
+          italized: false,
+          underlined: false,
+          input: ""
+      }
     }
 
     componentDidMount() {
@@ -43,6 +44,7 @@ class RichEditorMenu extends Component {
 
     onBoldClick(event) {
         event.target.setAttribute("class", !this.state.bold ? "Selected" : "");
+        alert(this.input);
     }
 
     onItalicsClick(event) {
@@ -74,4 +76,4 @@ class RichEditorMenu extends Component {
       }
   }
 
-  export default RichEditorMenu;
+  export default RichTextMenu;
