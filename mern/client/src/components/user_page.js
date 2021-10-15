@@ -1,5 +1,5 @@
 import React, {useRef, useState, Component} from "react";
-import {uploadPage, deletePage, getPages} from "./page"
+import {uploadPage, deletePage, getPages, getPagesByUser, updatePage, getPage} from "./page"
 import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
@@ -8,12 +8,14 @@ import example from "../imgs/example_1.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+
 import Button from 'react-bootstrap/Button';
 
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
-// import Page from './pageTest';
+import { getUser, updateUser } from "./user";
+
 
 const Page = (props) => (
     <div className="col">
@@ -32,7 +34,7 @@ const Page = (props) => (
                     <li><a className="dropdown-item" href="#">Rename</a></li>
                     <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
-                    <li><a className="dropdown-item" href="#">Download as Image </a></li>
+                    <li><a className="dropdown-item" href="/static/media/example_1.b420d62f.png" download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
@@ -42,41 +44,62 @@ const Page = (props) => (
     </div>
 )
 
+const download = () => {
+};
 const delete_notify = () => toast.info('Page Successfully Deleted!');
 
 export default class UserPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {pages: [], user: "", pagecount: 0};
+
+        var email = localStorage.getItem( 'localEmail' ) || this.props.email;        
+        localStorage.setItem( 'localEmail', email );
+        console.log(email);
+
+        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
     }
 
+    // setState(state) {
+    //     window.localStorage.setItem('state', JSON.stringify(state));
+    //     super.setState(state);
+    // }
+
     componentDidMount() {
         getPages().then(data=>{
             this.setState({
-                pages: data,
+                pages: data || [],
             });
         });
     }
 
     createNewPage() {
-        if (this.state.pages.length === 5) {
-            alert("Cannot create new page: Reached maximum page count!");
-            return;
-        }
-        console.log("created");
-        uploadPage("user", "New Page", "DATA", "img");
-        getPages().then(data=>{
-            this.setState({
-                pages: data,
-            });
-        });
-        this.render();
+
+        getUser(this.state.currentUser).then(data =>{
+            if(data.pagecount >= 5) {
+                alert("Cannot create new page: Reached maximum page count!");
+                return;
+            }
+            else {
+                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                uploadPage(this.state.currentUser, "New Page", "DATA", "img");
+                getPages().then(data=>{
+                    this.setState({
+                        pages: data || [],
+                    });
+                });
+                this.render();
+            }
+        });        
     }
 
     deleteMyPage(id) {
+        getUser(this.state.currentUser).then(data =>{
+            updateUser(data.email, data.password, data.pagecount - 1, data._id);
+        });        
         deletePage(id);
         this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
         });
@@ -91,16 +114,49 @@ export default class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     updatePub = {this.updatePub}
                     key={current._id}
-                    pub={true}
+                    pub={current.pub}
                 />
             );
         });
     }
 
+    setUser() {
+        var userInp = document.getElementById("userQuery").value;
+        this.setState({searchUser: userInp});
+    }
+
     userSearch = () => {
-        var text = document.getElementById("userQuery").value;
-        this.setState({user : text});
-        console.log(text);
+        getPages().then(data=>{
+            this.setState({
+                pages: data || [],
+            });
+        });
+        return this.state.pages
+        .filter((current) => {
+            if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
+                if(current.user.toLowerCase() === this.state.searchUser.toLowerCase()) {
+                    return current
+                }
+            }
+            else if(current.user.toLowerCase() === this.state.searchUser.toLowerCase() && current.pub === true) {
+                return current
+            }
+        })
+        .map((current) => {
+            return (
+                <Page
+                    page={current}
+                    deleteMyPage = {this.deleteMyPage}
+                    updatePub = {this.updatePub}
+                    key={current._id}
+                    pub={current.pub}
+                />
+            );
+        });
+    }
+
+    backToAccount() {
+        this.setState({searchUser: this.state.currentUser});
     }
 
     render() {
@@ -112,8 +168,12 @@ export default class UserPage extends Component {
                         type="text"
                     >
                     </input>
-                    <Button onClick={() => this.userSearch()}>
+                    {/* <Button onClick={() => this.userSearch()}> */}
+                    <Button onClick={() => this.setUser()}>
                         Search User
+                    </Button>
+                    <Button onClick={() => this.backToAccount()}>
+                        Back to Account
                     </Button>
                 </div>
                 <div style={{margin: 20}}>
@@ -135,7 +195,8 @@ export default class UserPage extends Component {
                         closeOnClick
                     />
                     <div className="row">
-                        {this.userProjects()}
+                        {/* {this.userProjects()} */}
+                        {this.userSearch()}
                     </div>
                 </div>
             </div>

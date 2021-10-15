@@ -17,6 +17,7 @@ export const Counter = ({initialCount = 0,
         count => count + 1
     );
     const handleSubtract = () => setCount(
+        console.log(counterText),
         count => count - 1
     );
 
@@ -34,11 +35,11 @@ export const Counter = ({initialCount = 0,
     <Rnd default={{
         x: 0,
         y: 0,
-        width: 200,
+        width: 300,
         height: 200,
       }}
     >
-    <div>
+    <div >
         <Button variant="outlined" onClick = {handleSubtract}>
             -
         </Button>

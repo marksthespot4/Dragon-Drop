@@ -2,7 +2,8 @@ import {DnDBuilder, useEditor} from "build-ui";
 import { Image } from "./Image";
 
 const ImageView = ({
-    id
+    id,
+    ...props
 }) => {
     const handleButton = event => {
         event.stopPropagation();
@@ -21,7 +22,7 @@ const ImageView = ({
         onDragEnd = {handleDragEnd}
         draggable = {true}
     >
-        <Image/>
+        <Image {...props} />
     </DnDBuilder>
 }
 

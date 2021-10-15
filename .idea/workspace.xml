@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Added triangle and circle, no resizing or customization currently.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Button/ButtonComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Button/ButtonComp.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
