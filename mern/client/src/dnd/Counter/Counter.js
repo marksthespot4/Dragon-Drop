@@ -1,5 +1,9 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@material-ui/core"
+
+// import { SketchPicker } from 'react-color'
+// import Color from "../color"
+// import Form from 'react-bootstrap/Form'
 
 export const Counter = ({initialCount = 0,
                          counterText = "My counter value is:",
@@ -14,6 +18,8 @@ export const Counter = ({initialCount = 0,
         count => count - 1
     );
 
+    // const[color, setColor] = useState('white');
+
     return (
     <div>
         <Button variant="outlined" onClick = {handleSubtract}>
@@ -23,6 +29,14 @@ export const Counter = ({initialCount = 0,
         <Button variant="outlined" onClick = {handleAdd}>
             +
         </Button>
+        {/* <div>
+            <SketchPicker
+                color={color}
+                onChangeComplete= { (color) => {setColor(color.hex)}}
+            />
+            <div style={{color}}>sdfghjk</div>
+        </div> */}
+        {/* <Color></Color> */}
     </div>
     )
 }
