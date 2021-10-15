@@ -68,7 +68,7 @@ export default class UserPage extends Component {
     componentDidMount() {
         getPages().then(data=>{
             this.setState({
-                pages: data,
+                pages: data || [],
             });
         });
     }
@@ -84,7 +84,7 @@ export default class UserPage extends Component {
                 uploadPage(this.state.currentUser, "New Page", "DATA", "img");
                 getPages().then(data=>{
                     this.setState({
-                        pages: data,
+                        pages: data || [],
                     });
                 });
                 this.render();
@@ -124,7 +124,7 @@ export default class UserPage extends Component {
     userSearch = () => {
         getPages().then(data=>{
             this.setState({
-                pages: data,
+                pages: data || [],
             });
         });
         return this.state.pages
