@@ -215,14 +215,7 @@ class Home extends Component {
                             onChange={this.handleEmailChange}
                         />
 
-                        <h6>Password</h6>
-                        <input
-                            type="password"
-                            value={this.state.password}
-                            name="password"
-                            onChange={this.handlePasswordChange}
-                        />
-
+                        <h6><br></br>Password&nbsp;
                         <OverlayTrigger
                             placement="right"
                             overlay={
@@ -237,12 +230,12 @@ class Home extends Component {
                         >
                             <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>
+                        </h6>
                         <input
                             type="password"
-                            // value={this.state.modalInputName}
-                            // name="modalInputName"
-                            // onChange={e => this.handleChange(e)}
-                            // className="form-control"
+                            value={this.state.password}
+                            name="password"
+                            onChange={this.handlePasswordChange}
                         />
                         <h6><br></br>Confirm Password</h6>
                         <input
