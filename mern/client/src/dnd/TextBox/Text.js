@@ -1,4 +1,5 @@
 import { useState } from "react"
+import React from "react";
 import RichTextMenu from "./RichTextMenu";
 import "../styles/TextStyles.css"
 import {Rnd} from "react-rnd"
@@ -6,6 +7,7 @@ import {Rnd} from "react-rnd"
 export const Text = ({titleText = "Insert title", mainText = "Insert text here"}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
+    const [boldFont, setBoldFont] = React.useState(false);
     //alert(JSON.stringify(mainText));
 
     return <Rnd default={{
@@ -17,10 +19,17 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here"}
     ><div>
         <h2 className="heading"> Hi this is some text </h2>
         <p>
-        <span className="ptag"> {mainText} </span>
+        <div
+            style={{
+                fontWeight: boldFont ? "bold" : "normal"
+            }}
+        >
+         <span className="ptag"> 
+            {mainText}
+         </span>
+        </div> 
         </p>
-        <RichTextMenu input = {JSON.stringify(mainText)}>
-        </RichTextMenu>
+        <button onClick={() => setBoldFont(!boldFont)}><strong>B</strong></button>
     </div>
     </Rnd>
 }
