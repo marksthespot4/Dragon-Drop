@@ -3,12 +3,11 @@ import React from "react";
 import RichTextMenu from "./RichTextMenu";
 import "../styles/TextStyles.css"
 import {Rnd} from "react-rnd"
+import { Button } from "@material-ui/core";
 
-export const Text = ({titleText = "Insert title", mainText = "Insert text here"}) => {
+export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
-    const [boldFont, setBoldFont] = React.useState(false);
-    //alert(JSON.stringify(mainText));
 
     return <Rnd default={{
         x: 0,
@@ -21,7 +20,9 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here"}
         <p>
         <div
             style={{
-                fontWeight: boldFont ? "bold" : "normal"
+                fontWeight: textBold ? "bold" : "normal",
+                fontStyle: textItalicize ? "italic" : "normal",
+                textDecorationLine: textUnderline ? "underline" : "none"
             }}
         >
          <span className="ptag"> 
@@ -29,7 +30,8 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here"}
          </span>
         </div> 
         </p>
-        <button onClick={() => setBoldFont(!boldFont)}><strong>B</strong></button>
+        
     </div>
     </Rnd>
 }
+//<button onClick={() => setBoldFont(!boldFont)}><strong>B</strong></button>
