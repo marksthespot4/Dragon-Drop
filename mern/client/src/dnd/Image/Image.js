@@ -7,6 +7,18 @@ export const Image = ({imageUrl}) => {
     const update = () => (
         console.log(imageUrl)
     )
+    const openTab = () =>
+    {
+        var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(imageUrl);
+        if (valid)
+        {
+            window.open(imageUrl);
+        }
+        else
+        {
+            alert("Please enter a valid http url.");
+        }
+    }
 
     return <Rnd 
     default={{
@@ -17,7 +29,7 @@ export const Image = ({imageUrl}) => {
       }}
     >
         <div>
-            <img src={imageUrl} onClick={update} className="image" alt={"Enter valid url idiot"}/>
+            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className="image" alt={"Enter valid url idiot"}/>
         </div>
         </Rnd>
 }
