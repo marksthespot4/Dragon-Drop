@@ -7,9 +7,7 @@
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Added triangle and circle, no resizing or customization currently.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Button/ButtonComp.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Button/ButtonComp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mern/client/src/components" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/react-redux-embedded-login-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -88,6 +86,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
+      <workItem from="1634782634523" duration="5991000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -259,6 +258,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass" />

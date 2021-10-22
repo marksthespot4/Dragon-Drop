@@ -3,7 +3,9 @@ import {useState} from "react"
 import {Button} from "@material-ui/core"
 import shape from '@material-ui/core/styles/shape';
 import {Rnd} from 'react-rnd';
-
+import { Redirect } from 'react-router-dom';
+document.addEventListener('contextmenu', function(event){
+    event.preventDefault();})
 export const Shape = ({
                         shapeType = "Rectangle",
                         shapeText = "Click Me!",
@@ -12,11 +14,16 @@ export const Shape = ({
                         radius = 50
                       }) => {
     const [type, setType] = useState(shapeType);
+    const [url, setUrl] = useState(shapeText);
 
-    const returnShape = () => {
+    const newFunct = () =>
+    {
+        window.location.href = "https://google.com"
+    }
+    const returnShape = (props) => {
         if (shapeType=="Triangle")
         {
-            return <Triangle width = {widthProp} height={heightProp}>
+            return <Triangle onContextMenu={() => newFunct()} width = {widthProp} height={heightProp}>
 
             </Triangle>
 
@@ -43,8 +50,7 @@ export const Shape = ({
                 height: 200,
             }}
         >
-        {returnShape()}
-        <h1>{shapeText}</h1>
+        {returnShape(url)}
         </Rnd>
     </div>
 }
