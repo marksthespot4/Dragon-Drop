@@ -47,18 +47,16 @@ const MyBuilder = () => {
         })
     );
     return ( <div>
+
         <Builder initialTree = {tree}>
+            <div class="edit-container">
             <TopBar />
-            <Workspace view = {view}/>
+            <Sidebar class="col" />
+            <Workspace class="col" view = {view}/>
             <Panel view = {panel} />
-            <CounterTools />
-            <TextTools />
-            <ImageTools />
-            <ButtonTools />
-            <ShapeTools />
-            <Sidebar />
+            </div>
+
         </Builder>
-              
     </div>
     )
 }

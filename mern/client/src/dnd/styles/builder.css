@@ -1,4 +1,12 @@
-.container-row {
+.edit-container {
     display: flex;
     flex-direction: row;
+}
+
+.top-bar {
+
+}
+
+.col {
+    flex:1
 }

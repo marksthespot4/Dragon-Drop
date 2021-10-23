@@ -2,6 +2,11 @@
 
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
+import TextTools from "../TextBox/TextTools";
+import CounterTools from "../Counter/CounterTools";
+import ButtonTools from "../Button/ButtonTools";
+import ShapeTools from "../Shape/ShapeTools";
+import ImageTools from "../Image/ImageTools";
 
 //import react pro sidebar components
 import {
@@ -22,10 +27,10 @@ import { BiCog } from "react-icons/bi";
 
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
-import "./Header.css";
+import "./Sidebar.css";
 
 
-const Header = () => {
+const Sidebar = () => {
   
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(false)
@@ -44,7 +49,7 @@ const Header = () => {
           <SidebarHeader>
           <div className="logotext">
               {/* small and big change using menucollapse state */}
-              <p>{menuCollapse ? "Logo" : "Big Logo"}</p>
+              <p>{menuCollapse ? "" : "Components"}</p>
             </div>
             <div className="closemenu" onClick={menuIconClick}>
                 {/* changing menu collapse icon on click */}
@@ -56,15 +61,12 @@ const Header = () => {
             </div>
           </SidebarHeader>
           <SidebarContent>
-            <Menu iconShape="square">
-              <MenuItem active={true} icon={<FiHome />}>
-                Home
-              </MenuItem>
-              <MenuItem icon={<FaList />}>Category</MenuItem>
-              <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
-              <MenuItem icon={<RiPencilLine />}>Author</MenuItem>
-              <MenuItem icon={<BiCog />}>Settings</MenuItem>
-            </Menu>
+          <CounterTools />
+            <TextTools />
+            <ImageTools />
+            <ButtonTools />
+            <ShapeTools />
+            
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
