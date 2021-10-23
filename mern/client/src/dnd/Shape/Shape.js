@@ -35,16 +35,7 @@ export const Shape = ({
         }
     }
     return <div>
-        <Rnd
-            default={{
-                x: 0,
-                y: 0,
-                width: 320,
-                height: 200,
-            }}
-        >
         {returnShape()}
         <h1>{shapeText}</h1>
-        </Rnd>
     </div>
 }
