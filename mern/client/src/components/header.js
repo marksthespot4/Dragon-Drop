@@ -29,7 +29,7 @@ render() {
                         </NavLink>
                         <NavLink className="navbar-brand" to="/user_page">
                             {/* SETTINGS LINK */}
-                            <i class="bi bi-person-circle"></i>
+                            <i class="user bi bi-person-circle"></i>
                         </NavLink>
                     </Navbar.Collapse>
                 </Navbar>

@@ -229,7 +229,7 @@ class Home extends Component {
                     <Modal.Body>
                         <h6>Email</h6>
                         <input
-                            type="text"
+                            type="email"
                             value={this.state.email}
                             onChange={this.handleEmailChange}
                         />
@@ -274,7 +274,6 @@ class Home extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-
             </div>
         );
     }

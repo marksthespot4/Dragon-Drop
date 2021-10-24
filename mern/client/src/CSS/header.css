@@ -12,9 +12,8 @@ a:link {
     text-decoration: none;
 }
 
-i {
+.user {
     font-size: xx-large;
-    margin-right: 15px;
     color:#ffc220;
 }
 

@@ -1,4 +1,17 @@
-.footer {
+.fixed-bottom {
+    /* position:fixed; */
+    bottom:0;
     background-color: green;
-    margin-bottom: 10px;
+
+}
+
+.footer{
+
+    background-color: white;
+    padding-top: 10px;
+    /* padding: 1rem; */
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }

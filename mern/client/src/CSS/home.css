@@ -1,3 +1,7 @@
+.Home {
+    margin-bottom: 800px;
+}
+
 .homepage {
     position: relative;
     display: flex;
@@ -52,7 +56,7 @@
     /* padding:10px; */
 }
 
-input {
+input[type=email], input[type=password], input[type=text] {
     width: 100%;
 }
 
