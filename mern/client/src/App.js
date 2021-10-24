@@ -13,6 +13,7 @@ import UserPage from "./components/user_page";
 import Home from "./components/home";
 import EditPage from "./components/edit_page"
 import Save from "./components/save";
+import HeadFoot from "./components/header_footer";
 
 const App = () => {
 
@@ -20,21 +21,22 @@ const App = () => {
   document.body.style = 'background: wheat;';
   return (
     <div>
+      <HeadFoot/>
       <Navbar />
-      <Route exact path="/">
-        <Home setEmail={setEmail}/>
-      </Route>
-      <Route path="/edit/:id" component={Edit} />
-      <Route path="/create-page" component={Save} />
-      <Route path="/create">
-        <Create />
-      </Route>
-      <Route path="/user_page">
-            <UserPage email={email}/>
-       </Route>
-        <Route path="/edit_page">
-            <EditPage/>
+        <Route exact path="/">
+          <Home setEmail={setEmail}/>
         </Route>
+        <Route path="/edit/:id" component={Edit} />
+        <Route path="/create-page" component={Save} />
+        <Route path="/create">
+          <Create />
+        </Route>
+        <Route path="/user_page">
+              <UserPage email={email}/>
+        </Route>
+          <Route path="/edit_page">
+              <EditPage/>
+          </Route>
     </div>
   );
 };
