@@ -46,7 +46,7 @@ const MyBuilder = () => {
         })
     );
     return (
-        <div >
+        <div style={{overflow:"scroll"}}>
             <Builder initialTree = {tree}>
                 <div className="container-row">
                 <TopBar />
@@ -56,7 +56,7 @@ const MyBuilder = () => {
                 <ButtonTools />
                 <ShapeTools />
                 </div>
-                <div style={{overflow:"scroll"}}>
+                <div>
                     <Workspace view = {view}/>
                     <Panel view = {panel} />
                 </div>
