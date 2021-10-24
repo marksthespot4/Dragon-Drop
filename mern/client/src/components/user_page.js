@@ -18,7 +18,7 @@ import { getUser, updateUser } from "./user";
 
 
 const Page = (props) => (
-    <div className="col">
+    <div className="col" style={{height:"100vh"}}>
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
             <a href={"/create-page"}>
