@@ -17,7 +17,7 @@ import Save from "./components/save";
 const App = () => {
 
   const [email, setEmail] = useState("");
-  const [page, setPage] = useState("");
+  // const [page, setPage] = useState("");
 
   document.body.style = 'background: wheat;';
   return (
@@ -27,16 +27,16 @@ const App = () => {
         <Home setEmail={setEmail}/>
       </Route>
       <Route path="/edit/:id" component={Edit} />
-      {/* <Route path="/create-page" component={Save} /> */}
-            {/* <Save page={page}/> */}
-      <Route path="/create-page/:id">
+      <Route path="/create-page/:id" component={Save} />
+      {/* <Route path="/create-page/:id">
             <Save page={page}/>
-      </Route>
+      </Route> */}
       <Route path="/create">
         <Create />
       </Route>
       <Route path="/user_page">
-            <UserPage email={email} setPage={setPage}/>
+            {/* <UserPage email={email} setPage={setPage}/> */}
+            <UserPage email={email}/>
        </Route>
         <Route path="/edit_page">
             <EditPage/>

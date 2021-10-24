@@ -21,9 +21,10 @@ const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
-            <a onClick={() => {props.sendPageId(props.page._id)}} href={"/create-page/" + props.page._id}>
+            <a href={"/create-page/" + props.page._id}>
+            {/* <a onClick={() => {props.sendPageId(props.page._id)}} href={"/create-page/" + props.page._id}> */}
                 {/* <img src={props.page.pagepreview}  onClick={() => {props.sendPageId(props.page._id)}} className="yellowOutline float-start" /> */}
-                <img src={props.page.pagepreview}   className="yellowOutline float-start" />
+                <img src={props.page.pagepreview} className="yellowOutline float-start" />
 
             </a>
             <div className="dropdown float-start">
@@ -68,7 +69,7 @@ export default class UserPage extends Component {
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
         // this.setPage = this.setPage.bind(this);
-        this.sendPageId = this.sendPageId.bind(this);
+        // this.sendPageId = this.sendPageId.bind(this);
 
     }
 
@@ -80,11 +81,11 @@ export default class UserPage extends Component {
         });
     }
 
-    sendPageId(id) {
-        console.log(id);
-        this.props.setPage(id);
-        console.log(this.props.page);
-    }
+    // sendPageId(id) {
+    //     console.log(id);
+    //     this.props.setPage(id);
+    //     console.log(this.props.page);
+    // }
 
     createNewPage() {
         getUser(this.state.currentUser).then(data =>{
@@ -132,7 +133,7 @@ export default class UserPage extends Component {
                     key={current._id}
                     pub={current.pub}
                     // setPage = {this.props.setPage}
-                    sendPageId = {this.sendPageId}
+                    // sendPageId = {this.sendPageId}
                 />
             );
         });
@@ -174,7 +175,7 @@ export default class UserPage extends Component {
                     key={current._id}
                     pub={current.pub}
                     // setPage = {this.props.setPage}
-                    sendPageId = {this.sendPageId}
+                    // sendPageId = {this.sendPageId}
 
                 />
             );

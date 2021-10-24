@@ -12,7 +12,7 @@ import { updatePage, getPage } from "./page";
 import { write } from "@popperjs/core";
 
 export default (props) => {
-  console.log(props.page);
+  console.log(props.match.params.id);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
@@ -34,10 +34,10 @@ export default (props) => {
   }
 
   const save = () => {
-    console.log(props.page);
-    // getPage(this.props.page).then(data => {
-    //   updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
-    // });
+    console.log(props.match.params.id);
+    getPage(props.match.params.id).then(data => {
+      updatePage(data.user, data.pagename, data.pub, MyBuilder, image, data._id);
+    });
   }
 
   return (
