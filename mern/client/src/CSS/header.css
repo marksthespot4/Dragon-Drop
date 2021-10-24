@@ -1,0 +1,23 @@
+.fixed-top {
+    position:sticky;
+    top:0;
+}
+
+.header {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+i {
+    font-size: xx-large;
+    margin-right: 15px;
+    color:#ffc220;
+}
+
+i:hover {
+    cursor: pointer;
+}

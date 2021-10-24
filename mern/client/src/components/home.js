@@ -10,11 +10,9 @@ import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
-//const bcrypt = require("bcryptjs");
 
 class Home extends Component {
     constructor(props) {

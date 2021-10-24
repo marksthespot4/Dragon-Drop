@@ -13,7 +13,8 @@ import UserPage from "./components/user_page";
 import Home from "./components/home";
 import EditPage from "./components/edit_page"
 import Save from "./components/save";
-import HeadFoot from "./components/header_footer";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 const App = () => {
 
@@ -21,8 +22,8 @@ const App = () => {
   document.body.style = 'background: wheat;';
   return (
     <div>
-      <HeadFoot/>
-      <Navbar />
+      <Header/>
+      {/* <Navbar /> */}
         <Route exact path="/">
           <Home setEmail={setEmail}/>
         </Route>
@@ -37,6 +38,7 @@ const App = () => {
           <Route path="/edit_page">
               <EditPage/>
           </Route>
+        <Footer/>
     </div>
   );
 };
