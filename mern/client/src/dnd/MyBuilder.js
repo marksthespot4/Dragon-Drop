@@ -46,7 +46,7 @@ const MyBuilder = () => {
         })
     );
     return (
-        <div style={{overflow:"scroll"}}>
+        <div class="box">
             <Builder initialTree = {tree}>
                 <div className="container-row">
                 <TopBar />

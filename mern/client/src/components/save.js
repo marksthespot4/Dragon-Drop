@@ -32,7 +32,7 @@ export default () => {
 
   const save = () => {
     // console.log("save");
-    getPage("6175bd8c9a4758076a7657c2").then(data => {
+    getPage("6175d066ef536819e5ae8ea0").then(data => {
       updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
     });
   }
