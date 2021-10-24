@@ -1,0 +1,17 @@
+.fixed-bottom {
+    /* position:fixed; */
+    bottom:0;
+}
+
+.footer{
+    padding-top: 10px;
+    /* padding: 1rem; */
+    /* position: fixed; */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.center {
+    text-align: center;
+}
