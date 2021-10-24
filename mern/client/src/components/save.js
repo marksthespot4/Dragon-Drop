@@ -19,7 +19,6 @@ export default (props) => {
   const [imgFromDB, setDBImage] = useState(image);
 
   const getImage = () => {
-    console.log(MyBuilder);
     takeScreenShot(ref.current);
   }
 
@@ -34,9 +33,13 @@ export default (props) => {
   }
 
   const save = () => {
-    console.log(props.match.params.id);
+    //saving MyBuilder in DB saves null
+    console.log(MyBuilder);
     getPage(props.match.params.id).then(data => {
       updatePage(data.user, data.pagename, data.pub, MyBuilder, image, data._id);
+    });
+    getPage(props.match.params.id).then(data => {
+      console.log(data.pagedata);
     });
   }
 

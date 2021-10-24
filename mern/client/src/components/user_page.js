@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
-import example from "../imgs/example_1.png"
+import example from "../imgs/white.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
@@ -15,6 +15,7 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
+import MyBuilder from "../dnd/MyBuilder";
 
 
 const Page = (props) => (
@@ -95,7 +96,8 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", "DATA", example);
+                console.log(MyBuilder);
+                uploadPage(this.state.currentUser, "New Page", null, example);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],

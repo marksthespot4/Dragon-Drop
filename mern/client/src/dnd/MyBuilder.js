@@ -25,9 +25,6 @@ import TopBar from "./TopBar/TopBar";
 
 
 const MyBuilder = () => {
-
-    // const [tree, setTree] = useState(0);
-
     const view = {
         Text: TextView,
         Image: ImageView,
@@ -49,6 +46,7 @@ const MyBuilder = () => {
             type: 'Section',
         })
     );
+    console.log(tree);
     return (
         <Builder initialTree = {tree}>
             <TopBar />
