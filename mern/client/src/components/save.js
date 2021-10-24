@@ -17,9 +17,14 @@ export default (props) => {
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
   const [imgFromDB, setDBImage] = useState(image);
+  // const [treeS, setTreeS] = useState(null);
+  const [saveData, setSaveData] = useState(null);
 
-  const getImage = () => {
+
+  const getImage = (currTree) => {
+    setSaveData(currTree);
     takeScreenShot(ref.current);
+    notify();
   }
 
   useEffect(() => { 
@@ -34,13 +39,17 @@ export default (props) => {
 
   const save = () => {
     //saving MyBuilder in DB saves null
-    console.log(MyBuilder);
+    // console.log(MyBuilder);
     getPage(props.match.params.id).then(data => {
-      updatePage(data.user, data.pagename, data.pub, MyBuilder, image, data._id);
+      updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
     });
     getPage(props.match.params.id).then(data => {
-      console.log(data.pagedata);
+      // console.log(data.pagedata);
     });
+  }
+
+  function test() {
+    console.log(test);
   }
 
   return (
@@ -48,7 +57,7 @@ export default (props) => {
       <div align="right">
           <Button onClick={() => {
             getImage();
-            notify();
+            // notify();
             }}>
             Save
           </Button>
@@ -84,7 +93,9 @@ export default (props) => {
 
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
-        <MyBuilder></MyBuilder>
+        {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
+        <MyBuilder save={getImage}/>
+
       </div>
     </div>
   );

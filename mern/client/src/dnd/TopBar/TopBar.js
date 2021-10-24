@@ -1,6 +1,6 @@
 import {useBuilder} from "build-ui";
 
-const TopBar = () => {
+const TopBar = (props) => {
     const builder = useBuilder();
     const {
         canUndo,
@@ -11,6 +11,7 @@ const TopBar = () => {
         loadTree
     } = builder;
     const handleSave = () => {
+        props.save(json());
         console.log(json());
     }
     return <div>
@@ -19,6 +20,9 @@ const TopBar = () => {
         </button>
         <button disabled = {!canUndo} onClick = {handleUndo}>
             Undo
+        </button>
+        <button onClick={() => {handleSave()}}>
+            save
         </button>
     </div>
 }

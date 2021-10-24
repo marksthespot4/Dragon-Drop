@@ -16,6 +16,7 @@ const ButtonTools = () => {
         tools.triggerDragStart({
             data: data
         });
+        // console.log(data);
     }
     return <DnDBuilder
         onDragStart = {handleDragTool}

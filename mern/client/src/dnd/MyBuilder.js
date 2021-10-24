@@ -24,7 +24,9 @@ import TopBar from "./TopBar/TopBar";
 //import TopBar from './TopBar';
 
 
-const MyBuilder = () => {
+const MyBuilder = (props) => {
+
+
     const view = {
         Text: TextView,
         Image: ImageView,
@@ -46,18 +48,24 @@ const MyBuilder = () => {
             type: 'Section',
         })
     );
-    console.log(tree);
+    // props.setTreeS(tree);
+    // console.log(tree);
     return (
-        <Builder initialTree = {tree}>
-            <TopBar />
+        <Builder initialTree = {tree} >
+            <TopBar save = {props.save}/>
             <Workspace view = {view}/>
             <Panel view = {panel} />
             <div className="container-row">
-            <CounterTools />
-            <TextTools />
-            <ImageTools />
-            <ButtonTools />
-            <ShapeTools />
+            {/* <CounterTools setTreeS={props.setTreeS} />
+            <TextTools setTreeS={props.setTreeS} />
+            <ImageTools  setTreeS={props.setTreeS} />
+            <ButtonTools setTreeS={props.setTreeS} />
+            <ShapeTools setTreeS={props.setTreeS} /> */}
+            <CounterTools/>
+            <TextTools/>
+            <ImageTools/>
+            <ButtonTools/>
+            <ShapeTools/>
             </div>
         </Builder>
     )

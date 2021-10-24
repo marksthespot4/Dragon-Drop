@@ -1,7 +1,7 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import { Button } from "@material-ui/core"
 
-const CounterTools = () => {
+const CounterTools = (props) => {
     const tools = useTools();
     const handleDragTool = event => {
         event.stopPropagation();
@@ -17,6 +17,9 @@ const CounterTools = () => {
         tools.triggerDragStart({
             data: data
         });
+        // console.log(props.tree);
+        // console.log(data.root);
+        // props.setTrees(data);
     }
     return <DnDBuilder
         onDragStart = {handleDragTool}
