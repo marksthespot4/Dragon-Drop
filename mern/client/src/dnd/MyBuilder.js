@@ -46,18 +46,23 @@ const MyBuilder = () => {
         })
     );
     return (
-        <Builder initialTree = {tree}>
-            <TopBar />
-            <Workspace view = {view}/>
-            <Panel view = {panel} />
-            <div className="container-row">
-            <CounterTools />
-            <TextTools />
-            <ImageTools />
-            <ButtonTools />
-            <ShapeTools />
-            </div>
-        </Builder>
+        <div >
+            <Builder initialTree = {tree}>
+                <div className="container-row">
+                <TopBar />
+                <CounterTools />
+                <TextTools />
+                <ImageTools />
+                <ButtonTools />
+                <ShapeTools />
+                </div>
+                <div style={{overflow:"scroll"}}>
+                    <Workspace view = {view}/>
+                    <Panel view = {panel} />
+                </div>
+
+            </Builder>
+        </div>
     )
 }
 

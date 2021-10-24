@@ -1,4 +1,9 @@
 .container-row {
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
 }
