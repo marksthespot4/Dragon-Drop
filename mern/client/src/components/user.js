@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function uploadUser(email, password, pagecount) {
     const newuser = {
-        email: email,
+        email: email.toLowerCase(),
         password: password,
         pagecount: pagecount,
     }
@@ -14,7 +14,7 @@ export function uploadUser(email, password, pagecount) {
 
 export function updateUser(email, password, pagecount, id) {
     const updatedUser = {
-        email: email,
+        email: email.toLowerCase(),
         password: password,
         pagecount: pagecount,
     }
@@ -32,7 +32,7 @@ export function getUserID(id) {
 }
 
 export function getUser(email) {
-    return axios.get("http://localhost:5000/record/users/email/" + email)
+    return axios.get("http://localhost:5000/record/users/email/" + email.toLowerCase())
         .then(res => res.data)
         .catch(function (error) {
             console.log(error);
