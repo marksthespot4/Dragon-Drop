@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made right click open in a new tab.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="right click for images, just opens image in new tab.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Image/Image.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Image/Image.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Shape/ShapeTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Shape/ShapeTools.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Image/ImagePanel.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Image/ImagePanel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Image/ImageTools.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Image/ImageTools.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +89,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="10230000" />
+      <workItem from="1634782634523" duration="14827000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -250,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634864030148</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="right click for images, just opens image in new tab.">
+      <created>1634936886285</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1634936886285</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -292,6 +301,7 @@
     <MESSAGE value="Added triangle and circle, no resizing or customization currently." />
     <MESSAGE value="Added very basic right click redirect functionality." />
     <MESSAGE value="Made right click open in a new tab." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made right click open in a new tab." />
+    <MESSAGE value="right click for images, just opens image in new tab." />
+    <option name="LAST_COMMIT_MESSAGE" value="right click for images, just opens image in new tab." />
   </component>
 </project>

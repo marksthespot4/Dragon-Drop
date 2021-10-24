@@ -3,16 +3,16 @@ import "../styles/image.css"
 import { useState } from "react"
 import {Rnd} from "react-rnd"
 
-export const Image = ({imageUrl}) => {
+export const Image = ({imageUrl, extLink}) => {
     const update = () => (
         console.log(imageUrl)
     )
     const openTab = () =>
     {
-        var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(imageUrl);
+        var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(extLink);
         if (valid)
         {
-            window.open(imageUrl);
+            window.open(extLink);
         }
         else
         {
