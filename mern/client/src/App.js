@@ -11,7 +11,6 @@ import RecordList from "./components/recordList";
 import MyBuilder from "./dnd/MyBuilder"
 import UserPage from "./components/user_page";
 import Home from "./components/home";
-import EditPage from "./components/edit_page"
 import Save from "./components/save";
 
 const App = () => {
@@ -32,9 +31,6 @@ const App = () => {
       <Route path="/user_page">
             <UserPage email={email}/>
        </Route>
-        <Route path="/edit_page">
-            <EditPage/>
-        </Route>
     </div>
   );
 };
