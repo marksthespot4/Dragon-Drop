@@ -9,14 +9,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import MyBuilder from "../dnd/MyBuilder";
 
 import { updatePage, getPage } from "./page";
+import { write } from "@popperjs/core";
 
-export default () => {
+export default (props) => {
+  console.log(props.page);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
   const [imgFromDB, setDBImage] = useState(image);
 
   const getImage = () => {
+    console.log(MyBuilder);
     takeScreenShot(ref.current);
   }
 
@@ -31,10 +34,10 @@ export default () => {
   }
 
   const save = () => {
-    // console.log("save");
-    getPage("6169d37d3879ce0833b16e68").then(data => {
-      updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
-    });
+    console.log(props.page);
+    // getPage(this.props.page).then(data => {
+    //   updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
+    // });
   }
 
   return (

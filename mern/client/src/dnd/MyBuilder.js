@@ -23,7 +23,11 @@ import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 //import TopBar from './TopBar';
 
+
 const MyBuilder = () => {
+
+    // const [tree, setTree] = useState(0);
+
     const view = {
         Text: TextView,
         Image: ImageView,

@@ -21,8 +21,10 @@ const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
-            <a href={"/create-page"}>
-                <img src={props.page.pagepreview} className="yellowOutline float-start"/>
+            <a onClick={() => {props.sendPageId(props.page._id)}} href={"/create-page/" + props.page._id}>
+                {/* <img src={props.page.pagepreview}  onClick={() => {props.sendPageId(props.page._id)}} className="yellowOutline float-start" /> */}
+                <img src={props.page.pagepreview}   className="yellowOutline float-start" />
+
             </a>
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
@@ -31,7 +33,7 @@ const Page = (props) => (
                 </i>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a className="dropdown-item" href="/create-page">Edit</a></li>
-                    <li><a className="dropdown-item" href="#">Rename</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
                     <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
@@ -61,12 +63,13 @@ export default class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        console.log(email);
-
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
-
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
+        this.renamePage = this.renamePage.bind(this);
+        // this.setPage = this.setPage.bind(this);
+        this.sendPageId = this.sendPageId.bind(this);
+
     }
 
     componentDidMount() {
@@ -77,8 +80,13 @@ export default class UserPage extends Component {
         });
     }
 
-    createNewPage() {
+    sendPageId(id) {
+        console.log(id);
+        this.props.setPage(id);
+        console.log(this.props.page);
+    }
 
+    createNewPage() {
         getUser(this.state.currentUser).then(data =>{
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
@@ -97,6 +105,12 @@ export default class UserPage extends Component {
         });        
     }
 
+    renamePage(id) {
+        console.log(id);
+        getPage(id).then(data=>{
+            updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+        });
+    } 
     deleteMyPage(id) {
         getUser(this.state.currentUser).then(data =>{
             updateUser(data.email, data.password, data.pagecount - 1, data._id);
@@ -113,9 +127,12 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    // setPage = {this.props.setPage}
+                    sendPageId = {this.sendPageId}
                 />
             );
         });
@@ -152,9 +169,13 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    // setPage = {this.props.setPage}
+                    sendPageId = {this.sendPageId}
+
                 />
             );
         });
