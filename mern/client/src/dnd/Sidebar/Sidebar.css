@@ -4,7 +4,7 @@
     width: 220px;
   }
   #header .pro-sidebar {
-    height: 100vh;
+    /* height: 100vh; */
   }
   #header .closemenu {
     color: #000;

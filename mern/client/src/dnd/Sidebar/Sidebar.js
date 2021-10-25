@@ -3,10 +3,17 @@
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
 import TextTools from "../TextBox/TextTools";
+import TextPanel from "../TextBox/TextPanel";
 import CounterTools from "../Counter/CounterTools";
+import CounterPanel from "../Counter/CounterPanel";
 import ButtonTools from "../Button/ButtonTools";
+import ButtonPanel from "../Button/ButtonPanel";
 import ShapeTools from "../Shape/ShapeTools";
+import ShapePanel from "../Shape/ShapePanel";
 import ImageTools from "../Image/ImageTools";
+import ImagePanel from "../Image/ImagePanel";
+import { Panel } from "build-ui";
+
 
 //import react pro sidebar components
 import {
@@ -40,6 +47,13 @@ const Sidebar = () => {
     //condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
+  const panel = {
+    Counter: CounterPanel,
+    Image: ImagePanel,
+    Text: TextPanel,
+    ButtonComp: ButtonPanel,
+    Shape: ShapePanel
+  };
 
   return (
     <>
@@ -48,17 +62,17 @@ const Sidebar = () => {
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
           <div className="logotext">
-              {/* small and big change using menucollapse state */}
-              <p>{menuCollapse ? "" : "Components"}</p>
-            </div>
-            <div className="closemenu" onClick={menuIconClick}>
-                {/* changing menu collapse icon on click */}
-              {menuCollapse ? (
-                <FiArrowRightCircle/>
-              ) : (
-                <FiArrowLeftCircle/>
-              )}
-            </div>
+            {/* small and big change using menucollapse state */}
+            <p>{menuCollapse ? "" : "Components"}</p>
+          </div>
+          <div className="closemenu" onClick={menuIconClick}>
+              {/* changing menu collapse icon on click */}
+            {menuCollapse ? (
+              <FiArrowRightCircle/>
+            ) : (
+              <FiArrowLeftCircle/>
+            )}
+          </div>
           </SidebarHeader>
           <SidebarContent>
           <CounterTools />
@@ -66,13 +80,10 @@ const Sidebar = () => {
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
+            {menuCollapse? (""):(<Panel view={panel} />)}
             
           </SidebarContent>
-          <SidebarFooter>
-            <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
-            </Menu>
-          </SidebarFooter>
+
         </ProSidebar>
       </div>
     </>
