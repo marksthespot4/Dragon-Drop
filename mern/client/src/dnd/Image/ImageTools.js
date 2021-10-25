@@ -7,7 +7,8 @@ const ImageTools = () => {
         event.stopPropagation();
 
         const imageProps = {
-            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png"
+            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
+            extLink: "https://youtube.com"
         }
         const image = item({
             type: 'Image',
