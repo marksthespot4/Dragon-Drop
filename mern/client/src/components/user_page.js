@@ -18,7 +18,7 @@ import { getUser, updateUser } from "./user";
 
 
 const Page = (props) => (
-    <div className="col" style={{height:"100vh"}}>
+    <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
             <a href={"/create-page"}>
@@ -171,7 +171,7 @@ export default class UserPage extends Component {
                 <div>
                     <input
                         id="userQuery"
-                        type="text"
+                        type="search"
                         placeholder="Search user"
                     >
                     </input>
@@ -180,7 +180,7 @@ export default class UserPage extends Component {
                         Search User
                     </Button>
                     <Button onClick={() => this.backToAccount()}>
-                        Back to Account
+                        <i class="bi bi-arrow-counterclockwise"></i>
                     </Button>
                 </div>
                 <div style={{margin: 20}}>

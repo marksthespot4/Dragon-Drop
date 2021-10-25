@@ -150,7 +150,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="Home" style={{height:"100vh"}}>
+            <div className="Home" style={{height:"90vh"}}>
                 <div align="right">
                     <Button onClick={() => this.modalOpen("login")}>
                         Log In
