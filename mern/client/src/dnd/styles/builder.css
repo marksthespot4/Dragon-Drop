@@ -1,4 +1,15 @@
 .container-row {
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.box {
+    border: 1px solid #333333;
+    width: 800px;
+    height: 200px;
+    overflow: scroll;
 }

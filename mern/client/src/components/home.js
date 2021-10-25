@@ -71,7 +71,8 @@ class Home extends Component {
             password: "",
             confirmPassword: "",
             show: false,
-            activeModal: ""
+            activeModal: "",
+            hidden: true,
         });
     }
 
@@ -149,7 +150,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="Home">
+            <div className="Home" style={{height:"90vh"}}>
                 <div align="right">
                     <Button onClick={() => this.modalOpen("login")}>
                         Log In

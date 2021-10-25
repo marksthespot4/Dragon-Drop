@@ -23,19 +23,26 @@ render() {
                 <Row className="justify-content-md-center">
                     <Col className="center">
                         <h5>
-                            <a href="https://github.com/marksthespot4/Dragon-Drop" target="_blank">Github</a>
+                            <a href="https://github.com/marksthespot4/Dragon-Drop" target="_blank">
+                              <i class="bi bi-github"></i>
+                            </a>
                         </h5>
                     </Col>
                     <Col className="center">
-                        <h5>
-                            <a>FAQ</a>
-                        </h5>
+                      <NavLink className="navbar-brand" to="/">
+                        <i class="bi bi-droplet"></i>
+                      </NavLink>
                     </Col>
                     <Col className="center">
                         <h5>
-                            <a>Meet the Creators</a>
-                        </h5>                    
+                            <a>
+                              <i class="bi bi-question-circle"></i>
+                            </a>
+                        </h5>
                     </Col>
+                </Row>
+                <Row className="justify-content-md-center">
+                  Copyright 2021 ©
                 </Row>
             </Container>
 
