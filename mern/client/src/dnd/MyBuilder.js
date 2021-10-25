@@ -52,7 +52,7 @@ const MyBuilder = (props) => {
     // console.log(tree);
     return (
         <Builder initialTree = {tree} >
-            <TopBar save = {props.save}/>
+            <TopBar save={props.save} prevSave={props.prevSave}/>
             <Workspace view = {view}/>
             <Panel view = {panel} />
             <div className="container-row">

@@ -17,9 +17,15 @@ export default (props) => {
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
   const [imgFromDB, setDBImage] = useState(image);
-  // const [treeS, setTreeS] = useState(null);
   const [saveData, setSaveData] = useState(null);
+  const [prevSave, setPrevSave] = useState();
 
+  //Why does the following code cause an infinite render???
+  useEffect(() => {
+    getPage(props.match.params.id).then(data => {
+      setPrevSave(data.pagedata);
+    }); 
+  }, []);
 
   const getImage = (currTree) => {
     setSaveData(currTree);
@@ -42,6 +48,7 @@ export default (props) => {
     // console.log(MyBuilder);
     getPage(props.match.params.id).then(data => {
       updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
+      // setPrevSave(saveData);
     });
     getPage(props.match.params.id).then(data => {
       // console.log(data.pagedata);
@@ -94,8 +101,7 @@ export default (props) => {
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
         {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
-        <MyBuilder save={getImage}/>
-
+        <MyBuilder save={getImage} prevSave={prevSave}/>
       </div>
     </div>
   );

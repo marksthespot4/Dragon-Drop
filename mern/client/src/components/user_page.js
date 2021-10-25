@@ -15,8 +15,6 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
-import MyBuilder from "../dnd/MyBuilder";
-
 
 const Page = (props) => (
     <div className="col">
@@ -96,7 +94,6 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                console.log(MyBuilder);
                 uploadPage(this.state.currentUser, "New Page", null, example);
                 getPages().then(data=>{
                     this.setState({

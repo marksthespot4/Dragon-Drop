@@ -10,6 +10,10 @@ const TopBar = (props) => {
         json,
         loadTree
     } = builder;
+    if(props.prevSave != null) {
+        loadTree(props.prevSave);
+        console.log(props.prevSave);
+    }
     const handleSave = () => {
         props.save(json());
         console.log(json());
