@@ -10,11 +10,9 @@ import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { NavLink } from "react-router-dom";
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router";
-//const bcrypt = require("bcryptjs");
 
 class Home extends Component {
     constructor(props) {
@@ -27,7 +25,7 @@ class Home extends Component {
             email: "",
             password: "",
             confirmPassword: "",
-            hidden: true
+            hidden: true,
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
@@ -56,12 +54,12 @@ class Home extends Component {
 
     toggleShow() {
         this.setState({ hidden: !this.state.hidden });
+        // if(this.state.hidden) {
+        //     icon = "bi bi-eye"
+        // } else {
+        //     icon = "bi bi-eye-slash"
+        // }
     }
-
-    // handleSubmit(e) {
-    //     this.setState({ name: this.state.modalInputName });
-    //     this.modalClose();
-    // }
 
     modalOpen = (active) => {
         this.setState({ show: true, activeModal: active });
@@ -73,7 +71,8 @@ class Home extends Component {
             password: "",
             confirmPassword: "",
             show: false,
-            activeModal: ""
+            activeModal: "",
+            hidden: true,
         });
     }
 
@@ -151,7 +150,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div className="Home">
+            <div className="Home" style={{height:"90vh"}}>
                 <div align="right">
                     <Button onClick={() => this.modalOpen("login")}>
                         Log In
@@ -189,7 +188,10 @@ class Home extends Component {
                             // className="form-control"
                         />
 
-                        <h6><br></br>Password</h6>
+                        <h6>
+                            <br></br>Password&nbsp;
+                             <i class={ this.state.hidden ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShow}></i>
+                        </h6>
                         <input
                             type={this.state.hidden ? "password" : "text"}
                             value={this.state.password}
@@ -197,7 +199,6 @@ class Home extends Component {
                             onChange={this.handlePasswordChange}
                             // className="form-control"
                         />
-                        <button onClick={this.toggleShow}>Show / Hide</button>
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
                         
@@ -229,7 +230,7 @@ class Home extends Component {
                     <Modal.Body>
                         <h6>Email</h6>
                         <input
-                            type="text"
+                            type="email"
                             value={this.state.email}
                             onChange={this.handleEmailChange}
                         />
@@ -274,7 +275,6 @@ class Home extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-
             </div>
         );
     }
