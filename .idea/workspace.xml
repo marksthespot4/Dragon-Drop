@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made image right click more functional">
-      <change afterPath="$PROJECT_DIR$/mern/client/src/components/download.js" afterDir="false" />
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Slight changes to structure">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/edit_page.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/save.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/save.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +58,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/react-redux-embedded-login-master" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mern-passport-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -89,7 +86,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="17086000" />
+      <workItem from="1634782634523" duration="19899000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -266,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635099944859</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Slight changes to structure">
+      <created>1635103180868</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1635103180868</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +289,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass" />
     <MESSAGE value="what is goingon." />
     <MESSAGE value="Database integration added to user page." />
     <MESSAGE value="Edited UI and made easier to read" />
@@ -310,6 +313,7 @@
     <MESSAGE value="Made right click open in a new tab." />
     <MESSAGE value="right click for images, just opens image in new tab." />
     <MESSAGE value="Made image right click more functional" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made image right click more functional" />
+    <MESSAGE value="Slight changes to structure" />
+    <option name="LAST_COMMIT_MESSAGE" value="Slight changes to structure" />
   </component>
 </project>
