@@ -23,7 +23,9 @@ render() {
                 <Row className="justify-content-md-center">
                     <Col className="center">
                         <h5>
-                            <a href="https://github.com/marksthespot4/Dragon-Drop" target="_blank">Github</a>
+                            <a href="https://github.com/marksthespot4/Dragon-Drop" target="_blank">
+                              <i class="bi bi-github"></i>
+                            </a>
                         </h5>
                     </Col>
                     <Col className="center">
@@ -33,7 +35,9 @@ render() {
                     </Col>
                     <Col className="center">
                         <h5>
-                            <a>FAQ</a>
+                            <a>
+                              <i class="bi bi-question-circle"></i>
+                            </a>
                         </h5>
                     </Col>
                 </Row>
