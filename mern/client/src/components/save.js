@@ -21,11 +21,11 @@ export default (props) => {
   const [prevSave, setPrevSave] = useState();
 
   //Why does the following code cause an infinite render???
-  useEffect(() => {
-    getPage(props.match.params.id).then(data => {
-      setPrevSave(data.pagedata);
-    }); 
-  }, []);
+  // useEffect(() => {
+  //   getPage(props.match.params.id).then(data => {
+  //     setPrevSave(data.pagedata);
+  //   }); 
+  // }, []);
 
   const getImage = (currTree) => {
     setSaveData(currTree);
