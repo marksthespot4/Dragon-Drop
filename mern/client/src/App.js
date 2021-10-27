@@ -36,6 +36,9 @@ const App = () => {
           <UserPage email={email}/>
           <Footer/>
         </Route>
+        <Route path="/edit_page">
+          <EditPage/>
+        </Route>
     </div>
   );
 };
