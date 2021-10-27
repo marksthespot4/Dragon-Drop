@@ -11,7 +11,6 @@ import RecordList from "./components/recordList";
 import MyBuilder from "./dnd/MyBuilder"
 import UserPage from "./components/user_page";
 import Home from "./components/home";
-import EditPage from "./components/edit_page"
 import Save from "./components/save";
 import Header from "./components/header";
 import Footer from "./components/footer";
@@ -36,9 +35,6 @@ const App = () => {
         <Route path="/user_page">
           <UserPage email={email}/>
           <Footer/>
-        </Route>
-        <Route path="/edit_page">
-          <EditPage/>
         </Route>
     </div>
   );
