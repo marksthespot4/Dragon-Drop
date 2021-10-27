@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="installations">
-      <change afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/server/db/keys.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Section/Section.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Section/Section.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/HISTORY.md" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/HISTORY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/read.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/read.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/json.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/json.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/raw.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/raw.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/text.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/text.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/urlencoded.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/lib/types/urlencoded.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/node_modules/body-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/node_modules/body-parser/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/db/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="PLAIN_TEXT" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mern-passport-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -101,7 +91,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="27250000" />
+      <workItem from="1634782634523" duration="31360000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -292,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635128374691</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="installations">
+      <created>1635364972805</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1635364972805</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
