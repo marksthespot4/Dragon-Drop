@@ -1,4 +1,5 @@
 import {useBuilder} from "build-ui";
+import Button from 'react-bootstrap/Button';
 
 const TopBar = () => {
     const builder = useBuilder();
@@ -14,12 +15,12 @@ const TopBar = () => {
         console.log(json());
     }
     return <div>
-        <button disabled = {!canRedo} onClick = {handleRedo}>
-            Redo
-        </button>
-        <button disabled = {!canUndo} onClick = {handleUndo}>
+        <Button disabled = {!canUndo} onClick = {handleUndo}>
             Undo
-        </button>
+        </Button>
+        <Button disabled = {!canRedo} onClick = {handleRedo}>
+            Redo
+        </Button>
     </div>
 }
 
