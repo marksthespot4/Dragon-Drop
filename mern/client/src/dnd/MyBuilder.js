@@ -41,21 +41,7 @@ const MyBuilder = () => {
     );
     return ( <div>
         <Builder initialTree={tree}>
-        {/* <Builder initialTree = {tree}>
-            <Grid container spacing={5}>
-                <Grid item={true}>
-                    <TopBar />
-                </Grid>
-                <Grid container={true}>
-                    <Sidebar class="col" />
-                </Grid>
-                <Grid item={true}>
-                    <Workspace class="col" view = {view}/>
-                </Grid>
-                <Grid item={true}>
-                    <Panel view = {panel} />
-                </Grid>
-            </Grid> */}
+
             <Grid 
                 container = {true} 
             >
@@ -72,8 +58,6 @@ const MyBuilder = () => {
                     <TopBar/>
                 </Grid>
 
-
-
             </Grid>
             
             <Grid 
@@ -87,7 +71,7 @@ const MyBuilder = () => {
                     xs = {12} 
                     md = {9} 
                     >
-                    <Workspace view={view}/>
+                    <Workspace class="view-window" view={view}/>
                 </Grid>
 
                 <Grid 

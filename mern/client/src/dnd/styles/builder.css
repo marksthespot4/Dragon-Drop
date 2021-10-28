@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: row;
 }
-
+.view-window {
+    height: 500px;
+    width: 500px;
+}
 
 .col {
     flex:1
