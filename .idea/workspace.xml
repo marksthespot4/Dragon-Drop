@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="installations">
-      <change afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/server/db/keys.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="basic backend with user schema prototype">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/db/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +88,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="31360000" />
+      <workItem from="1634782634523" duration="34305000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -289,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635364972805</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="basic backend with user schema prototype">
+      <created>1635370395182</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1635370395182</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +312,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Database integration added to user page." />
     <MESSAGE value="Edited UI and made easier to read" />
     <MESSAGE value="messed with icons" />
     <MESSAGE value="integrated with sarah branch" />
@@ -333,6 +336,7 @@
     <MESSAGE value="Made image right click more functional" />
     <MESSAGE value="Slight changes to structure" />
     <MESSAGE value="installations" />
-    <option name="LAST_COMMIT_MESSAGE" value="installations" />
+    <MESSAGE value="basic backend with user schema prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic backend with user schema prototype" />
   </component>
 </project>

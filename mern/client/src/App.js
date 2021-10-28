@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // We use Route in order to define the different routes of our application
 import { Route, render } from "react-router-dom";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 // We import all the components we need in our app
 import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
