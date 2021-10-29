@@ -14,6 +14,7 @@ import Home from "./components/home";
 import Save from "./components/save";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Settings from "./components/settings";
 
 const App = () => {
 
@@ -37,7 +38,11 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/edit_page">
-          <EditPage/>
+          <Edit/>
+        </Route>
+        <Route path="/settings">
+          <Settings/>
+          <Footer/>
         </Route>
     </div>
   );
