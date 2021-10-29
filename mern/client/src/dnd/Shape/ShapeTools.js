@@ -7,7 +7,7 @@ const ShapeTools = () => {
         event.stopPropagation();
         const shapeProps = {
             shapeType: "Rectangle",
-            shapeText: 'Click Me!',
+            shapeText: 'http://google.com',
             heightProp: 100,
             widthProp: 200,
             radius: 50

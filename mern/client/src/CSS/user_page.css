@@ -1,6 +1,10 @@
+/* .UserPage {
+    margin-bottom: 300px;
+} */
+
 .yellowOutline {
     border-style: solid;
-    border-color: goldenrod;
+    border-color: #ffc220;
     border-width: thick;
     max-height: 20rem;
     max-width: 80%;
@@ -14,7 +18,7 @@
     display: block;
     position: absolute;
 }
-
+/*
 .imgSize {
     height: 20px;
     width: 20px;
@@ -26,4 +30,4 @@
     top: 25px;
     right: 25px;
     font-size: 15px;
-}
+}*/
