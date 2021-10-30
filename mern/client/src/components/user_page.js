@@ -111,19 +111,25 @@ export default class UserPage extends Component {
     }
 
     renamePage(id) {
-        console.log(id);
-        getPage(id).then(data=>{
-            updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
-        });
+        if(this.state.currentUser === this.state.searchUser) {
+            console.log(id);
+            getPage(id).then(data=>{
+                updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+            });
+        }
     } 
     deleteMyPage(id) {
-        getUser(this.state.currentUser).then(data =>{
-            updateUser(data.email, data.password, data.pagecount - 1, data._id);
-        });        
-        deletePage(id);
-        this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
-        });
-        this.render();
+        console.log(this.state.currentUser);
+        console.log(this.state.searchUser);
+        if(this.state.currentUser === this.state.searchUser) {
+            getUser(this.state.currentUser).then(data =>{
+                updateUser(data.email, data.password, data.pagecount - 1, data._id);
+            });        
+            deletePage(id);
+            this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
+            });
+            this.render();
+        }
     }
 
     userProjects() {
