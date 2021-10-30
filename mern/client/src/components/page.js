@@ -36,6 +36,7 @@ export function getPage(id) {
             });
 }
 
+
 // export function getPagesByUser(user) {
 //     return axios
 //         .get("http://localhost:5000/record/pages/userSearch")

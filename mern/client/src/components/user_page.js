@@ -20,12 +20,17 @@ const Page = (props) => (
     <div className="col">
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
+            
+            {props.access ? 
             <a href={"/create-page/" + props.page._id}>
-            {/* <a onClick={() => {props.sendPageId(props.page._id)}} href={"/create-page/" + props.page._id}> */}
-                {/* <img src={props.page.pagepreview}  onClick={() => {props.sendPageId(props.page._id)}} className="yellowOutline float-start" /> */}
                 <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            </a> 
+            : 
+            <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            }
+            {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
-            </a>
+
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -131,6 +136,8 @@ export default class UserPage extends Component {
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
+                    // access={true}
                     // setPage = {this.props.setPage}
                     // sendPageId = {this.sendPageId}
                 />
@@ -147,11 +154,13 @@ export default class UserPage extends Component {
         //TODO: currently, when a user searches, they don't pull from data base. So if a diff user has added a new page/deleted a new page
         //since the last DB call, the search will not have the most recent data.
         //the following code fixes it, but also runs constantly and breaks the code.
+
         // getPages().then(data=>{
         //     this.setState({
         //         pages: data || [],
         //     });
         // });
+        
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
@@ -164,7 +173,7 @@ export default class UserPage extends Component {
             }
         })
         .map((current) => {
-            console.log(current.pagepreview);
+            // console.log(current.pagepreview);
             return (
                 <Page
                     page={current}
@@ -173,6 +182,8 @@ export default class UserPage extends Component {
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
+                    // access={true}
                     // setPage = {this.props.setPage}
                     // sendPageId = {this.sendPageId}
 

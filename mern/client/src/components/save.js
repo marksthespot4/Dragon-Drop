@@ -11,8 +11,11 @@ import MyBuilder from "../dnd/MyBuilder";
 import { updatePage, getPage } from "./page";
 import { write } from "@popperjs/core";
 
+
+import axios from "axios";
+
 export default (props) => {
-  console.log(props.match.params.id);
+  // console.log(props.match.params.id);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
@@ -20,10 +23,19 @@ export default (props) => {
   const [saveData, setSaveData] = useState(null);
   const [prevSave, setPrevSave] = useState();
 
-  //Why does the following code cause an infinite render???
+  // Why does the following code cause an infinite render???
+  // useEffect(() => {
+  //   // GET request using axios inside useEffect React hook
+  //   axios.get("http://localhost:5000/record/pages/" + props.match.params.id)
+  //       .then(response => setPrevSave(response.data.pagedata));
+
+  // }, []);
+
   // useEffect(() => {
   //   getPage(props.match.params.id).then(data => {
-  //     setPrevSave(data.pagedata);
+  //     console.log(data.pagedata);
+  //     // setPrevSave("test");
+  //     // setPrevSave(data.pagedata);
   //   }); 
   // }, []);
 
@@ -53,10 +65,6 @@ export default (props) => {
     getPage(props.match.params.id).then(data => {
       // console.log(data.pagedata);
     });
-  }
-
-  function test() {
-    console.log(test);
   }
 
   return (
