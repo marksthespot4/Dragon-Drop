@@ -12,7 +12,8 @@ const TextTools = () => {
             mainText: 'Insert body text',
             textBold: false,
             textItalicize: false,
-            textUnderline: false
+            textUnderline: false,
+            color: "#ffff"
         }
 
         const text = item({
