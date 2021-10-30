@@ -18,6 +18,8 @@ import Footer from "./components/footer";
 const App = () => {
 
   const [email, setEmail] = useState("");
+  // const [page, setPage] = useState("");
+
   document.body.style = 'background: wheat;';
   return (
     <div>
@@ -28,7 +30,7 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/edit/:id" component={Edit} />
-        <Route path="/create-page" component={Save} />
+        <Route path="/create-page/:id" component={Save} />
         <Route path="/create">
           <Create />
         </Route>

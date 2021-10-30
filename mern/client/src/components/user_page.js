@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
-import example from "../imgs/example_1.png"
+import example from "../imgs/white.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
@@ -16,14 +16,21 @@ import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
 
-
 const Page = (props) => (
     <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
-            <a href={"/create-page"}>
-                <img src={props.page.pagepreview} className="yellowOutline float-start"/>
-            </a>
+            
+            {props.access ? 
+            <a href={"/create-page/" + props.page._id}>
+                <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            </a> 
+            : 
+            <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            }
+            {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
+
+
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,7 +38,7 @@ const Page = (props) => (
                 </i>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a className="dropdown-item" href="/create-page">Edit</a></li>
-                    <li><a className="dropdown-item" href="#">Rename</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
                     <li><a className="dropdown-item" href="#">Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
@@ -61,12 +68,13 @@ export default class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        console.log(email);
-
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
-
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
+        this.renamePage = this.renamePage.bind(this);
+        // this.setPage = this.setPage.bind(this);
+        // this.sendPageId = this.sendPageId.bind(this);
+
     }
 
     componentDidMount() {
@@ -77,8 +85,13 @@ export default class UserPage extends Component {
         });
     }
 
-    createNewPage() {
+    // sendPageId(id) {
+    //     console.log(id);
+    //     this.props.setPage(id);
+    //     console.log(this.props.page);
+    // }
 
+    createNewPage() {
         getUser(this.state.currentUser).then(data =>{
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
@@ -86,7 +99,7 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", "DATA", example);
+                uploadPage(this.state.currentUser, "New Page", null, example);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],
@@ -97,14 +110,26 @@ export default class UserPage extends Component {
         });        
     }
 
+    renamePage(id) {
+        if(this.state.currentUser === this.state.searchUser) {
+            console.log(id);
+            getPage(id).then(data=>{
+                updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+            });
+        }
+    } 
     deleteMyPage(id) {
-        getUser(this.state.currentUser).then(data =>{
-            updateUser(data.email, data.password, data.pagecount - 1, data._id);
-        });        
-        deletePage(id);
-        this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
-        });
-        this.render();
+        console.log(this.state.currentUser);
+        console.log(this.state.searchUser);
+        if(this.state.currentUser === this.state.searchUser) {
+            getUser(this.state.currentUser).then(data =>{
+                updateUser(data.email, data.password, data.pagecount - 1, data._id);
+            });        
+            deletePage(id);
+            this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
+            });
+            this.render();
+        }
     }
 
     userProjects() {
@@ -113,9 +138,14 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
+                    // access={true}
+                    // setPage = {this.props.setPage}
+                    // sendPageId = {this.sendPageId}
                 />
             );
         });
@@ -130,11 +160,13 @@ export default class UserPage extends Component {
         //TODO: currently, when a user searches, they don't pull from data base. So if a diff user has added a new page/deleted a new page
         //since the last DB call, the search will not have the most recent data.
         //the following code fixes it, but also runs constantly and breaks the code.
+
         // getPages().then(data=>{
         //     this.setState({
         //         pages: data || [],
         //     });
         // });
+        
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
@@ -147,14 +179,20 @@ export default class UserPage extends Component {
             }
         })
         .map((current) => {
-            console.log(current.pagepreview);
+            // console.log(current.pagepreview);
             return (
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
+                    // access={true}
+                    // setPage = {this.props.setPage}
+                    // sendPageId = {this.sendPageId}
+
                 />
             );
         });
