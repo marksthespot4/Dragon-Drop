@@ -1,12 +1,13 @@
 import { useState } from "react"
+import React from "react";
 import RichTextMenu from "./RichTextMenu";
 import "../styles/TextStyles.css"
 import {Rnd} from "react-rnd"
+import { Button } from "@material-ui/core";
 
-export const Text = ({titleText = "Insert title", mainText = "Insert text here"}) => {
+export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
-    //alert(JSON.stringify(mainText));
 
     return <Rnd default={{
         x: 0,
@@ -17,10 +18,20 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here"}
     ><div>
         <h2 className="heading"> Hi this is some text </h2>
         <p>
-        <span className="ptag"> {mainText} </span>
+        <div
+            style={{
+                fontWeight: textBold ? "bold" : "normal",
+                fontStyle: textItalicize ? "italic" : "normal",
+                textDecorationLine: textUnderline ? "underline" : "none"
+            }}
+        >
+         <span className="ptag"> 
+            {mainText}
+         </span>
+        </div> 
         </p>
-        <RichTextMenu input = {JSON.stringify(mainText)}>
-        </RichTextMenu>
+        
     </div>
     </Rnd>
 }
+//<button onClick={() => setBoldFont(!boldFont)}><strong>B</strong></button>
