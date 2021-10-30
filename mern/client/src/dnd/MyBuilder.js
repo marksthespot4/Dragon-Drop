@@ -23,7 +23,10 @@ import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
 //import TopBar from './TopBar';
 
-const MyBuilder = () => {
+
+const MyBuilder = (props) => {
+
+
     const view = {
         Text: TextView,
         Image: ImageView,
@@ -55,7 +58,7 @@ const MyBuilder = () => {
                     xs = {12} 
                     md = {6}
                 >
-                    <TopBar/>
+                    <TopBar save={props.save} prevSave={props.prevSave}/>
                 </Grid>
 
             </Grid>
