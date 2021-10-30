@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="basic backend with user schema prototype">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="added some files for redux">
+      <change afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/actions/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/authReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/errorReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/utils/setAuthToken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +94,7 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="34305000" />
+      <workItem from="1634782634523" duration="38586000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -293,7 +299,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635370395182</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added some files for redux">
+      <created>1635391938779</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1635391938779</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +325,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Edited UI and made easier to read" />
     <MESSAGE value="messed with icons" />
     <MESSAGE value="integrated with sarah branch" />
     <MESSAGE value="Added a dropdown menu to each project.&#10;installed popper." />
@@ -337,6 +349,7 @@
     <MESSAGE value="Slight changes to structure" />
     <MESSAGE value="installations" />
     <MESSAGE value="basic backend with user schema prototype" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic backend with user schema prototype" />
+    <MESSAGE value="added some files for redux" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some files for redux" />
   </component>
 </project>
