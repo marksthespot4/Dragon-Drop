@@ -72,7 +72,7 @@ recordRoutes.route("/record/users/email/:email").get(function (req, res) {
 });
 
 recordRoutes.route("/record/pages/:id").get(function (req, res) {
-  console.log("pageSearch");
+  // console.log("pageSearch");
   let db_connect = dbo.getDb();
   let myquery = { _id: ObjectId( req.params.id )};
   db_connect
