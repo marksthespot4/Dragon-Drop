@@ -24,7 +24,7 @@ const TopBar = (props) => {
             Undo
         </Button>
         <Button disabled = {!canRedo} onClick = {handleRedo}>
-        Redo
+            Redo
         </Button>
         <Button onClick={() => {handleSave()}}>
             save
