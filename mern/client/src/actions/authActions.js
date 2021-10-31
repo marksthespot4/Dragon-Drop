@@ -19,6 +19,7 @@ export const registerUser = (userData, history) => dispatch => {
              payload: err.response.data
          })
         );
+    console.log("REGISTERED USER");
 };
 
 //Login User and get token
@@ -44,10 +45,12 @@ export const loginUser = userData => dispatch => {
              payload: err.response.data
          })
         );
+    console.log("ATTEMPTED LOGIN");
 };
 
 //set logged in user
 export const setCurrentUser = decoded => {
+    console.log("SETTING LOGGED IN USER");
     return {
         type: SET_CURRENT_USER,
         payload: decoded
@@ -56,6 +59,7 @@ export const setCurrentUser = decoded => {
 
 //user loading
 export const setUserLoading = () => {
+    console.log
     return {
         type: USER_LOADING
     };

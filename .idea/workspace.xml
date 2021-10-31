@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="added some files for redux">
-      <change afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/actions/types.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/authReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/errorReducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/reducers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/utils/setAuthToken.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/components/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/components/PrivateRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/store.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,7 +37,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="right_click" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
