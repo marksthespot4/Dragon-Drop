@@ -5,9 +5,10 @@ import "../styles/TextStyles.css"
 import {Rnd} from "react-rnd"
 import { Button } from "@material-ui/core";
 
-export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline}) => {
+export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline, color}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
+    // const [color, setColor] = useState("#000000");
 
     return <Rnd default={{
         x: 0,
@@ -25,7 +26,11 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here",
                 textDecorationLine: textUnderline ? "underline" : "none"
             }}
         >
-         <span className="ptag"> 
+         <span className="ptag" 
+            style={{
+                color: color
+            }}
+        > 
             {mainText}
          </span>
         </div> 

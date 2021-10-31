@@ -74,7 +74,9 @@ const MyBuilder = (props) => {
                     xs = {12} 
                     md = {9} 
                     >
-                    <Workspace class="view-window" view={view}/>
+                    <div style={{overflow:"scroll"}}>
+                        <Workspace class="view-window" view={view}/>
+                    </div>
                 </Grid>
 
                 <Grid 

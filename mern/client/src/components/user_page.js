@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 
+
 import Button from 'react-bootstrap/Button';
 
 // This will require to npm install axios
@@ -102,7 +103,10 @@ export default class UserPage extends Component {
                 });
                 this.render();
             }
-        });        
+        });
+
+        // const history = useHistory();
+        // history.push("/create-page/:id");
     }
 
     duplicatePage(pagename, pagedata, pub, pagepreview) {
@@ -226,17 +230,23 @@ export default class UserPage extends Component {
                         placeholder="Search user"
                     >
                     </input>
-                    <Button onClick={() => this.setUser()}>
+                    {/* <Button onClick={() => this.userSearch()}> */}
+                    <Button variant="secondary" onClick={() => this.setUser()}>
                         Search User
                     </Button>
-                    <Button onClick={() => this.backToAccount()}>
-                        <i class="bi bi-arrow-counterclockwise"></i>
+                    <Button variant="secondary" onClick={() => this.backToAccount()}>
+                        {/* <i class="bi bi-arrow-counterclockwise"></i> */}
+                        Back to Account
                     </Button>
                 </div>
                 <div style={{margin: 20}}>
 
-                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink>
                     <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
+                    
+                    {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>
+                        Test
+                    </div> */}
 
                     {/* <NavLink to="/create-page">
                         <Button onClick={() => this.createNewPage()}> Generate & Create</Button>

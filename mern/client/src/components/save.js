@@ -40,6 +40,7 @@ export default (props) => {
   // }, []);
 
   const getImage = (currTree) => {
+    // console.log(props.match.params.id);
     setSaveData(currTree);
     takeScreenShot(ref.current);
     notify();
@@ -70,12 +71,12 @@ export default (props) => {
   return (
     <div>
       <div align="right">
-          <Button onClick={() => {
+          {/* <Button onClick={() => {
             getImage();
             // notify();
             }}>
             Save
-          </Button>
+          </Button> */}
           {/* <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
             <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
           </Toast> */}
