@@ -239,6 +239,7 @@ export default class UserPage extends Component {
                         Back to Account
                     </Button>
                 </div>
+                {this.state.currentUser === this.state.searchUser ?
                 <div style={{margin: 20}}>
 
                     <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink>
@@ -252,6 +253,9 @@ export default class UserPage extends Component {
                         <Button onClick={() => this.createNewPage()}> Generate & Create</Button>
                     </NavLink> */}
                 </div>
+                :
+                <div></div>
+                }
 
                 <div className="container-fluid">
                     <ToastContainer
