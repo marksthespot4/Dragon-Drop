@@ -51,7 +51,7 @@ const MyBuilder = (props) => {
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {6}
+                    md = {12}
                 >
                     <TopBar save={props.save} prevSave={props.prevSave}/>
                 </Grid>   
@@ -59,7 +59,7 @@ const MyBuilder = (props) => {
                 item = {true} 
                 container = {true} 
                 xs = {12} 
-                justify="center"
+                // justify="center"
             >
                 
                 <Grid 
