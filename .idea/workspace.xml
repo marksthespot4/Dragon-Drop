@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Stopping point, where the home page works, but logging in and registering have issues.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="fixed dashboard crashing">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/PrivateRoute.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635644048515</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="fixed the CORS issue lol">
+      <created>1635644315644</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1635644315644</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,8 +339,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a dropdown menu to each project.&#10;installed popper." />
-    <MESSAGE value="Added a GEAR dropdown menu" />
     <MESSAGE value="Redid formatting on the project previews" />
     <MESSAGE value="Added delete functionality for the dropdown." />
     <MESSAGE value="Make the edit button and create button redirect to new page." />
@@ -356,6 +362,8 @@
     <MESSAGE value="added some files for redux" />
     <MESSAGE value="added redux to front end connections and some console prints for debugging." />
     <MESSAGE value="Stopping point, where the home page works, but logging in and registering have issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="Stopping point, where the home page works, but logging in and registering have issues." />
+    <MESSAGE value="fixed the CORS issue lol" />
+    <MESSAGE value="fixed dashboard crashing" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed dashboard crashing" />
   </component>
 </project>
