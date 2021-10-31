@@ -27,8 +27,9 @@ const Page = (props) => (
                 <img src={props.page.pagepreview} className="yellowOutline float-start" />
             </a> 
             : 
-            <img src={props.page.pagepreview} className="yellowOutline float-start" />
-            }
+            <a href={"/view-page/" + props.page._id}>
+                <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            </a>             }
             {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
             {props.access ?

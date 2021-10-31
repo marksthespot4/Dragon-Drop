@@ -63,9 +63,9 @@ export default (props) => {
       updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
       // setPrevSave(saveData);
     });
-    getPage(props.match.params.id).then(data => {
-      // console.log(data.pagedata);
-    });
+    // getPage(props.match.params.id).then(data => {
+    //   // console.log(data.pagedata);
+    // });
   }
 
   return (
