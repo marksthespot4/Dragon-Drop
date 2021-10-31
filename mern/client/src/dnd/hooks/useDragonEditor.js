@@ -1,9 +1,9 @@
-import {useActions, useCollector, useDnDHelpers, useEditor} from "build-ui"
+import {useActions, useCollector, useDnDHelpers, useEditor} from "build-ui";
 import {useEffect, useRef, useState} from "react";
 import {convertToPx, extractNumber, extractUnits} from "../utils/units";
-import usePositioner from "./usePositioner";
+//import usePositioner from "./usePositioner";
 
-const editor = params => {
+const useDragonEditor = params => {
     const id = params.id;
     const actions = useActions();
     const editor = useEditor(params);
@@ -98,7 +98,7 @@ const editor = params => {
             withProperties: {position: 'absolute'}
         });
         const positionLeft = ((dropPosition.left - dragPosition.left) / conversionLeft);
-        const conversionTop = converToPx('1' + unitsTop, {
+        const conversionTop = convertToPx('1' + unitsTop, {
             target: event.currentTarget,
             targetAsContainer: true,
             rectProperty: 'top',
@@ -153,13 +153,13 @@ const editor = params => {
         if (directions.x < 0) {
             const valueLeft = extractNumber(leftProp) || left;
             const unitsLeft = extractUnits(leftProp) || 'px';
-            const normalizedWidth = convertToPx('1' + unitsLeft, {
+            const normalizedLeft = convertToPx('1' + unitsLeft, {
                 target: builder.current,
                 targetAsContainer: false,
                 rectProperty: 'left',
                 withProperties: {position: 'absolute'}
             });
-            const expansionLeft = expand.x / normalizedWidth;
+            const expansionLeft = expand.x / normalizedLeft;
             const shiftLeft = Number.parseFloat(valueLeft + expansionLeft * -1);
 
             const propsLeft = {
@@ -207,7 +207,7 @@ const editor = params => {
             const propsTop = {
                 style: {top: heightResizePx >= 40
                 ? shiftTop + unitsTop
-                : ((top + hieght - 40) / normalizedTop) + unitsTop}
+                : ((top + height - 40) / normalizedTop) + unitsTop}
             };
             actions.timeBatched.triggerUpdate({
                 id: id,
@@ -219,6 +219,30 @@ const editor = params => {
     const handleResizeEnd = () => {
         positionOnResizeStart.current = null;
         sizeOnResizeStart.current = null;
+    }
+
+    function handleSelect(event) {
+        const noShift = !event.shiftKey;
+        if (noShift) {
+            actions.unrecorded.triggerListIndexClear({
+                name: 'selected'
+            });
+        }
+        actions.unrecorded.triggerIndexAdd({
+            id: id,
+            name: 'panel'
+        });
+        actions.unrecorded.triggerListIndexToggle({
+            id: id,
+            name: 'selected'
+        });
+        event.stopPropagation();
+    }
+    function handleDeselect() {
+        actions.unrecorded.triggerListIndexRemove({
+            id: id,
+            name: 'selected'
+        });
     }
 
     function handleDelete(event) {
@@ -238,21 +262,21 @@ const editor = params => {
         });
         event.stopPropagation();
     }
+    const dndHandlers = {
+        handlePositionedDragStart: handlePositionedDragStart,
+        handlePositionDrop: editor.toDnDHandler(handlePositionDrop),
+    }
     const handlers = {
-        handlePositionedDragStart,
         handleResize,
         handleResizeStart,
         handleResizeEnd,
         handleSelect,
         handleDeselect,
-        handlePaintDropZone,
-        handleEraseDropZone,
         handleToggleFix,
         handleDelete,
     }
     const demoBag = {
-        builder: builder,
-        hovering: hovering,
+        builder: builder
     }
     const collectBag = {
         node: collected.node,
@@ -261,6 +285,7 @@ const editor = params => {
     }
     const bag = {
         ...editor,
+        ...dndHandlers,
         ...handlers,
         ...demoBag,
         ...collectBag,
@@ -268,4 +293,4 @@ const editor = params => {
     return bag;
 }
 
-export default editor;
+export default useDragonEditor;
