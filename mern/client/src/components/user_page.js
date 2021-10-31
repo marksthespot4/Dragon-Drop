@@ -73,9 +73,6 @@ export default class UserPage extends Component {
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
         this.duplicatePage = this.duplicatePage.bind(this);
-        // this.setPage = this.setPage.bind(this);
-        // this.sendPageId = this.sendPageId.bind(this);
-
     }
 
     componentDidMount() {
@@ -85,12 +82,6 @@ export default class UserPage extends Component {
             });
         });
     }
-
-    // sendPageId(id) {
-    //     console.log(id);
-    //     this.props.setPage(id);
-    //     console.log(this.props.page);
-    // }
 
     createNewPage() {
         getUser(this.state.currentUser).then(data =>{
@@ -164,9 +155,6 @@ export default class UserPage extends Component {
                     key={current._id}
                     pub={current.pub}
                     access={this.state.currentUser === this.state.searchUser}
-                    // access={true}
-                    // setPage = {this.props.setPage}
-                    // sendPageId = {this.sendPageId}
                 />
             );
         });
