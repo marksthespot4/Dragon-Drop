@@ -3,20 +3,18 @@ import { Button } from "@material-ui/core";
 
 const ImageTools = () => {
     const tools = useTools();
-    const handleDragTool = event => {
-        event.stopPropagation();
+    const handleDragTool = () => {
 
         const imageProps = {
-            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
-            height: event.target.style.height,
-            width: event.target.style.width
+            src: "https://pngimg.com/uploads/mario/mario_PNG55.png",
+            height: 200,
+            width: 200
         }
         const image = item({
             type: 'Image',
             props: imageProps
         })
         const data = branch(image);
-        console.log(image.props)
         tools.triggerDragStart({
             data: data
         });

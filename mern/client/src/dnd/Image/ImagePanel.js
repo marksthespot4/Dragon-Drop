@@ -1,56 +1,33 @@
 import { TextField, Button } from "@material-ui/core";
 import { DeleteIcon } from "@material-ui/icons/Delete"
-import {useEditor, useActions} from "build-ui"
+import {useActions} from "build-ui"
+import useDragonEditor from "../hooks/useDragonEditor"
 import { useState } from "react";
 
 const ImagePanel = ({id}) => {
-    const editor = useEditor({
+    const actions = useActions();
+    const editor = useDragonEditor({
         id: id
     })
-    const actions = useActions()
-    const [textField, setTextField] = useState(editor.props.imageUrl)
-    const [imageHeight, setImageHeight] = useState(editor.props.imageHeight)
-    const [imageWidth, setImageWidth] = useState(editor.props.imageWidth)
-
+    
+    const [source, setSource] = useState(editor.props.src);
     const handleSourceChange = () => {
         console.log(textField)
         actions.timeBatched.triggerUpdate({
             id: id,
-            props: {imageUrl: textField, imageHeight: imageHeight, imageWidth: imageWidth}
+            props: {src: source}
         });
     }
 
-    const handleWidthChange = (event) => {
-        var x = event.target.value
-        var y = editor.props.style.height
-
-        editor.props.style.transform = 'translate(' + x + 'px,' + y + 'px)'
-        setImageWidth(x)
-    }
-
-    const handleHeightChange = (event) => {
-        var x = editor.props.style.height
-        var y = event.target.value
-
-        editor.props.style.transform =  'translate(' + x + 'px,' + y + 'px)'
-        setImageHeight(y)
+    const handleChange = event => {
+        setSource(event.target.value);
     }
 
     return <div>
         <TextField
             name = 'imageUrl'
-            value = {textField}
-            onChange={(event) => {setTextField(event.target.value)}} 
-            />
-        <TextField
-            name = 'imageWidth'
-            value = {imageWidth}
-            onChange={(event) => {handleWidthChange(event)}}
-            />
-        <TextField
-            name = 'imageHeight'
-            value = {imageHeight}
-            onChange={(event) => {handleHeightChange(event)}}
+            value = {source}
+            onChange={handleChange}
             />
         <Button onClick={handleSourceChange} variant="contained"> Upload new image </Button>
 

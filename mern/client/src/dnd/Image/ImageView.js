@@ -1,29 +1,30 @@
-import {DnDBuilder, useEditor} from "build-ui";
-import { Image } from "./Image";
+import {DnDBuilder, DnDBuilderHOC, useEditor} from "build-ui";
+import Resizable from "../resizable/Resizable";
+import useDragonEditor from "../hooks/useDragonEditor"
+import Image from "./Image";
+
+const BuilderImage = DnDBuilderHOC(Image);
 
 const ImageView = ({
     id,
     ...props
 }) => {
-    const handleButton = event => {
-        event.stopPropagation();
-    }
-    const editor = useEditor({
-        id: id
+    const editor = useDragonEditor({
+        id: id,
     });
-    const {
-        handlePanel,
-        handleDragStart,
-        handleDragEnd,
-    } = editor;
-    return <DnDBuilder
-        onClick = {handlePanel}
-        onDragStart = {handleDragStart}
-        onDragEnd = {handleDragEnd}
+
+    return <BuilderImage
+        onClick = {editor.handleSelect}
+        onDragStart = {editor.handlePositionedDragStart}
+        onDragEnd = {editor.handleDragEnd}
         draggable = {true}
-    >
-        <Image {...props} />
-    </DnDBuilder>
+        isResizing = {editor.indexes.selected}
+        onResizeStart = {editor.handleResizeStart}
+        onResize = {editor.handleResize}
+        onResizeEnd = {editor.handleResizeEnd}
+        ref = {editor.builder}
+        {...props}
+    />
 }
 
 export default ImageView;
