@@ -1,7 +1,7 @@
 import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
 
-const TopBar = () => {
+const TopBar = (props) => {
     const builder = useBuilder();
     const {
         canUndo,
@@ -11,7 +11,12 @@ const TopBar = () => {
         json,
         loadTree
     } = builder;
+    if(props.prevSave != null) {
+        loadTree(props.prevSave);
+        console.log(props.prevSave);
+    }
     const handleSave = () => {
+        props.save(json());
         console.log(json());
     }
     return <div>
@@ -20,6 +25,9 @@ const TopBar = () => {
         </Button>
         <Button disabled = {!canRedo} onClick = {handleRedo}>
             Redo
+        </Button>
+        <Button onClick={() => {handleSave()}}>
+            save
         </Button>
     </div>
 }

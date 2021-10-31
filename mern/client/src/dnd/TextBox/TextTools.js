@@ -12,7 +12,8 @@ const TextTools = () => {
             mainText: 'Insert body text',
             textBold: false,
             textItalicize: false,
-            textUnderline: false
+            textUnderline: false,
+            color: "#000000"
         }
 
         const text = item({
@@ -32,7 +33,7 @@ const TextTools = () => {
         draggable = {true}
         
     >
-        <Button>Text </Button>
+        <Button>Text</Button>
     </DnDBuilder>
     
 }
