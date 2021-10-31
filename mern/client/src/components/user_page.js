@@ -31,7 +31,7 @@ const Page = (props) => (
             }
             {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
-
+            {props.access ?
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,13 +40,16 @@ const Page = (props) => (
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a className="dropdown-item" href="/create-page">Edit</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
-                    <li><a className="dropdown-item" href="#">Duplicate</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.duplicatePage(props.page.pagename, props.page.pagedata, props.page.pub, props.page.pagepreview)}}>Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
-            <SwitchButton id = {props.page._id}>
+            :
+            <div></div>
+            }
+            <SwitchButton id={props.page._id} disabled={!props.access} >
             </SwitchButton>
         </div>
     </div>
@@ -73,9 +76,7 @@ export default class UserPage extends Component {
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
-        // this.setPage = this.setPage.bind(this);
-        // this.sendPageId = this.sendPageId.bind(this);
-
+        this.duplicatePage = this.duplicatePage.bind(this);
     }
 
     componentDidMount() {
@@ -86,12 +87,6 @@ export default class UserPage extends Component {
         });
     }
 
-    // sendPageId(id) {
-    //     console.log(id);
-    //     this.props.setPage(id);
-    //     console.log(this.props.page);
-    // }
-
     createNewPage() {
         getUser(this.state.currentUser).then(data =>{
             if(data.pagecount >= 5) {
@@ -100,7 +95,7 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", null, example);
+                uploadPage(this.state.currentUser, "New Page", null, true, example);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],
@@ -114,6 +109,25 @@ export default class UserPage extends Component {
         // history.push("/create-page/:id");
     }
 
+    duplicatePage(pagename, pagedata, pub, pagepreview) {
+        console.log(pagename, pagedata, pub, pagepreview);
+        getUser(this.state.currentUser).then(data =>{
+            if(data.pagecount >= 5) {
+                alert("Cannot create new page: Reached maximum page count!");
+                return;
+            }
+            else {
+                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                uploadPage(this.state.currentUser, pagename, pagedata, pub, pagepreview);
+                getPages().then(data=>{
+                    this.setState({
+                        pages: data || [],
+                    });
+                });
+                this.render();
+            }
+        });        
+    }
     renamePage(id) {
         if(this.state.currentUser === this.state.searchUser) {
             console.log(id);
@@ -143,13 +157,11 @@ export default class UserPage extends Component {
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
                     renamePage = {this.renamePage}
+                    duplicatePage = {this.duplicatePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
                     access={this.state.currentUser === this.state.searchUser}
-                    // access={true}
-                    // setPage = {this.props.setPage}
-                    // sendPageId = {this.sendPageId}
                 />
             );
         });
@@ -189,6 +201,7 @@ export default class UserPage extends Component {
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
                     renamePage = {this.renamePage}
+                    duplicatePage = {this.duplicatePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}

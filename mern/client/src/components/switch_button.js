@@ -40,7 +40,7 @@ export default class SwitchButton extends Component {
     return (
       <label>
         <span>public</span>
-        <Switch onChange={this.handleChange} checked={this.state.checked} />
+        <Switch onChange={this.handleChange} disabled={this.props.disabled} checked={this.state.checked} />
       </label>
     );
   }
