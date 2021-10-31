@@ -9,12 +9,11 @@ const CounterPanel = ({id}) => {
     })
 
     return <div>
-        <TextField
+        <input
             name = 'counterText'
             value = {editor.props.counterText}
             onChange = {editor.handleUpdate}
         />
-        <Color/>
         <Button variant="contained"> Delete </Button>
 
     </div>
