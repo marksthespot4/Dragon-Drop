@@ -43,7 +43,7 @@ const TextPanel = ({id}) => {
     }
     const handleColorChange = () => {     
         // setColor(e.target.value);
-        console.log("color clicked")
+        // console.log("color clicked")
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {color: color}
