@@ -11,13 +11,22 @@ const ImagePanel = ({id}) => {
     const actions = useActions()
     const [textField, setTextField] = useState(editor.props.imageUrl)
     const [link, setLink] = useState(editor.props.extLink)
+    const [fileUrl, setFileUrl] = useState(null)
 
     const handleSourceChange = () => {
-        console.log(textField)
-        console.log(link)
+
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {imageUrl: textField, extLink:link}
+        });
+    }
+
+    const imageFileUpload = event => {
+        const url = URL.createObjectURL(event.target.files[0])
+        console.log(url)
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {imageUrl: url, extLink:link}
         });
     }
 
@@ -30,7 +39,11 @@ const ImagePanel = ({id}) => {
             onChange={(event) => {setTextField(event.target.value)}} 
             />
         <Button onClick={handleSourceChange} variant="contained"> Upload new image </Button>
-            <span>External Link URL</span>
+        <Button component="label" variant="contained"> 
+            Upload from local
+            <input type="file" onChange={imageFileUpload} hidden/>
+        </Button>
+        <span>External Link URL</span>
         <TextField
             name = 'extLink'
             value = {link}

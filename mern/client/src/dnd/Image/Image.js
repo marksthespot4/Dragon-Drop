@@ -29,7 +29,7 @@ export const Image = ({imageUrl, extLink}) => {
       }}
     >
         <div>
-            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className="image" alt={"Enter valid url idiot"}/>
+            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className="image" alt={"Invalid input"}/>
         </div>
         </Rnd>
 }
