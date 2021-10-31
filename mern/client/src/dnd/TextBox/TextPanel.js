@@ -2,7 +2,8 @@ import {useEditor, useActions} from "build-ui"
 import Color from "../color";
 import React from "react";
 import { useState, useEffect } from "react";
-import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
+
 
 const TextPanel = ({id}) => {
     const editor = useEditor({
@@ -43,7 +44,6 @@ const TextPanel = ({id}) => {
     }
     const handleColorChange = () => {     
         // setColor(e.target.value);
-        // console.log("color clicked")
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {color: color}
@@ -52,7 +52,7 @@ const TextPanel = ({id}) => {
 
     useEffect(() => { 
         handleColorChange();
-      }, [color])
+    }, [color])
 
     return <div>
         <input
@@ -62,9 +62,9 @@ const TextPanel = ({id}) => {
             value = {editor.props.mainText}
             onChange = {editor.handleUpdate}
         />
-        <button onClick={handleBoldChange} variant="contained"><strong>B</strong></button>
-        <button onClick={handleItalicizeChange} variant="contained"><em>I</em></button>
-        <button onClick={handleUnderlineChange} variant="contained"><u>U</u></button>
+        <Button size="sm" onClick={handleBoldChange} variant="contained"><strong>B</strong></Button>
+        <Button size="sm" onClick={handleItalicizeChange} variant="contained"><em>I</em></Button>
+        <Button size="sm" onClick={handleUnderlineChange} variant="contained"><u>U</u></Button>
         <Color setColor={setColor}/>
         {/* <div>{color}</div> */}
     </div>

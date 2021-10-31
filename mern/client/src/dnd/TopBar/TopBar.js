@@ -27,7 +27,7 @@ const TopBar = (props) => {
             Redo
         </Button>
         <Button onClick={() => {handleSave()}}>
-            save
+            Save
         </Button>
     </div>
 }
