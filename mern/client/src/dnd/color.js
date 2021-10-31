@@ -11,8 +11,13 @@ export default class Color extends Component {
     constructor() {
         super();
         this.state = {
-            color:""
+            color:"#000000"
         };
+    }
+
+    handleColorChange(e) {
+        this.props.setColor(e.target.value);
+        this.setState({color: e.target.value});
     }
 
     render() {
@@ -29,9 +34,9 @@ export default class Color extends Component {
                     defaultValue={this.state.color}
                     title="Choose your color"
                     value={this.state.color}
-                    onChange={(e) => this.setState({ color: e.target.value })}
+                    onChange={(e) => this.handleColorChange(e)}
                 />
-                <div style={{color:this.state.color}}>sdfghjkyhtgr</div>
+                {/* <div style={{color:this.state.color}}>sdfghjkyhtgr</div> */}
             </div>
         )
     }

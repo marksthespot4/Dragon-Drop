@@ -13,7 +13,7 @@ const TextTools = () => {
             textBold: false,
             textItalicize: false,
             textUnderline: false,
-            color: "#ffff"
+            color: "#000000"
         }
 
         const text = item({

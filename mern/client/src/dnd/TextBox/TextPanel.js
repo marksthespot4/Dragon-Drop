@@ -59,7 +59,8 @@ const TextPanel = ({id}) => {
         <button onClick={handleBoldChange} variant="contained"><strong>B</strong></button>
         <button onClick={handleItalicizeChange} variant="contained"><em>I</em></button>
         <button onClick={handleUnderlineChange} variant="contained"><u>U</u></button>
-        <Color onChange={handleColorChange}/>
+        <Color onChange={handleColorChange} setColor={setColor}/>
+        <div>{color}</div>
         {/* <Form.Control
             type="color"
             id="exampleColorInput"

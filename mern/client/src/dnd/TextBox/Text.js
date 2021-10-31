@@ -23,7 +23,7 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here",
                 fontWeight: textBold ? "bold" : "normal",
                 fontStyle: textItalicize ? "italic" : "normal",
                 textDecorationLine: textUnderline ? "underline" : "none",
-                color: color
+                color: "#db6666"
             }}
         >
          <span className="ptag"> 
