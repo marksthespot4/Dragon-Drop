@@ -11,8 +11,13 @@ import {
 //Register User
 export const registerUser = (userData, history) => dispatch => {
     axios
-        .post("/routes/users/register", userData)
-        .then(res => history.push("/create-page")) //redirect to create page after register
+        .post("http://localhost:5000/routes/users/register", userData)
+        .then(res =>
+        {
+            console.log(userData.email);
+            console.log(userData.password);
+            history.push("/create-page")
+        }) //redirect to create page after register
         .catch (err =>
          dispatch({
              type: GET_ERRORS,
@@ -25,7 +30,7 @@ export const registerUser = (userData, history) => dispatch => {
 //Login User and get token
 export const loginUser = userData => dispatch => {
     axios
-        .post("/routes/users/login", userData)
+        .post("http://localhost:5000/routes/users/login", userData)
         .then(res=> {
             //save to local storage
 
@@ -59,7 +64,7 @@ export const setCurrentUser = decoded => {
 
 //user loading
 export const setUserLoading = () => {
-    console.log
+    console.log("USER LOADING");
     return {
         type: USER_LOADING
     };
@@ -73,4 +78,5 @@ export const logoutUser = () => dispatch => {
     setAuthToken(false);
     //set current user to empty object, setting isAuthenticated to false.
     dispatch(setCurrentUser({}));
+    console.log("USER LOGGED OUT");
 };
