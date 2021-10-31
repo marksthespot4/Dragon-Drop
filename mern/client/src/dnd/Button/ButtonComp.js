@@ -16,7 +16,10 @@ export const ButtonComp = ({buttonText = "Click Me!", backColor, textColor
       }}
     >
         <div>
-        <Button onClick={() => buttonFunction()} variant="contained" style={{
+        <Button 
+            onClick={() => buttonFunction()} 
+            variant="contained" 
+            style={{
                 "background-color": backColor,
                 color: textColor
             }}>
