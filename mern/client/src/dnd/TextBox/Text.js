@@ -8,6 +8,7 @@ import { Button } from "@material-ui/core";
 export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline, color}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
+    // const [color, setColor] = useState("#000000");
 
     return <Rnd default={{
         x: 0,
@@ -22,11 +23,14 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here",
             style={{
                 fontWeight: textBold ? "bold" : "normal",
                 fontStyle: textItalicize ? "italic" : "normal",
-                textDecorationLine: textUnderline ? "underline" : "none",
-                color: "#db6666"
+                textDecorationLine: textUnderline ? "underline" : "none"
             }}
         >
-         <span className="ptag"> 
+         <span className="ptag" 
+            style={{
+                color: color
+            }}
+        > 
             {mainText}
          </span>
         </div> 
