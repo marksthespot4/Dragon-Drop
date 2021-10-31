@@ -30,7 +30,7 @@ const Page = (props) => (
             }
             {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
-
+            {props.access ?
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,7 +45,10 @@ const Page = (props) => (
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
-            <SwitchButton id = {props.page._id}>
+            :
+            <div></div>
+            }
+            <SwitchButton id={props.page._id} disabled={!props.access} >
             </SwitchButton>
         </div>
     </div>
