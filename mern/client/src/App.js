@@ -65,7 +65,6 @@ const App = () => {
           <UserPage email={email}/>
           <Footer/>
         </Route>
-        </Route>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
