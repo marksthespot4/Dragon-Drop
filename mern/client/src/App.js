@@ -11,7 +11,7 @@ import RecordList from "./components/recordList";
 import MyBuilder from "./dnd/MyBuilder"
 import UserPage from "./components/user_page";
 import Home from "./components/home";
-import Save from "./components/save";
+import Save from "./components/saveTest";
 import View from "./components/view"
 import Header from "./components/header";
 import Footer from "./components/footer";

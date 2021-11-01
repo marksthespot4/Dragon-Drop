@@ -13,8 +13,6 @@ export default (props) => {
 
     return (
         <div>
-            {/* <button onClick={()=> {}}>
-            </button> */}
             <img width={"100%"} src={preview} alt={""} />
         </div>
         );
