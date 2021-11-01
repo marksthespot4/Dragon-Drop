@@ -14,6 +14,7 @@ import Save from "./components/save";
 import View from "./components/view"
 import Header from "./components/header";
 import Footer from "./components/footer";
+import MyBuilder from "./dnd/MyBuilder"
 
 const App = () => {
 
