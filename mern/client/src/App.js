@@ -35,6 +35,7 @@ const App = () => {
         <Route path="/create">
           <Create />
         </Route>
+        <Route path="/test" component={MyBuilder}/>
         <Route path="/user_page">
           <UserPage email={email}/>
           <Footer/>
