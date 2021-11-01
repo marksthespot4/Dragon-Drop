@@ -50,7 +50,10 @@ const ShapePanel = ({id}) => {
                 Circle
             </option>
         </Select>
-        <Color setColor={setColor}/> 
+        <div>
+            Color
+            <Color setColor={setColor}/> 
+        </div>
 
     </div>
 }

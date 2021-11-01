@@ -14,7 +14,6 @@ const ButtonPanel = ({id}) => {
     const [backColor, setBackColor] = useState(editor.props.backColor);
     const [textColor, setTextColor] = useState(editor.props.textColor);
 
-
     const handleBackColorChange = () => {     
         // setColor(e.target.value);
         actions.timeBatched.triggerUpdate({

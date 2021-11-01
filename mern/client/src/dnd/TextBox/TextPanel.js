@@ -65,7 +65,10 @@ const TextPanel = ({id}) => {
         <Button size="sm" onClick={handleBoldChange} variant="contained"><strong>B</strong></Button>
         <Button size="sm" onClick={handleItalicizeChange} variant="contained"><em>I</em></Button>
         <Button size="sm" onClick={handleUnderlineChange} variant="contained"><u>U</u></Button>
-        <Color setColor={setColor}/>
+        <div>
+            Color
+            <Color setColor={setColor}/>
+        </div>
         {/* <div>{color}</div> */}
     </div>
 }
