@@ -21,8 +21,6 @@ import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
-//import TopBar from './TopBar';
-
 
 const MyBuilder = (props) => {
 
@@ -74,8 +72,8 @@ const MyBuilder = (props) => {
                     xs = {12} 
                     md = {9} 
                     >
-                    <div style={{overflow:"scroll"}}>
-                        <Workspace class="view-window" view={view}/>
+                    <div className="box">
+                        <Workspace class="view-window" view={view} style={{overflow:"scroll"}}/>
                     </div>
                 </Grid>
 
