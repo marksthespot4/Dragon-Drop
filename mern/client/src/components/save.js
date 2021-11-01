@@ -23,6 +23,14 @@ export default (props) => {
   const [saveData, setSaveData] = useState(null);
   const [prevSave, setPrevSave] = useState();
 
+
+  // useEffect(() => {
+  //   getPage(props.match.params.id).then(data => {
+  //       console.log(data.pagedata);
+  //       setPrevSave(data.pagedata);
+  //   }); 
+  // }, []);  
+
   // Why does the following code cause an infinite render???
   // useEffect(() => {
   //   // GET request using axios inside useEffect React hook
@@ -110,7 +118,7 @@ export default (props) => {
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
         {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
-        <MyBuilder save={getImage} prevSave={prevSave}/>
+        <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
     </div>
   );
