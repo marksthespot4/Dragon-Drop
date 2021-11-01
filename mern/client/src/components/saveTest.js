@@ -22,7 +22,7 @@ export default (props) => {
 
   useEffect(() => {
     getPage(props.match.params.id).then(data => {
-        console.log(props.prevSave);
+        console.log(data.pagedata);
         setPrevSave(data.pagedata);
     }); 
   }, []);  
@@ -30,7 +30,7 @@ export default (props) => {
   const getImage = (currTree) => {
     setSaveData(currTree);
   }
-  
+
   useEffect(() => {
     save();
   }, [saveData]);  

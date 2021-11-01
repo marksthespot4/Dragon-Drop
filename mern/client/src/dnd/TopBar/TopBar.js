@@ -4,6 +4,8 @@ import { useEffect } from "react";
 
 
 const TopBar = (props) => {
+
+    console.log(props.prevSave);
     const builder = useBuilder();
     const {
         canUndo,
@@ -16,14 +18,10 @@ const TopBar = (props) => {
 
 
     useEffect(() => {
+        console.log("helppppppp im stuck in here!! anybody out there?");
         load();
       }, []);  
-    // console.log(props.prevSave);
-    
-    // if(props.prevSave != null) {
-    //     loadTree(props.prevSave);
-    //     console.log(props.prevSave);
-    // }
+
     const load = () => {
         console.log(props.prevSave);
         if(props.prevSave != null) {  
