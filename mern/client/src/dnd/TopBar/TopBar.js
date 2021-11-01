@@ -1,11 +1,10 @@
 import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
 import { useEffect } from "react";
+import { getPage } from "./../../components/page";
 
 
 const TopBar = (props) => {
-
-    console.log(props.prevSave);
     const builder = useBuilder();
     const {
         canUndo,
@@ -17,15 +16,18 @@ const TopBar = (props) => {
     } = builder;
 
 
+    console.log(props.id);
     useEffect(() => {
         console.log("helppppppp im stuck in here!! anybody out there?");
-        load();
+        getPage(props.id).then(data => {
+            console.log(data.pagedata);
+            load(data.pagedata);
+        }); 
       }, []);  
 
-    const load = () => {
-        console.log(props.prevSave);
-        if(props.prevSave != null) {  
-            loadTree(props.prevSave);
+    const load = (saveData) => {
+        if(saveData != null) {  
+            loadTree(saveData);
         }
     }
     const handleSave = () => {

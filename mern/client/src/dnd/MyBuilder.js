@@ -58,7 +58,7 @@ const MyBuilder = (props) => {
                     xs = {12} 
                     md = {6}
                 >
-                    <TopBar save={props.save} prevSave={props.prevSave}/>
+                    <TopBar save={props.save} id={props.id}/>
                 </Grid>
 
             </Grid>

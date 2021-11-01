@@ -20,12 +20,12 @@ export default (props) => {
   const [saveData, setSaveData] = useState(null);
   const [prevSave, setPrevSave] = useState();
 
-  useEffect(() => {
-    getPage(props.match.params.id).then(data => {
-        console.log(data.pagedata);
-        setPrevSave(data.pagedata);
-    }); 
-  }, []);  
+//   useEffect(() => {
+//     getPage(props.match.params.id).then(data => {
+//         console.log(data.pagedata);
+//         setPrevSave(data.pagedata);
+//     }); 
+//   }, []);  
 
   const getImage = (currTree) => {
     setSaveData(currTree);
@@ -44,7 +44,7 @@ export default (props) => {
 
   return (
     <div>
-        <MyBuilder save={getImage} prevSave={prevSave}/>
+        <MyBuilder save={getImage} id={props.match.params.id}/>
     </div>
   );
 };

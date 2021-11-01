@@ -118,7 +118,7 @@ export default (props) => {
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
         {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
-        <MyBuilder save={getImage} prevSave={prevSave}/>
+        <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
     </div>
   );
