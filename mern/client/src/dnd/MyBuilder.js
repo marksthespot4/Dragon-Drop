@@ -23,7 +23,10 @@ import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
 //import TopBar from './TopBar';
 
-const MyBuilder = () => {
+
+const MyBuilder = (props) => {
+
+
     const view = {
         Text: TextView,
         Image: ImageView,
@@ -45,39 +48,41 @@ const MyBuilder = () => {
             <Grid 
                 container = {true} 
             >
-            <Grid 
-                container = {true} 
-                item = {true} 
-            >
-
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {6}
+                    md = {12}
                 >
-                    <TopBar/>
-                </Grid>
-
-            </Grid>
-            
+                    <TopBar save={props.save} prevSave={props.prevSave}/>
+                </Grid>   
             <Grid 
                 item = {true} 
                 container = {true} 
                 xs = {12} 
+                // justify="center"
             >
-
+                
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {9} 
+                    md = {3} 
                     >
-                    <Workspace class="view-window" view={view}/>
+                </Grid>
+                <Grid 
+                    item = {true} 
+                    xs = {12} 
+                    md = {6} 
+                    >
+                    <div style={{overflow:"scroll"}}>
+                        <Workspace class="view-window" view={view}/>
+                    </div>
                 </Grid>
 
-                <Grid 
+                <Grid
                     item = {true} 
                     xs = {12}
                     md = {3}
+                    justify="flex-end"
                 >
                     <Grid item>
                         <Sidebar/>

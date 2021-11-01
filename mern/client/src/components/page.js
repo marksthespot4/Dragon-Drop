@@ -1,11 +1,11 @@
 import axios from "axios";
 
-export function uploadPage(user, pagename, pagedata, pagepreview) {
+export function uploadPage(user, pagename, pagedata, pub, pagepreview) {
     const newPage = {
         user: user,
         pagename: pagename,
         pagedata: pagedata,
-        pub: true,
+        pub: pub,
         pagepreview: pagepreview,
     };
 
@@ -35,6 +35,7 @@ export function getPage(id) {
                 console.log(error);
             });
 }
+
 
 // export function getPagesByUser(user) {
 //     return axios
