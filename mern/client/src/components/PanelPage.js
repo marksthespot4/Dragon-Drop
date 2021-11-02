@@ -1,6 +1,7 @@
 import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardHeader, MDBBtn, MDBNav, MDBNavItem, MDBNavLink,
 MDBContainer } from "mdbreact";
+//yarn add mdbreact
 
 const PanelPage = () => {
 return (

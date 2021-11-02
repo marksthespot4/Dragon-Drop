@@ -42,7 +42,6 @@ const App = () => {
           <UserPage email={email}/>
           <Footer/>
         </Route>
-<<<<<<< HEAD
         <Route path="/edit_page">
           <Edit/>
         </Route>
@@ -50,8 +49,6 @@ const App = () => {
           <Settings/>
           <Footer/>
         </Route>
-=======
->>>>>>> 2b59a99016a631689eab520efc551020586b59a7
     </div>
   );
 };

@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import PanelPage from "./PanelPage";
 import SideBar from "./SideBar";
+import TabsDefault from "./TabsDefault";
 
 const items = [
-  { name: 'home', label: 'Home' },
-  { name: 'sales', label: 'Sales' },
-  { name: 'orders', label: 'Orders' },
-  { name: 'billing', label: 'Billing' },
-  { name: 'settings', label: 'Settings' }]
+  { name: 'email', label: 'Change email' },
+  { name: 'password', label: 'Change password' },
+  { name: 'privacy', label: 'Change privacy' }]
 
 function Settings() {  
     return (      
       <div className="Settings">
-         <SideBar items={items}/>
+         <TabsDefault/>
       </div>
      
     );
   }
 
   export default Settings;
+//  <SideBar items={items}/> 
+// was line 13

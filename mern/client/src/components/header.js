@@ -10,7 +10,6 @@ import { NavLink } from "react-router-dom";
 class Header extends Component {
     constructor(props) {
         super(props);
-
     }
 
 render() {
@@ -21,7 +20,6 @@ render() {
                     <NavLink className="navbar-brand" to="/">
                         <img className="logo" src={logo} className="img-fluid" style={{ width: 50, margin:2}}/>
                     </NavLink>
-
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <NavLink className="navbar-brand" to="/user_page">
