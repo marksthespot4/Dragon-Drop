@@ -6,9 +6,8 @@ const ImageTools = () => {
     const handleDragTool = () => {
 
         const imageProps = {
-            src: "https://pngimg.com/uploads/mario/mario_PNG55.png",
-            height: 200,
-            width: 200
+            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
+            extLink: "https://youtube.com"
         }
         const image = item({
             type: 'Image',

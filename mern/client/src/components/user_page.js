@@ -4,10 +4,11 @@ import "bootstrap/dist/css/bootstrap.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import "../CSS/user_page.css"
 import 'bootstrap/js/dist/dropdown';
-import example from "../imgs/example_1.png"
+import example from "../imgs/white.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+
 
 import Button from 'react-bootstrap/Button';
 
@@ -16,14 +17,22 @@ import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
 
-
 const Page = (props) => (
-    <div className="col">
+    <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
             <h2>{props.page.pagename}</h2>
-            <a href={"/create-page"}>
-                <img src={props.page.pagepreview} className="yellowOutline float-start"/>
-            </a>
+            
+            {props.access ? 
+            <a href={"/create-page/" + props.page._id}>
+                <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            </a> 
+            : 
+            <a href={"/view-page/" + props.page._id}>
+                <img src={props.page.pagepreview} className="yellowOutline float-start" />
+            </a>             }
+            {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
+
+            {props.access ?
             <div className="dropdown float-start">
                 <i className="bi bi-gear btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button"
                    data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,14 +40,17 @@ const Page = (props) => (
                 </i>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a className="dropdown-item" href="/create-page">Edit</a></li>
-                    <li><a className="dropdown-item" href="#">Rename</a></li>
-                    <li><a className="dropdown-item" href="#">Duplicate</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.duplicatePage(props.page.pagename, props.page.pagedata, props.page.pub, props.page.pagepreview)}}>Duplicate</a></li>
                     <li><a className="dropdown-item" href="#">Download</a></li>
                     <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
-            <SwitchButton id = {props.page._id}>
+            :
+            <div></div>
+            }
+            <SwitchButton id={props.page._id} disabled={!props.access} >
             </SwitchButton>
         </div>
     </div>
@@ -61,12 +73,11 @@ export default class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        console.log(email);
-
         this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
-
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
+        this.renamePage = this.renamePage.bind(this);
+        this.duplicatePage = this.duplicatePage.bind(this);
     }
 
     componentDidMount() {
@@ -78,7 +89,6 @@ export default class UserPage extends Component {
     }
 
     createNewPage() {
-
         getUser(this.state.currentUser).then(data =>{
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
@@ -86,7 +96,30 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", "DATA", example);
+                uploadPage(this.state.currentUser, "New Page", null, true, example);
+                getPages().then(data=>{
+                    this.setState({
+                        pages: data || [],
+                    });
+                });
+                this.render();
+            }
+        });
+
+        // const history = useHistory();
+        // history.push("/create-page/:id");
+    }
+
+    duplicatePage(pagename, pagedata, pub, pagepreview) {
+        console.log(pagename, pagedata, pub, pagepreview);
+        getUser(this.state.currentUser).then(data =>{
+            if(data.pagecount >= 5) {
+                alert("Cannot create new page: Reached maximum page count!");
+                return;
+            }
+            else {
+                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                uploadPage(this.state.currentUser, pagename, pagedata, pub, pagepreview);
                 getPages().then(data=>{
                     this.setState({
                         pages: data || [],
@@ -96,15 +129,26 @@ export default class UserPage extends Component {
             }
         });        
     }
-
+    renamePage(id) {
+        if(this.state.currentUser === this.state.searchUser) {
+            console.log(id);
+            getPage(id).then(data=>{
+                updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+            });
+        }
+    } 
     deleteMyPage(id) {
-        getUser(this.state.currentUser).then(data =>{
-            updateUser(data.email, data.password, data.pagecount - 1, data._id);
-        });        
-        deletePage(id);
-        this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
-        });
-        this.render();
+        console.log(this.state.currentUser);
+        console.log(this.state.searchUser);
+        if(this.state.currentUser === this.state.searchUser) {
+            getUser(this.state.currentUser).then(data =>{
+                updateUser(data.email, data.password, data.pagecount - 1, data._id);
+            });        
+            deletePage(id);
+            this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
+            });
+            this.render();
+        }
     }
 
     userProjects() {
@@ -113,9 +157,12 @@ export default class UserPage extends Component {
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
+                    duplicatePage = {this.duplicatePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
                 />
             );
         });
@@ -130,11 +177,13 @@ export default class UserPage extends Component {
         //TODO: currently, when a user searches, they don't pull from data base. So if a diff user has added a new page/deleted a new page
         //since the last DB call, the search will not have the most recent data.
         //the following code fixes it, but also runs constantly and breaks the code.
+
         // getPages().then(data=>{
         //     this.setState({
         //         pages: data || [],
         //     });
         // });
+        
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
@@ -147,14 +196,21 @@ export default class UserPage extends Component {
             }
         })
         .map((current) => {
-            console.log(current.pagepreview);
+            // console.log(current.pagepreview);
             return (
                 <Page
                     page={current}
                     deleteMyPage = {this.deleteMyPage}
+                    renamePage = {this.renamePage}
+                    duplicatePage = {this.duplicatePage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
+                    access={this.state.currentUser === this.state.searchUser}
+                    // access={true}
+                    // setPage = {this.props.setPage}
+                    // sendPageId = {this.sendPageId}
+
                 />
             );
         });
@@ -167,31 +223,40 @@ export default class UserPage extends Component {
 
     render() {
         return (
-            <div>
+            <div class="UserPage">
                 <div>
                     <input
                         id="userQuery"
-                        type="text"
+                        type="search"
                         placeholder="Search user"
                     >
                     </input>
                     {/* <Button onClick={() => this.userSearch()}> */}
-                    <Button onClick={() => this.setUser()}>
+                    <Button variant="secondary" onClick={() => this.setUser()}>
                         Search User
                     </Button>
-                    <Button onClick={() => this.backToAccount()}>
+                    <Button variant="secondary" onClick={() => this.backToAccount()}>
+                        {/* <i class="bi bi-arrow-counterclockwise"></i> */}
                         Back to Account
                     </Button>
                 </div>
+                {this.state.currentUser === this.state.searchUser ?
                 <div style={{margin: 20}}>
 
-                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink>
+                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink>
                     <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
+                    
+                    {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>
+                        Test
+                    </div> */}
 
                     {/* <NavLink to="/create-page">
                         <Button onClick={() => this.createNewPage()}> Generate & Create</Button>
                     </NavLink> */}
                 </div>
+                :
+                <div></div>
+                }
 
                 <div className="container-fluid">
                     <ToastContainer

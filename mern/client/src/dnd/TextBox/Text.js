@@ -1,13 +1,14 @@
 import { useState } from "react"
+import React from "react";
 import RichTextMenu from "./RichTextMenu";
 import "../styles/TextStyles.css"
 import interact from "interactjs"
 import { dragMoveListener, resizeMoveListener } from "../hooks/interact-funcitons";
 
-export const Text = ({titleText = "Insert title", mainText = "Insert text here"}) => {
+export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline, color}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
-    //alert(JSON.stringify(mainText));
+    // const [color, setColor] = useState("#000000");
 
     interact('.ptag')
     .draggable({
@@ -43,9 +44,23 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here"}
 
     return <div>
         <p>
-        <span className="ptag"> {mainText} </span>
+        <div
+            style={{
+                fontWeight: textBold ? "bold" : "normal",
+                fontStyle: textItalicize ? "italic" : "normal",
+                textDecorationLine: textUnderline ? "underline" : "none"
+            }}
+        >
+         <span className="ptag" 
+            style={{
+                color: color
+            }}
+        > 
+            {mainText}
+         </span>
+        </div> 
         </p>
-        <RichTextMenu input = {JSON.stringify(mainText)}>
-        </RichTextMenu>
+        
     </div>
 }
+//<button onClick={() => setBoldFont(!boldFont)}><strong>B</strong></button>

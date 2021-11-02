@@ -1,6 +1,10 @@
+/* .UserPage {
+    margin-bottom: 300px;
+} */
+
 .yellowOutline {
     border-style: solid;
-    border-color: goldenrod;
+    border-color: #ffc220;
     border-width: thick;
     max-height: 20rem;
     max-width: 80%;
@@ -13,8 +17,4 @@
 .show>.dropdown-menu {
     display: block;
     position: absolute;
-}
-
-.imgSize {
-
 }

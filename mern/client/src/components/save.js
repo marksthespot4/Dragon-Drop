@@ -9,15 +9,49 @@ import 'react-toastify/dist/ReactToastify.css';
 import MyBuilder from "../dnd/MyBuilder";
 
 import { updatePage, getPage } from "./page";
+import { write } from "@popperjs/core";
 
-export default () => {
+
+import axios from "axios";
+
+export default (props) => {
+  // console.log(props.match.params.id);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
   const [imgFromDB, setDBImage] = useState(image);
+  const [saveData, setSaveData] = useState(null);
+  const [prevSave, setPrevSave] = useState();
 
-  const getImage = () => {
+
+  // useEffect(() => {
+  //   getPage(props.match.params.id).then(data => {
+  //       console.log(data.pagedata);
+  //       setPrevSave(data.pagedata);
+  //   }); 
+  // }, []);  
+
+  // Why does the following code cause an infinite render???
+  // useEffect(() => {
+  //   // GET request using axios inside useEffect React hook
+  //   axios.get("http://localhost:5000/record/pages/" + props.match.params.id)
+  //       .then(response => setPrevSave(response.data.pagedata));
+
+  // }, []);
+
+  // useEffect(() => {
+  //   getPage(props.match.params.id).then(data => {
+  //     console.log(data.pagedata);
+  //     // setPrevSave("test");
+  //     // setPrevSave(data.pagedata);
+  //   }); 
+  // }, []);
+
+  const getImage = (currTree) => {
+    // console.log(props.match.params.id);
+    setSaveData(currTree);
     takeScreenShot(ref.current);
+    notify();
   }
 
   useEffect(() => { 
@@ -31,21 +65,26 @@ export default () => {
   }
 
   const save = () => {
-    // console.log("save");
-    getPage("6175d066ef536819e5ae8ea0").then(data => {
-      updatePage(data.user, data.pagename, data.pub, data.pagedata, image, data._id);
+    //saving MyBuilder in DB saves null
+    // console.log(MyBuilder);
+    getPage(props.match.params.id).then(data => {
+      updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
+      // setPrevSave(saveData);
     });
+    // getPage(props.match.params.id).then(data => {
+    //   // console.log(data.pagedata);
+    // });
   }
 
   return (
     <div>
       <div align="right">
-          <Button onClick={() => {
+          {/* <Button onClick={() => {
             getImage();
-            notify();
+            // notify();
             }}>
             Save
-          </Button>
+          </Button> */}
           {/* <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
             <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
           </Toast> */}
@@ -78,7 +117,8 @@ export default () => {
 
         {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
 
-        <MyBuilder></MyBuilder>
+        {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
+        <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
     </div>
   );
