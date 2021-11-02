@@ -10,7 +10,7 @@ const ImagePanel = ({id}) => {
     const editor = useDragonEditor({
         id: id
     })
-    const actions = useActions()
+
     const [textField, setTextField] = useState(editor.props.imageUrl)
     const [link, setLink] = useState(editor.props.extLink)
     const [fileUrl, setFileUrl] = useState(null)
@@ -33,7 +33,7 @@ const ImagePanel = ({id}) => {
     }
 
     const handleChange = event => {
-        setSource(event.target.value);
+        setFileUrl(event.target.value);
     }
 
     return <div>
@@ -41,7 +41,7 @@ const ImagePanel = ({id}) => {
             <span>Image Url</span>
         <TextField
             name = 'imageUrl'
-            value = {source}
+            value = {fileUrl}
             onChange={handleChange}
             />
         <Button onClick={handleSourceChange} variant="contained"> Upload new image </Button>

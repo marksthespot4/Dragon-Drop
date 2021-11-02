@@ -1,7 +1,7 @@
 import React from 'react';
 import Anchor from './Anchor';
 import Resizable from './Resizable';
-import useStyle from './style/ResizeAnchors';
+import useStyle from './ResizeAnchorsStyle';
 
 const ResizeAnchors = props => {
     const classes = useStyle();

@@ -1,7 +1,7 @@
 import {DnDBuilder, DnDBuilderHOC, useEditor} from "build-ui";
 import Resizable from "../resizable/Resizable";
 import useDragonEditor from "../hooks/useDragonEditor"
-import Image from "./Image";
+import {Image} from "./Image";
 
 const BuilderImage = DnDBuilderHOC(Image);
 

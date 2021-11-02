@@ -100,7 +100,7 @@ const Anchor = ({
             );
             document.removeEventListener('touchend', handleResizeEnd);
         }
-    }, [resize, finishResize, epxandsDown, expandsRight, cancelClickOnEnd]);
+    }, [resize, finishResize, expandsDown, expandsRight, cancelClickOnEnd]);
 
     const startResize = useCallback(event => {
         const startX = (
@@ -157,4 +157,4 @@ const Anchor = ({
         />
 }
 
-export default Anchour;
+export default Anchor;
