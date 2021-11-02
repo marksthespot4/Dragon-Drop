@@ -1,5 +1,8 @@
 import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
+import { useEffect } from "react";
+import { getPage } from "./../../components/page";
+
 
 const TopBar = (props) => {
     const builder = useBuilder();
@@ -11,15 +14,30 @@ const TopBar = (props) => {
         json,
         loadTree
     } = builder;
-    if(props.prevSave != null) {
-        loadTree(props.prevSave);
-        console.log(props.prevSave);
+
+
+    console.log(props.id);
+    useEffect(() => {
+        console.log("helppppppp im stuck in here!! anybody out there?");
+        getPage(props.id).then(data => {
+            console.log(data.pagedata);
+            load(data.pagedata);
+        }); 
+      }, []);  
+
+    const load = (saveData) => {
+        if(saveData != null) {  
+            loadTree(saveData);
+        }
     }
     const handleSave = () => {
         props.save(json());
         console.log(json());
     }
     return <div>
+        {/* <button onClick = {load}>
+            Load
+        </button> */}
         <Button disabled = {!canUndo} onClick = {handleUndo}>
             Undo
         </Button>
