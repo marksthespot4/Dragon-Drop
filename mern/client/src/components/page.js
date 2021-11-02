@@ -10,7 +10,7 @@ export function uploadPage(user, pagename, pagedata, pub, pagepreview) {
     };
 
     axios
-        .post("http://localhost:5000/record/pages/add", newPage)
+        .post("http://localhost:5000/routes/pages/add", newPage)
         .then((res) => console.log(res.data));
 }
 
@@ -24,12 +24,12 @@ export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
     };
 
     axios
-        .post("http://localhost:5000/update/pages/" + id, updatedPage)
+        .post("http://localhost:5000/routes/pages/" + id, updatedPage)
         .then((res) => console.log(res.data));
 }
 
 export function getPage(id) {
-    return axios.get("http://localhost:5000/record/pages/" + id)
+    return axios.get("http://localhost:5000/routes/pages/get/" + id)
             .then(res => res.data)
             .catch(function (error) {
                 console.log(error);
@@ -47,14 +47,14 @@ export function getPage(id) {
 // }
 
 export function deletePage(id) {
-    axios.delete("http://localhost:5000/delete/pages/" + id).then((response) => {
+    axios.delete("http://localhost:5000/routes/pages/delete/" + id).then((response) => {
         console.log(response.data);
     });
 }
 
 export function getPages() {
     return axios
-        .get("http://localhost:5000/record/pages")
+        .get("http://localhost:5000/routes/pages/all")
         .then(response => response.data)
         .catch(function (error) {
             console.log(error);

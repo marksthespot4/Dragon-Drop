@@ -16,20 +16,17 @@ app.use(cors());
 //https://stackoverflow.com/questions/52166434/how-to-get-mongoclient-object-from-mongoose
 //use dis to figure out how to get mongoclient (page) to our mongoose connection (user).
 
+const dbo = require("./db/conn2");
 //const dbo = require("./db/conn");
-const db = require("./db/keys").mongoURI;
+//const db = require("./db/keys").mongoURI;
 app.use(
     bodyParser.urlencoded ({
       extended: false
     })
 );
 app.use(bodyParser.json());
-mongoose.connect(
-    db,
-    {useNewUrlParser: true}
 
-).then(()=> console.log("MongoDB successfully connected"))
-    .catch(err=>console.log(err));
+
 
 app.use(passport.initialize());
 
@@ -39,7 +36,10 @@ app.use("/routes/users", users);
 app.use("/routes/pages", pageRoutes);
 
 const port = process.env.PORT || 5000;
-app.listen(port, ()=> console.log('Server running on port ${port}!'));
+app.listen(port, ()=> {
+    dbo.connectToDb();
+    console.log('Server running on port 5000!')
+});
 // app.listen(port, () => {
 //   // perform a database connection when server starts
 //   dbo.connectToServer(function (err) {

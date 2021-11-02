@@ -19,7 +19,7 @@ export function updateUser(email, password, pagecount, id) {
         pagecount: pagecount,
     }
     axios
-        .post("http://localhost:5000/update/users/" + id, updatedUser)
+        .post("http://localhost:5000/routes/users/update/" + email, updatedUser)
         .then((res) => console.log(res.data));
 }
 
@@ -32,7 +32,7 @@ export function getUserID(id) {
 }
 
 export function getUser(email) {
-    return axios.get("http://localhost:5000/record/users/email/" + email.toLowerCase())
+    return axios.get("http://localhost:5000/routes/users/get/" + email.toLowerCase())
         .then(res => res.data)
         .catch(function (error) {
             console.log(error);

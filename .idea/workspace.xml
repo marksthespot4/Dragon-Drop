@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="some refactoring to be able to use mongoClient instead of mongoose for pages.">
-      <change afterPath="$PROJECT_DIR$/mern/server/db/conn2.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/db/conn2.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/conn2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -335,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635726352937</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="some refactoring to be able to use mongoClient instead of mongoose for pages.">
+      <created>1635729534231</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1635729534231</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

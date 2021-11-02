@@ -36,6 +36,38 @@ router.post("/register", (req, res) =>
     })
 });
 
+//get a single user.
+router.get("/get/:email", (req, res) =>
+{
+    User.findOne({email: req.params.email}).then(user => {
+        if (user) {
+            res.json(user);
+        }
+        else {
+            return res.status(404).json({emailnotfound: "Email not found."});
+        }
+    })
+});
+
+//update user.
+router.post("/update/:email", (req, res) =>
+{
+    User.findOne({email: req.params.email}).then(user => {
+        if (!user) {
+            return res.status(404).json({emailnotfound: "Email not found."});
+        }
+        else {
+            user.email = req.body.email.toLowerCase();
+            user.password = req.body.password;
+            user.pagecount = req.body.pagecount;
+            user.save()
+                .then(user => res.json(user))
+                .catch(err => console.log(err));
+        }
+    })
+})
+
+
 // @route POST api/users/login
 // @desc Login user and return JWT Token
 // @access public
