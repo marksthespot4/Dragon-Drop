@@ -2,6 +2,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 mongoose.promise = Promise
 
+/* Mark's comments
+The user schema!
+Helps define how a user should look.
+Mongoose uses these schema's as MODELS, as exported below.
+ */
 // Define userSchema
 const userSchema = new Schema({
     email: {

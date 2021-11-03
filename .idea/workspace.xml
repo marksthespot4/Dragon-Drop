@@ -4,17 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="DID ALL THE PAGE AND USER STUFF">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="made all the functionality work with my calls.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/actions/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/types.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/PrivateRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/reducers/errorReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/reducers/errorReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/utils/setAuthToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/utils/setAuthToken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/db/conn.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/conn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/db/conn2.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/conn2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/server/db/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/record.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/record.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635828551563</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="made all the functionality work with my calls.">
+      <created>1635910723367</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1635910723367</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +394,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added dependency to page.js" />
     <MESSAGE value="fixed dependency" />
     <MESSAGE value="xml files" />
     <MESSAGE value="Added a generate button to the page." />
@@ -399,6 +418,7 @@
     <MESSAGE value="fixed merge error" />
     <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
     <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
-    <option name="LAST_COMMIT_MESSAGE" value="DID ALL THE PAGE AND USER STUFF" />
+    <MESSAGE value="made all the functionality work with my calls." />
+    <option name="LAST_COMMIT_MESSAGE" value="made all the functionality work with my calls." />
   </component>
 </project>

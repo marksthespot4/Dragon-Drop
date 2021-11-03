@@ -9,11 +9,21 @@ import CloseButton from "react-bootstrap/CloseButton";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+
+/* MARK'S COMMENTS
+This file is the "logout" page, called dashboard because
+that's what it was called in the tutorial.
+Currently it is just a copy of the homepage with the login / register
+replaced with a logout button.
+The logoutUser function is imported from REDUX using the
+"export default connect", which connects this component to the
+redux store. There, it maps the state of "auth" and "err" to props that
+our Dashboard can use, as seen on line 32.
+ */
 class Dashboard extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
 

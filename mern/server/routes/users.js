@@ -7,6 +7,13 @@ const keys = require("../db/keys")
 const User = require("../db/user.js")
 const ObjectId = require("mongodb").ObjectId;
 
+
+/* Mark's comments
+This is where user routes are made. Due to using mongoose models for users,
+you'll have to do research to figure out the appropriate calls when doing
+CRUD operations. Good luck!
+ */
+
 // @route POST /routes/users/register
 // @desc Register user
 // @access Public

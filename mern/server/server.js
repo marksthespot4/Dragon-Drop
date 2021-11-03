@@ -16,6 +16,13 @@ app.use(cors());
 //https://stackoverflow.com/questions/52166434/how-to-get-mongoclient-object-from-mongoose
 //use dis to figure out how to get mongoclient (page) to our mongoose connection (user).
 
+/*
+Mark's comments
+
+Server's changed a bit. We now use conn2.
+now uses passport.
+
+ */
 const dbo = require("./db/conn2");
 //const dbo = require("./db/conn");
 //const db = require("./db/keys").mongoURI;
