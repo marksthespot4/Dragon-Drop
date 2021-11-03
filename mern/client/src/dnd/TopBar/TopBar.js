@@ -18,7 +18,6 @@ const TopBar = (props) => {
 
     console.log(props.id);
     useEffect(() => {
-        console.log("helppppppp im stuck in here!! anybody out there?");
         getPage(props.id).then(data => {
             console.log(data.pagedata);
             load(data.pagedata);
