@@ -39,7 +39,7 @@ if(localStorage.jwtToken) {
     //logout user
     store.dispatch(logoutUser());
 
-    window.location.href = "./home";
+    window.location.href = "/";
   }
 }
 
@@ -64,7 +64,7 @@ const App = () => {
         </Route>
         <Route path="/test" component={MyBuilder}/>
         <Route path="/user_page">
-          <UserPage email={email}/>
+          <UserPage email = {email}/>
           <Footer/>
         </Route>
         <Switch>

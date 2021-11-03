@@ -106,6 +106,8 @@ class UserPage extends Component {
 
     createNewPage() {
         getUser(this.state.currentUser).then(data =>{
+            console.log(this.state.currentUser);
+            console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
                 return;
@@ -192,8 +194,7 @@ class UserPage extends Component {
         //     });
         // });
 
-        console.log(this.state.pages);
-        console.log(this.state.currentUser);
+        //console.log(this.state.currentUser);
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {

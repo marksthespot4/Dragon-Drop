@@ -9,9 +9,9 @@ export function uploadPage(user, pagename, pagedata, pub, pagepreview) {
         pagepreview: pagepreview,
     };
 
-    axios
+    return axios
         .post("http://localhost:5000/routes/pages/add", newPage)
-        .then((res) => console.log(res.data));
+        .then((res) => res.data);
 }
 
 export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
@@ -24,7 +24,7 @@ export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
     };
 
     axios
-        .post("http://localhost:5000/routes/pages/" + id, updatedPage)
+        .post("http://localhost:5000/routes/pages/update/" + id, updatedPage)
         .then((res) => console.log(res.data));
 }
 

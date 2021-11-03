@@ -12,7 +12,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    pageCount: {
+    pagecount: {
         type: Number,
         required: true,
         default: 0

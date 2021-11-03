@@ -16,7 +16,7 @@ export const registerUser = (userData, history) => dispatch => {
         {
             console.log(userData.email);
             console.log(userData.password);
-            history.push("/create-page")
+            history.push("/")
         }) //redirect to create page after register
         .catch (err =>
          dispatch({
@@ -41,6 +41,7 @@ export const loginUser = userData => dispatch => {
             setAuthToken(token);
             //decode token to get user data
             const decoded = jwt_decode(token);
+            console.log(decoded);
             //set current user
             dispatch(setCurrentUser(decoded));
         })

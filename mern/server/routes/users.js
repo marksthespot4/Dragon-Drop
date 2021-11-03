@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const keys = require("../db/keys")
 
 const User = require("../db/user.js")
+const ObjectId = require("mongodb").ObjectId;
 
 // @route POST /routes/users/register
 // @desc Register user
@@ -37,7 +38,7 @@ router.post("/register", (req, res) =>
 });
 
 //get a single user.
-router.get("/get/:email", (req, res) =>
+router.get("/get/email/:email", (req, res) =>
 {
     User.findOne({email: req.params.email}).then(user => {
         if (user) {
@@ -47,6 +48,16 @@ router.get("/get/:email", (req, res) =>
             return res.status(404).json({emailnotfound: "Email not found."});
         }
     })
+});
+
+//get a single user.
+router.get("/get/id/:id", (req, res) => {
+    let myquery =  ObjectId( req.params.id );
+    User.findById(myquery, function (err, user) {
+        if (err) throw err;
+        res.json(user);
+        console.log(user);
+    });
 });
 
 //update user.
