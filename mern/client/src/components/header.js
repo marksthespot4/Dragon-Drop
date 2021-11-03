@@ -32,6 +32,10 @@ render() {
                         </NavLink>
 
                         <Navbar.Toggle onClick={() => this.onClick()}/>
+                        {localStorage.getItem( 'jwtToken' ) === null
+                        ?
+                        <></>
+                        :
                         <Navbar.Collapse className="justify-content-end">
                             <NavLink className="navbar-brand" to="/user_page">
                                 My Projects
@@ -41,6 +45,7 @@ render() {
                                 <i className="user bi bi-person-circle"></i>
                             </NavLink>
                         </Navbar.Collapse>
+                        }
                     </Navbar>
                 </div>
             </div>

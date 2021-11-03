@@ -75,7 +75,11 @@ const App = () => {
           <Footer/>
         </Route>
         <Switch>
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} footer={Footer}/>
+          {/* <PrivateRoute exact path="/dashboard">
+            <Dashboard/>
+            <Footer/>
+          </PrivateRoute> */}
         </Switch>
       </Provider>
     </div>
