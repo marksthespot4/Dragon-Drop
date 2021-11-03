@@ -3,11 +3,6 @@ import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
-/* Mark's comments
-Privateroute is a way to protect routes.
-This will route either to the component within, or redirect to /,
-depending on whether the user is logged in.
- */
 
 const PrivateRoute = ({ component: Component, footer: Footer, auth, ...rest}) =>
     (
