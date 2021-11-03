@@ -1,0 +1,5 @@
+.section {
+    height: 100vh;
+    width: inherit;
+    overflow: scroll
+}

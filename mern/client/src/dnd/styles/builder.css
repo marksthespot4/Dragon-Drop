@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: row;
 }
-.view-window {
-    height: 500px;
-    width: 500px;
-}
+/* .edit-window {
+    height: 100vh;
+    width: inherit;
+    overflow: scroll
+} */
+
 
 .col {
     padding-top: 10px;

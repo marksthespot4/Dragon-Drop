@@ -56,39 +56,29 @@ const MyBuilder = (props) => {
                     <TopBar save={props.save} id={props.id}/>
                 </Grid>   
             <Grid 
-                item = {true} 
                 container = {true} 
-                xs = {12} 
+                xs = {12}
+                
                 // justify="center"
             >
-                
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {3} 
-                    >
+                {/* <div class="edit-container">
+                    <Sidebar/>
+                    <Workspace view={view}/>
+                </div> */}
+    
+                <Grid
+                    item = {true}
+                    xs={2}
+                >
+                    <Sidebar/>
                 </Grid>
                 <Grid 
                     item = {true} 
-                    xs = {12} 
-                    md = {6} 
+                    xs={10}
                     >
-                    <div style={{overflow:"scroll"}}>
-                        <Workspace class="view-window" view={view}/>
-                    </div>
+                    <Workspace view={view}/>
                 </Grid>
 
-                <Grid
-                    item = {true} 
-                    xs = {12}
-                    md = {3}
-                    justify="flex-end"
-                >
-                    <Grid item>
-                        <Sidebar/>
-                    </Grid>
-                   
-                </Grid>
 
             </Grid>
             

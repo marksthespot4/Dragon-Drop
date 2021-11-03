@@ -61,7 +61,7 @@ const Sidebar = () => {
           {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
-          <div className="logotext">
+          <div className="logotext center">
             {/* small and big change using menucollapse state */}
             <p>{menuCollapse ? "" : "Components"}</p>
           </div>
@@ -75,12 +75,16 @@ const Sidebar = () => {
           </div>
           </SidebarHeader>
           <SidebarContent>
-          <CounterTools />
+          <div className='center'>
+            <CounterTools />
             <TextTools />
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
-            {menuCollapse? (""):(<Panel view={panel} />)}
+            <br/><br/>
+          </div>
+          
+          {menuCollapse? (""):(<Panel view={panel} />)}
             
           </SidebarContent>
 
