@@ -19,36 +19,9 @@ export default (props) => {
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
   const [image, takeScreenShot] = useScreenshot();
-  const [imgFromDB, setDBImage] = useState(image);
   const [saveData, setSaveData] = useState(null);
-  const [prevSave, setPrevSave] = useState();
-
-
-  // useEffect(() => {
-  //   getPage(props.match.params.id).then(data => {
-  //       console.log(data.pagedata);
-  //       setPrevSave(data.pagedata);
-  //   }); 
-  // }, []);  
-
-  // Why does the following code cause an infinite render???
-  // useEffect(() => {
-  //   // GET request using axios inside useEffect React hook
-  //   axios.get("http://localhost:5000/record/pages/" + props.match.params.id)
-  //       .then(response => setPrevSave(response.data.pagedata));
-
-  // }, []);
-
-  // useEffect(() => {
-  //   getPage(props.match.params.id).then(data => {
-  //     console.log(data.pagedata);
-  //     // setPrevSave("test");
-  //     // setPrevSave(data.pagedata);
-  //   }); 
-  // }, []);
 
   const getImage = (currTree) => {
-    // console.log(props.match.params.id);
     setSaveData(currTree);
     takeScreenShot(ref.current);
     notify();
@@ -58,36 +31,21 @@ export default (props) => {
     save();
   }, [image])
 
-  // const [show, setShow] = useState(false);
-
   const notify = () => { 
     toast.success('Project Saved');
   }
 
   const save = () => {
-    //saving MyBuilder in DB saves null
-    // console.log(MyBuilder);
-    getPage(props.match.params.id).then(data => {
-      updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
-      // setPrevSave(saveData);
-    });
-    // getPage(props.match.params.id).then(data => {
-    //   // console.log(data.pagedata);
-    // });
+    if(saveData != null) {
+      getPage(props.match.params.id).then(data => {
+        updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
+      });
+    }
   }
 
   return (
     <div>
       <div align="right">
-          {/* <Button onClick={() => {
-            getImage();
-            // notify();
-            }}>
-            Save
-          </Button> */}
-          {/* <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-            <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-          </Toast> */}
           <ToastContainer 
             position="top-center"
             autoClose={3000}
@@ -99,12 +57,8 @@ export default (props) => {
             draggable
             pauseOnHover
           />
-        {/* <label style={{ display: "block", margin: "10px 0" }}>
-          Width:
-          <input value={width} onChange={e => setWidth(e.target.value)} />
-        </label> */}
       </div>
-      <img width={width} src={image} alt={""} />
+      {/* <img width={width} src={image} alt={""} /> */}
       {/* <div>{image}</div> */}
       <div
         ref={ref}
@@ -114,10 +68,6 @@ export default (props) => {
           marginTop: "20px"
         }}
       >
-
-        {/* CONTENT THAT WILL BE SCREENSHOTTED, PUT PROJECT VIEW PAGE HERE */}
-
-        {/* <MyBuilder setTreeS={setTreeS}></MyBuilder> */}
         <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
     </div>

@@ -17,7 +17,7 @@ export const Text = ({titleText = "Insert title", mainText = "Insert text here",
         height: 200,
       }}
     ><div>
-        <h2 className="heading"> Hi this is some text </h2>
+        {/* <h2 className="heading"> Hi this is some text </h2> */}
         <p>
         <div
             style={{
