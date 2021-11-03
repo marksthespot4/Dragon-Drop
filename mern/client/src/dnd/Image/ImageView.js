@@ -1,9 +1,10 @@
 import {DnDBuilder, DnDBuilderHOC, useEditor} from "build-ui";
 import Resizable from "../resizable/Resizable";
 import useDragonEditor from "../hooks/useDragonEditor"
-import {Image} from "./Image";
+import Image from "./Image";
 
-const BuilderImage = DnDBuilderHOC(Image);
+const ResizableImage = Resizable(Image);
+const BuilderImage = DnDBuilderHOC(ResizableImage);
 
 const ImageView = ({
     id,

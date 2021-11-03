@@ -1,18 +1,31 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import { Button } from "@material-ui/core";
+import useStyle from "./style/ImageTools";
+import clsx from 'clsx';
 
-const ImageTools = () => {
+const ImageTools = ({
+    className,
+    ...rest
+}) => {
+    const classes = useStyle();
+    const classAll = clsx(classes.tool, className);
     const tools = useTools();
     const handleDragTool = () => {
 
+        const imageStyle = {
+            width: 200,
+            height: 200
+        }
+        
         const imageProps = {
             imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
-            extLink: "https://youtube.com"
+            extLink: "https://youtube.com",
+            style: imageStyle
         }
         const image = item({
             type: 'Image',
             props: imageProps
-        })
+        });
         const data = branch(image);
         tools.triggerDragStart({
             data: data
@@ -22,6 +35,8 @@ const ImageTools = () => {
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
+        className = {classAll}
+        {...rest}
     >
         <Button> Image </Button>
     </DnDBuilder>

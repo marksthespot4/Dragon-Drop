@@ -23,7 +23,6 @@ const Anchor = ({
         x: 0,
         y: 0
     });
-    
     useEffect(() => {
         const {
             startX,
@@ -34,7 +33,6 @@ const Anchor = ({
             x: startX,
             y: startY
         }
-
         const getDirections = () => {
             const directionX = (
                 expandsRight === true ? 1 :
@@ -49,7 +47,6 @@ const Anchor = ({
                 y: directionY
             };
         }
-
         const directions = getDirections();
         const handleResize = event => {
             if (!resizing.current) return;
@@ -74,14 +71,12 @@ const Anchor = ({
             batch(() => onResize(event, bag));
             expansion.current = expand;
         }
-
         const handleResizeEnd = event => {
             batch(() => {
                 onResizeEnd(event);
                 finishResize(event);
             });
         }
-
         const handleClickCancel = event => {
             event.stopPropagation();
         }
@@ -90,7 +85,6 @@ const Anchor = ({
         document.addEventListener('mouseup', handleResizeEnd);
         cancelClickOnEnd && document.addEventListener('click', handleClickCancel, {capture: true});
         document.addEventListener('touchend', handleResizeEnd);
-        
         return () => {
             document.removeEventListener('mousemove', handleResize);
             document.removeEventListener('touchmove', handleResize);
@@ -101,7 +95,6 @@ const Anchor = ({
             document.removeEventListener('touchend', handleResizeEnd);
         }
     }, [resize, finishResize, expandsDown, expandsRight, cancelClickOnEnd]);
-
     const startResize = useCallback(event => {
         const startX = (
             isNumber(event.pageX) ? event.pageX : event.touches[0].pageX
@@ -115,7 +108,6 @@ const Anchor = ({
         });
         resizing.current = true;
     }, []);
-
     const finishResize = useCallback(_event => {
         setResize({
             startX: null,

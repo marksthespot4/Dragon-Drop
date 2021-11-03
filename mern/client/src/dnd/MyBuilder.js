@@ -21,6 +21,7 @@ import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
+import BuilderSelector from "./hooks/BuilderSelector";
 //import TopBar from './TopBar';
 
 
