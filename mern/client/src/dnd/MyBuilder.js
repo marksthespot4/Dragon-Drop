@@ -40,47 +40,49 @@ const MyBuilder = (props) => {
             type: 'Section',
         })
     );
-    return ( <div>
+
+    return ( 
+    <div>
         <Builder initialTree={tree}>
 
             <Grid 
                 container = {true} 
             >
+            <Grid 
+                container = {true} 
+                item = {true} 
+            >
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {12}
+                    md = {6}
                 >
-                    <TopBar save={props.save} id={props.id}/>
-                </Grid>   
+                    <TopBar save={props.save} id={props.id} style={"position: sticky;"}/>
+                </Grid>
+
+            </Grid>
+            
             <Grid 
                 item = {true} 
                 container = {true} 
                 xs = {12} 
-                // justify="center"
             >
-                
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {3} 
-                    >
-                </Grid>
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {6} 
+                    md = {9} 
                     >
                     <div className="box">
                         <Workspace class="view-window" view={view} style={{overflow:"scroll"}}/>
                     </div>
                 </Grid>
 
-                <Grid
+                <Grid 
                     item = {true} 
                     xs = {12}
                     md = {3}
-                    justify="flex-end"
                 >
                     <Grid item>
                         <Sidebar/>
