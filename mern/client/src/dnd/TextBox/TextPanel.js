@@ -62,9 +62,9 @@ const TextPanel = ({id}) => {
             value = {editor.props.mainText}
             onChange = {editor.handleUpdate}
         />
-        <Button size="sm" onClick={handleBoldChange} variant="contained"><strong>B</strong></Button>
-        <Button size="sm" onClick={handleItalicizeChange} variant="contained"><em>I</em></Button>
-        <Button size="sm" onClick={handleUnderlineChange} variant="contained"><u>U</u></Button>
+        <Button size="sm" onClick={handleBoldChange}><strong>B</strong></Button>
+        <Button size="sm" onClick={handleItalicizeChange}><em>I</em></Button>
+        <Button size="sm" onClick={handleUnderlineChange}><u>U</u></Button>
         <div>
             Color
             <Color setColor={setColor}/>

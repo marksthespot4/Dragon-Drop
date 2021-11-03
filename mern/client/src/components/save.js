@@ -58,7 +58,7 @@ export default (props) => {
             pauseOnHover
           />
       </div>
-      {/* <img width={width} src={image} alt={""} /> */}
+      <img width={width} src={image} alt={""} />
       {/* <div>{image}</div> */}
       <div
         ref={ref}

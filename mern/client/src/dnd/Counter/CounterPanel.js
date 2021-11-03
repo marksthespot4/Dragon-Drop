@@ -1,7 +1,9 @@
-import { TextField, Button } from "@material-ui/core";
+import { TextField} from "@material-ui/core";
 import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor} from "build-ui"
 import Color from "../color";
+import Button from 'react-bootstrap/Button';
+
 
 const CounterPanel = ({id}) => {
     const editor = useEditor({
@@ -14,7 +16,7 @@ const CounterPanel = ({id}) => {
             value = {editor.props.counterText}
             onChange = {editor.handleUpdate}
         />
-        <Button variant="contained"> Delete </Button>
+        <Button> Delete </Button>
 
     </div>
 }

@@ -1,9 +1,10 @@
-import { TextField, Button} from "@material-ui/core";
+import { TextField} from "@material-ui/core";
 import {Stack} from "@mui/material"
 import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor, useActions} from "build-ui"
 import { useState , useEffect} from "react";
 import Color from "../color";
+import Button from 'react-bootstrap/Button';
 
 const ImagePanel = ({id}) => {
     const editor = useEditor({
@@ -68,8 +69,8 @@ const ImagePanel = ({id}) => {
             value = {textField}
             onChange={(event) => {setTextField(event.target.value)}} 
             />
-        <Button onClick={handleSourceChange} variant="contained"> Upload new image </Button>
-        <Button component="label" variant="contained"> 
+        <Button onClick={handleSourceChange}> Upload new image </Button>
+        <Button component="label"> 
             Upload from local
             <input type="file" onChange={imageFileUpload} hidden/>
         </Button>
