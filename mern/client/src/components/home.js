@@ -21,6 +21,18 @@ import { loginUser} from "../actions/authActions";
 
 import classnames from "classnames";
 
+/* Mark's COMMENTS
+So HOME has now been modified to use redux store. This is shown at the bottom, where
+the redux store for authentication and errors are connected, as well as the
+redux actions for registering and logging in. (mapStateToProps, mapDispatchToProps).
+Now, home will check to see if the auth state is currently set in componentDidMount, and if
+it is, it will redirect to the logout page.
+similarly,upon receiving indication that the auth changed to be set, it will redirect
+to the user_page with componentWillReceiveProps.
+
+The home.proptypes stuff is at the bottom because otherwise react can't tell what
+proptype it is.
+ */
 
 class Home extends Component {
     constructor(props) {

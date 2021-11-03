@@ -1,6 +1,16 @@
 import axios from "axios";
 //import { Component } from "react";
 
+/* Mark's comments
+Since I used a mongoose schema, I remade all the routes in a different file.
+The routes are now in /server/routes/users.js, and those routes
+use Mongoose models. Either way, now the routing call is at
+http://localhost:5000/routes/users/... for any user call.
+I did not translate all these axios calls in since i replaced some,
+but I did update {updateUser, getUserID, getUser} since those are used
+in user_page.
+ */
+
 export function uploadUser(email, password, pagecount) {
     const newuser = {
         email: email.toLowerCase(),

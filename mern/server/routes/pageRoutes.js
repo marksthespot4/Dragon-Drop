@@ -4,6 +4,13 @@ const router = express.Router();
 const dbo = require("../db/conn2");
 const dbString = "myFirstDatabase";
 
+/* Mark's comments
+If you want to make more page routes, this is the place.
+Special note, you'll have to follow my formatting. All the commands should
+be the same as when you made them in record.js, but you need to manipulate the
+db to be db(dbString).
+See lines 19 and 20? That's what you need to do before using it like before.
+ */
 const ObjectId = require("mongodb").ObjectId;
 // shoul equal the return of mongo.connection.getClient(), since thats what we use in record.js
 

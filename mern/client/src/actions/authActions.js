@@ -8,6 +8,14 @@ import {
     USER_LOADING
 } from "./types"
 
+/* MARK's COMMENTS
+So this file is basically like the user.js of our mongoose User schema.
+It contains axios calls that call our express routes, as well as dispatches
+actions to our Redux reducer in order to set our redux state.
+Whenever dispatch is called, it goes to our authReducer or errReducer
+and from there that updates redux.
+
+ */
 //Register User
 export const registerUser = (userData, history) => dispatch => {
     axios

@@ -1,5 +1,9 @@
 import axios from "axios";
 
+/* Mark's comments
+The routes for these are now in /server/routes/pageRoutes.js.
+The routing call has been changed to /routes/pages/...
+ */
 export function uploadPage(user, pagename, pagedata, pub, pagepreview) {
     const newPage = {
         user: user,

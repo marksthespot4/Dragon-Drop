@@ -23,6 +23,13 @@ import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 
+/* Mark's comments
+  This part up here will check our localStorage token
+  and set auth accordingly.
+  Down in the actual app, we use a provider from redux to give our store to
+  every route in the app.
+
+ */
 if(localStorage.jwtToken) {
   //set auth token header auth
   const token = localStorage.jwtToken;

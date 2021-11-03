@@ -20,6 +20,14 @@ import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
 import PropTypes from "prop-types";
 
+
+/* Mark's Comments
+Now the user page uses the authentication feature to ensure it cannot be accessed unless logged in.
+It checks the auth if its authenticated on componentDidMount.
+In home.js there is an explanation of how it does this as well. We are using redux store and
+mapStateToProps, as well as the export connect() at the bottom of user_page.js.
+The rest of the user info is still stored as before, in localStorage as email.
+ */
 const Page = (props) => (
     <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
