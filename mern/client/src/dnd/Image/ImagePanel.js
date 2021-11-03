@@ -2,7 +2,8 @@ import { TextField, Button} from "@material-ui/core";
 import {Stack} from "@mui/material"
 import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor, useActions} from "build-ui"
-import { useState } from "react";
+import { useState , useEffect} from "react";
+import Color from "../color";
 
 const ImagePanel = ({id}) => {
     const editor = useEditor({
@@ -30,6 +31,35 @@ const ImagePanel = ({id}) => {
         });
     }
 
+    // const actions = useActions()
+
+    const [backColor, setBackColor] = useState(editor.props.backColor);
+    const [textColor, setTextColor] = useState(editor.props.textColor);
+
+    const handleBackColorChange = () => {     
+        // setColor(e.target.value);
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {backColor: backColor}
+        });
+    }
+
+    useEffect(() => { 
+        handleBackColorChange();
+    }, [backColor])
+
+    const handleTextColorChange = () => {     
+        // setColor(e.target.value);
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {textColor: textColor}
+        });
+    }
+
+    useEffect(() => { 
+        handleTextColorChange();
+    }, [textColor])
+
     return <div>
         <Stack>
             <span>Image Url</span>
@@ -50,6 +80,13 @@ const ImagePanel = ({id}) => {
             onChange = {(event) => {setLink(event.target.value)}}
             />
         </Stack>
+
+        <div>
+            Background Color
+            <Color setColor={setBackColor}/> 
+            Text Color
+            <Color setColor={setTextColor}/>
+        </div>
 
     </div>
 }

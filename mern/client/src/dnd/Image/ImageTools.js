@@ -8,7 +8,9 @@ const ImageTools = () => {
 
         const imageProps = {
             imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
-            extLink: "https://youtube.com"
+            extLink: "https://youtube.com",
+            backColor: "#0071ce",
+            textColor: "#FFFFFF"
         }
         const image = item({
             type: 'Image',
