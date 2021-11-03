@@ -27,7 +27,7 @@ import Dashboard from "./components/Dashboard";
   This part up here will check our localStorage token
   and set auth accordingly.
   Down in the actual app, we use a provider from redux to give our store to
-  every route in the app.
+  every route in the app. :)
 
  */
 if(localStorage.jwtToken) {

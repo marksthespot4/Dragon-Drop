@@ -10,6 +10,7 @@ const TextTools = () => {
         const TextProps = {
             Title: "Insert Title",
             mainText: 'Insert body text',
+            linkText: "http://google.com",
             textBold: false,
             textItalicize: false,
             textUnderline: false,
