@@ -8,6 +8,7 @@ import example from "../imgs/white.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+import { withRouter} from 'react-router-dom';
 
 
 import Button from 'react-bootstrap/Button';
@@ -60,9 +61,10 @@ const download = () => {
 };
 const delete_notify = () => toast.info('Page Successfully Deleted!');
 
-export default class UserPage extends Component {
+class UserPage extends Component {
 
     constructor(props) {
+        
         super(props);        
         var email;
         if(this.props.email != "") {
@@ -96,18 +98,9 @@ export default class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", null, true, example);
-                getPages().then(data=>{
-                    this.setState({
-                        pages: data || [],
-                    });
-                });
-                this.render();
+                uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
-
-        // const history = useHistory();
-        // history.push("/create-page/:id");
     }
 
     duplicatePage(pagename, pagedata, pub, pagepreview) {
@@ -243,8 +236,8 @@ export default class UserPage extends Component {
                 {this.state.currentUser === this.state.searchUser ?
                 <div style={{margin: 20}}>
 
-                    <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink>
-                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Generate Project</div>
+                    {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink> */}
+                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Create Project</div>
                     
                     {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>
                         Test
@@ -275,3 +268,4 @@ export default class UserPage extends Component {
         );
     }
 }
+export default withRouter(UserPage);
