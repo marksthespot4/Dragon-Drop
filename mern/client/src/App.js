@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 
 // We use Route in order to define the different routes of our application
-import { Route, render } from "react-router-dom";
+import { Route, render, Switch } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import {setCurrentUser, logoutUser} from "./actions/authActions";
+import { Provider } from "react-redux";
+import store from "./store";
 
 // We import all the components we need in our app
 import Navbar from "./components/navbarDD";
@@ -15,15 +20,36 @@ import View from "./components/view"
 import Header from "./components/header";
 import Footer from "./components/footer";
 import MyBuilder from "./dnd/MyBuilder"
+import PrivateRoute from "./components/PrivateRoute";
+import Dashboard from "./components/Dashboard";
+
+if(localStorage.jwtToken) {
+  //set auth token header auth
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Decode token and get user info and exp
+  const decoded = jwt_decode(token);
+  console.log(decoded);
+  //set user and isAuthenticated
+  store.dispatch(setCurrentUser(decoded));
+
+  //check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    //logout user
+    store.dispatch(logoutUser());
+
+    window.location.href = "/";
+  }
+}
 
 const App = () => {
 
   const [email, setEmail] = useState("");
-  // const [page, setPage] = useState("");
-
   document.body.style = 'background: wheat;';
   return (
     <div>
+      <Provider store={store}>
       <Header/>
       {/* <Navbar /> */}
         <Route exact path="/">
@@ -38,9 +64,13 @@ const App = () => {
         </Route>
         <Route path="/test" component={MyBuilder}/>
         <Route path="/user_page">
-          <UserPage email={email}/>
+          <UserPage email = {email}/>
           <Footer/>
         </Route>
+        <Switch>
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        </Switch>
+      </Provider>
     </div>
   );
 };
