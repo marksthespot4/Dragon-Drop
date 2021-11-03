@@ -46,7 +46,7 @@ const App = () => {
           <Edit/>
         </Route>
         <Route path="/settings">
-          <Settings/>
+          <Settings email={email}/>
           <Footer/>
         </Route>
     </div>
