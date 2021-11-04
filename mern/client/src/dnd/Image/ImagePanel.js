@@ -50,6 +50,7 @@ const ImagePanel = ({id}) => {
             onChange = {(event) => {setLink(event.target.value)}}
             />
         </Stack>
+        <Button onClick={handleSourceChange} variant="contained"> Update Link </Button>
 
     </div>
 }
