@@ -15,6 +15,7 @@ const useDragonEditor = params => {
     });
     const builder = useRef();
 
+    const helpers = useDnDHelpers();
     function getDnDPosition(event) {
         const target = event.currentTarget;
         const {
@@ -24,8 +25,8 @@ const useDragonEditor = params => {
 
         const scrollTop = target.scrollTop;
         const scrollLeft = target.scrollLeft;
-        const {getDndEventClientCoords} = helpers;
-        const [clientX, clientY] = getDndEventClientCoords(event);
+        const {getDnDEventClientCoords} = helpers;
+        const [clientX, clientY] = getDnDEventClientCoords(event);
         const position = {
             top: clientY + scrollTop - top,
             left: clientX + scrollLeft - left
@@ -71,7 +72,7 @@ const useDragonEditor = params => {
             heightProp: editor.props.style.height
         });
     }
-    const helpers = useDnDHelpers();
+
     function handlePositionDrop(event, position) {
         editor.handleDrop(event, position);
         const bag = helpers.getDragAndDrop();
@@ -275,7 +276,7 @@ const useDragonEditor = params => {
         handleToggleFix,
         handleDelete,
     }
-    const demoBag = {
+    const dragonBag = {
         builder: builder
     }
     const collectBag = {
@@ -287,7 +288,7 @@ const useDragonEditor = params => {
         ...editor,
         ...dndHandlers,
         ...handlers,
-        ...demoBag,
+        ...dragonBag,
         ...collectBag,
     }
     return bag;

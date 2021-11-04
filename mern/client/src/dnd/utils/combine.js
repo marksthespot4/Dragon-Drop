@@ -1,5 +1,5 @@
 import {isFunction} from "./function";
-import { deepmerge } from "@mui/utils";
+import {deepMerge} from "./object";
 
 function combineStyles(...styles) {
     return function CombineStyles(theme) {
@@ -9,7 +9,7 @@ function combineStyles(...styles) {
             }
             return arg;
         });
-        return outStyles.reduce((acc, val) => deepmerge(acc, val), {});
+        return outStyles.reduce((acc, val) => deepMerge(acc, val), {});
     }
 }
 

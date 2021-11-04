@@ -23,61 +23,66 @@ export const extractUnits = obj => {
 }
 
 export const convertToPx = (
-    measure, options = {}
+    measure, 
+    options = {}
 ) => {
     const {
         target = document,
         targetAsContainer = true,
         rectProperty = 'width',
-        withProperties = {}
+        withProperties = {},
     } = options;
-
     const element = document.createElement('div');
     element.style.visibility = 'hidden';
     element.style.overflow = 'hidden';
-    const appendingToElement = (targetAsContainer ? target : target.parseElement);
+    const appendingToElement = (
+        targetAsContainer 
+        ? target 
+        : target.parentElement
+    );
     appendingToElement.appendChild(element);
-
-    const value = extractNumber(element);
+    const value = extractNumber(measure);
     const units = extractUnits(measure);
-
     const baseline = 10;
     element.style[rectProperty] = baseline + units;
     Object.keys(withProperties).forEach(property => (
         element.style[property] = withProperties[property]
     ));
-
-    const deafultOffsetParentRect = {
+    const defaultOffsetParentRect = {
         left: 0,
         right: 0,
         width: 0,
-        height: 0
+        height: 0,
     };
-
     const calculatedOffsetParentRect = (
-        element.offsetParent && getContentClientRect(element.offsetParent)
+        element.offsetParent && 
+        getContentClientRect(element.offsetParent)
     );
     const offsetParentRect = (
-        calculatedOffsetParentRect || deafultOffsetParentRect
+        calculatedOffsetParentRect ||
+        defaultOffsetParentRect
     );
     const offsetParent = element.offsetParent;
     const offsetParentScroll = {
         top: offsetParent ? offsetParent.scrollTop : 0,
-        left: offsetParent ? offsetParent.scrollLeft : 0,
+        left: offsetParent ? offsetParent.scrollLeft : 0,        
     }
     const elementRect = element.getBoundingClientRect();
     const rect = {
         top: (
-            elementRect.top + offsetParentScroll.top - offsetParentRect.top
+            elementRect.top + 
+            offsetParentScroll.top -
+            offsetParentRect.top
         ),
         left: (
-            elementRect.left + offsetParentScroll.left - offsetParentRect.left
+            elementRect.left + 
+            offsetParentScroll.left - 
+            offsetParentRect.left
         ),
         width: elementRect.width,
-        height: elementRect.height
+        height: elementRect.height,
     };
     const conversion = rect[rectProperty] / baseline;
-
     appendingToElement.removeChild(element);
     return value * conversion;
 }
