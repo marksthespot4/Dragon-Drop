@@ -3,7 +3,8 @@ import Color from "../color";
 import React from "react";
 import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
-
+import Form from 'react-bootstrap/Form'
+import { TextField} from "@material-ui/core";
 
 const TextPanel = ({id}) => {
     const editor = useEditor({
@@ -69,6 +70,12 @@ const TextPanel = ({id}) => {
             Color
             <Color setColor={setColor}/>
         </div>
+        <span>External Url</span>
+        <TextField
+            name = 'linkText'
+            value = {editor.props.linkText}
+            onChange = {editor.handleUpdate}
+        />
         {/* <div>{color}</div> */}
     </div>
 }

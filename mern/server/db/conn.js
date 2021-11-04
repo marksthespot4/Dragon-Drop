@@ -7,6 +7,9 @@ const client = new MongoClient(Db, {
 
 var _db;
 
+/*Mark's comments
+Conn.js is now deprecated due to mongoose connecting differently.
+ */
 module.exports = {
   connectToServer: function (callback) {
     client.connect(function (err, db) {
