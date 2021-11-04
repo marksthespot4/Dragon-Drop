@@ -21,7 +21,6 @@ import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
-//import TopBar from './TopBar';
 
 
 const MyBuilder = (props) => {
@@ -58,13 +57,7 @@ const MyBuilder = (props) => {
             <Grid 
                 container = {true} 
                 xs = {12}
-                
-                // justify="center"
             >
-                {/* <div class="edit-container">
-                    <Sidebar/>
-                    <Workspace view={view}/>
-                </div> */}
     
                 <Grid
                     item = {true}
