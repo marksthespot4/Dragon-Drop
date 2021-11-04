@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button } from "@material-ui/core"
 import "../styles/button.css"
 import interact from "interactjs"
-import { dragMoveListener, resizeMoveListener } from "../hooks/interact-funcitons"
+import { dragMoveListener, resizeMoveListener } from "../../hooks/interact-funcitons"
 
 export const ButtonComp = ({buttonText = "Click Me!"
                         }) => {

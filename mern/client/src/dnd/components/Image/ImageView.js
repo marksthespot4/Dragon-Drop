@@ -1,7 +1,7 @@
 import {DnDBuilder, DnDBuilderHOC, useEditor} from "build-ui";
-import Resizable from "../resizable/Resizable";
-import useDragonEditor from "../hooks/useDragonEditor"
-import useDragonStyler from "../hooks/useDragonStyler"
+import Resizable from "../../resizable/Resizable";
+import useDragonEditor from "../../hooks/useDragonEditor"
+import useDragonStyler from "../../hooks/useDragonStyler"
 import Image from "./Image";
 import useStyle from "./style/ImageView"
 

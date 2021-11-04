@@ -1,6 +1,6 @@
 import {makeStyles} from '@mui/styles';
-import combineStyles from "../../utils/combine";
-import {positionStyles, sizingStyles} from '../../styles/ui';
+import combineStyles from "../../../utils/combine";
+import {positionStyles, sizingStyles} from '../../../styles/ui';
 
 const imageStyles = ({
     image: ({})

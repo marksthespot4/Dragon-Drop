@@ -1,6 +1,6 @@
 import { useState, useRef } from "react"
 import { Button } from "@material-ui/core"
-import Color from "../color";
+import Color from "../../color";
 
 // import { SketchPicker } from 'react-color'
 // import Color from "../color"

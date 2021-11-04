@@ -3,7 +3,7 @@ import React from "react";
 import RichTextMenu from "./RichTextMenu";
 import "../styles/TextStyles.css"
 import interact from "interactjs"
-import { dragMoveListener, resizeMoveListener } from "../hooks/interact-funcitons";
+import { dragMoveListener, resizeMoveListener } from "../../hooks/interact-funcitons";
 
 export const Text = ({titleText = "Insert title", mainText = "Insert text here", textBold, textItalicize, textUnderline, color}) => {
     const [title, setTitle] = useState(titleText);

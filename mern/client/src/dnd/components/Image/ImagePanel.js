@@ -2,7 +2,7 @@ import { TextField, Button} from "@material-ui/core";
 import {Stack} from "@mui/material"
 import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useActions} from "build-ui"
-import useDragonEditor from "../hooks/useDragonEditor"
+import useDragonEditor from "../../hooks/useDragonEditor"
 import { useState } from "react";
 
 const ImagePanel = ({id}) => {
