@@ -2,8 +2,9 @@ import {useEditor, useActions} from "build-ui"
 import Color from "../color";
 import React from "react";
 import { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
-import { TextField, Button} from "@material-ui/core";
+import { TextField} from "@material-ui/core";
 
 const TextPanel = ({id}) => {
     const editor = useEditor({
@@ -44,7 +45,6 @@ const TextPanel = ({id}) => {
     }
     const handleColorChange = () => {     
         // setColor(e.target.value);
-        // console.log("color clicked")
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {color: color}
@@ -53,7 +53,7 @@ const TextPanel = ({id}) => {
 
     useEffect(() => { 
         handleColorChange();
-      }, [color])
+    }, [color])
 
     return <div>
         <input
@@ -63,10 +63,13 @@ const TextPanel = ({id}) => {
             value = {editor.props.mainText}
             onChange = {editor.handleUpdate}
         />
-        <button onClick={handleBoldChange} variant="contained"><strong>B</strong></button>
-        <button onClick={handleItalicizeChange} variant="contained"><em>I</em></button>
-        <button onClick={handleUnderlineChange} variant="contained"><u>U</u></button>
-        <Color setColor={setColor}/>
+        <Button size="sm" onClick={handleBoldChange}><strong>B</strong></Button>
+        <Button size="sm" onClick={handleItalicizeChange}><em>I</em></Button>
+        <Button size="sm" onClick={handleUnderlineChange}><u>U</u></Button>
+        <div>
+            Color
+            <Color setColor={setColor}/>
+        </div>
         <span>External Url</span>
         <TextField
             name = 'linkText'

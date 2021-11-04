@@ -3,7 +3,7 @@ import {makeStyles} from '@mui/styles'
 const useStyle = makeStyles({
     section: ({
         width: 600,
-        height: 400
+        height: 800
     }),
 })
 

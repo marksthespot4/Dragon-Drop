@@ -6,7 +6,9 @@ const ButtonTools = () => {
     const handleDragTool = event => {
         event.stopPropagation();
         const buttonProps = {
-            buttonText: 'Click Me!'
+            buttonText: 'Click Me!',
+            backColor: "#0071ce",
+            textColor: "#FFFFFF"
         }
         const button = item({
             type: 'ButtonComp',

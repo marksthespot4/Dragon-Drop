@@ -21,8 +21,6 @@ import ShapeTools from "./Shape/ShapeTools";
 import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
-//import TopBar from './TopBar';
-
 
 const MyBuilder = (props) => {
 
@@ -42,47 +40,49 @@ const MyBuilder = (props) => {
             type: 'Section',
         })
     );
-    return ( <div>
+
+    return ( 
+    <div>
         <Builder initialTree={tree}>
 
             <Grid 
                 container = {true} 
             >
+            <Grid 
+                container = {true} 
+                item = {true} 
+            >
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {12}
+                    md = {6}
                 >
-                    <TopBar save={props.save} id={props.id}/>
-                </Grid>   
+                    <TopBar save={props.save} id={props.id} style={"position: sticky;"}/>
+                </Grid>
+
+            </Grid>
+            
             <Grid 
                 item = {true} 
                 container = {true} 
                 xs = {12} 
-                // justify="center"
             >
-                
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {3} 
+                    md = {9} 
                     >
-                </Grid>
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {6} 
-                    >
-                    <div style={{overflow:"scroll"}}>
-                        <Workspace class="view-window" view={view}/>
+                    <div className="box">
+                        <Workspace class="view-window" view={view} style={{overflow:"scroll"}}/>
                     </div>
                 </Grid>
 
-                <Grid
+                <Grid 
                     item = {true} 
                     xs = {12}
                     md = {3}
-                    justify="flex-end"
                 >
                     <Grid item>
                         <Sidebar/>

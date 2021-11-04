@@ -10,7 +10,8 @@ const ShapeTools = () => {
             shapeText: 'http://google.com',
             heightProp: 100,
             widthProp: 200,
-            radius: 50
+            radius: 50,
+            color: "#000000"
         }
         const shape = item({
             type: 'Shape',
