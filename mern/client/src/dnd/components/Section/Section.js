@@ -1,22 +1,25 @@
 import {makeStyles} from '@mui/styles'
+import clsx from 'clsx';
+import React from 'react';
+import useStyle from './style/Section'
 
-const useStyle = makeStyles({
-    section: ({
-        width: 600,
-        height: 400
-    }),
-})
-
-const Section = ({
+const Section = React.forwardRef(({
     className,
+    style,
     ...props
-}) => {
-    const classes = useStyle();
-    const classAll = `
-        ${className || ''} 
-        ${classes.section}
-    `;
-    return <div {...props} className = {classAll} />
-}
+}, ref) => {
+    const classes = useStyle(style);
+    const classAll = clsx(
+        className,
+        classes.section,
+        classes.ui,
+        classes.position
+    );
+    return <div
+        className = {classAll}
+        ref = {ref}
+        {...props}
+    />
+});
 
 export default Section;

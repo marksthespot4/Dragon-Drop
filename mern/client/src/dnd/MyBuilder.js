@@ -30,7 +30,7 @@ const MyBuilder = (props) => {
 
     const tree = branch(
         item({
-            type: 'Section',
+            type: 'Canvas',
         })
     );
     return ( <div>
