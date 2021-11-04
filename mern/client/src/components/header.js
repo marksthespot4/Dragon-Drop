@@ -6,11 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import logo from "../imgs/dragonNoText.png";
 import { NavLink } from "react-router-dom";
 
+import Button from 'react-bootstrap/Button';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
+
 
 render() {
     return (

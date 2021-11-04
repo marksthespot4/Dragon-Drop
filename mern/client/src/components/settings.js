@@ -21,7 +21,6 @@ class Settings extends Component {
     else {
         email = localStorage.getItem( 'localEmail' );
     }
-    alert(email);
 }
   render() {
     return (      

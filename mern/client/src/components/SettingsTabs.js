@@ -9,7 +9,7 @@ import { getUser, updateUser } from "./user";
 import { getPages, updatePage } from "./page"
 import { FormControlLabel } from '@mui/material';
 
-class TabsDefault extends Component {
+class SettingsTabs extends Component {
 
     constructor(props) {
         super(props);
@@ -131,7 +131,7 @@ class TabsDefault extends Component {
                             onClick={this.toggle("1")}
                             role="tab"
                             >
-                            <MDBIcon icon="user" /> Change email
+                            <MDBIcon icon="heart" /> Change password
                             </MDBNavLink>
                         </MDBNavItem>
                         <MDBNavItem>
@@ -140,17 +140,6 @@ class TabsDefault extends Component {
                             to="#"
                             active={this.state.activeItem === "2"}
                             onClick={this.toggle("2")}
-                            role="tab"
-                            >
-                            <MDBIcon icon="heart" /> Change password
-                            </MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <MDBNavLink
-                            link
-                            to="#"
-                            active={this.state.activeItem === "3"}
-                            onClick={this.toggle("3")}
                             role="tab"
                             >
                             <MDBIcon icon="envelope" /> Change privacy
@@ -163,18 +152,6 @@ class TabsDefault extends Component {
                 activeItem={this.state.activeItem}
                 >
                 <MDBTabPane tabId="1" role="tabpanel">
-                    <MDBCardBody>
-                    <h6>New Email</h6>
-                    <input
-                        type="email"
-                    />
-                    <h6><br></br>Confirm Email</h6>
-                    <input
-                        type="email"
-                    />
-                    </MDBCardBody>   
-                </MDBTabPane>
-                <MDBTabPane tabId="2" role="tabpanel">
                     <MDBCardBody>
                     <h6>Current Password</h6>
                     <input
@@ -221,7 +198,7 @@ class TabsDefault extends Component {
                     </div>
                     </MDBCardBody>
                 </MDBTabPane>
-                <MDBTabPane tabId="3" role="tabpanel">
+                <MDBTabPane tabId="2" role="tabpanel">
                     <MDBCardBody>
                     <Button onClick={() => this.changePrivacy()}>
                         {this.state.private ? "Make all pages private" : "Make all pages public"}
@@ -235,4 +212,4 @@ class TabsDefault extends Component {
     }
 }
 
-export default TabsDefault; 
+export default SettingsTabs; 
