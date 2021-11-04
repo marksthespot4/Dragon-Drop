@@ -7,6 +7,8 @@ document.addEventListener('contextmenu', function(event){event.preventDefault();
 export const Shape = ({
                         shapeType = "Rectangle",
                         shapeText = "http://google.com",
+                        starUrl = "https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Black_Star.png",
+                        squareUrl = "https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png",
                         heightProp = 100,
                         widthProp = 200,
                         radius = 50,
@@ -41,11 +43,17 @@ export const Shape = ({
 
             </Circle>
         }
-        else
+        else if (shapeType=="Rectangle")
         {
             return <Rectangle onContextMenu={() => openTab()}  width={widthProp} height={heightProp} fill={{color:color}}>
 
             </Rectangle>
+        }
+        else if (shapeType=="Square") {
+            return <img height={100} width={100} src={"https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png"} ></img>
+        }
+        else if (shapeType=="Star") {
+            return <img height={100} width={100} src={"https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Black_Star.png"}/>
         }
     }
     return <div>
