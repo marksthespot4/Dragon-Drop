@@ -1,22 +1,10 @@
-import {makeStyles} from '@mui/styles'
-
-const useStyle = makeStyles({
-    section: ({
-        width: 600,
-        height: 800
-    }),
-})
+import './section.css'
 
 const Section = ({
     className,
     ...props
 }) => {
-    const classes = useStyle();
-    const classAll = `
-        ${className || ''} 
-        ${classes.section}
-    `;
-    return <div {...props} className = {classAll} />
+    return <div {...props} className ="section" />
 }
 
 export default Section;

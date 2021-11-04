@@ -19,8 +19,8 @@ const TopBar = (props) => {
     // console.log(props.id);
     useEffect(() => {
         getPage(props.id).then(data => {
-            console.log(data.pagedata);
-            load(data.pagedata);
+            // console.log(data.pagedata);
+            // load(data.pagedata);
         }); 
       }, []);  
 

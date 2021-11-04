@@ -64,31 +64,23 @@ const MyBuilder = (props) => {
             </Grid>
             
             <Grid 
-                item = {true} 
                 container = {true} 
-                xs = {12} 
+                xs = {12}
             >
-
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {9} 
-                    >
-                    <div className="box">
-                        <Workspace class="view-window" view={view} style={{overflow:"scroll"}}/>
-                    </div>
-                </Grid>
-
-                <Grid 
-                    item = {true} 
-                    xs = {12}
-                    md = {3}
+    
+                <Grid
+                    item = {true}
+                    xs={2}
                 >
-                    <Grid item>
-                        <Sidebar/>
-                    </Grid>
-                   
+                    <Sidebar/>
                 </Grid>
+                <Grid 
+                    item = {true} 
+                    xs={10}
+                    >
+                    <Workspace view={view}/>
+                </Grid>
+
 
             </Grid>
             
