@@ -3,7 +3,7 @@ import {DropdownButton, Dropdown} from "react-bootstrap";
 import Select from '@material-ui/core/Select';
 //import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor} from "build-ui"
-import Color from "../color";
+import Color from "../../color";
 
 const ShapePanel = ({id}) => {
     const editor = useEditor({

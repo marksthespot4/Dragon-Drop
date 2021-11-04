@@ -1,5 +1,5 @@
 import {useEditor, useActions} from "build-ui"
-import Color from "../color";
+import Color from "../../color";
 import React from "react";
 import { useState, useEffect } from "react";
 import Form from 'react-bootstrap/Form'

@@ -2,16 +2,16 @@
 
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
-import TextTools from "../TextBox/TextTools";
-import TextPanel from "../TextBox/TextPanel";
-import CounterTools from "../Counter/CounterTools";
-import CounterPanel from "../Counter/CounterPanel";
-import ButtonTools from "../Button/ButtonTools";
-import ButtonPanel from "../Button/ButtonPanel";
-import ShapeTools from "../Shape/ShapeTools";
-import ShapePanel from "../Shape/ShapePanel";
-import ImageTools from "../Image/ImageTools";
-import ImagePanel from "../Image/ImagePanel";
+import TextTools from "../components/TextBox/TextTools";
+import TextPanel from "../components/TextBox/TextPanel";
+import CounterTools from "../components/Counter/CounterTools";
+import CounterPanel from "../components/Counter/CounterPanel";
+import ButtonTools from "../components/Button/ButtonTools";
+import ButtonPanel from "../components/Button/ButtonPanel";
+import ShapeTools from "../components/Shape/ShapeTools";
+import ShapePanel from "../components/Shape/ShapePanel";
+import ImageTools from "../components/Image/ImageTools";
+import ImagePanel from "../components/Image/ImagePanel";
 import { Panel } from "build-ui";
 
 

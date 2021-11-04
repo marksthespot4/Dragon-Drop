@@ -1,7 +1,7 @@
 import { TextField, Button} from "@material-ui/core";
 //import { DeleteIcon } from "@material-ui/icons/Delete"
 import {useEditor} from "build-ui"
-import Color from "../color";
+import Color from "../../color";
 
 const ButtonPanel = ({id}) => {
     const editor = useEditor({
