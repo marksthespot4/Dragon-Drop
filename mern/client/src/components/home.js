@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 // This will require to npm install axios
 import axios from 'axios';
 
@@ -12,7 +13,26 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import CloseButton from 'react-bootstrap/CloseButton'
 import { getUser, uploadUser } from "./user";
-import { withRouter } from "react-router";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import { registerUser } from "../actions/authActions";
+import { loginUser} from "../actions/authActions";
+
+import classnames from "classnames";
+
+/* Mark's COMMENTS
+So HOME has now been modified to use redux store. This is shown at the bottom, where
+the redux store for authentication and errors are connected, as well as the
+redux actions for registering and logging in. (mapStateToProps, mapDispatchToProps).
+Now, home will check to see if the auth state is currently set in componentDidMount, and if
+it is, it will redirect to the logout page.
+similarly,upon receiving indication that the auth changed to be set, it will redirect
+to the user_page with componentWillReceiveProps.
+
+The home.proptypes stuff is at the bottom because otherwise react can't tell what
+proptype it is.
+ */
 
 class Home extends Component {
     constructor(props) {
@@ -26,12 +46,32 @@ class Home extends Component {
             password: "",
             confirmPassword: "",
             hidden: true,
+            errors: {}
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.toggleShow = this.toggleShow.bind(this);
         //this.handleConfirmPasswordChange = this.handleConfirmPasswordChange(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/user_page");
+        }
+    }
+
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated)
+        {
+            this.props.history.push("/dashboard");
+            console.log("RE-DIRECT");
+        }
     }
 
     handleEmailChange = (e) => {
@@ -98,14 +138,26 @@ class Home extends Component {
         else {
             console.log(this.state.email);
             this.props.setEmail(this.state.email);
-            uploadUser(this.state.email, this.state.password, 0);
+            //uploadUser(this.state.email, this.state.password, 0);
+            const newUser = {
+                name: this.state.name,
+                email: this.state.email,
+                password: this.state.password,
+                confirmPassword: this.state.confirmPassword
+            }
+            this.props.registerUser(newUser, this.props.history);
             this.modalClose();
             this.props.history.push("/user_page");
         }
     }
 
     modalLogin = () => {
-        getUser(this.state.email).then(data =>{
+        const userSign  = {
+            email: this.state.email,
+            password: this.state.password
+        };
+        this.props.loginUser(userSign);
+        /*getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
                 this.setState({
@@ -125,7 +177,7 @@ class Home extends Component {
                     password: ''
                 });
             }
-        });
+        }); */
     }
 
     updateActiveModal = (active) => {
@@ -280,4 +332,18 @@ class Home extends Component {
     }
 }
 
-export default withRouter(Home);
+Home.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+export default connect(
+    mapStateToProps,
+    { registerUser, loginUser}
+)(withRouter(Home));
