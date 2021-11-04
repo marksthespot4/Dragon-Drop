@@ -51,7 +51,7 @@ const ImagePanel = ({id}) => {
     return <div>
         <Stack>
             <span>Image Url</span>
-        <TextField
+        <input
             name = 'imageUrl'
             value = {textField}
             onChange={(event) => {setTextField(event.target.value)}} 
@@ -62,7 +62,7 @@ const ImagePanel = ({id}) => {
             <input type="file" onChange={imageFileUpload} hidden/>
         </Button>
         <span>External Link URL</span>
-        <TextField
+        <input
             name = 'extLink'
             value = {link}
             onChange = {(event) => {setLink(event.target.value)}}
