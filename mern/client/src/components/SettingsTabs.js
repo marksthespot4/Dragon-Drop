@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
 "mdbreact";
-import Switch from "react-switch";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { getUser, updateUser } from "./user";
 import { getPages, updatePage } from "./page"
-import { FormControlLabel } from '@mui/material';
+const bcrypt = require("bcryptjs");
 
 class SettingsTabs extends Component {
 
@@ -64,44 +63,65 @@ class SettingsTabs extends Component {
     }
     changePassword = () => {
         getUser(this.state.userEmail).then(data =>{
+            
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
+                return;
             }
-            else if (data.password === this.state.currentPassword) { // Account was found, password was correct
-                var password = "" + this.state.password;
-                var confirmPassword =  "" + this.state.confirmPassword;
-                console.log("pswd: "+password);
-                console.log("cnfpswd: "+confirmPassword);
-                if (password !== confirmPassword) { // Passwords don't match
-                    alert("Passwords do not match");
+            bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
+                if (isMatch)
+                {
+                    var password = "" + this.state.password;
+                    var confirmPassword =  "" + this.state.confirmPassword;
+                    console.log("pswd: "+password);
+                    console.log("cnfpswd: "+confirmPassword);
+                    if (password !== confirmPassword) { // Passwords don't match
+                        alert("Passwords do not match");
+                    }
+                    else if (password.length < 8) { // Password too short
+                        alert("Passwords must be at least 8 characters long")
+                    }
+                    else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
+                            && !password.includes('$') && !password.includes('%') && !password.includes('^') 
+                            && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
+                                alert("Password must include at least one special character");
+                    }
+                    else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
+                        alert("Password must have at least one upper case and lower case character");
+                    }
+                    else {
+                        bcrypt.genSalt(10, (err, salt) => {
+                            bcrypt.hash(this.state.password, salt, (err, hash) => {
+                                if (err) throw err;
+                                this.state.password = hash;
+                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                                alert("Password has been updated!");
+                                this.setState({
+                                    currentPassword: '',
+                                    password: '',
+                                    confirmPassword: ''
+                                });
+                            
+                            })
+                        })
+                       
+                    }
                 }
-                else if (password.length < 8) { // Password too short
-                    alert("Passwords must be at least 8 characters long")
+                else
+                {
+                    alert("Incorrect password");
+                    this.setState({
+                        currentPassword: ''
+                    });
                 }
-                else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
-                        && !password.includes('$') && !password.includes('%') && !password.includes('^') 
-                        && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                            alert("Password must include at least one special character");
-                }
-                else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-                    alert("Password must have at least one upper case and lower case character");
-                }
-                else {
-                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
-                    alert("Password has been updated!");
-                }
-            }
-            else { // Account was found, password was incorrect
-                alert("Incorrect password");
-                this.setState({
-                    currentPassword: ''
-                });
-            }
-        });
-    }
+            });
+
+    
+    });
+}
 
     changePrivacy = () => {
         this.state.private = !this.state.private;
