@@ -9,8 +9,10 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {loginUser, registerUser} from "../actions/authActions";
 
+import Button from 'react-bootstrap/Button';
 
 class Header extends Component {
+
     constructor(props) {
         super(props);
         this.state = {isLoggedIn :false}
@@ -40,9 +42,8 @@ render() {
                             <NavLink className="navbar-brand" to="/user_page">
                                 My Projects
                             </NavLink>
-                            <NavLink className="navbar-brand" to="/user_page">
-                                {/* SETTINGS LINK */}
-                                <i className="user bi bi-person-circle"></i>
+                            <NavLink className="navbar-brand" to="/settings"> 
+                            <i className="user bi bi-person-circle"></i>
                             </NavLink>
                         </Navbar.Collapse>
                         }

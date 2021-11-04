@@ -19,6 +19,7 @@ import Save from "./components/save";
 import View from "./components/view"
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Settings from "./components/settings";
 import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
@@ -57,7 +58,7 @@ const App = () => {
   return (
     <div>
       <Provider store={store}>
-      <Header/>
+      <Header email={email}/>
       {/* <Navbar /> */}
         <Route exact path="/">
           <Home setEmail={setEmail}/>
@@ -72,6 +73,10 @@ const App = () => {
         <Route path="/test" component={MyBuilder}/>
         <Route path="/user_page">
           <UserPage email = {email}/>
+          <Footer/>
+        </Route>
+        <Route path="/settings">
+          <Settings email={email}/>
           <Footer/>
         </Route>
         <Switch>
