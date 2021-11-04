@@ -22,7 +22,6 @@ import SectionView from "./Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import { RiAlignJustify } from "react-icons/ri";
 
-
 const MyBuilder = (props) => {
 
 
@@ -41,19 +40,29 @@ const MyBuilder = (props) => {
             type: 'Section',
         })
     );
-    return ( <div>
+
+    return ( 
+    <div>
         <Builder initialTree={tree}>
 
             <Grid 
                 container = {true} 
             >
+            <Grid 
+                container = {true} 
+                item = {true} 
+            >
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {12}
+                    md = {6}
                 >
-                    <TopBar save={props.save} id={props.id}/>
-                </Grid>   
+                    <TopBar save={props.save} id={props.id} style={"position: sticky;"}/>
+                </Grid>
+
+            </Grid>
+            
             <Grid 
                 container = {true} 
                 xs = {12}

@@ -16,7 +16,7 @@ const TopBar = (props) => {
     } = builder;
 
 
-    console.log(props.id);
+    // console.log(props.id);
     useEffect(() => {
         getPage(props.id).then(data => {
             // console.log(data.pagedata);
@@ -44,7 +44,7 @@ const TopBar = (props) => {
             Redo
         </Button>
         <Button onClick={() => {handleSave()}}>
-            save
+            Save
         </Button>
     </div>
 }
