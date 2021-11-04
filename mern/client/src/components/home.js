@@ -156,15 +156,20 @@ class Home extends Component {
             email: this.state.email,
             password: this.state.password
         };
-        this.props.loginUser(userSign);
-        /*getUser(this.state.email).then(data =>{
+
+        getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
+
                 this.setState({
                     email: '',
                     password: ''
                 });
             }
+            else {
+                this.props.loginUser(userSign);
+            }
+            /*
             else if (data.password === this.state.password) { // Account was found, password was correct
                 console.log(this.state.email);
                 this.props.setEmail(this.state.email);
@@ -176,8 +181,9 @@ class Home extends Component {
                 this.setState({
                     password: ''
                 });
-            }
-        }); */
+            }*/
+        });
+
     }
 
     updateActiveModal = (active) => {
