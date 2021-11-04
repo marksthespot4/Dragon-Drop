@@ -63,16 +63,12 @@ const Anchor = ({
             if (!resizing.current) return;
             const pageX = (
                 isNumber(event.pageX) 
-                // For mouse events
                 ? event.pageX
-                // For touch event
                 : event.touches[0].pageX
             );
             const pageY = (
                 isNumber(event.pageY) 
-                // For mouse events
                 ? event.pageY
-                // For touch event
                 : event.touches[0].pageY
             );
             const moveX = pageX - startX;
@@ -149,8 +145,6 @@ const Anchor = ({
         }
     }, [
         resize, 
-        //onResize,
-        //onResizeEnd,
         finishResize,
         expandsDown,
         expandsRight,
@@ -159,16 +153,12 @@ const Anchor = ({
     const startResize = useCallback(event => {
         const startX = (
             isNumber(event.pageX) 
-            // For mouse events
             ? event.pageX
-            // For touch event
             : event.touches[0].pageX
         );
         const startY = (
             isNumber(event.pageY) 
-            // For mouse events
             ? event.pageY
-            // For touch event
             : event.touches[0].pageY
         );
         setResize({
@@ -189,10 +179,6 @@ const Anchor = ({
         startResize(event);
     }
     const handleResizeEndTouch = event => {
-        // Prevent default to prevent 
-        // mouse events & click from 
-        // being fired. Necessary for
-        // support.
         if (event.cancelable) event.preventDefault();
         onResizeEnd(event);
         finishResize(event);
