@@ -50,10 +50,10 @@ export const Shape = ({
             </Rectangle>
         }
         else if (shapeType=="Square") {
-            return <img height={100} width={100} src={"https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png"} ></img>
+            return <img onContextMenu={() => openTab()} height={100} width={100} src={"https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png"} ></img>
         }
         else if (shapeType=="Star") {
-            return <img height={100} width={100} src={"https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Black_Star.png"}/>
+            return <img onContextMenu={() => openTab()} height={100} width={100} src={"https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Black_Star.png"}/>
         }
     }
     return <div>
