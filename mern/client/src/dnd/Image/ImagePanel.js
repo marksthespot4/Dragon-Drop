@@ -35,7 +35,6 @@ const ImagePanel = ({id}) => {
     // const actions = useActions()
 
     const [backColor, setBackColor] = useState(editor.props.backColor);
-    const [textColor, setTextColor] = useState(editor.props.textColor);
 
     const handleBackColorChange = () => {     
         // setColor(e.target.value);
@@ -48,18 +47,6 @@ const ImagePanel = ({id}) => {
     useEffect(() => { 
         handleBackColorChange();
     }, [backColor])
-
-    const handleTextColorChange = () => {     
-        // setColor(e.target.value);
-        actions.timeBatched.triggerUpdate({
-            id: id,
-            props: {textColor: textColor}
-        });
-    }
-
-    useEffect(() => { 
-        handleTextColorChange();
-    }, [textColor])
 
     return <div>
         <Stack>
@@ -85,8 +72,6 @@ const ImagePanel = ({id}) => {
         <div>
             Background Color
             <Color setColor={setBackColor}/> 
-            Text Color
-            <Color setColor={setTextColor}/>
         </div>
 
     </div>

@@ -3,7 +3,7 @@ import "../styles/image.css"
 import { useState } from "react"
 import {Rnd} from "react-rnd"
 
-export const Image = ({imageUrl, extLink, backColor, textColor}) => {
+export const Image = ({imageUrl, extLink, backColor}) => {
     const update = () => (
         console.log(imageUrl)
     )
@@ -31,8 +31,7 @@ export const Image = ({imageUrl, extLink, backColor, textColor}) => {
         <div>
             <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className="image" alt={"Invalid input"}
             style={{
-                "background-color": backColor,
-                color: textColor
+                "background-color": backColor
             }}/>
         </div>
         </Rnd>
