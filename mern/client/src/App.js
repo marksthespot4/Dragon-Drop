@@ -25,7 +25,7 @@ const App = () => {
   document.body.style = 'background: wheat;';
   return (
     <div>
-      <Header/>
+      <Header email={email}/>
       {/* <Navbar /> */}
         <Route exact path="/">
           <Home setEmail={setEmail}/>

@@ -3,6 +3,9 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 "mdbreact";
 import Switch from "react-switch";
 import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import { getUser, updateUser } from "./user";
 
 class TabsDefault extends Component {
 
@@ -23,6 +26,7 @@ class TabsDefault extends Component {
             password: "",
             confirmPassword: "",
             hidden: true,
+            userEmail: email
         };
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -53,6 +57,46 @@ class TabsDefault extends Component {
                 activeItem: tab
             });
         }
+    }
+    changePassword = () => {
+        getUser(this.state.userEmail).then(data =>{
+            if (data == null) { // Account was not found
+                alert("Account under given email not found");
+                this.setState({
+                    currentPassword: ''
+                });
+            }
+            else if (data.password === this.state.currentPassword) { // Account was found, password was correct
+                var password = "" + this.state.password;
+                var confirmPassword =  "" + this.state.confirmPassword;
+                console.log("pswd: "+password);
+                console.log("cnfpswd: "+confirmPassword);
+                if (password !== confirmPassword) { // Passwords don't match
+                    alert("Passwords do not match");
+                }
+                else if (password.length < 8) { // Password too short
+                    alert("Passwords must be at least 8 characters long")
+                }
+                else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
+                        && !password.includes('$') && !password.includes('%') && !password.includes('^') 
+                        && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
+                            alert("Password must include at least one special character");
+                }
+                else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
+                    alert("Password must have at least one upper case and lower case character");
+                }
+                else {
+                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                    alert("Password has been updated!");
+                }
+            }
+            else { // Account was found, password was incorrect
+                alert("Incorrect password");
+                this.setState({
+                    currentPassword: ''
+                });
+            }
+        });
     }
 
     render() {
@@ -101,7 +145,6 @@ class TabsDefault extends Component {
                 >
                 <MDBTabPane tabId="1" role="tabpanel">
                     <MDBCardBody>
-
                     <h6>New Email</h6>
                     <input
                         type="email"
@@ -130,6 +173,20 @@ class TabsDefault extends Component {
                         onChange={this.handlePasswordChange}
                     // className="form-control"
                     />
+                    <OverlayTrigger
+                        placement="right"
+                        overlay={
+                            <Tooltip >
+                                <b>Requires at least one:</b><br></br>
+                                Uppercase and lowercase <br></br>
+                                Number<br></br>
+                                Special character (!, @, etc.)<br></br>
+                                <b>Must be at least 8 characters</b>
+                            </Tooltip>
+                        }
+                    >
+                        <i class="bi bi-info-circle"></i>
+                    </OverlayTrigger>
                     <h6><br></br>Confirm Password</h6>
                     <input
                         type="password"
@@ -139,7 +196,7 @@ class TabsDefault extends Component {
                         // className="form-control"
                     />
                     <div align="left">
-                    <Button onClick={() => this.state.confirmPassword}>
+                    <Button onClick={() => this.changePassword()}>
                         Submit
                     </Button>
                     </div>
