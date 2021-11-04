@@ -1,8 +1,5 @@
 import React, { Component }  from "react";
-import PanelPage from "./PanelPage";
-import SideBar from "./SideBar";
-import Switch from "react-switch";
-import TabsDefault from "./TabsDefault";
+import SettingsTabs from "./SettingsTabs";
 
 const items = [
   { name: 'email', label: 'Change email' },
@@ -25,7 +22,7 @@ class Settings extends Component {
   render() {
     return (      
       <div className="Settings">
-        <TabsDefault email={this.props.email}/>
+        <SettingsTabs email={this.props.email}/>
       </div>
     );  
  }
