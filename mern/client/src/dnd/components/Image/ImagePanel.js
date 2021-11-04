@@ -4,7 +4,7 @@ import { DeleteIcon } from "@material-ui/icons/Delete"
 import useDragonEditor from "../../hooks/useDragonEditor"
 import {useActions} from "build-ui"
 import { useState , useEffect} from "react";
-import Color from "../color";
+import Color from "../../color";
 import Button from 'react-bootstrap/Button';
 
 const ImagePanel = ({id}) => {
