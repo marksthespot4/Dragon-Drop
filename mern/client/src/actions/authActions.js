@@ -54,10 +54,11 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err =>
-         dispatch({
+            alert("Login Information Incorrect!")
+         /*dispatch({
              type: GET_ERRORS,
              payload: err.response.data
-         })
+         }) */
         );
     console.log("ATTEMPTED LOGIN");
 };

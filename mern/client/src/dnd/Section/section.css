@@ -1,0 +1,6 @@
+.section {
+    background-color: white;
+    height: 100vh;
+    width: 95%;
+    overflow: scroll
+}
