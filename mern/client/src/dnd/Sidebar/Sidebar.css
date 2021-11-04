@@ -23,8 +23,8 @@
     min-width: 100%;
   }
   #header .pro-sidebar.collapsed {
-    width: 80px;
-    min-width: 80px;
+    width: 120px;
+    min-width: 120px;
   }
   #header .pro-sidebar-inner {
     background-color: white;
@@ -67,3 +67,8 @@
       overflow: hidden;
     }
   }
+.tools {
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'center';
+}

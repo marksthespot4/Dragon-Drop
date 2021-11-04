@@ -1,7 +1,6 @@
 import {Rectangle, Triangle, Circle} from 'react-shapes';
 import {useState} from "react"
 import {Button} from "@material-ui/core"
-// import shape from '@material-ui/core/styles/shape';
 import {Rnd} from 'react-rnd';
 import { Redirect } from 'react-router-dom';
 document.addEventListener('contextmenu', function(event){event.preventDefault();})
@@ -10,7 +9,8 @@ export const Shape = ({
                         shapeText = "http://google.com",
                         heightProp = 100,
                         widthProp = 200,
-                        radius = 50
+                        radius = 50,
+                        color
                       }) => {
     const [type, setType] = useState(shapeType);
     const [url, setUrl] = useState(shapeText);
@@ -30,20 +30,20 @@ export const Shape = ({
     const returnShape = () => {
         if (shapeType=="Triangle")
         {
-            return <Triangle onContextMenu={() => openTab()} width = {widthProp} height={heightProp}>
+            return <Triangle onContextMenu={() => openTab()} width = {widthProp} height={heightProp} fill={{color:color}}>
 
             </Triangle>
 
         }
         else if (shapeType=="Circle")
         {
-            return <Circle onContextMenu={() => openTab()}  r={radius}>
+            return <Circle onContextMenu={() => openTab()}  r={radius} fill={{color:color}}>
 
             </Circle>
         }
         else
         {
-            return <Rectangle onContextMenu={() => openTab()}  width={widthProp} height={heightProp}>
+            return <Rectangle onContextMenu={() => openTab()}  width={widthProp} height={heightProp} fill={{color:color}}>
 
             </Rectangle>
         }

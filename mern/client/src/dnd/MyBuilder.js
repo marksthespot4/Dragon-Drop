@@ -13,6 +13,7 @@ import TopBar from "./TopBar/TopBar";
 import CanvasView from "./components/canvas/CanvasView";
 //import TopBar from './TopBar';
 
+import { RiAlignJustify } from "react-icons/ri";
 
 const MyBuilder = (props) => {
 
@@ -33,53 +34,47 @@ const MyBuilder = (props) => {
             type: 'Canvas',
         })
     );
-    return ( <div>
+
+    return ( 
+    <div>
         <Builder initialTree={tree}>
 
             <Grid 
                 container = {true} 
             >
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {12}
-                >
-                    <TopBar save={props.save} id={props.id}/>
-                </Grid>   
             <Grid 
-                item = {true} 
                 container = {true} 
-                xs = {12} 
-                // justify="center"
+                item = {true} 
             >
-                
+
                 <Grid 
                     item = {true} 
                     xs = {12} 
-                    md = {3} 
-                    >
-                </Grid>
-                <Grid 
-                    item = {true} 
-                    xs = {12} 
-                    md = {6} 
-                    >
-                    <div style={{overflow:"scroll"}}>
-                        <Workspace class="view-window" view={view}/>
-                    </div>
+                    md = {6}
+                >
+                    <TopBar save={props.save} id={props.id} style={"position: sticky;"}/>
                 </Grid>
 
+            </Grid>
+            
+            <Grid 
+                container = {true} 
+                xs = {12}
+            >
+    
                 <Grid
-                    item = {true} 
-                    xs = {12}
-                    md = {3}
-                    justify="flex-end"
+                    item = {true}
+                    xs={2}
                 >
-                    <Grid item>
-                        <Sidebar/>
-                    </Grid>
-                   
+                    <Sidebar/>
                 </Grid>
+                <Grid 
+                    item = {true} 
+                    xs={10}
+                    >
+                    <Workspace view={view}/>
+                </Grid>
+
 
             </Grid>
             

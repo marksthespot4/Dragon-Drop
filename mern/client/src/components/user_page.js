@@ -8,7 +8,8 @@ import example from "../imgs/white.png"
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
-import { withRouter} from 'react-router-dom';
+import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
 
 
 import Button from 'react-bootstrap/Button';
@@ -17,7 +18,16 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser } from "./user";
+import PropTypes from "prop-types";
 
+
+/* Mark's Comments
+Now the user page uses the authentication feature to ensure it cannot be accessed unless logged in.
+It checks the auth if its authenticated on componentDidMount.
+In home.js there is an explanation of how it does this as well. We are using redux store and
+mapStateToProps, as well as the export connect() at the bottom of user_page.js.
+The rest of the user info is still stored as before, in localStorage as email.
+ */
 const Page = (props) => (
     <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
@@ -57,17 +67,16 @@ const Page = (props) => (
     </div>
 )
 
-const download = () => {
-};
+
 const delete_notify = () => toast.info('Page Successfully Deleted!');
 
 class UserPage extends Component {
 
     constructor(props) {
-        
-        super(props);        
+
+        super(props);
         var email;
-        if(this.props.email != "") {
+        if(this.props.email !== "") {
             email = this.props.email; 
             localStorage.setItem( 'localEmail', email);
         }
@@ -82,16 +91,31 @@ class UserPage extends Component {
         this.duplicatePage = this.duplicatePage.bind(this);
     }
 
+
     componentDidMount() {
+        if (this.props.auth.isAuthenticated)
+        {
+            console.log("USER IS AUTHENTICATED ON USER PAGE");
+        }
+        else
+        {
+            console.log("USER NOT LOGGED IN");
+            this.props.history.push("/");
+        }
+
         getPages().then(data=>{
+            console.log(data);
             this.setState({
                 pages: data || [],
             });
         });
     }
 
+
     createNewPage() {
         getUser(this.state.currentUser).then(data =>{
+            console.log(this.state.currentUser);
+            console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
                 return;
@@ -106,6 +130,7 @@ class UserPage extends Component {
     duplicatePage(pagename, pagedata, pub, pagepreview) {
         console.log(pagename, pagedata, pub, pagepreview);
         getUser(this.state.currentUser).then(data =>{
+            console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
                 return;
@@ -176,7 +201,8 @@ class UserPage extends Component {
         //         pages: data || [],
         //     });
         // });
-        
+
+        //console.log(this.state.currentUser);
         return this.state.pages
         .filter((current) => {
             if(this.state.searchUser === "" || this.state.searchUser === this.state.currentUser) {
@@ -268,4 +294,14 @@ class UserPage extends Component {
         );
     }
 }
-export default withRouter(UserPage);
+
+UserPage.propTypes = {
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(mapStateToProps)(withRouter(UserPage));

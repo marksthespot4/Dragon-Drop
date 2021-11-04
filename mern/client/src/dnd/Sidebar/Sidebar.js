@@ -26,10 +26,10 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-// import { FaList, FaRegHeart } from "react-icons/fa";
+import { FaList, FaRegHeart } from "react-icons/fa";
 import { FiHome, FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-// import { RiPencilLine } from "react-icons/ri";
-// import { BiCog } from "react-icons/bi";
+import { RiPencilLine } from "react-icons/ri";
+import { BiCog } from "react-icons/bi";
 
 
 //import sidebar css from react-pro-sidebar module and our custom css 
@@ -61,7 +61,7 @@ const Sidebar = () => {
           {/* collapsed props to change menu size using menucollapse state */}
         <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
-          <div className="logotext">
+          <div className="logotext center">
             {/* small and big change using menucollapse state */}
             <p>{menuCollapse ? "" : "Components"}</p>
           </div>
@@ -75,12 +75,16 @@ const Sidebar = () => {
           </div>
           </SidebarHeader>
           <SidebarContent>
-          <CounterTools />
+          <div className='center'>
+            <CounterTools />
             <TextTools />
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
-            {menuCollapse? (""):(<Panel view={panel} />)}
+            <br/><br/>
+          </div>
+          
+          {menuCollapse? (""):(<Panel view={panel} />)}
             
           </SidebarContent>
 

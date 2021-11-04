@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Slight changes to structure">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Fixed right click for image and added basic support on Text.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +34,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="right_click" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,6 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="PLAIN_TEXT" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mern-passport-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -66,6 +69,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2021.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -86,7 +90,8 @@
       <workItem from="1633439316959" duration="7386000" />
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
-      <workItem from="1634782634523" duration="19899000" />
+      <workItem from="1634782634523" duration="38586000" />
+      <workItem from="1635966369728" duration="4725000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -270,7 +275,98 @@
       <option name="project" value="LOCAL" />
       <updated>1635103180868</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="installations">
+      <created>1635128374691</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1635128374691</updated>
+    </task>
+    <task id="LOCAL-00028" summary="installations">
+      <created>1635364972805</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1635364972805</updated>
+    </task>
+    <task id="LOCAL-00029" summary="basic backend with user schema prototype">
+      <created>1635370395182</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1635370395182</updated>
+    </task>
+    <task id="LOCAL-00030" summary="added some files for redux">
+      <created>1635391938779</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1635391938779</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added redux to front end connections and some console prints for debugging.">
+      <created>1635641627953</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1635641627953</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Stopping point, where the home page works, but logging in and registering have issues.">
+      <created>1635644048515</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1635644048515</updated>
+    </task>
+    <task id="LOCAL-00033" summary="fixed the CORS issue lol">
+      <created>1635644315644</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1635644315644</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fixed dashboard crashing">
+      <created>1635720425140</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1635720425140</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fixed merge error">
+      <created>1635726352937</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1635726352937</updated>
+    </task>
+    <task id="LOCAL-00036" summary="some refactoring to be able to use mongoClient instead of mongoose for pages.">
+      <created>1635729534231</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1635729534231</updated>
+    </task>
+    <task id="LOCAL-00037" summary="DID ALL THE PAGE AND USER STUFF">
+      <created>1635828551563</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1635828551563</updated>
+    </task>
+    <task id="LOCAL-00038" summary="made all the functionality work with my calls.">
+      <created>1635910723367</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1635910723367</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Fixed right click for image and added basic support on Text.">
+      <created>1635981254926</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1635981254926</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,19 +385,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="what is goingon." />
-    <MESSAGE value="Database integration added to user page." />
-    <MESSAGE value="Edited UI and made easier to read" />
-    <MESSAGE value="messed with icons" />
-    <MESSAGE value="integrated with sarah branch" />
-    <MESSAGE value="Added a dropdown menu to each project.&#10;installed popper." />
-    <MESSAGE value="Added a GEAR dropdown menu" />
-    <MESSAGE value="Redid formatting on the project previews" />
-    <MESSAGE value="Added delete functionality for the dropdown." />
-    <MESSAGE value="Make the edit button and create button redirect to new page." />
-    <MESSAGE value="added dependency to page.js" />
-    <MESSAGE value="fixed dependency" />
-    <MESSAGE value="xml files" />
     <MESSAGE value="Added a generate button to the page." />
     <MESSAGE value="merged wih main." />
     <MESSAGE value="Pushing the multiple creation bug to get help from chang." />
@@ -314,6 +397,19 @@
     <MESSAGE value="right click for images, just opens image in new tab." />
     <MESSAGE value="Made image right click more functional" />
     <MESSAGE value="Slight changes to structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Slight changes to structure" />
+    <MESSAGE value="installations" />
+    <MESSAGE value="basic backend with user schema prototype" />
+    <MESSAGE value="added some files for redux" />
+    <MESSAGE value="added redux to front end connections and some console prints for debugging." />
+    <MESSAGE value="Stopping point, where the home page works, but logging in and registering have issues." />
+    <MESSAGE value="fixed the CORS issue lol" />
+    <MESSAGE value="fixed dashboard crashing" />
+    <MESSAGE value="fixed merge error" />
+    <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
+    <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
+    <MESSAGE value="made all the functionality work with my calls." />
+    <MESSAGE value="comments back again?" />
+    <MESSAGE value="Fixed right click for image and added basic support on Text." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed right click for image and added basic support on Text." />
   </component>
 </project>
