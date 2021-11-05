@@ -3,7 +3,9 @@ import useDragonEditor from "../../hooks/useDragonEditor";
 import useDragonStyler from "../../hooks/useDragonStyler";
 import Button from "./Button";
 import useStyle from "./style/ButtonView";
+import Resizable from "../../resizable/Resizable";
 
+//const ResizableButton = Resizable(Button);
 const BuilderButton = DnDBuilderHOC(Button);
 
 const ButtonView = ({
@@ -27,6 +29,10 @@ const ButtonView = ({
     onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
     onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
     draggable = {!editor.meta.fixed}
+    isResizing = {editor.indexes.selected}
+    onResizeStart = {editor.handleResizeStart}
+    onResize = {editor.handleResize}
+    onResizeEnd = {editor.handleResizeEnd}
     onClick = {editor.handleSelect}
     className = {classes.view}
     {...props}

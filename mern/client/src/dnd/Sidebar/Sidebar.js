@@ -85,7 +85,7 @@ const Sidebar = () => {
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
-            <SectionTools />
+            {/* <SectionTools /> */}
             <br/><br/>
           </div>
           

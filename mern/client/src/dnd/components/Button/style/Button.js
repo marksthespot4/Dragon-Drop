@@ -4,6 +4,8 @@ import {fillStyles, positionStyles, sizingStyles} from "../../../styles/ui";
 
 const buttonStyles = ({
     button: props => ({
+        color: props.color,
+        backgroundColor: props.backgroundColor,
         padding: props.padding,
         margin: props.margin,
     }),
