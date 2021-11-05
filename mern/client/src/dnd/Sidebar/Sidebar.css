@@ -30,9 +30,6 @@
     background-color: white;
     box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
   }
-  #header .pro-sidebar-inner .pro-sidebar-layout {
-    overflow-y: hidden;
-  }
   #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
     font-size: 20px;
     padding: 0 20px;
@@ -63,12 +60,13 @@
   }
   
   @media only screen and (max-width: 720px) {
-    html {
-      overflow: hidden;
-    }
   }
 .tools {
   display: 'flex';
   align-items: 'center';
   justify-content: 'center';
+}
+
+.overflow {
+  overflow-y: auto
 }

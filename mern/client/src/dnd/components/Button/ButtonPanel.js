@@ -7,6 +7,7 @@ import useDragonStyler from "../../hooks/useDragonStyler";
 import useStyle from '../../panels/PanelStyle';
 import SizingPanel from "../../panels/SizingPanel";
 import PositionPanel from "../../panels/PositionPanel";
+import {ColorPanel, BackgroundPanel} from "../../panels/PalettePanel";
 
 
 const ButtonPanel = ({
@@ -126,6 +127,8 @@ const ButtonPanel = ({
             />
             </div>
         </React.Fragment>}
+        <ColorPanel id = {id} />
+        <BackgroundPanel id = {id} />
         <SizingPanel id = {id} />
         <PositionPanel id = {id} />
 

@@ -23,6 +23,7 @@ const Button = React.forwardRef(({
         className = {classAll}
     >
         <MUIButton 
+            color = {style.backgroundColor}
             ref = {ref}
             className = {classButton}
             {...rest}

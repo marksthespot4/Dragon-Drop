@@ -6,7 +6,7 @@ const ShapeTools = () => {
     const handleDragTool = event => {
         event.stopPropagation();
         const shapeProps = {
-            shapeType: "Rectangle",
+            shapeType: "https://www.clker.com/cliparts/v/C/Y/S/3/P/black-rectangle-hi.png",
             shapeText: 'http://google.com',
             heightProp: 100,
             widthProp: 200,

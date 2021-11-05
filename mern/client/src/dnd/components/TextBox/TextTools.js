@@ -18,6 +18,7 @@ const TextTools = ({
         }
         const textProps = {
             text: 'My Text',
+            extLink: 'https://google.com',
             style: textStyle,
         }
         const text = item({

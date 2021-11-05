@@ -7,6 +7,7 @@ const Text = React.forwardRef(({
     className,
     style,
     text,
+    extLink,
     ...props
 }, ref) => {
     const classes = useStyle(style);
@@ -17,9 +18,22 @@ const Text = React.forwardRef(({
     const classAll = clsx(
         className,
         classes.ui,
-    )
+    );
+    const openTab = () =>
+    {
+        var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(extLink);
+        if (valid)
+        {
+            window.open(extLink);
+        }
+        else
+        {
+            alert("Please enter a valid http url.");
+        }
+    }
     return <div
         className = {classAll}
+        onContextMenu={() => openTab()}
     >
         <p 
             ref = {ref}
