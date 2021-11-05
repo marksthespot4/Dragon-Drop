@@ -42,7 +42,7 @@ export function getUserID(id) {
 }
 
 export function getUser(email) {
-    return axios.get("http://localhost:5000/routes/users/get/email/" + email)
+    return axios.get("http://localhost:5000/routes/users/get/email/" + email.toLowerCase())
         .then(res => res.data)
         .catch(function (error) {
             console.log(error);
