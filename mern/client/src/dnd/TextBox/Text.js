@@ -5,7 +5,7 @@ import "../styles/TextStyles.css"
 import {Rnd} from "react-rnd"
 import {Button, TextField} from "@material-ui/core";
 
-export const Text = ({titleText = "Insert title", linkText = "http://google.com", mainText = "Insert text here", textBold, textItalicize, textUnderline, color}) => {
+export const Text = ({titleText = "Insert title", linkText = "http://google.com", mainText = "Insert text here", textBold, textItalicize, textUnderline, textSize, textFont = "Arial", color}) => {
     const [title, setTitle] = useState(titleText);
     const [body, setText] = useState(mainText);
     // const [color, setColor] = useState("#000000");
@@ -40,7 +40,9 @@ export const Text = ({titleText = "Insert title", linkText = "http://google.com"
         >
          <span className="ptag" 
             style={{
-                color: color
+                color: color,
+                fontSize: textSize,
+                fontFamily: textFont
             }}
         > 
             {mainText}
