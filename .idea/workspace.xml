@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Fixed right click for image and added basic support on Text.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made sure that the login form gives correct errors.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/Shape/Shape.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
       <workItem from="1633563173826" duration="7075000" />
       <workItem from="1633640447631" duration="28811000" />
       <workItem from="1634782634523" duration="38586000" />
-      <workItem from="1635966369728" duration="4725000" />
+      <workItem from="1635966369728" duration="14980000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -366,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1635981254926</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Made sure that the login form gives correct errors.">
+      <created>1636038019407</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1636038019407</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -385,7 +395,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a generate button to the page." />
     <MESSAGE value="merged wih main." />
     <MESSAGE value="Pushing the multiple creation bug to get help from chang." />
     <MESSAGE value="Fixed button generating on refresh." />
@@ -410,6 +419,7 @@
     <MESSAGE value="made all the functionality work with my calls." />
     <MESSAGE value="comments back again?" />
     <MESSAGE value="Fixed right click for image and added basic support on Text." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed right click for image and added basic support on Text." />
+    <MESSAGE value="Made sure that the login form gives correct errors." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made sure that the login form gives correct errors." />
   </component>
 </project>
