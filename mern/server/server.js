@@ -27,11 +27,12 @@ const dbo = require("./db/conn2");
 //const dbo = require("./db/conn");
 //const db = require("./db/keys").mongoURI;
 app.use(
-    bodyParser.urlencoded ({
+    express.urlencoded ({
+      limit: "10mb",
       extended: false
     })
 );
-app.use(bodyParser.json());
+app.use(express.json({limit: "10mb", extended: false}));
 
 
 
