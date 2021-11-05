@@ -13,6 +13,8 @@ const TextTools = ({
             color: '#000000',
             fontSize: '22px',
             fontFamily: 'Arial',
+            width: '200px',
+            height: '50px'
         }
         const textProps = {
             text: 'My Text',
