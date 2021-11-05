@@ -64,7 +64,7 @@ const Sidebar = () => {
     <>
       <div id="header">
           {/* collapsed props to change menu size using menucollapse state */}
-        <ProSidebar collapsed={menuCollapse}>
+        <ProSidebar className="overflow" collapsed={menuCollapse}>
           <SidebarHeader>
           <div className="logotext center">
             {/* small and big change using menucollapse state */}
