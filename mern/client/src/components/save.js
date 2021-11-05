@@ -10,6 +10,9 @@ import MyBuilder from "../dnd/MyBuilder";
 
 import { updatePage, getPage } from "./page";
 import { write } from "@popperjs/core";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 
 
 import axios from "axios";
@@ -24,6 +27,7 @@ export default (props) => {
   const getImage = (currTree) => {
     setSaveData(currTree);
     takeScreenShot(ref.current);
+    // save();
     notify();
   }
 
@@ -35,7 +39,21 @@ export default (props) => {
     toast.success('Project Saved');
   }
 
+  // function getPDF()  {
+  //   html2canvas(document.getElementById("toPDF"),{
+  //     onrendered:function(canvas){
+  //       var img=canvas.toDataURL("image/png");
+  //       var doc = new jsPDF('l', 'cm'); 
+  //       doc.addImage(img,'PNG',2,2); 
+  //       doc.save('reporte.pdf'); 
+  //     }
+  //   }); 
+  // }
+
   const save = () => {
+    // html2canvas(document.querySelector("#capture")).then(canvas => {
+    //   document.body.appendChild(canvas)
+    // });
     if(saveData != null) {
       getPage(props.match.params.id).then(data => {
         updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
@@ -68,8 +86,11 @@ export default (props) => {
           marginTop: "20px"
         }}
       >
-        <MyBuilder save={getImage} id={props.match.params.id}/>
+       <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
+      {/* <div id="capture">
+        <MyBuilder save={getImage} id={props.match.params.id}/>
+      </div> */}
     </div>
   );
 };
