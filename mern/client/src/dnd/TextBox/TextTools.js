@@ -14,6 +14,8 @@ const TextTools = () => {
             textBold: false,
             textItalicize: false,
             textUnderline: false,
+            textSize: 20,
+            textFont: 'Arial',
             color: "#000000"
         }
 

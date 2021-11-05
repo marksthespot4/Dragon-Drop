@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import { TextField} from "@material-ui/core";
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const TextPanel = ({id}) => {
     const editor = useEditor({
@@ -15,6 +17,8 @@ const TextPanel = ({id}) => {
     const [underline, setUnderline] = useState(editor.props.textUnderline);
     const [italics, setItalics] = useState(editor.props.textItalicize);
     const [color, setColor] = useState(editor.props.color);
+    const [font, setFont] = useState(editor.props.textFont);
+    const [size, setSize] = useState(editor.props.textSize);
 
     const handleBoldChange = () => {
         setBoldFont(!boldFont)
@@ -43,12 +47,46 @@ const TextPanel = ({id}) => {
             props: {textUnderline: underline}
         });
     }
+    const handleSizeChange = () => {
+        setSize(size)
+        console.log(size)
+        
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {textSize: size}
+        });
+    }
+    const handleFontChange = (e) => {
+        setFont(font=> e);
+        console.log(font)
+        
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {textFont: font}
+        });
+    }
     const handleColorChange = () => {     
         // setColor(e.target.value);
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {color: color}
         });
+    }
+    const handleAdd = () => {setSize(
+        size => size + 1
+    );
+    actions.timeBatched.triggerUpdate({
+        id: id,
+        props: {textSize: size}
+    });
+    }
+    const handleSubtract = () => {setSize(
+        size => size - 1
+    );
+    actions.timeBatched.triggerUpdate({
+        id: id,
+        props: {textSize: size}
+    });
     }
 
     useEffect(() => { 
@@ -66,6 +104,28 @@ const TextPanel = ({id}) => {
         <Button size="sm" onClick={handleBoldChange}><strong>B</strong></Button>
         <Button size="sm" onClick={handleItalicizeChange}><em>I</em></Button>
         <Button size="sm" onClick={handleUnderlineChange}><u>U</u></Button>
+        <DropdownButton id="dropdown-basic-button" title={font} size="sm">
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Arial</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Baskerville</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Courier</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Damascus</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Futura</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Georgia</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Helvetica</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Palatino</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Times New Roman</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Verdana</div></Dropdown.Item>
+        </DropdownButton>
+        <Button variant="outlined" onClick = {handleSubtract} size="sm">
+            -
+        </Button>
+        <span>
+            {size}
+        </span>
+        <Button variant="outlined" onClick = {handleAdd} size="sm">
+            +
+        </Button>
+        
         <div>
             Color
             <Color setColor={setColor}/>
