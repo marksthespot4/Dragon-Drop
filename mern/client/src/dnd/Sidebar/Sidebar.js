@@ -2,16 +2,18 @@
 
 //import useState hook to create menu collapse state
 import React, { useState } from "react";
-import TextTools from "../TextBox/TextTools";
-import TextPanel from "../TextBox/TextPanel";
-import CounterTools from "../Counter/CounterTools";
-import CounterPanel from "../Counter/CounterPanel";
-import ButtonTools from "../Button/ButtonTools";
-import ButtonPanel from "../Button/ButtonPanel";
-import ShapeTools from "../Shape/ShapeTools";
-import ShapePanel from "../Shape/ShapePanel";
-import ImageTools from "../Image/ImageTools";
-import ImagePanel from "../Image/ImagePanel";
+import TextTools from "../components/TextBox/TextTools";
+import TextPanel from "../components/TextBox/TextPanel";
+import ButtonTools from "../components/Button/ButtonTools";
+import ButtonPanel from "../components/Button/ButtonPanel";
+import ShapeTools from "../components/Shape/ShapeTools";
+import ShapePanel from "../components/Shape/ShapePanel";
+import ImageTools from "../components/Image/ImageTools";
+import ImagePanel from "../components/Image/ImagePanel";
+import CanvasPanel from "../components/canvas/CanvasPanel";
+import SectionPanel from "../components/Section/SectionPanel";
+import SectionTools from "../components/Section/SectionTools";
+import { SidebarLayers } from "../layout/SideBar";
 import { Panel } from "build-ui";
 
 
@@ -35,6 +37,8 @@ import { BiCog } from "react-icons/bi";
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
+import DragonLayers from "../layers/DragonLayers";
+
 
 
 const Sidebar = () => {
@@ -48,10 +52,11 @@ const Sidebar = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
   const panel = {
-    Counter: CounterPanel,
+    Canvas: CanvasPanel,
+    Section: SectionPanel,
     Image: ImagePanel,
     Text: TextPanel,
-    ButtonComp: ButtonPanel,
+    Button: ButtonPanel,
     Shape: ShapePanel
   };
 
@@ -76,17 +81,18 @@ const Sidebar = () => {
           </SidebarHeader>
           <SidebarContent>
           <div className='center'>
-            <CounterTools />
             <TextTools />
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
+            <SectionTools />
             <br/><br/>
           </div>
           
           {menuCollapse? (""):(<Panel view={panel} />)}
             
           </SidebarContent>
+          <DragonLayers />
 
         </ProSidebar>
       </div>

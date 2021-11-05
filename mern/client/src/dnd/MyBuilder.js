@@ -3,24 +3,18 @@ import "./styles/builder.css"
 import Sidebar from "./Sidebar/Sidebar"
 import {Grid} from "@material-ui/core"
 import {Builder, Workspace, Panel, branch, item} from 'build-ui';
-import CounterPanel from "./Counter/CounterPanel";
-import CounterTools from "./Counter/CounterTools";
-import CounterView from "./Counter/CounterView"
-import TextPanel from "./TextBox/TextPanel";
-import TextView from "./TextBox/TextView"
-import TextTools from "./TextBox/TextTools";
-import ImageTools from "./Image/ImageTools";
-import ImageView from "./Image/ImageView";
-import ButtonComp from "./Button/ButtonComp";
-import ButtonPanel from "./Button/ButtonPanel";
-import ButtonView from "./Button/ButtonView"
-import ButtonTools from "./Button/ButtonTools";
-import ShapePanel from "./Shape/ShapePanel";
-import ShapeView from "./Shape/ShapeView"
-import ShapeTools from "./Shape/ShapeTools";
-import SectionView from "./Section/SectionView";
+import CounterView from "./components/Counter/CounterView"
+import TextView from "./components/TextBox/TextView"
+import ImageView from "./components/Image/ImageView";
+import ButtonView from "./components/Button/ButtonView"
+import ShapeView from "./components/Shape/ShapeView"
+import SectionView from "./components/Section/SectionView";
 import TopBar from "./TopBar/TopBar";
+import CanvasView from "./components/canvas/CanvasView";
+//import TopBar from './TopBar';
+
 import { RiAlignJustify } from "react-icons/ri";
+import BuilderSelector from "./hooks/BuilderSelector";
 
 const MyBuilder = (props) => {
 
@@ -30,14 +24,15 @@ const MyBuilder = (props) => {
         Image: ImageView,
         Counter: CounterView,
         Section: SectionView,
-        ButtonComp: ButtonView,
-        Shape: ShapeView
+        Button: ButtonView,
+        Shape: ShapeView,
+        Canvas: CanvasView
         // TextBox: TextView,
     };
 
     const tree = branch(
         item({
-            type: 'Section',
+            type: 'Canvas',
         })
     );
 
@@ -79,6 +74,7 @@ const MyBuilder = (props) => {
                     xs={10}
                     >
                     <Workspace view={view}/>
+                    <BuilderSelector />
                 </Grid>
 
 
