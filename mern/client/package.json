@@ -46,7 +46,8 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.0",
     "sass": "^1.43.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "yarn-install": "^1.0.0"
   },
   "scripts": {
     "proxy": "http://localhost:5000",
