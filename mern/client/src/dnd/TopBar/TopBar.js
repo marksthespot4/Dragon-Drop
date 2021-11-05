@@ -21,7 +21,7 @@ const TopBar = (props) => {
     useEffect(() => {
         getPage(props.id).then(data => {
             // console.log(data.pagedata);
-            // load(data.pagedata);
+            load(data.pagedata);
         }); 
       }, []);  
 
