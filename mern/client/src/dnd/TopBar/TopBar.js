@@ -22,7 +22,8 @@ const TopBar = (props) => {
         getPage(props.id).then(data => {
             // console.log(data.pagedata);
             load(data.pagedata);
-        }); 
+        });
+        window.addEventListener('keydown', keydownHandler);
       }, []);  
 
     const load = (saveData) => {
@@ -39,6 +40,12 @@ const TopBar = (props) => {
         props.save(json());
         console.log(json());
     }
+
+    const keydownHandler = (e) => {
+        if(e.ctrlKey && e.keyCode == 90) handleUndo()
+        else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+      }
+    
     return <div>
         {/* <button onClick = {load}>
             Load
