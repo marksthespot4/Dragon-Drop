@@ -1,5 +1,10 @@
-import {DnDBuilder, useEditor} from "build-ui";
-import { ButtonComp } from "./ButtonComp";
+import { DnDBuilderHOC } from "build-ui";
+import useDragonEditor from "../../hooks/useDragonEditor";
+import useDragonStyler from "../../hooks/useDragonStyler";
+import Button from "./Button";
+import useStyle from "./style/ButtonView";
+
+const BuilderButton = DnDBuilderHOC(Button);
 
 const ButtonView = ({
                          id,
@@ -8,24 +13,25 @@ const ButtonView = ({
     const handleButton = event => {
         event.stopPropagation();
     }
-    const editor = useEditor({
+    const editor = useDragonEditor({
         id: id
     });
-    const {
-        handlePanel,
-        handleDragStart,
-        handleDragEnd,
-    } = editor;
-    return <DnDBuilder
-        onClick = {handlePanel}
-        onDragStart = {handleDragStart}
-        onDragEnd = {handleDragEnd}
-        draggable = {true}
-    >
-        <ButtonComp
-            {...props}
-        />
-    </DnDBuilder>
+    const styler = useDragonStyler({
+        id: id,
+    });
+    const classes = useStyle({
+        selected: editor.indexes.selected,
+        fixed: editor.meta.fixed,
+    })
+    return <BuilderButton
+    onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
+    onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
+    draggable = {!editor.meta.fixed}
+    onClick = {editor.handleSelect}
+    className = {classes.view}
+    {...props}
+    style = {styler.completeStyle(props.style)}
+    />
 }
 
 export default ButtonView;

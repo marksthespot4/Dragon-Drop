@@ -1,4 +1,3 @@
-import {makeStyles} from '@mui/styles'
 import clsx from 'clsx';
 import React from 'react';
 import useStyle from './style/Section'

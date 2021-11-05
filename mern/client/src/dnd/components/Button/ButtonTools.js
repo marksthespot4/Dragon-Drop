@@ -1,29 +1,32 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import { Button } from "@material-ui/core"
 
-const ButtonTools = () => {
+const ButtonTools = ({
+    className,
+    ...rest
+}) => {
     const tools = useTools();
-    const handleDragTool = event => {
-        event.stopPropagation();
+    const handleDragStart = () => {
         const buttonProps = {
-            buttonText: 'Click Me!',
-            backColor: "#0071ce",
-            textColor: "#FFFFFF"
-        }
+            text: 'Button',
+            color: 'primary',
+            variant: 'contained',
+            style: {}
+        };
         const button = item({
-            type: 'ButtonComp',
+            type: 'Button',
             props: buttonProps
         })
         const data = branch(button);
         tools.triggerDragStart({
             data: data
         });
-        // console.log(data);
     }
     return <DnDBuilder
-        onDragStart = {handleDragTool}
+        onDragStart = {handleDragStart}
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
+        {...rest}
     >
         <Button>Button</Button>
     </DnDBuilder>

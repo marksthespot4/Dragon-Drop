@@ -24,7 +24,7 @@ const MyBuilder = (props) => {
         Image: ImageView,
         Counter: CounterView,
         Section: SectionView,
-        ButtonComp: ButtonView,
+        Button: ButtonView,
         Shape: ShapeView,
         Canvas: CanvasView
         // TextBox: TextView,

@@ -4,8 +4,6 @@
 import React, { useState } from "react";
 import TextTools from "../components/TextBox/TextTools";
 import TextPanel from "../components/TextBox/TextPanel";
-import CounterTools from "../components/Counter/CounterTools";
-import CounterPanel from "../components/Counter/CounterPanel";
 import ButtonTools from "../components/Button/ButtonTools";
 import ButtonPanel from "../components/Button/ButtonPanel";
 import ShapeTools from "../components/Shape/ShapeTools";
@@ -13,6 +11,8 @@ import ShapePanel from "../components/Shape/ShapePanel";
 import ImageTools from "../components/Image/ImageTools";
 import ImagePanel from "../components/Image/ImagePanel";
 import CanvasPanel from "../components/canvas/CanvasPanel";
+import SectionPanel from "../components/Section/SectionPanel";
+import SectionTools from "../components/Section/SectionTools";
 import { SidebarLayers } from "../layout/SideBar";
 import { Panel } from "build-ui";
 
@@ -53,9 +53,10 @@ const Sidebar = () => {
   };
   const panel = {
     Canvas: CanvasPanel,
+    Section: SectionPanel,
     Image: ImagePanel,
     Text: TextPanel,
-    ButtonComp: ButtonPanel,
+    Button: ButtonPanel,
     Shape: ShapePanel
   };
 
@@ -84,6 +85,7 @@ const Sidebar = () => {
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
+            <SectionTools />
             <br/><br/>
           </div>
           

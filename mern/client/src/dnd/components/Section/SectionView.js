@@ -2,7 +2,7 @@ import {DnDBuilderHOC} from 'build-ui';
 import useDragonEditor from '../../hooks/useDragonEditor';
 import useDragonStyler from '../../hooks/useDragonStyler';
 import Resizable from '../../resizable/Resizable';
-import useStyle from '../canvas/style/Canvas';
+import useStyle from './style/SectionView';
 import Section from './Section';
 
 const ResizableSection = Resizable(Section);
@@ -20,11 +20,16 @@ const SectionView = ({
     });
     const classes = useStyle({
         selected: editor.indexes.selected,
+        hovering: editor.hovering,
+        fixed: editor.meta.fixed,
     });
     return <BuilderSection
-        onDragStart = {editor.handlePositionedDragStart}
-        onDragEnd = {editor.handleDragEnd}
-        draggable = {true}
+        onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
+        onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
+        onDrop = {editor.handlePositionedDrop}
+        onDragEnter = {editor.handlePaintDropZone}
+        onDragLeave = {editor.handleEraseDropZone}
+        draggable = {!editor.meta.fixed}
         isResizing = {editor.indexes.selected}
         onResizeStart = {editor.handleResizeStart}
         onResize = {editor.handleResize}
