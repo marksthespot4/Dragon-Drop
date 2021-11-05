@@ -7,11 +7,15 @@ const ButtonTools = ({
 }) => {
     const tools = useTools();
     const handleDragStart = () => {
+        const buttonStyle ={
+            width: '50px',
+            height: '50px'
+        }
         const buttonProps = {
             text: 'Button',
             color: 'primary',
             variant: 'contained',
-            style: {}
+            style: buttonStyle
         };
         const button = item({
             type: 'Button',
