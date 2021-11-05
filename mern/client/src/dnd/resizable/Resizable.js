@@ -16,9 +16,9 @@ const Resizable = Component => React.forwardRef(({
     const classes = useStyle();
     const classAll = clsx(
         classes.resizer,
-        className
+        className, 
     );
-    return <Component
+    return <Component 
         className = {classAll}
         ref = {ref}
         {...rest}

@@ -19,7 +19,7 @@ const LayerDetail = ({
     const collected = useCollector({
         selector: selector,
     })
-    const editor = useDemoEditor({
+    const editor = useDragonEditor({
         id: id,
     });
     const classes = useStyle({

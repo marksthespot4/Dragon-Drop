@@ -12,6 +12,8 @@ import ShapeTools from "../components/Shape/ShapeTools";
 import ShapePanel from "../components/Shape/ShapePanel";
 import ImageTools from "../components/Image/ImageTools";
 import ImagePanel from "../components/Image/ImagePanel";
+import CanvasPanel from "../components/canvas/CanvasPanel";
+import { SidebarLayers } from "../layout/SideBar";
 import { Panel } from "build-ui";
 
 
@@ -35,6 +37,8 @@ import { BiCog } from "react-icons/bi";
 //import sidebar css from react-pro-sidebar module and our custom css 
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
+import DragonLayers from "../layers/DragonLayers";
+
 
 
 const Sidebar = () => {
@@ -48,7 +52,7 @@ const Sidebar = () => {
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
   const panel = {
-    Counter: CounterPanel,
+    Canvas: CanvasPanel,
     Image: ImagePanel,
     Text: TextPanel,
     ButtonComp: ButtonPanel,
@@ -76,7 +80,6 @@ const Sidebar = () => {
           </SidebarHeader>
           <SidebarContent>
           <div className='center'>
-            <CounterTools />
             <TextTools />
             <ImageTools />
             <ButtonTools />
@@ -87,6 +90,7 @@ const Sidebar = () => {
           {menuCollapse? (""):(<Panel view={panel} />)}
             
           </SidebarContent>
+          <DragonLayers />
 
         </ProSidebar>
       </div>

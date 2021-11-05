@@ -26,3 +26,5 @@ const Layer = ({
         ))}
     </Resolved> : null;
 }
+
+export default Layer;

@@ -12,7 +12,7 @@ const LayerDroppable = ({
     depth,
 }) => {
     const root = depth === 0;
-    const layers = useDemoLayers({
+    const layers = useDragonLayers({
         id: id
     });
     const handleDrop = (!root ? layers.handleDelegatedDrop : layers.handleDrop);

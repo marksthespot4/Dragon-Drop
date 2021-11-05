@@ -15,12 +15,14 @@ const CanvasView = ({
     });
     const classes = useStyle({
         selected: editor.indexes.selected,
+        hovering: editor.hovering,
+        fixed: true,
     });
     const ref = useRef();
     return <BuilderCanvas
-        //onDrop = {editor.handlePositionedDrop}
-        //onDragEnter = {editor.handlePaintDropZone}
-        //onDragLeave = {editor.handleEraseDropZone}
+        onDrop = {editor.handlePositionedDrop}
+        onDragEnter = {editor.handlePaintDropZone}
+        onDragLeave = {editor.handleEraseDropZone}
         onClick = {editor.handleSelect}
         className = {classes.view}
         ref = {ref}

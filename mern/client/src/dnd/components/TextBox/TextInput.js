@@ -1,35 +1,33 @@
-import useStyle from './style/Text';
+import useStyle from './style/TextInput';
 import clsx from 'clsx';
 import React from 'react';
 
-const Text = React.forwardRef(({
+const TextInput = React.forwardRef(({
     children,
     className,
     style,
-    text,
     ...props
 }, ref) => {
     const classes = useStyle(style);
-    const classText = clsx(
-        classes.text,
-        classes.fill,
+    const classArea = clsx(
+        classes.textInput,
+        classes.fill
     );
     const classAll = clsx(
         className,
-        classes.ui,
-    )
-    return <div
+        classes.ui
+    );
+    return <div 
         className = {classAll}
     >
-        <p 
+        <textarea 
             ref = {ref}
-            className = {classText}
+            className = {classArea} 
             {...props}
-        >
-            {text}
-        </p>
+        />
         {children}
     </div>
+
 });
 
-export default Text;
+export default TextInput;

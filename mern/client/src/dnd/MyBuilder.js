@@ -14,6 +14,7 @@ import CanvasView from "./components/canvas/CanvasView";
 //import TopBar from './TopBar';
 
 import { RiAlignJustify } from "react-icons/ri";
+import BuilderSelector from "./hooks/BuilderSelector";
 
 const MyBuilder = (props) => {
 
@@ -73,6 +74,7 @@ const MyBuilder = (props) => {
                     xs={10}
                     >
                     <Workspace view={view}/>
+                    <BuilderSelector />
                 </Grid>
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import Anchor from './Anchor';
-import Resizable from './Resizable';
 import useStyle from './ResizeAnchorsStyle';
 
 const ResizeAnchors = props => {
@@ -8,46 +7,46 @@ const ResizeAnchors = props => {
     return <React.Fragment>
         <Anchor
             {...props}
-            expandsDown = {false}
+            expandsDown = {false} 
             expandsRight = {false}
             className = {classes.anchor_1}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsDown = {false}
+            expandsDown = {false} 
             className = {classes.anchor_2}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsDown = {false}
+            expandsDown = {false} 
             expandsRight = {true}
             className = {classes.anchor_3}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsRight = {true}
+            expandsRight = {true} 
             className = {classes.anchor_4}
         />
-        <Anchor
+        <Anchor 
             {...props}
             expandsDown = {true}
-            expandsRight = {true}
+            expandsRight = {true} 
             className = {classes.anchor_5}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsDown = {true}
+            expandsDown = {true} 
             className = {classes.anchor_6}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsDown = {true}
+            expandsDown = {true} 
             expandsRight = {false}
             className = {classes.anchor_7}
         />
-        <Anchor
+        <Anchor 
             {...props}
-            expandsRight = {false}
+            expandsRight = {false} 
             className = {classes.anchor_8}
         />
     </React.Fragment>

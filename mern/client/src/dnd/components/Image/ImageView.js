@@ -24,9 +24,9 @@ const ImageView = ({
 
     return <BuilderImage
         onClick = {editor.handleSelect}
-        onDragStart = {editor.handlePositionedDragStart}
-        onDragEnd = {editor.handleDragEnd}
-        draggable = {true}
+        onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
+        onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
+        draggable = {!editor.meta.fixed}
         isResizing = {editor.indexes.selected}
         onResizeStart = {editor.handleResizeStart}
         onResize = {editor.handleResize}

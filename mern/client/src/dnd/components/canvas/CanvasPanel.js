@@ -1,3 +1,5 @@
+import { BackgroundPanel } from "../../panels/PalettePanel";
+
 const CanvasPanel = ({
     id,
 }) => {

@@ -1,4 +1,4 @@
-import DnDLayers from "./DndLayers";
+import DnDLayers from "./DnDLayers";
 import LayerDetail from "./LayerDetail";
 import useStyle from './styles/LayerDraggable';
 import useDragonLayers from "../hooks/layerhooks/useDragonLayers";
@@ -7,7 +7,7 @@ const LayerDraggable = ({
     id,
     depth,
 }) => {
-    const layers = useDemoLayers({
+    const layers = useDragonLayers({
         id: id
     })
     const classes = useStyle();

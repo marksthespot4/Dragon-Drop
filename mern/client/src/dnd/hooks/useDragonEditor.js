@@ -15,7 +15,6 @@ const useDragonEditor = params => {
     });
     const builder = useRef();
 
-    const helpers = useDnDHelpers();
     function getDnDPosition(event) {
         const target = event.currentTarget;
         const {
@@ -73,7 +72,8 @@ const useDragonEditor = params => {
         });
     }
 
-    function handlePositionDrop(event, position) {
+    const helpers = useDnDHelpers();
+    function handlePositionedDrop(event, position) {
         editor.handleDrop(event, position);
         const bag = helpers.getDragAndDrop();
         const draggedId = bag.transfer.id;
@@ -246,6 +246,41 @@ const useDragonEditor = params => {
         });
     }
 
+    const [hovering, setHovering] = useState(false);
+    const [paint, setPaint] = useState();
+    function handlePaintDropZone(event) {
+        const props = {
+            style: {backgroundColor: '#b5c2c4'}
+        };
+        actions.unrecorded.triggerUpdate({
+            id: id,
+            props: props,
+        });
+        event.stopPropagation();
+        if(typeof(editor.props.style) === 'undefined') {
+            setPaint('white');
+        }
+        else {
+            setPaint(editor.props.style.backgroundColor);
+        }
+        setHovering(true);
+    }
+    function handleEraseDropZone() {
+        const props = {
+            style: {backgroundColor: paint}
+        };
+        actions.unrecorded.triggerUpdate({
+            id: id,
+            props: props,
+        });
+        setPaint(null);
+        setHovering(false);
+    }
+    const isTransfering = editor.isTransfering;
+    useEffect(() => {
+        if (isTransfering || !hovering) return;
+        handleEraseDropZone();
+    });
     function handleDelete(event) {
         actions.timeBatched.triggerDelete({
             id: id
@@ -265,7 +300,9 @@ const useDragonEditor = params => {
     }
     const dndHandlers = {
         handlePositionedDragStart: handlePositionedDragStart,
-        handlePositionDrop: editor.toDnDHandler(handlePositionDrop),
+        handlePositionedDrop: editor.toDnDHandler(handlePositionedDrop),
+        handlePaintDropZone: editor.toDnDHandler(handlePaintDropZone),
+        handleEraseDropZone: editor.toDnDHandler(handleEraseDropZone)
     }
     const handlers = {
         handleResize,
@@ -277,7 +314,8 @@ const useDragonEditor = params => {
         handleDelete,
     }
     const dragonBag = {
-        builder: builder
+        builder: builder,
+        hovering: hovering,
     }
     const collectBag = {
         node: collected.node,

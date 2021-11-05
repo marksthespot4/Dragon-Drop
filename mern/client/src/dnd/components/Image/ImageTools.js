@@ -7,8 +7,8 @@ const ImageTools = ({
     className,
     ...rest
 }) => {
-    const classes = useStyle();
-    const classAll = clsx(classes.tool, className);
+    //const classes = useStyle();
+    //const classAll = clsx(classes.tool, className);
     const tools = useTools();
     const handleDragTool = () => {
 
@@ -35,7 +35,7 @@ const ImageTools = ({
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
-        className = {classAll}
+        //className = {classAll}
         {...rest}
     >
         <Button> Image </Button>

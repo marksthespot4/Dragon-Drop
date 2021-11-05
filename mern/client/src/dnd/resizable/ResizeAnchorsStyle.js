@@ -5,7 +5,7 @@ const useStyle = makeStyles({
         position: 'absolute',
         top: '0%',
         left: '0%',
-        transform: 'translateX(-50%) translateY(-50%)'
+        transform: 'translateX(-50%) translateY(-50%)',
     }),
     anchor_2: ({
         position: 'absolute',
@@ -48,7 +48,7 @@ const useStyle = makeStyles({
         left: '0%',
         top: '50%',
         transform: 'translateX(-50%) translateY(-50%)',
-    })
+    }),
 })
 
 export default useStyle;

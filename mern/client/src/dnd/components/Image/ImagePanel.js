@@ -1,11 +1,10 @@
-import { TextField} from "@material-ui/core";
 import {Stack} from "@mui/material"
-import { DeleteIcon } from "@material-ui/icons/Delete"
 import useDragonEditor from "../../hooks/useDragonEditor"
 import {useActions} from "build-ui"
 import { useState , useEffect} from "react";
-import Color from "../../color";
 import Button from 'react-bootstrap/Button';
+import SizingPanel from "../../panels/SizingPanel";
+import PositionPanel from "../../panels/PositionPanel";
 
 const ImagePanel = ({id}) => {
     const actions = useActions();
@@ -34,38 +33,18 @@ const ImagePanel = ({id}) => {
         });
     }
 
-    const handleChange = event => {
-        setFileUrl(event.target.value);
-    }
-
-    // const actions = useActions()
-
-    const [backColor, setBackColor] = useState(editor.props.backColor);
-
-    const handleBackColorChange = () => {     
-        // setColor(e.target.value);
-        actions.timeBatched.triggerUpdate({
-            id: id,
-            props: {backColor: backColor}
-        });
-    }
-
-    useEffect(() => { 
-        handleBackColorChange();
-    }, [backColor])
-
     return <div>
         <Stack>
             <span>Image Url</span>
         <input
             name = 'imageUrl'
-            value = {fileUrl}
-            onChange={handleChange}
+            value = {textField}
+            onChange={(event) => {setTextField(event.target.value)}}
             />
         <Button onClick={handleSourceChange}> Upload new image </Button>
         <Button component="label"> 
             Upload from local
-            <input type="file" onChange={imageFileUpload} hidden/>
+            <input type="file" onChange={imageFileUpload} />
         </Button>
         <span>External Link URL</span>
         <input
@@ -75,11 +54,8 @@ const ImagePanel = ({id}) => {
             />
         </Stack>
         <Button onClick={handleSourceChange} variant="contained"> Update Link </Button>
-
-        <div>
-            Background Color
-            <Color setColor={setBackColor}/> 
-        </div>
+        <SizingPanel id = {id} />
+        <PositionPanel id = {id} />
 
     </div>
 }

@@ -1,8 +1,8 @@
 import {makeStyles} from '@material-ui/core/styles'
-import combineStyles from '../../../styles/combine';
+import combineStyles from "../utils/combine";
 import {topbarStyles} from './TopBar';
-import {sidebarStyles} from './SideBar';
-import {workspaceStyles} from './Workspace';
+import {sidebarStyles} from '../layout/style/SideBar';
+import {workspaceStyles} from '../layout/style/Workspace';
 
 export const gridStyles = theme => ({
     grid: ({
@@ -31,7 +31,6 @@ export const gridStyles = theme => ({
 
 const useStyle = makeStyles(combineStyles(
     gridStyles,
-    topbarStyles,
     workspaceStyles,
     sidebarStyles
 ));
