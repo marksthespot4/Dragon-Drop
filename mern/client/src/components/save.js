@@ -31,7 +31,7 @@ export default (props) => {
       useCORS: true, 
       // foreignObjectRendering: true
     } ).then(canvas => {
-      document.body.appendChild(canvas)
+      // document.body.appendChild(canvas)
       console.log(canvas.toDataURL('image/png'));
       setImage(canvas.toDataURL('image/png'));
     });
