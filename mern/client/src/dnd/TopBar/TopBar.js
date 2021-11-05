@@ -2,6 +2,7 @@ import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
 import { useEffect } from "react";
 import { getPage } from "./../../components/page";
+import html2canvas from 'html2canvas';
 
 
 const TopBar = (props) => {
@@ -31,6 +32,11 @@ const TopBar = (props) => {
         }
     }
     const handleSave = () => {
+        // const screenshotTarget = document.body;
+        // html2canvas(screenshotTarget).then((canvas) => {
+        //   const base64image = canvas.toDataURL("image/png");
+        //   window.location.href = base64image;
+        // });
         props.save(json());
         console.log(json());
     }
