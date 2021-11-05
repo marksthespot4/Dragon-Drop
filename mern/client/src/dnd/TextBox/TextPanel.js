@@ -29,6 +29,7 @@ const TextPanel = ({id}) => {
             props: {textBold: boldFont}
         });
     }
+
     const handleItalicizeChange = () => {
         setItalics(!italics)
         console.log(italics)
@@ -38,6 +39,7 @@ const TextPanel = ({id}) => {
             props: {textItalicize: italics}
         });
     }
+
     const handleUnderlineChange = () => {
         setUnderline(!underline)
         console.log(underline)
@@ -47,24 +49,7 @@ const TextPanel = ({id}) => {
             props: {textUnderline: underline}
         });
     }
-    const handleSizeChange = () => {
-        setSize(size)
-        console.log(size)
-        
-        actions.timeBatched.triggerUpdate({
-            id: id,
-            props: {textSize: size}
-        });
-    }
-    const handleFontChange = (e) => {
-        setFont(font=> e);
-        console.log(font)
-        
-        actions.timeBatched.triggerUpdate({
-            id: id,
-            props: {textFont: font}
-        });
-    }
+    
     const handleColorChange = () => {     
         // setColor(e.target.value);
         actions.timeBatched.triggerUpdate({
@@ -72,26 +57,57 @@ const TextPanel = ({id}) => {
             props: {color: color}
         });
     }
-    const handleAdd = () => {setSize(
-        size => size + 1
-    );
+
+    useEffect(() => { 
+        handleColorChange();
+    }, [color])
+
+    // const handleSizeChange = () => {
+    //     setSize(size)
+    //     console.log(size)
+        
+    //     actions.timeBatched.triggerUpdate({
+    //         id: id,
+    //         props: {textSize: size}
+    //     });
+    // }
+
+    const handleFontChange = () => {
+        // setFont(font=> e);
+        console.log(font)
+        
+        actions.timeBatched.triggerUpdate({
+            id: id,
+            props: {textFont: font}
+        });
+    }
+
+    useEffect(() => { 
+        handleFontChange();
+    }, [font])
+
+    const handleAdd = () => {
+        setSize(size => size + 1);
     actions.timeBatched.triggerUpdate({
         id: id,
         props: {textSize: size}
     });
     }
-    const handleSubtract = () => {setSize(
-        size => size - 1
-    );
+    const handleSubtract = () => {
+        setSize(size => size - 1);
     actions.timeBatched.triggerUpdate({
         id: id,
         props: {textSize: size}
     });
     }
 
-    useEffect(() => { 
-        handleColorChange();
-    }, [color])
+    // const handleSizeChange = (e) => {
+    //     setSize(size => e.target.value);
+    // actions.timeBatched.triggerUpdate({
+    //     id: id,
+    //     props: {textSize: size}
+    // });
+    // }
 
     return <div>
         <input
@@ -105,16 +121,16 @@ const TextPanel = ({id}) => {
         <Button size="sm" onClick={handleItalicizeChange}><em>I</em></Button>
         <Button size="sm" onClick={handleUnderlineChange}><u>U</u></Button>
         <DropdownButton id="dropdown-basic-button" title={font} size="sm">
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Arial</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Baskerville</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Courier</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Damascus</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Futura</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Georgia</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Helvetica</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Palatino</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Times New Roman</div></Dropdown.Item>
-            <Dropdown.Item><div onClick={(e) => handleFontChange(e.target.textContent)}>Verdana</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Arial</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Baskerville</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Courier</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Damascus</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Futura</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Georgia</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Helvetica</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Palatino</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Times New Roman</div></Dropdown.Item>
+            <Dropdown.Item><div onClick={(e) => setFont(e.target.textContent)}>Verdana</div></Dropdown.Item>
         </DropdownButton>
         <Button variant="outlined" onClick = {handleSubtract} size="sm">
             -
@@ -122,6 +138,12 @@ const TextPanel = ({id}) => {
         <span>
             {size}
         </span>
+        {/* <input
+            type="number"
+            placeholder={size}
+            onChange={handleSizeChange}
+        >
+        </input> */}
         <Button variant="outlined" onClick = {handleAdd} size="sm">
             +
         </Button>
