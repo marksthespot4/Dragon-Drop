@@ -13,8 +13,6 @@ import { write } from "@popperjs/core";
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-
-
 import axios from "axios";
 
 export default (props) => {
@@ -27,7 +25,6 @@ export default (props) => {
   const getImage = (currTree) => {
     setSaveData(currTree);
     takeScreenShot(ref.current);
-    // save();
     notify();
   }
 
@@ -38,17 +35,6 @@ export default (props) => {
   const notify = () => { 
     toast.success('Project Saved');
   }
-
-  // function getPDF()  {
-  //   html2canvas(document.getElementById("toPDF"),{
-  //     onrendered:function(canvas){
-  //       var img=canvas.toDataURL("image/png");
-  //       var doc = new jsPDF('l', 'cm'); 
-  //       doc.addImage(img,'PNG',2,2); 
-  //       doc.save('reporte.pdf'); 
-  //     }
-  //   }); 
-  // }
 
   const save = () => {
     // html2canvas(document.querySelector("#capture")).then(canvas => {
