@@ -1,7 +1,7 @@
 import Grid from "@material-ui/core/Grid";
 import useStyle from "./styles/EditPage";
-import SideBar, {SidebarLayers, SidebarPanel} from "./SideBar";
-import {ToolBar, MenuBar} from "./TopBar";
+import SideBar, {SidebarLayers, SidebarPanel} from "./layout/SideBar";
+import {TopBar} from "./TopBar/TopBar";
 import Workspace from "./Workspace";
 
 const BuilderGrid = () => {
@@ -16,23 +16,13 @@ const BuilderGrid = () => {
             item = {true} 
             className = {classes.topGrid}
         >
-
-            {/* TOOLBAR GRID */}
-            <Grid 
-                item = {true} 
-                xs = {12} 
-                md = {6}
-            >
-                <ToolBar className = {classes.tools} />
-            </Grid>
-
-            {/* MENUBAR GRID */}
+            {/* TOPBAR GRID */}
             <Grid 
                 item = {true} 
                 xs = {12}
                 md = {6}
             >
-                <MenuBar className = {classes.menu} />
+                <TopBar className = {classes.menu} />
             </Grid>
 
         </Grid>
@@ -65,6 +55,16 @@ const BuilderGrid = () => {
                     <SidebarPanel className = {classes.panel} />
                     <SidebarLayers className = {classes.layers} />
                 </SideBar>
+            </Grid>
+
+            {/* LEFTBAR GRID */}
+            <Grid  
+                item = {true}
+                xs = {12}
+                md = {3}
+                className = {classes.leftGrid}
+            >
+                <LeftBar classname = {classes.LeftBar} />
             </Grid>
 
         </Grid>
