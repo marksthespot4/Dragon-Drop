@@ -9,11 +9,10 @@ import { getPages, updatePage } from "./page"
 const bcrypt = require("bcryptjs");
 
 class SettingsTabs extends Component {
-
     constructor(props) {
         super(props);
         var email;
-        if(this.props.email != "") {
+        if(this.props.email !== "") {
             email = this.props.email; 
             localStorage.setItem( 'localEmail', email);
         }
