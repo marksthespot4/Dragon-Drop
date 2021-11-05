@@ -49,6 +49,8 @@ const ShapePanel = ({id}) => {
             <option value = 'Circle'>
                 Circle
             </option>
+            <option value = 'Square'> Square </option>
+            <option value = 'Star'> Star </option> 
         </Select>
         <div>
             Color
