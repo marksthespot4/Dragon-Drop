@@ -42,10 +42,10 @@ const ImagePanel = ({id}) => {
             onChange={(event) => {setTextField(event.target.value)}}
             />
         <Button onClick={handleSourceChange}> Upload new image </Button>
-        <Button component="label"> 
+        <div> 
             Upload from local
             <input type="file" onChange={imageFileUpload} />
-        </Button>
+        </div>
         <span>External Link URL</span>
         <input
             name = 'extLink'
