@@ -154,7 +154,7 @@ class Home extends Component {
             this.props.registerUser(newUser, this.props.history);
             this.modalClose();
             this.notify();
-            this.props.history.push("/user_page");
+            // this.props.history.push("/user_page");
         }
     }
 
