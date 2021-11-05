@@ -11,7 +11,7 @@ const TextTools = ({
     const handleDragTool = () => {
         const textStyle = {
             color: '#000000',
-            fontSize: 22,
+            fontSize: '22px',
             fontFamily: 'Arial',
         }
         const textProps = {

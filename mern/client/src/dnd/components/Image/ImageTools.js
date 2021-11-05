@@ -13,8 +13,8 @@ const ImageTools = ({
     const handleDragTool = () => {
 
         const imageStyle = {
-            width: 200,
-            height: 200
+            width: '200px',
+            height: '200px'
         }
         
         const imageProps = {

@@ -1,6 +1,6 @@
 import {makeStyles} from '@mui/styles';
 import combineStyles from "../../../utils/combine";
-import {positionStyles, sizingStyles} from '../../../styles/ui';
+import {positionStyles, sizingStyles, fillStyles} from '../../../styles/ui';
 
 const imageStyles = ({
     image: ({})
@@ -9,7 +9,8 @@ const imageStyles = ({
 const useStyle = makeStyles(combineStyles(
     imageStyles,
     sizingStyles,
-    positionStyles
+    positionStyles,
+    fillStyles
 ));
 
 export default useStyle;

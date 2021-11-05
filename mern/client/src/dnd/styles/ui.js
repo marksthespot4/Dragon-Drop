@@ -12,3 +12,10 @@ export const sizingStyles = ({
         height: props.height,
     })
 });
+
+export const fillStyles = ({
+    fill: ({
+        width: '100%',
+        height: '100%'
+    })
+})
