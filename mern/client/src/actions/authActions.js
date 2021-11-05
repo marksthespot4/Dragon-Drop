@@ -24,7 +24,7 @@ export const registerUser = (userData, history) => dispatch => {
         {
             console.log(userData.email);
             console.log(userData.password);
-            res.json(userData);
+            history.push("/");
 
         }) //redirect to create page after register
         .catch (err =>
