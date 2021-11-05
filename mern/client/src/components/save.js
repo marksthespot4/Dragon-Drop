@@ -19,12 +19,22 @@ export default (props) => {
   // console.log(props.match.params.id);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
-  const [image, takeScreenShot] = useScreenshot();
+  // const [image, takeScreenShot] = useScreenshot();
+  const [image, setImage] = useState(null);
   const [saveData, setSaveData] = useState(null);
 
   const getImage = (currTree) => {
     setSaveData(currTree);
-    takeScreenShot(ref.current);
+    // takeScreenShot(ref.current);
+    html2canvas(document.querySelector("#capture"), {
+      allowTaint: true, 
+      useCORS: true, 
+      // foreignObjectRendering: true
+    } ).then(canvas => {
+      document.body.appendChild(canvas)
+      console.log(canvas.toDataURL('image/png'));
+      setImage(canvas.toDataURL('image/png'));
+    });
     notify();
   }
 
@@ -64,7 +74,7 @@ export default (props) => {
       </div>
       {/* <img width={width} src={image} alt={""} /> */}
       {/* <div>{image}</div> */}
-      <div
+      {/* <div
         ref={ref}
         style={{
           border: "1px solid #ccc",
@@ -72,11 +82,11 @@ export default (props) => {
           marginTop: "20px"
         }}
       >
-       <MyBuilder save={getImage} id={props.match.params.id}/>
-      </div>
-      {/* <div id="capture">
         <MyBuilder save={getImage} id={props.match.params.id}/>
       </div> */}
+      <div id="capture">
+        <MyBuilder save={getImage} id={props.match.params.id}/>
+      </div>
     </div>
   );
 };
