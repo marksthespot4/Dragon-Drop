@@ -20,7 +20,7 @@ const TopBar = (props) => {
     // console.log(props.id);
     useEffect(() => {
         getPage(props.id).then(data => {
-            // console.log(data.pagedata);
+            console.log(data.pagedata);
             load(data.pagedata);
         });
         window.addEventListener('keydown', keydownHandler);
