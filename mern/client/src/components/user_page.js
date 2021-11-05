@@ -84,7 +84,7 @@ class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+        this.state = { pages: [], currentUser: email, searchUser: email, pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
@@ -147,11 +147,14 @@ class UserPage extends Component {
             }
         });        
     }
+
     renamePage(id) {
+
         if(this.state.currentUser === this.state.searchUser) {
             console.log(id);
             getPage(id).then(data=>{
-                updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+                var newName = prompt("New Name:");
+                updatePage(data.user, newName, data.pub, data.pagedata, data.pagepreview, id);
             });
         }
     } 
