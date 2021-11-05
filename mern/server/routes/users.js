@@ -76,7 +76,7 @@ router.post("/update/:email", (req, res) =>
             return res.status(404).json({emailnotfound: "Email not found."});
         }
         else {
-            user.email = req.body.email.toLowerCase();
+            user.email = req.body.email;
             user.password = req.body.password;
             user.pagecount = req.body.pagecount;
             user.save()
