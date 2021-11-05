@@ -146,7 +146,7 @@ class Home extends Component {
             //uploadUser(this.state.email, this.state.password, 0);
             const newUser = {
                 name: this.state.name,
-                email: this.state.email,
+                email: this.state.email.toLowerCase(),
                 password: this.state.password,
                 confirmPassword: this.state.confirmPassword
             }
@@ -160,7 +160,7 @@ class Home extends Component {
 
     modalLogin = () => {
         const userSign  = {
-            email: this.state.email,
+            email: this.state.email.toLowerCase(),
             password: this.state.password
         };
 
