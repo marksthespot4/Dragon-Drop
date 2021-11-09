@@ -174,6 +174,7 @@ class Home extends Component {
                 });
             }
             else {
+                this.props.setEmail(this.state.email);
                 this.props.loginUser(userSign);
             }
             /*
