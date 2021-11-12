@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="readjusted shape to not work with color.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="pushing home fix to actually allow you to sign in.">
+      <change afterPath="$PROJECT_DIR$/mern/client/src/components/faq.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +89,8 @@
       <workItem from="1633640447631" duration="28811000" />
       <workItem from="1634782634523" duration="38586000" />
       <workItem from="1635966369728" duration="14980000" />
-      <workItem from="1636422896259" duration="2298000" />
+      <workItem from="1636422896259" duration="3554000" />
+      <workItem from="1636755298566" duration="456000" />
     </task>
     <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633100662982</created>
@@ -413,7 +414,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636150726368</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="pushing home fix to actually allow you to sign in.">
+      <created>1636474762947</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1636474762947</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +440,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added triangle and circle, no resizing or customization currently." />
     <MESSAGE value="Added very basic right click redirect functionality." />
     <MESSAGE value="Made right click open in a new tab." />
     <MESSAGE value="right click for images, just opens image in new tab." />
@@ -457,6 +464,7 @@
     <MESSAGE value="fixed email searching for lowercase instead of regular case" />
     <MESSAGE value="fixed case sensitive issues" />
     <MESSAGE value="readjusted shape to not work with color." />
-    <option name="LAST_COMMIT_MESSAGE" value="readjusted shape to not work with color." />
+    <MESSAGE value="pushing home fix to actually allow you to sign in." />
+    <option name="LAST_COMMIT_MESSAGE" value="pushing home fix to actually allow you to sign in." />
   </component>
 </project>
