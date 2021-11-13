@@ -34,11 +34,14 @@ render() {
                       </NavLink>
                     </Col>
                     <Col className="center">
-                        <h5>
-                            <a>
+                        <NavLink className="navbar-brand" to="/faq">
                               <i class="bi bi-question-circle"></i>
-                            </a>
-                        </h5>
+                        </NavLink>
+                    </Col>
+                    <Col className="center">
+                        <NavLink className="navbar-brand" to="/creator_page" >
+                            <i class="bi bi-people-fill" />
+                        </NavLink>
                     </Col>
                 </Row>
                 <Row className="justify-content-md-center">

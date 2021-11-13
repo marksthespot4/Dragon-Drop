@@ -1,0 +1,31 @@
+
+
+.center {
+    align-content: center;
+    align-items: center;
+    font-family: "Book Antiqua";
+}
+
+.picSize {
+    max-width: 65%;
+    max-height: 65%;
+}
+
+.card {
+    align-content:center;
+    align-items: center;
+    width: 25rem;
+
+}
+
+.border {
+    border-color: black;
+    border-width: thick;
+}
+
+.bar {
+    background: #0071ce;
+    height: 0.25rem;
+    display: flex;
+    justify-content: center;
+}

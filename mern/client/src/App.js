@@ -23,6 +23,8 @@ import Settings from "./components/settings";
 import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
+import Creator_page from "./components/creator_page";
+import Faq from "./components/faq";
 
 /* Mark's comments
   This part up here will check our localStorage token
@@ -73,6 +75,14 @@ const App = () => {
         <Route path="/test" component={MyBuilder}/>
         <Route path="/user_page">
           <UserPage email = {email}/>
+          <Footer/>
+        </Route>
+        <Route path ="/creator_page">
+          <Creator_page/>
+          <Footer/>
+        </Route>
+        <Route path ="/faq">
+          <Faq/>
           <Footer/>
         </Route>
         <Route path="/settings">
