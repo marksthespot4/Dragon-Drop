@@ -15,6 +15,12 @@ class Faq extends Component {
             <div>
                 <Container fluid>
                     <h1 className="center"> Frequently Asked Questions </h1>
+                    <h5 className="center">
+                        We know you probably have a lot of questions.
+                        <br/> We did too. (Still do.)
+                        <br/> Here's a place to get some clarification!
+                    </h5>
+
                 </Container>
                 <Container fluid>
                     <Accordion >
