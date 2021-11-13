@@ -124,7 +124,7 @@ class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                uploadPage(this.state.currentUser, "New Page", null, false, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
     }

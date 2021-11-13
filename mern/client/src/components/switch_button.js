@@ -7,7 +7,7 @@ import { getPage } from "./page";
 export default class SwitchButton extends Component {
   constructor() {
     super();
-    this.state = {checked: true};
+    this.state = {checked: false};
     this.handleChange = this.handleChange.bind(this);
   }
 
