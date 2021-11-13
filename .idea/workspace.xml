@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="readjusted shape to not work with color.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="changes to faq / creator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
       <list>
         <option value="Sass File" />
         <option value="SCSS File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -48,12 +50,15 @@
     <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1yrfQPsMF8AcvQsQaMQki7RNOHn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -89,14 +94,8 @@
       <workItem from="1633640447631" duration="28811000" />
       <workItem from="1634782634523" duration="38586000" />
       <workItem from="1635966369728" duration="14980000" />
-      <workItem from="1636422896259" duration="2298000" />
-    </task>
-    <task id="LOCAL-00001" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
-      <created>1633100662982</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1633100662982</updated>
+      <workItem from="1636422896259" duration="3554000" />
+      <workItem from="1636755298566" duration="15496000" />
     </task>
     <task id="LOCAL-00002" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
       <created>1633205570042</created>
@@ -413,7 +412,35 @@
       <option name="project" value="LOCAL" />
       <updated>1636150726368</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="pushing home fix to actually allow you to sign in.">
+      <created>1636474762947</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1636474762947</updated>
+    </task>
+    <task id="LOCAL-00048" summary="added FAQ page.">
+      <created>1636755776730</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1636755776730</updated>
+    </task>
+    <task id="LOCAL-00049" summary="framework for FAQ and creators page.">
+      <created>1636767662399</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1636767662399</updated>
+    </task>
+    <task id="LOCAL-00050" summary="changes to faq / creator">
+      <created>1636834635328</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1636834635329</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,10 +459,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added triangle and circle, no resizing or customization currently." />
-    <MESSAGE value="Added very basic right click redirect functionality." />
-    <MESSAGE value="Made right click open in a new tab." />
-    <MESSAGE value="right click for images, just opens image in new tab." />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Made image right click more functional" />
     <MESSAGE value="Slight changes to structure" />
     <MESSAGE value="installations" />
@@ -457,6 +481,10 @@
     <MESSAGE value="fixed email searching for lowercase instead of regular case" />
     <MESSAGE value="fixed case sensitive issues" />
     <MESSAGE value="readjusted shape to not work with color." />
-    <option name="LAST_COMMIT_MESSAGE" value="readjusted shape to not work with color." />
+    <MESSAGE value="pushing home fix to actually allow you to sign in." />
+    <MESSAGE value="added FAQ page." />
+    <MESSAGE value="framework for FAQ and creators page." />
+    <MESSAGE value="changes to faq / creator" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes to faq / creator" />
   </component>
 </project>
