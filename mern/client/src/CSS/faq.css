@@ -1,0 +1,10 @@
+.centered {
+    align-content: center;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.colorBody {
+    background: #0071ce;
+    color: wheat;
+}
