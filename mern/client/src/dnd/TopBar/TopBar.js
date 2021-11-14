@@ -9,8 +9,7 @@ import "./save.css";
 const TopBar = (props) => {
     // const [tree, setTree] = useState(null);
     const [lastSave, setLastSave] = useState(null);
-    const [lastSaveDate, setLastSaveDate] = useState(null);
-    const [updateCount, setUpdateCount] = useState(null);
+    const [treeSize, setTreeSize] = useState(0);
 
     const builder = useBuilder();
     const {
@@ -42,8 +41,11 @@ const TopBar = (props) => {
       }, []);  
 
     useEffect(() => {
-        if(updateCount >= 10 && (new Date() - lastSaveDate) >= 10000) {
-            setUpdateCount(0);
+        // console.log(json().byIds.length());
+        console.log(Object.keys(json().byIds).length);
+
+        if(Object.keys(json().byIds).length == treeSize + 1) {
+            console.log(treeSize);
             setTimeout(() => {
                 handleSave();
                 var currentTime = new Date();
@@ -51,11 +53,8 @@ const TopBar = (props) => {
                 var minute = ('0'+currentTime.getMinutes()).substr(-2);
                 var second = ('0'+currentTime.getSeconds()).substr(-2);
                 setLastSave(hour + ':' + minute + ':' + second)     
-                setLastSaveDate(currentTime);
             }, 3000);
-        }
-        else {
-            setUpdateCount(updateCount + 1);
+            setTreeSize(Object.keys(json().byIds).length);
         }
     }, [json()]);  
 
@@ -66,6 +65,7 @@ const TopBar = (props) => {
     const load = (saveData) => {
         if(saveData != null) {  
             loadTree(saveData);
+            setTreeSize(Object.keys(saveData.byIds).length);
             // setTree(saveData);
         }
     }
