@@ -24,6 +24,12 @@ const TopBar = (props) => {
             load(data.pagedata);
         });
         window.addEventListener('keydown', keydownHandler);
+        const interval = setInterval(() => {
+            handleSave();
+          }, 30000);
+        return () => {//stop interval on unmount
+            clearInterval(interval);
+        }
       }, []);  
 
     const load = (saveData) => {
@@ -32,11 +38,6 @@ const TopBar = (props) => {
         }
     }
     const handleSave = () => {
-        // const screenshotTarget = document.body;
-        // html2canvas(screenshotTarget).then((canvas) => {
-        //   const base64image = canvas.toDataURL("image/png");
-        //   window.location.href = base64image;
-        // });
         props.save(json());
         console.log(json());
     }

@@ -32,7 +32,7 @@ export default (props) => {
       // foreignObjectRendering: true
     } ).then(canvas => {
       // document.body.appendChild(canvas)
-      console.log(canvas.toDataURL('image/png'));
+      // console.log(canvas.toDataURL('image/png'));
       setImage(canvas.toDataURL('image/png'));
     });
     notify();
@@ -47,9 +47,6 @@ export default (props) => {
   }
 
   const save = () => {
-    // html2canvas(document.querySelector("#capture")).then(canvas => {
-    //   document.body.appendChild(canvas)
-    // });
     if(saveData != null) {
       getPage(props.match.params.id).then(data => {
         updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
