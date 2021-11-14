@@ -23,7 +23,6 @@ class Header extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-
     // onClick()
     // {
     //     console.log(this.state.isLoggedIn);
@@ -51,22 +50,21 @@ render() {
                             <Switch 
                                 onChange={this.handleChange} 
                                 checked={this.state.theme}
-                                offColor="#08f"
-                                onColor="#0ff"
-                                offHandleColor="#0ff"
-                                onHandleColor="#08f"
-                                uncheckedIcon={
-                                    <svg viewBox="0 0 10 10" height="100%" width="100%" fill="yellow">
-                                      <circle r={3} cx={5} cy={5} />
-                                    </svg>
-                                }
+                                offColor="#000000"
+                                onColor="#C0C0C0"
+                                offHandleColor="#696969"
+                                onHandleColor="#FFFFFF"
                                 checkedIcon={
-                                    <svg viewBox="0 0 10 10" height="100%" width="100%" fill="yellow">
-                                      <circle r={3} cx={5} cy={5} />
-                                    </svg>
+                                    <div className="toggleS">
+                                        <i class="bi bi-sun-fill"></i>
+                                    </div>
+                                }
+                                uncheckedIcon={
+                                    <div className="toggleM">
+                                        <i class="bi bi-moon"></i>
+                                    </div>
                                 }
                             />
-
                             <NavLink className="navbar-brand" to="/user_page">
                                 My Projects
                             </NavLink>

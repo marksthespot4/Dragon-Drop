@@ -17,6 +17,24 @@ a:link {
     color:#ffc220;
 }
 
+.toggleS {
+    color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 20;
+}
+
+.toggleM {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 20;
+}
+
 i:hover {
     cursor: pointer;
 }
