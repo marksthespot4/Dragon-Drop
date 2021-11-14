@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
 import "../CSS/header.css";
 import { withRouter } from "react-router";
@@ -7,7 +7,8 @@ import logo from "../imgs/dragonNoText.png";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {loginUser, registerUser} from "../actions/authActions";
+// import {loginUser, registerUser} from "../actions/authActions";
+import Switch from "react-switch";
 
 import Button from 'react-bootstrap/Button';
 
@@ -15,13 +16,21 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isLoggedIn :false}
+        this.state = {
+            isLoggedIn :false,
+            theme: true
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
 
 
-    onClick()
-    {
-        console.log(this.state.isLoggedIn);
+    // onClick()
+    // {
+    //     console.log(this.state.isLoggedIn);
+    // }
+
+    handleChange(theme) {
+        this.setState({ theme });
     }
 
 render() {
@@ -33,12 +42,31 @@ render() {
                             <img className="logo" src={logo} className="img-fluid" style={{width: 50, margin: 2}}/>
                         </NavLink>
 
-                        <Navbar.Toggle onClick={() => this.onClick()}/>
+                        <Navbar.Toggle/>
                         {localStorage.getItem( 'jwtToken' ) === null
                         ?
                         <></>
                         :
                         <Navbar.Collapse className="justify-content-end">
+                            <Switch 
+                                onChange={this.handleChange} 
+                                checked={this.state.theme}
+                                offColor="#08f"
+                                onColor="#0ff"
+                                offHandleColor="#0ff"
+                                onHandleColor="#08f"
+                                uncheckedIcon={
+                                    <svg viewBox="0 0 10 10" height="100%" width="100%" fill="yellow">
+                                      <circle r={3} cx={5} cy={5} />
+                                    </svg>
+                                }
+                                checkedIcon={
+                                    <svg viewBox="0 0 10 10" height="100%" width="100%" fill="yellow">
+                                      <circle r={3} cx={5} cy={5} />
+                                    </svg>
+                                }
+                            />
+
                             <NavLink className="navbar-brand" to="/user_page">
                                 My Projects
                             </NavLink>
