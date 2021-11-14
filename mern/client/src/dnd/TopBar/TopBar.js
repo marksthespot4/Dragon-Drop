@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getPage } from "./../../components/page";
 import html2canvas from 'html2canvas';
 import { ToastContainer, toast } from 'react-toastify';
+import "./save.css";
 
 const TopBar = (props) => {
     // const [tree, setTree] = useState(null);
@@ -96,7 +97,7 @@ const TopBar = (props) => {
         ?
         <></>
         :    
-        <span>
+        <span className="notif">
             Last Saved: {lastSave}
         </span>
         }
