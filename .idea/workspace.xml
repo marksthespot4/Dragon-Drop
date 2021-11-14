@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="changes to faq / creator">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="updated our SEO / html title thing / icon">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,21 +94,7 @@
       <workItem from="1634782634523" duration="38586000" />
       <workItem from="1635966369728" duration="14980000" />
       <workItem from="1636422896259" duration="3554000" />
-      <workItem from="1636755298566" duration="15496000" />
-    </task>
-    <task id="LOCAL-00002" summary="Added css folder, page&#10;created navbarDD file for future editing&#10;started messing around with user page stuff and bootstrap&#10;added some example images&#10;installed sass">
-      <created>1633205570042</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1633205570042</updated>
-    </task>
-    <task id="LOCAL-00003" summary="what is goingon.">
-      <created>1633223926726</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1633223926726</updated>
+      <workItem from="1636755298566" duration="16930000" />
     </task>
     <task id="LOCAL-00004" summary="Database integration added to user page.">
       <created>1633293793640</created>
@@ -440,7 +425,21 @@
       <option name="project" value="LOCAL" />
       <updated>1636834635329</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="updated our SEO / html title thing / icon">
+      <created>1636836199045</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1636836199045</updated>
+    </task>
+    <task id="LOCAL-00052" summary="updated our SEO / html title thing / icon">
+      <created>1636836212118</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1636836212118</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +459,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Made image right click more functional" />
     <MESSAGE value="Slight changes to structure" />
     <MESSAGE value="installations" />
     <MESSAGE value="basic backend with user schema prototype" />
@@ -485,6 +483,7 @@
     <MESSAGE value="added FAQ page." />
     <MESSAGE value="framework for FAQ and creators page." />
     <MESSAGE value="changes to faq / creator" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes to faq / creator" />
+    <MESSAGE value="updated our SEO / html title thing / icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated our SEO / html title thing / icon" />
   </component>
 </project>
