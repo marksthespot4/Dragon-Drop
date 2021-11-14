@@ -10,7 +10,8 @@ import MyBuilder from "../dnd/MyBuilder";
 
 import { updatePage, getPage } from "./page";
 import { write } from "@popperjs/core";
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 import axios from "axios";
 
@@ -36,6 +37,9 @@ export default (props) => {
   }
 
   const save = () => {
+    // html2canvas(document.querySelector("#capture")).then(canvas => {
+    //   document.body.appendChild(canvas)
+    // });
     if(saveData != null) {
       getPage(props.match.params.id).then(data => {
         updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
@@ -68,8 +72,11 @@ export default (props) => {
           marginTop: "20px"
         }}
       >
-        <MyBuilder save={getImage} id={props.match.params.id}/>
+       <MyBuilder save={getImage} id={props.match.params.id}/>
       </div>
+      {/* <div id="capture">
+        <MyBuilder save={getImage} id={props.match.params.id}/>
+      </div> */}
     </div>
   );
 };

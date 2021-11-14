@@ -49,11 +49,12 @@ const Page = (props) => (
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <span className="visually-hidden"> Toggle Dropdown</span>
                 </i>
+
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                     <li><a className="dropdown-item" href="/create-page">Edit</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => {props.duplicatePage(props.page.pagename, props.page.pagedata, props.page.pub, props.page.pagepreview)}}>Duplicate</a></li>
-                    <li><a className="dropdown-item" href="#">Download</a></li>
+                    <li><a className="dropdown-item" href="#" onClick={() => {props.exportPage(props.page._id)}}>Download</a></li>
                     <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
@@ -84,11 +85,12 @@ class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        this.state = {pages: [], currentUser: email, searchUser: email, pagecount: 0};
+        this.state = { pages: [], currentUser: email, searchUser: email, pagecount: 0};
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
         this.duplicatePage = this.duplicatePage.bind(this);
+        this.exportPage = this.exportPage.bind(this);
     }
 
 
@@ -147,14 +149,30 @@ class UserPage extends Component {
             }
         });        
     }
+
     renamePage(id) {
+
         if(this.state.currentUser === this.state.searchUser) {
             console.log(id);
             getPage(id).then(data=>{
-                updatePage(data.user, "new name", data.pub, data.pagedata, data.pagepreview, id);
+                var newName = prompt("New Name:");
+                updatePage(data.user, newName, data.pub, data.pagedata, data.pagepreview, id);
             });
         }
-    } 
+    }
+    exportPage(id) {
+        getPage(id).then(data => {
+            var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data.pagedata));
+            console.log(dataStr);
+            var downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href",     dataStr);
+            downloadAnchorNode.setAttribute("download", data.pagename + ".json");
+            document.body.appendChild(downloadAnchorNode); // required for firefox
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+        })
+
+    }
     deleteMyPage(id) {
         console.log(this.state.currentUser);
         console.log(this.state.searchUser);
@@ -177,6 +195,7 @@ class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     renamePage = {this.renamePage}
                     duplicatePage = {this.duplicatePage}
+                    exportPage = {this.exportPage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
@@ -222,6 +241,7 @@ class UserPage extends Component {
                     deleteMyPage = {this.deleteMyPage}
                     renamePage = {this.renamePage}
                     duplicatePage = {this.duplicatePage}
+                    exportPage = {this.exportPage}
                     updatePub = {this.updatePub}
                     key={current._id}
                     pub={current.pub}
@@ -259,6 +279,7 @@ class UserPage extends Component {
                         Back to Account
                     </Button>
                 </div>
+
                 {this.state.currentUser === this.state.searchUser ?
                 <div style={{margin: 20}}>
 

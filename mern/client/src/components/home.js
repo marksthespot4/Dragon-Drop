@@ -18,6 +18,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import { registerUser } from "../actions/authActions";
 import { loginUser} from "../actions/authActions";
+import { ToastContainer, toast } from 'react-toastify';
 
 import classnames from "classnames";
 
@@ -116,6 +117,10 @@ class Home extends Component {
         });
     }
 
+    notify = () => { 
+        toast.success('Successfully Registered! Log in to get started.');
+    }
+
     modalSignup = () => {
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
@@ -141,19 +146,21 @@ class Home extends Component {
             //uploadUser(this.state.email, this.state.password, 0);
             const newUser = {
                 name: this.state.name,
-                email: this.state.email,
+                email: this.state.email.toLowerCase(),
                 password: this.state.password,
                 confirmPassword: this.state.confirmPassword
             }
+
             this.props.registerUser(newUser, this.props.history);
             this.modalClose();
-            this.props.history.push("/user_page");
+            this.notify();
+            // this.props.history.push("/user_page");
         }
     }
 
     modalLogin = () => {
         const userSign  = {
-            email: this.state.email,
+            email: this.state.email.toLowerCase(),
             password: this.state.password
         };
 
@@ -167,6 +174,7 @@ class Home extends Component {
                 });
             }
             else {
+                this.props.setEmail(this.state.email);
                 this.props.loginUser(userSign);
             }
             /*
@@ -223,6 +231,7 @@ class Home extends Component {
                     <span class="overlay-text">Welcome to Dragon Drop</span>
                 </div>
 
+                {/* LOGIN MODAL */}
                 <Modal 
                     handleClose={e => this.modalClose(e)} 
                     aria-labelledby="contained-modal-title-vcenter" 
@@ -271,7 +280,18 @@ class Home extends Component {
                     </Modal.Footer>
                 </Modal>
 
-
+                {/* SIGN UP MODAL */}
+                <ToastContainer 
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <Modal
                     handleClose={e => this.modalClose(e)} 
                     aria-labelledby="contained-modal-title-vcenter" 

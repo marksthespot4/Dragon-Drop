@@ -1,4 +1,5 @@
 const JwtStrategy = require("passport-jwt").Strategy;
+const GoogleStrategy = require('passport-google-oauth20');
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");

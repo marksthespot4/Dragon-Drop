@@ -6,7 +6,7 @@ The routing call has been changed to /routes/pages/...
  */
 export function uploadPage(user, pagename, pagedata, pub, pagepreview) {
     const newPage = {
-        user: user,
+        user: user.toLowerCase(),
         pagename: pagename,
         pagedata: pagedata,
         pub: pub,
