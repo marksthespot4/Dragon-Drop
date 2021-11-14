@@ -46,13 +46,16 @@ class Home extends Component {
             email: "",
             password: "",
             confirmPassword: "",
-            hidden: true,
+            hiddenL: true,
+            hiddenS: true,
             errors: {}
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.toggleShow = this.toggleShow.bind(this);
+        this.toggleShowL = this.toggleShowL.bind(this);
+        this.toggleShowS = this.toggleShowS.bind(this);
+
         //this.handleConfirmPasswordChange = this.handleConfirmPasswordChange(this);
     }
 
@@ -93,13 +96,17 @@ class Home extends Component {
         })
     }
 
-    toggleShow() {
-        this.setState({ hidden: !this.state.hidden });
+    toggleShowL() {
+        this.setState({ hiddenL: !this.state.hiddenL });
         // if(this.state.hidden) {
         //     icon = "bi bi-eye"
         // } else {
         //     icon = "bi bi-eye-slash"
         // }
+    }
+
+    toggleShowS() {
+        this.setState({ hiddenS: !this.state.hiddenS });
     }
 
     modalOpen = (active) => {
@@ -113,7 +120,8 @@ class Home extends Component {
             confirmPassword: "",
             show: false,
             activeModal: "",
-            hidden: true,
+            hiddenL: true,
+            hiddenS: true
         });
     }
 
@@ -257,10 +265,10 @@ class Home extends Component {
 
                         <h6>
                             <br></br>Password&nbsp;
-                             <i class={ this.state.hidden ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShow}></i>
+                             <i class={ this.state.hiddenL ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowL}></i>
                         </h6>
                         <input
-                            type={this.state.hidden ? "password" : "text"}
+                            type={this.state.hiddenL ? "password" : "text"}
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
@@ -327,10 +335,11 @@ class Home extends Component {
                             }
                         >
                             <i class="bi bi-info-circle"></i>
-                        </OverlayTrigger>
+                        </OverlayTrigger>&nbsp;
+                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS}></i>
                         </h6>
                         <input
-                            type="password"
+                            type={this.state.hiddenS ? "password" : "text"}
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
