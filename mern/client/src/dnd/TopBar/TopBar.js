@@ -9,6 +9,7 @@ import "./save.css";
 const TopBar = (props) => {
     // const [tree, setTree] = useState(null);
     const [lastSave, setLastSave] = useState(null);
+    const [lastSaveDate, setLastSaveDate] = useState(null);
     const [updateCount, setUpdateCount] = useState(null);
 
     const builder = useBuilder();
@@ -41,14 +42,17 @@ const TopBar = (props) => {
       }, []);  
 
     useEffect(() => {
-        if(updateCount == 10) {
+        if(updateCount >= 10 && (new Date() - lastSaveDate) >= 10000) {
             setUpdateCount(0);
-            handleSave();
-            var currentTime = new Date();
-            var hour = ('0'+currentTime.getHours()).substr(-2);
-            var minute = ('0'+currentTime.getMinutes()).substr(-2);
-            var second = ('0'+currentTime.getSeconds()).substr(-2);
-            setLastSave(hour + ':' + minute + ':' + second)     
+            setTimeout(() => {
+                handleSave();
+                var currentTime = new Date();
+                var hour = ('0'+currentTime.getHours()).substr(-2);
+                var minute = ('0'+currentTime.getMinutes()).substr(-2);
+                var second = ('0'+currentTime.getSeconds()).substr(-2);
+                setLastSave(hour + ':' + minute + ':' + second)     
+                setLastSaveDate(currentTime);
+            }, 3000);
         }
         else {
             setUpdateCount(updateCount + 1);
