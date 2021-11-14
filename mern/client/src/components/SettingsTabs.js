@@ -4,39 +4,61 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { getUser, updateUser } from "./user";
+import { getUser, updateUser, updateEmail } from "./user";
 import { getPages, updatePage } from "./page"
+import Container from '@material-ui/core/Container';
+//import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+ 
 const bcrypt = require("bcryptjs");
 
-class SettingsTabs extends Component {
-    render() {
-        return (
-         <div>  
-            <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-            <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-            </ul>
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-            <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-                <h3>HOME</h3>
-                <p>Some content.</p>
-            </div>
-            <div id="menu1" class="tab-pane fade">
-                <h3>Menu 1</h3>
-                <p>Some content in menu 1.</p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Some content in menu 2.</p>
-            </div>
-            </div>
-            </div>     
-    )}
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
 }
 
-/*class SettingsTabs extends Component {
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
+class SettingsTabs extends Component {
+
+
+ /* const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };*/
+
     constructor(props) {
         super(props);
         var email;
@@ -56,12 +78,26 @@ class SettingsTabs extends Component {
             confirmPassword: "",
             hidden: true,
             userEmail: email,
+            newEmail: "",
+            confirmEmail: "",
             private: false,
         };
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleNewEmailChange = this.handleNewEmailChange.bind(this);
     }
 
+    handleNewEmailChange = (e) => {
+        this.setState({
+            newEmail: e.target.value,
+        })
+    }
+
+    handleConfirmEmailChange = (e) => {
+        this.setState({
+            confirmEmail: e.target.value,
+        })
+    }
 
     handleCurrentPasswordChange = (e) => {
         this.setState({
@@ -81,13 +117,58 @@ class SettingsTabs extends Component {
         })
     }
 
-    toggle = tab => () => {
-        if (this.state.activeItem !== tab) {
+    changeActiveState = (e, newValue) => {
+        console.log(newValue)
+        if (this.state.activeItem !== newValue) {
             this.setState({
-                activeItem: tab
+                activeItem: newValue,
+                confirmPassword: ""
             });
         }
     }
+
+    changeEmail = () => {
+        getUser(this.state.userEmail).then(data =>{
+            
+            if (data == null) { // Account was not found
+                alert("Account under given email not found");
+                this.setState({
+                    currentPassword: ''
+                });
+                return;
+            }
+            bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
+                if (isMatch)
+                {
+                    var email = "" + this.state.newEmail;
+                    var confirmEmail =  "" + this.state.confirmEmail;
+                    if (email !== confirmEmail) { // Passwords don't match
+                        alert("Emails do not match!");
+                    }
+                    else {
+
+                        updateEmail(this.state.userEmail, this.state.newEmail, this.state.password, data.pagecount);
+                        alert("Email has been updated!");
+                        this.setState({
+                            currentPassword: '',
+                            newEmail: '',
+                            confirmEmail: ''
+                        });
+                    }
+                }
+                else
+                {
+                    alert("Incorrect password");
+                    this.setState({
+                        currentPassword: ''
+                    });
+                }
+            });
+
+
+    });
+    }
+
     changePassword = () => {
         getUser(this.state.userEmail).then(data =>{
             
@@ -134,7 +215,7 @@ class SettingsTabs extends Component {
                             
                             })
                         })
-                       
+                    
                     }
                 }
                 else
@@ -146,9 +227,9 @@ class SettingsTabs extends Component {
                 }
             });
 
-    
+
     });
-}
+    }
 
     changePrivacy = () => {
         this.state.private = !this.state.private;
@@ -162,44 +243,59 @@ class SettingsTabs extends Component {
                 }
             }
         });
-       
+    
     }
 
-    render() {
-        return (
-            <MDBContainer>
-                <MDBCard className="text-center">
-                    <MDBNav>
-                        <MDBNavItem>
-                            <MDBNavLink
-                            link
-                            to="#"
-                            active={this.state.activeItem === "1"}
-                            onClick={this.toggle("1")}
-                            role="tab"
-                            >
-                            <MDBIcon icon="heart" /> Change password
-                            </MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <MDBNavLink
-                            link
-                            to="#"
-                            active={this.state.activeItem === "2"}
-                            onClick={this.toggle("2")}
-                            role="tab"
-                            >
-                            <MDBIcon icon="envelope" /> Change privacy
-                            </MDBNavLink>
-                        </MDBNavItem>
-                    </MDBNav>
-                </MDBCard> 
-                <MDBTabContent
-                className="card"
-                activeItem={this.state.activeItem}
-                >
-                <MDBTabPane tabId="1" role="tabpanel">
-                    <MDBCardBody>
+  render() {
+      return (
+        <Container fit-content>
+            <h1  style={{ backgroundColor: '#ffffff'}}>
+            <Box fit-content>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                
+                <Tabs value={this.state.activeItem} onChange={this.changeActiveState}>
+                <Tab label="Change Email" {...a11yProps(0)} />
+                <Tab label="Change Password" {...a11yProps(1)} />
+                <Tab label="Change Privacy" {...a11yProps(2)} />
+                </Tabs>
+            </Box>
+            
+            <TabPanel value={this.state.activeItem} index = {0}>
+            <Container>
+                <h6>Current Password</h6>
+                    <input
+                        type="password"
+                        value={this.state.currentPassword}
+                        name="currentPassword"
+                        onChange={this.handleCurrentPasswordChange}
+                    // className="form-control"
+                    />
+                <h6><br></br>New Email</h6>
+                <input
+                    type="email"
+                    value={this.state.newEmail}
+                    name="newEmail"
+                    onChange={this.handleNewEmailChange}
+                    // className="form-control"
+                />    
+                <h6><br></br>Confirm New Email</h6>
+                <input
+                    type="email"
+                    value={this.state.confirmEmail}
+                    name="confirmEmail"
+                    onChange={this.handleConfirmEmailChange}
+                    // className="form-control"
+                />
+                <div align="left">
+                <Button onClick={() => this.changeEmail()}>
+                    Submit
+                </Button>
+                </div>
+            </Container>
+                
+            </TabPanel>
+            <TabPanel value={this.state.activeItem} index = {1}>
+            <Container>
                     <h6>Current Password</h6>
                     <input
                         type="password"
@@ -243,20 +339,17 @@ class SettingsTabs extends Component {
                         Submit
                     </Button>
                     </div>
-                    </MDBCardBody>
-                </MDBTabPane>
-                <MDBTabPane tabId="2" role="tabpanel">
-                    <MDBCardBody>
-                    <Button onClick={() => this.changePrivacy()}>
-                        {this.state.private ? "Make all pages private" : "Make all pages public"}
-                    </Button>
-                    </MDBCardBody>
-                </MDBTabPane>
-                </MDBTabContent>
-               
-            </MDBContainer>
-        );
-    }
+                </Container>
+            </TabPanel>
+            <TabPanel value={this.state.activeItem} index = {2}>
+                <Button onClick={() => this.changePrivacy()}>
+                    {this.state.private ? "Make all pages private" : "Make all pages public"}
+                </Button>
+            </TabPanel>
+            </Box>
+            </h1>
+            </Container>  
+  );
 }
-*/
-export default SettingsTabs; 
+}
+export default SettingsTabs;

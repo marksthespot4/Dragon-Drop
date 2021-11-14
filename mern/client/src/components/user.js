@@ -33,6 +33,18 @@ export function updateUser(email, password, pagecount, id) {
         .then((res) => console.log(res.data));
 }
 
+export function updateEmail(email, newEmail, password, pagecount) {
+    const updatedUser = {
+        email: newEmail.toLowerCase(),
+        password: password,
+        pagecount: pagecount,
+    }
+    axios
+        .post("http://localhost:5000/routes/users/update/" + email, updatedUser)
+        .then((res) => console.log(res.data));
+}
+
+
 export function getUserID(id) {
         return axios.get("http://localhost:5000/routes/users/get/id/" + id)
             .then(res => res.data)
