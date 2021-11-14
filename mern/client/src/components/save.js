@@ -24,6 +24,7 @@ export default (props) => {
   const [saveData, setSaveData] = useState(null);
 
   const getImage = (currTree) => {
+    console.log(currTree);
     setSaveData(currTree);
     // takeScreenShot(ref.current);
     html2canvas(document.querySelector("#capture"), {
@@ -35,7 +36,7 @@ export default (props) => {
       // console.log(canvas.toDataURL('image/png'));
       setImage(canvas.toDataURL('image/png'));
     });
-    notify();
+    // notify();
   }
 
   useEffect(() => { 
