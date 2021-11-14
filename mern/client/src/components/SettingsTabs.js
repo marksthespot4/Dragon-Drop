@@ -96,7 +96,7 @@ class SettingsTabs extends Component {
                             bcrypt.hash(this.state.password, salt, (err, hash) => {
                                 if (err) throw err;
                                 this.state.password = hash;
-                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
                                 alert("Password has been updated!");
                                 this.setState({
                                     currentPassword: '',

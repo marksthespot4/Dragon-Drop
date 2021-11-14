@@ -3,8 +3,13 @@
     top:0;
 }
 
-.header {
+.headerL {
     background-color: white;
+    margin-bottom: 10px;
+}
+
+.headerD {
+    background-color: gray;
     margin-bottom: 10px;
 }
 
@@ -12,13 +17,8 @@ a:link {
     text-decoration: none;
 }
 
-.user {
-    font-size: xx-large;
-    color:#ffc220;
-}
-
 .toggleS {
-    color: yellow;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;

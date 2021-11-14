@@ -90,7 +90,7 @@ class TabsDefault extends Component {
                     alert("Password must have at least one upper case and lower case character");
                 }
                 else {
-                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
                     alert("Password has been updated!");
                 }
             }

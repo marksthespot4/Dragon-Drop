@@ -123,7 +123,7 @@ class UserPage extends Component {
                 return;
             }
             else {
-                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                updateUser(data.email, data.password, data.pagecount + 1, data._id, data.theme, data.autoSave);
                 uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
@@ -138,7 +138,7 @@ class UserPage extends Component {
                 return;
             }
             else {
-                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                updateUser(data.email, data.password, data.pagecount + 1, data._id, data.theme, data.autoSave);
                 uploadPage(this.state.currentUser, pagename, pagedata, pub, pagepreview);
                 getPages().then(data=>{
                     this.setState({
@@ -178,7 +178,7 @@ class UserPage extends Component {
         console.log(this.state.searchUser);
         if(this.state.currentUser === this.state.searchUser) {
             getUser(this.state.currentUser).then(data =>{
-                updateUser(data.email, data.password, data.pagecount - 1, data._id);
+                updateUser(data.email, data.password, data.pagecount - 1, data._id, data.theme, data.autoSave);
             });        
             deletePage(id);
             this.setState({ pages: this.state.pages.filter((el) => el._id !== id),

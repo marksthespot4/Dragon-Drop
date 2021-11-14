@@ -22,11 +22,14 @@ export function uploadUser(email, password, pagecount) {
         .then((res) => console.log(res.data));
 }
 
-export function updateUser(email, password, pagecount, id) {
+export function updateUser(email, password, pagecount, id, theme, autoSave) {
+    // console.log(theme);
     const updatedUser = {
         email: email.toLowerCase(),
         password: password,
         pagecount: pagecount,
+        theme: theme,
+        autoSave: theme,
     }
     axios
         .post("http://localhost:5000/routes/users/update/" + email, updatedUser)

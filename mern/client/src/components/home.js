@@ -329,9 +329,9 @@ class Home extends Component {
 
                         <h6><br/>Password&nbsp;
                         <OverlayTrigger
-                            placement="right"
+                            placement="auto"
                             overlay={
-                                <Tooltip >
+                                <Tooltip>
                                     <b>Requires at least one:</b><br/>
                                     Uppercase and lowercase <br/>
                                     Number<br/>
@@ -339,6 +339,8 @@ class Home extends Component {
                                     <b>Must be at least 8 characters</b>
                                 </Tooltip>
                             }
+                            trigger="click"
+                            // style={{"z-index": "-1", position: "relative"}}
                         >
                             <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>&nbsp;

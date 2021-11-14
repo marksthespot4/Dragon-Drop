@@ -9,8 +9,9 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 // import {loginUser, registerUser} from "../actions/authActions";
 import Switch from "react-switch";
+import { getUser, updateUser } from "./user";
 
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
 class Header extends Component {
 
@@ -23,19 +24,33 @@ class Header extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // onClick()
-    // {
-    //     console.log(this.state.isLoggedIn);
-    // }
+    componentDidMount() {
+        getUser(this.props.email).then(data=>{
+            console.log(data);
+            this.setState({
+                theme: data.theme,
+            });
+        });
+      }
 
-    handleChange(theme) {
-        this.setState({ theme });
+    handleChange() {
+        return this.changeTheme();
     }
 
-render() {
+    changeTheme() {
+        this.setState((state) => {
+          getUser(this.props.email).then(data=>{
+            console.log(!data.theme);
+            updateUser(data.email, data.password, data.pagecount, data._id, false, false);
+          });
+          return {theme: !state.theme}
+        });
+    }
+
+    render() {
         return (
             <div>
-                <div className="header">
+                <div className={ this.state.theme ? "headerL" : "headerD"}>
                     <Navbar fixed="top" expand="lg">
                         <NavLink className="navbar-brand" to="/">
                             <img className="logo" src={logo} className="img-fluid" style={{width: 50, margin: 2}}/>
@@ -50,9 +65,9 @@ render() {
                             <Switch 
                                 onChange={this.handleChange} 
                                 checked={this.state.theme}
-                                offColor="#000000"
-                                onColor="#C0C0C0"
-                                offHandleColor="#696969"
+                                offColor="#0071ce"
+                                onColor="#ffc220"
+                                offHandleColor="#C0C0C0"
                                 onHandleColor="#FFFFFF"
                                 checkedIcon={
                                     <div className="toggleS">
@@ -65,11 +80,15 @@ render() {
                                     </div>
                                 }
                             />
-                            <NavLink className="navbar-brand" to="/user_page">
+                            <NavLink 
+                                className="navbar-brand" 
+                                to="/user_page" 
+                                style={{ color: this.state.theme ? "black" : "white"}}
+                            >
                                 My Projects
                             </NavLink>
                             <NavLink className="navbar-brand" to="/settings"> 
-                            <i className="user bi bi-person-circle"></i>
+                            <i className="bi bi-person-circle" style={{ color: this.state.theme ? "#ffc220" : "#0071ce", fontSize: "xx-large"}}></i>
                             </NavLink>
                         </Navbar.Collapse>
                         }
