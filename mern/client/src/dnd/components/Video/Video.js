@@ -1,9 +1,9 @@
 import clsx from 'clsx';
-import useStyle from './style/Image'
+import useStyle from './style/Video'
 import React from 'react';
 
-const Image = React.forwardRef(({
-    imageUrl, 
+const Video = React.forwardRef(({
+    videoUrl, 
     extLink,
     children,
     className,
@@ -11,10 +11,10 @@ const Image = React.forwardRef(({
     ...props
 }, ref) => {
     const classes = useStyle(style);
-    const classImage = clsx(classes.image, classes.fill);
+    const classVideo = clsx(classes.video, classes.fill);
     const classAll = clsx(className, classes.ui)
     const update = () => (
-        console.log(imageUrl)
+        console.log(videoUrl)
     )
     const openTab = () =>
     {
@@ -28,10 +28,16 @@ const Image = React.forwardRef(({
             alert("Please enter a valid http url.");
         }
     }
+
+    const convertToEmbed = () =>
+    {
+        
+    }
     return <div className = {classAll}>
-            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
+            <iframe height="100%" width="100%" src={videoUrl.replace("watch?v=", "embed/")}> </iframe>
+            <button onClick={update} />
             {children}
         </div>
 });
 
-export default Image;
+export default Video;

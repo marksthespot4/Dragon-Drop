@@ -2,12 +2,12 @@ import {makeStyles} from '@mui/styles';
 import combineStyles from "../../../utils/combine";
 import {fillStyles, positionStyles, sizingStyles} from '../../../styles/ui';
 
-const imageStyles = ({
-    image: ({})
+const videoStyles = ({
+    video: ({})
 })
 
 const useStyle = makeStyles(combineStyles(
-    imageStyles,
+    videoStyles,
     sizingStyles,
     positionStyles,
     fillStyles
