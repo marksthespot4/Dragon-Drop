@@ -48,13 +48,15 @@ class Home extends Component {
             confirmPassword: "",
             hiddenL: true,
             hiddenS: true,
+            hiddenSc: true,
             errors: {}
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.toggleShowL = this.toggleShowL.bind(this);
-        this.toggleShowS = this.toggleShowS.bind(this);
+        this.toggleShowS1 = this.toggleShowS1.bind(this);
+        this.toggleShowS2 = this.toggleShowS2.bind(this);
 
         //this.handleConfirmPasswordChange = this.handleConfirmPasswordChange(this);
     }
@@ -105,8 +107,12 @@ class Home extends Component {
         // }
     }
 
-    toggleShowS() {
+    toggleShowS1() {
         this.setState({ hiddenS: !this.state.hiddenS });
+    }
+
+    toggleShowS2() {
+        this.setState({ hiddenSc: !this.state.hiddenSc });
     }
 
     modalOpen = (active) => {
@@ -264,7 +270,7 @@ class Home extends Component {
                         />
 
                         <h6>
-                            <br></br>Password&nbsp;
+                            <br/>Password&nbsp;
                              <i class={ this.state.hiddenL ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowL}></i>
                         </h6>
                         <input
@@ -321,22 +327,22 @@ class Home extends Component {
                             onChange={this.handleEmailChange}
                         />
 
-                        <h6><br></br>Password&nbsp;
+                        <h6><br/>Password&nbsp;
                         <OverlayTrigger
                             placement="right"
                             overlay={
                                 <Tooltip >
-                                    <b>Requires at least one:</b><br></br>
-                                    Uppercase and lowercase <br></br>
-                                    Number<br></br>
-                                    Special character (!, @, etc.)<br></br>
+                                    <b>Requires at least one:</b><br/>
+                                    Uppercase and lowercase <br/>
+                                    Number<br/>
+                                    Special character (!, @, etc.)<br/>
                                     <b>Must be at least 8 characters</b>
                                 </Tooltip>
                             }
                         >
                             <i class="bi bi-info-circle"></i>
                         </OverlayTrigger>&nbsp;
-                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS}></i>
+                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
                         </h6>
                         <input
                             type={this.state.hiddenS ? "password" : "text"}
@@ -344,9 +350,11 @@ class Home extends Component {
                             name="password"
                             onChange={this.handlePasswordChange}
                         />
-                        <h6><br></br>Confirm Password</h6>
+                        <h6><br/>Confirm Password&nbsp;
+                        <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
+                        </h6>
                         <input
-                            type="password"
+                            type={this.state.hiddenSc ? "password" : "text"}
                             value={this.state.confirmPassword}
                             name="confirmPassword"
                             onChange={this.handleConfirmPasswordChange}
