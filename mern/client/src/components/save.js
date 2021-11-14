@@ -24,7 +24,7 @@ export default (props) => {
   const [saveData, setSaveData] = useState(null);
 
   const getImage = (currTree) => {
-    console.log(currTree);
+    // console.log(currTree);
     setSaveData(currTree);
     // takeScreenShot(ref.current);
     html2canvas(document.querySelector("#capture"), {
@@ -43,9 +43,9 @@ export default (props) => {
     save();
   }, [image])
 
-  const notify = () => { 
-    toast.success('Project Saved');
-  }
+  // const notify = () => { 
+  //   toast.success('Project Saved');
+  // }
 
   const save = () => {
     if(saveData != null) {
@@ -57,7 +57,7 @@ export default (props) => {
 
   return (
     <div>
-      <div align="right">
+      {/* <div align="right">
           <ToastContainer 
             position="top-center"
             autoClose={3000}
@@ -69,7 +69,7 @@ export default (props) => {
             draggable
             pauseOnHover
           />
-      </div>
+      </div> */}
       {/* <img width={width} src={image} alt={""} /> */}
       {/* <div>{image}</div> */}
       {/* <div

@@ -22,26 +22,33 @@ const TopBar = (props) => {
 
     useEffect(() => {
         getPage(props.id).then(data => {
-            console.log(data.pagedata);
+            // console.log(data.pagedata);
             load(data.pagedata);
         });
         window.addEventListener('keydown', keydownHandler);
-        const interval = setInterval(() => {
+        // const interval = setInterval(() => {
+        //     handleSave();
+        //     var currentTime = new Date();
+        //     var hour = ('0'+currentTime.getHours()).substr(-2);
+        //     var minute = ('0'+currentTime.getMinutes()).substr(-2);
+        //     var second = ('0'+currentTime.getSeconds()).substr(-2);
+        //     setLastSave(hour + ':' + minute + ':' + second)
+        // }, 10000);
+        // return () => {//stop interval on unmount
+        //     clearInterval(interval);
+        // }
+      }, []);  
+
+    useEffect(() => {
+        setTimeout(() => {
             handleSave();
             var currentTime = new Date();
             var hour = ('0'+currentTime.getHours()).substr(-2);
             var minute = ('0'+currentTime.getMinutes()).substr(-2);
             var second = ('0'+currentTime.getSeconds()).substr(-2);
-            setLastSave(hour + ':' + minute + ':' + second)
-          }, 10000);
-        return () => {//stop interval on unmount
-            clearInterval(interval);
-        }
-      }, []);  
-
-    //   useEffect(() => {
-    //       props.save(tree);
-    //   }, [tree]);  
+            setLastSave(hour + ':' + minute + ':' + second)     
+        }, 3000);
+    }, [json()]);  
 
     const notify = () => { 
         toast.success('Project Saved');
