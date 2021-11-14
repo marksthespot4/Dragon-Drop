@@ -3,9 +3,10 @@ import "./styles/builder.css"
 import Sidebar from "./Sidebar/Sidebar"
 import {Grid} from "@material-ui/core"
 import {Builder, Workspace, Panel, branch, item} from 'build-ui';
-import CounterView from "./components/Counter/CounterView"
-import TextView from "./components/TextBox/TextView"
+import CounterView from "./components/Counter/CounterView";
+import TextView from "./components/TextBox/TextView";
 import ImageView from "./components/Image/ImageView";
+import VideoView from "./components/Video/VideoView";
 import ButtonView from "./components/Button/ButtonView"
 import ShapeView from "./components/Shape/ShapeView"
 import SectionView from "./components/Section/SectionView";
@@ -22,6 +23,7 @@ const MyBuilder = (props) => {
     const view = {
         Text: TextView,
         Image: ImageView,
+        Video: VideoView,
         Counter: CounterView,
         Section: SectionView,
         Button: ButtonView,
