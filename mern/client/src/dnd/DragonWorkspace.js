@@ -6,6 +6,7 @@ import TextView from "./components/TextBox/TextView";
 import ImageView from "./components/Image/ImageView";
 import ButtonView from "./components/Button/ButtonView";
 import BuilderSelector from "./hooks/BuilderSelector";
+import VideoView from "./components/Video/VideoView";
 
 const DragonWorkspace = props => {
     const view = {
@@ -14,6 +15,7 @@ const DragonWorkspace = props => {
         Text: TextView,
         Image: ImageView,
         Button: ButtonView,
+        Video: VideoView
     }
 
     return <React.Fragment {...props}>

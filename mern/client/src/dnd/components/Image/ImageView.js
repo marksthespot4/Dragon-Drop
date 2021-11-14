@@ -20,6 +20,8 @@ const ImageView = ({
     });
     const classes = useStyle({
         selected: editor.indexes.selected,
+        hovering: editor.hovering,
+        fixed: editor.meta.fixed
     })
 
     return <BuilderImage
