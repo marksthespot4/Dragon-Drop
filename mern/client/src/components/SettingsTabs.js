@@ -4,8 +4,9 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { getUser, updateUser, updateEmail } from "./user";
+import { getUser, updateUser, updateEmail, uploadUser, removeUser } from "./user";
 import { getPages, updatePage } from "./page"
+import { registerUser } from "../actions/authActions";
 import Container from '@material-ui/core/Container';
 //import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -129,7 +130,6 @@ class SettingsTabs extends Component {
 
     changeEmail = () => {
         getUser(this.state.userEmail).then(data =>{
-            
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
                 this.setState({
@@ -146,8 +146,14 @@ class SettingsTabs extends Component {
                         alert("Emails do not match!");
                     }
                     else {
-
-                        updateEmail(this.state.userEmail, this.state.newEmail, this.state.password, data.pagecount);
+                        const newUser = {
+                            name: this.state.name,
+                            email: this.state.email.toLowerCase(),
+                            password: this.state.password,
+                            confirmPassword: this.state.confirmPassword
+                        }
+                        registerUser(this.state.newEmail, data.password, data.pagecount);
+                        removeUser(data._id);
                         alert("Email has been updated!");
                         this.setState({
                             currentPassword: '',
@@ -164,8 +170,6 @@ class SettingsTabs extends Component {
                     });
                 }
             });
-
-
     });
     }
 
