@@ -13,6 +13,7 @@ const DragonPanel = props => {
         Button: ButtonPanel,
         TextBox: TextPanel,
         Shape: ShapePanel,
+        Video: VideoPanel
     };
     return <Panel
         view = {view}
