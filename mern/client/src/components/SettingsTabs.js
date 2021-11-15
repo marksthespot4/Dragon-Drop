@@ -4,7 +4,7 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { getUser, updateUser, updateEmail, uploadUser, removeUser } from "./user";
+import { getUser, updateUser, updateUserById } from "./user";
 import { getPages, updatePage } from "./page"
 import { registerUser } from "../actions/authActions";
 import Container from '@material-ui/core/Container';
@@ -129,6 +129,7 @@ class SettingsTabs extends Component {
     }
 
     changeEmail = () => {
+        alert(this.state.userEmail)
         getUser(this.state.userEmail).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
@@ -146,19 +147,23 @@ class SettingsTabs extends Component {
                         alert("Emails do not match!");
                     }
                     else {
-                        const newUser = {
-                            name: this.state.name,
-                            email: this.state.email.toLowerCase(),
-                            password: this.state.password,
-                            confirmPassword: this.state.confirmPassword
-                        }
-                        registerUser(this.state.newEmail, data.password, data.pagecount);
-                        removeUser(data._id);
+                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        getPages().then(data=>{
+                            this.setState({
+                                pages: data || [],
+                            });
+                            for (var i = 0; i < this.state.pages.length; i++) {
+                                if (this.state.pages[i].user === this.state.userEmail) {
+                                    updatePage(this.state.newEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                                }
+                            }
+                        });
                         alert("Email has been updated!");
                         this.setState({
                             currentPassword: '',
                             newEmail: '',
-                            confirmEmail: ''
+                            confirmEmail: '',
+                            userEmail: this.state.newEmail
                         });
                     }
                 }

@@ -86,6 +86,25 @@ router.post("/update/:email", (req, res) =>
     })
 })
 
+//update user by id instead
+router.post("/update/id/:id", (req, res) =>
+{
+    let myquery =  ObjectId( req.params.id );
+    User.findByIdAndUpdate(myquery).then(user => {
+        if (!user) {
+            return res.status(404).json({emailnotfound: "Email not found."});
+        }
+        else {
+            user.email = req.body.email;
+            user.password = req.body.password;
+            user.pagecount = req.body.pagecount;
+            user.save()
+                .then(user => res.json(user))
+                .catch(err => console.log(err));
+        }
+    })
+})
+
 
 // @route POST api/users/login
 // @desc Login user and return JWT Token
