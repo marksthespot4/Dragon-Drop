@@ -14,6 +14,26 @@ We are using a JWTToken strategy. I'm really not sure what that means.
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = keys.secretOrKey;
 module.exports = passport => {
+    passport.serializeUser((user, done) => {
+        console.log('=== serialize ... called ===')
+        console.log(user) // the whole raw user object!
+        console.log('---------')
+        done(null, { _id: user._id })
+    })
+
+    passport.deserializeUser((id, done) => {
+        console.log('DEserialize ... called')
+        User.findOne(
+            { _id: id },
+            'firstName lastName photos local.username',
+            (err, user) => {
+                console.log('======= DESERILAIZE USER CALLED ======')
+                console.log(user)
+                console.log('--------------')
+                done(null, user)
+            }
+        )
+    })
     passport.use(
         new JwtStrategy(opts, (jwt_payload, done) => {
             User.findById(jwt_payload.id)
@@ -26,4 +46,55 @@ module.exports = passport => {
                 .catch(err => console.log(err));
         })
     );
+    passport.use(
+        new GoogleStrategy(
+            {
+                clientID:"420851960111-fhomo6kgo1enmke21ouqv1fdos9lm4jm.apps.googleusercontent.com",
+                clientSecret: "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",
+                callbackURL: '/auth/google/callback'
+            },
+            function(token, tokenSecret, profile, done) {
+                // testing
+                console.log('===== GOOGLE PROFILE =======')
+                console.log(profile)
+                console.log('======== END ===========')
+                // code
+                const { id, name, photos } = profile
+                User.findOne({ 'google.googleId': id }, (err, userMatch) => {
+                    // handle errors here:
+                    if (err) {
+                        console.log('Error!! trying to find user with googleId')
+                        console.log(err)
+                        return done(null, false)
+                    }
+                    // if there is already someone with that googleId
+                    if (userMatch) {
+                        return done(null, userMatch)
+                    } else {
+                        // if no user in our db, create a new user with that googleId
+                        console.log('====== PRE SAVE =======')
+                        console.log(id)
+                        console.log(profile)
+                        console.log('====== post save ....')
+                        const newGoogleUser = new User({
+                            'google.googleId': id,
+                            firstName: name.givenName,
+                            lastName: name.familyName,
+                            photos: photos
+                        })
+                        // save this user
+                        newGoogleUser.save((err, savedUser) => {
+                            if (err) {
+                                console.log('Error!! saving the new google user')
+                                console.log(err)
+                                return done(null, false)
+                            } else {
+                                return done(null, savedUser)
+                            }
+                        }) // closes newGoogleUser.save
+                    }
+                }) // closes User.findONe
+            }
+        )
+    )
 };

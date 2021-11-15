@@ -214,6 +214,11 @@ class Home extends Component {
         props.history.push("/user_page");
     }
 
+    googleCall() {
+        axios.get("http://localhost:5000/auth/google")
+            .then((res) => console.log(res.data))
+    }
+
     render() {
         return (
             <div className="Home" style={{height:"90vh"}}>
@@ -223,6 +228,9 @@ class Home extends Component {
                     </Button>
                     <Button onClick={() => this.modalOpen("signup")}>
                         Sign Up
+                    </Button>
+                    <Button onClick={() => this.googleCall()}>
+                        GOogle
                     </Button>
                 </div>
                 
