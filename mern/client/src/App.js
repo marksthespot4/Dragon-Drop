@@ -86,7 +86,7 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/settings">
-          <Settings email={email}/>
+          <Settings email={email} setEmail={setEmail}/>
           <Footer/>
         </Route>
         <Switch>

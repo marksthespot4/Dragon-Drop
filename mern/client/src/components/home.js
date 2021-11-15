@@ -93,6 +93,18 @@ class Home extends Component {
         })
     }
 
+    handleKeyDownLogIn = (e) => {
+        if (e.key == 'Enter') {
+            this.modalLogin();
+        }
+    }
+
+    handleKeyDownSignUp = (e) => {
+        if (e.key == 'Enter') {
+            this.modalSignup();
+        }
+    }
+
     toggleShow() {
         this.setState({ hidden: !this.state.hidden });
         // if(this.state.hidden) {
@@ -252,6 +264,7 @@ class Home extends Component {
                             value={this.state.email}
                             name="email"
                             onChange={this.handleEmailChange}
+                            onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
 
@@ -264,6 +277,7 @@ class Home extends Component {
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
+                            onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
 
@@ -311,6 +325,7 @@ class Home extends Component {
                             type="email"
                             value={this.state.email}
                             onChange={this.handleEmailChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                         />
 
                         <h6><br></br>Password&nbsp;
@@ -334,6 +349,7 @@ class Home extends Component {
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                         />
                         <h6><br></br>Confirm Password</h6>
                         <input
@@ -341,6 +357,7 @@ class Home extends Component {
                             value={this.state.confirmPassword}
                             name="confirmPassword"
                             onChange={this.handleConfirmPasswordChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                             // className="form-control"
                         />
                     </Modal.Body>

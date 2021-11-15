@@ -92,6 +92,7 @@ class SettingsTabs extends Component {
         this.setState({
             newEmail: e.target.value,
         })
+    
     }
 
     handleConfirmEmailChange = (e) => {
@@ -116,6 +117,18 @@ class SettingsTabs extends Component {
         this.setState({
             confirmPassword: e.target.value,
         })
+    }
+
+    handleKeyDownEmail = (e) => {
+        if (e.key == 'Enter') {
+            this.changeEmail();
+        }
+    }
+
+    handleKeyDownPassword = (e) => {
+        if (e.key == 'Enter') {
+            this.changePassword();
+        }
     }
 
     changeActiveState = (e, newValue) => {
@@ -165,6 +178,7 @@ class SettingsTabs extends Component {
                             confirmEmail: '',
                             userEmail: this.state.newEmail
                         });
+                        this.props.setEmail(this.state.newEmail);
                     }
                 }
                 else
@@ -277,6 +291,7 @@ class SettingsTabs extends Component {
                         value={this.state.currentPassword}
                         name="currentPassword"
                         onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                     />
                 <h6><br></br>New Email</h6>
@@ -285,6 +300,7 @@ class SettingsTabs extends Component {
                     value={this.state.newEmail}
                     name="newEmail"
                     onChange={this.handleNewEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                 />    
                 <h6><br></br>Confirm New Email</h6>
@@ -293,6 +309,7 @@ class SettingsTabs extends Component {
                     value={this.state.confirmEmail}
                     name="confirmEmail"
                     onChange={this.handleConfirmEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                 />
                 <div align="left">
@@ -311,6 +328,7 @@ class SettingsTabs extends Component {
                         value={this.state.currentPassword}
                         name="currentPassword"
                         onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <h6>New Password</h6>
@@ -319,6 +337,7 @@ class SettingsTabs extends Component {
                         value={this.state.password}
                         name="password"
                         onChange={this.handlePasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <OverlayTrigger
@@ -341,6 +360,7 @@ class SettingsTabs extends Component {
                         value={this.state.confirmPassword}
                         name="confirmPassword"
                         onChange={this.handleConfirmPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                         // className="form-control"
                     />
                     <div align="left">
