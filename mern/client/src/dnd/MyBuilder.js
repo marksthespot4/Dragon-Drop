@@ -27,12 +27,18 @@ const MyBuilder = (props) => {
         Button: ButtonView,
         Shape: ShapeView,
         Canvas: CanvasView
-        // TextBox: TextView,
     };
 
     const tree = branch(
         item({
             type: 'Canvas',
+            props:{
+                style:{
+                    width: '100%',
+                    height: '800px',
+                    backgroundColor: 'white'
+                }
+            }
         })
     );
 
