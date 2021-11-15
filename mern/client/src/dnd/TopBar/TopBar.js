@@ -1,15 +1,16 @@
 import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useReducer } from "react";
 import { getPage } from "./../../components/page";
 import html2canvas from 'html2canvas';
 import { ToastContainer, toast } from 'react-toastify';
 import "./save.css";
 
 const TopBar = (props) => {
-    // const [tree, setTree] = useState(null);
+    const [tree, setTree] = useState(null);
     const [lastSave, setLastSave] = useState(null);
-    const [treeSize, setTreeSize] = useState(0);
+    const [count, setCount] = useState(0);
+    // const [treeSize, setTreeSize] = useState(0);
 
     const builder = useBuilder();
     const {
@@ -28,7 +29,8 @@ const TopBar = (props) => {
         });
         window.addEventListener('keydown', keydownHandler);
         // const interval = setInterval(() => {
-        //     handleSave();
+        //     // handleSave();
+        //     setTree(json());
         //     var currentTime = new Date();
         //     var hour = ('0'+currentTime.getHours()).substr(-2);
         //     var minute = ('0'+currentTime.getMinutes()).substr(-2);
@@ -40,23 +42,37 @@ const TopBar = (props) => {
         // }
       }, []);  
 
-    useEffect(() => {
-        // console.log(json().byIds.length());
-        console.log(Object.keys(json().byIds).length);
+      useEffect(() => {
+        const interval = setInterval(() => {
+            setCount(count + 1);
+            handleSave();
+            var currentTime = new Date();
+            var hour = ('0'+currentTime.getHours()).substr(-2);
+            var minute = ('0'+currentTime.getMinutes()).substr(-2);
+            var second = ('0'+currentTime.getSeconds()).substr(-2);
+            setLastSave(hour + ':' + minute + ':' + second)
+        }, 15000);
+        return () => {clearInterval(interval); setCount(0)}
+      }, [count]);
 
-        if(Object.keys(json().byIds).length == treeSize + 1) {
-            console.log(treeSize);
-            setTimeout(() => {
-                handleSave();
-                var currentTime = new Date();
-                var hour = ('0'+currentTime.getHours()).substr(-2);
-                var minute = ('0'+currentTime.getMinutes()).substr(-2);
-                var second = ('0'+currentTime.getSeconds()).substr(-2);
-                setLastSave(hour + ':' + minute + ':' + second)     
-            }, 3000);
-            setTreeSize(Object.keys(json().byIds).length);
-        }
-    }, [json()]);  
+    //save every time the tree size increases. 
+    //Too many updates to the tree. Checking if the tree was increased in size is too much computation
+    // useEffect(() => {
+    //     console.log(Object.keys(json().byIds).length);
+
+    //     if(Object.keys(json().byIds).length == treeSize + 1) {
+    //         console.log(treeSize);
+    //         setTimeout(() => {
+    //             handleSave();
+    //             var currentTime = new Date();
+    //             var hour = ('0'+currentTime.getHours()).substr(-2);
+    //             var minute = ('0'+currentTime.getMinutes()).substr(-2);
+    //             var second = ('0'+currentTime.getSeconds()).substr(-2);
+    //             setLastSave(hour + ':' + minute + ':' + second)     
+    //         }, 3000);
+    //         setTreeSize(Object.keys(json().byIds).length);
+    //     }
+    // }, [json()]);  
 
     const notify = () => { 
         toast.success('Project Saved');
@@ -65,7 +81,7 @@ const TopBar = (props) => {
     const load = (saveData) => {
         if(saveData != null) {  
             loadTree(saveData);
-            setTreeSize(Object.keys(saveData.byIds).length);
+            // setTreeSize(Object.keys(saveData.byIds).length);
             // setTree(saveData);
         }
     }
