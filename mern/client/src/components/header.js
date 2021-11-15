@@ -41,7 +41,7 @@ class Header extends Component {
         this.setState((state) => {
           getUser(this.props.email).then(data=>{
             console.log(!data.theme);
-            updateUser(data.email, data.password, data.pagecount, data._id, false, false);
+            updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, false);
           });
           return {theme: !state.theme}
         });

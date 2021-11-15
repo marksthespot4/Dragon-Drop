@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
+import Modal from 'react-bootstrap/Modal';
+import CloseButton from 'react-bootstrap/CloseButton'
 
 
 import Button from 'react-bootstrap/Button';
@@ -85,7 +87,13 @@ class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        this.state = { pages: [], currentUser: email, searchUser: email, pagecount: 0};
+        this.state = { 
+            pages: [], 
+            currentUser: email, 
+            searchUser: email, 
+            pagecount: 0,
+            modalShow: false
+        };
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
@@ -151,7 +159,6 @@ class UserPage extends Component {
     }
 
     renamePage(id) {
-
         if(this.state.currentUser === this.state.searchUser) {
             console.log(id);
             getPage(id).then(data=>{
@@ -160,6 +167,7 @@ class UserPage extends Component {
             });
         }
     }
+
     exportPage(id) {
         getPage(id).then(data => {
             var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data.pagedata));
@@ -173,6 +181,7 @@ class UserPage extends Component {
         })
 
     }
+
     deleteMyPage(id) {
         console.log(this.state.currentUser);
         console.log(this.state.searchUser);
@@ -260,6 +269,14 @@ class UserPage extends Component {
         this.setState({searchUser: this.state.currentUser});
     }
 
+    modalOpen = () => {
+        this.setState({ modalShow: true });
+    }
+
+    modalClose = () => {
+        this.setState({ modalShow: false });
+    }
+
     render() {
         return (
             <div class="UserPage">
@@ -284,7 +301,77 @@ class UserPage extends Component {
                 <div style={{margin: 20}}>
 
                     {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink> */}
-                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Create Project</div>
+                    {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>Create Project</div> */}
+                    <div className="btn btn-lg" onClick={() => this.modalOpen()}>Create Project</div>
+
+                    <Modal 
+                        handleClose={e => this.modalClose(e)} 
+                        aria-labelledby="contained-modal-title-vcenter" 
+                        centered
+                        show={this.state.modalShow}
+                        onEscapeKeyDown={e => this.modalClose(e)}
+                        scrollable="true"
+                        // size="lg"
+                    >
+                        <Modal.Header>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                                New Project
+                            </Modal.Title>
+                            <CloseButton onClick={e => this.modalClose(e)}></CloseButton>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h6>
+                                Email
+                                <input
+                                    type="text"
+                                    // value={this.state.email}
+                                    name="pagename"
+                                    // onChange={this.handleEmailChange}
+                                    // className="form-control"
+                                />
+                            </h6>
+                            <h6>
+                                Would you like the project to be public?<br/>
+                                <SwitchButton 
+                                    id="61857cd4eb35f7826e9e315a"
+                                    // id={props.page._id} 
+                                    // disabled={!props.access}
+                                >
+                                </SwitchButton>
+                            </h6>
+                            <h6>
+                                Templates
+                            </h6>
+                            <h7>
+                                Blank<br/>
+                                <img 
+                                height="350px" 
+                                style={{ border: "5px solid #555" }}
+                                src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                >
+                                </img>
+                                <br/>Resume<br/>
+                                <img 
+                                height="350px" 
+                                style={{ border: "5px solid #555" }}
+                                src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
+                                >
+                                </img>
+                                <br/>Art Portfolio<br/>
+                                <img 
+                                height="350px" 
+                                style={{ border: "5px solid #555" }}
+                                src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                >
+                                </img>
+                            </h7>
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => this.createNewPage()}>
+                                    Create
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                     
                     {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>
                         Test
