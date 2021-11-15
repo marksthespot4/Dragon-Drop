@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="general google stuff, attempted to make it not crash.">
-      <change afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/google.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +94,6 @@
       <workItem from="1635966369728" duration="14980000" />
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
-    </task>
-    <task id="LOCAL-00006" summary="messed with icons">
-      <created>1633568257815</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1633568257815</updated>
     </task>
     <task id="LOCAL-00007" summary="integrated with sarah branch">
       <created>1633571188862</created>
@@ -441,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636933725746</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="general google stuff, attempted to make it not crash.">
+      <created>1636937519255</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1636937519255</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
