@@ -139,18 +139,18 @@ class Home extends Component {
         console.log("pswd: "+password);
         console.log("cnfpswd: "+confirmPassword);
         if (password !== confirmPassword) { // Passwords don't match
-            alert("Passwords do not match");
+            toast.error("Passwords do not match");
         }
         else if (password.length < 8) { // Password too short
-            alert("Passwords must be at least 8 characters long")
+            toast.error("Passwords must be at least 8 characters long")
         }
         else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
                 && !password.includes('$') && !password.includes('%') && !password.includes('^') 
                 && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                    alert("Password must include at least one special character");
+                    toast.error("Password must include at least one special character");
         }
         else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-            alert("Password must have at least one upper case and lower case character");
+            toast.error("Password must have at least one upper case and lower case character");
         }
         else {
             console.log(this.state.email);
@@ -178,7 +178,7 @@ class Home extends Component {
 
         getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
 
                 this.setState({
                     email: '',

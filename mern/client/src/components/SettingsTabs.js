@@ -7,6 +7,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import { getUser, updateUser, updateUserById } from "./user";
 import { getPages, updatePage } from "./page"
 import { registerUser } from "../actions/authActions";
+import { ToastContainer, toast } from 'react-toastify';
 import Container from '@material-ui/core/Container';
 //import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -142,10 +143,10 @@ class SettingsTabs extends Component {
     }
 
     changeEmail = () => {
-        alert(this.state.userEmail)
+       // alert(this.state.userEmail)
         getUser(this.state.userEmail).then(data =>{
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
@@ -157,7 +158,7 @@ class SettingsTabs extends Component {
                     var email = "" + this.state.newEmail;
                     var confirmEmail =  "" + this.state.confirmEmail;
                     if (email !== confirmEmail) { // Passwords don't match
-                        alert("Emails do not match!");
+                        toast.error("Emails do not match!")
                     }
                     else {
                         updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
@@ -171,7 +172,7 @@ class SettingsTabs extends Component {
                                 }
                             }
                         });
-                        alert("Email has been updated!");
+                        toast.success('Email has been updated!');
                         this.setState({
                             currentPassword: '',
                             newEmail: '',
@@ -183,7 +184,7 @@ class SettingsTabs extends Component {
                 }
                 else
                 {
-                    alert("Incorrect password");
+                    toast.error("Incorrect password")
                     this.setState({
                         currentPassword: ''
                     });
@@ -196,7 +197,7 @@ class SettingsTabs extends Component {
         getUser(this.state.userEmail).then(data =>{
             
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
@@ -210,18 +211,18 @@ class SettingsTabs extends Component {
                     console.log("pswd: "+password);
                     console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
-                        alert("Passwords do not match");
+                        toast.error("Passwords do not match");
                     }
                     else if (password.length < 8) { // Password too short
-                        alert("Passwords must be at least 8 characters long")
+                        toast.error("Passwords must be at least 8 characters long")
                     }
                     else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
                             && !password.includes('$') && !password.includes('%') && !password.includes('^') 
                             && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                                alert("Password must include at least one special character");
+                                toast.error("Password must include at least one special character");
                     }
                     else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-                        alert("Password must have at least one upper case and lower case character");
+                        toast.error("Password must have at least one upper case and lower case character");
                     }
                     else {
                         bcrypt.genSalt(10, (err, salt) => {
@@ -229,7 +230,7 @@ class SettingsTabs extends Component {
                                 if (err) throw err;
                                 this.state.password = hash;
                                 updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
-                                alert("Password has been updated!");
+                                toast.error("Password has been updated!");
                                 this.setState({
                                     currentPassword: '',
                                     password: '',
@@ -243,7 +244,7 @@ class SettingsTabs extends Component {
                 }
                 else
                 {
-                    alert("Incorrect password");
+                    toast.error("Incorrect password")
                     this.setState({
                         currentPassword: ''
                     });
@@ -272,6 +273,7 @@ class SettingsTabs extends Component {
   render() {
       return (
         <Container fit-content>
+            
             <h1  style={{ backgroundColor: '#ffffff'}}>
             <Box fit-content>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>

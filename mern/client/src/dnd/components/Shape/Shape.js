@@ -3,6 +3,7 @@ import {useState} from "react"
 import {Button} from "@material-ui/core"
 import {Rnd} from 'react-rnd';
 import { Redirect } from 'react-router-dom';
+import { toast } from 'react-toastify';
 window.document.addEventListener('contextmenu', function(event){event.preventDefault();})
 export const Shape = ({
                         shapeType = "Rectangle",
@@ -26,7 +27,7 @@ export const Shape = ({
         }
         else
         {
-            alert("Please enter a valid http url.");
+            toast.error("Please enter a valid http url.");
         }
     }
 
