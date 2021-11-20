@@ -38,6 +38,7 @@ import { BiCog } from "react-icons/bi";
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
 import DragonLayers from "../layers/DragonLayers";
+import HeaderTools from "../components/Header/HeaderTools";
 
 
 
@@ -85,6 +86,7 @@ const Sidebar = () => {
             <ImageTools />
             <ButtonTools />
             <ShapeTools />
+            <HeaderTools />
             {/* <SectionTools /> */}
             <br/><br/>
           </div>

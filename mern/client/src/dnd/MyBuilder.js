@@ -11,6 +11,7 @@ import ShapeView from "./components/Shape/ShapeView"
 import SectionView from "./components/Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import CanvasView from "./components/canvas/CanvasView";
+import HeaderView from "./components/Header/HeaderView";
 //import TopBar from './TopBar';
 
 import { RiAlignJustify } from "react-icons/ri";
@@ -26,7 +27,8 @@ const MyBuilder = (props) => {
         Section: SectionView,
         Button: ButtonView,
         Shape: ShapeView,
-        Canvas: CanvasView
+        Canvas: CanvasView,
+        Header: HeaderView
         // TextBox: TextView,
     };
 
