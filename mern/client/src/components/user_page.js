@@ -12,7 +12,7 @@ import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/CloseButton'
-
+import Switch from "react-switch";
 
 import Button from 'react-bootstrap/Button';
 
@@ -92,13 +92,15 @@ class UserPage extends Component {
             currentUser: email, 
             searchUser: email, 
             pagecount: 0,
-            modalShow: false
+            modalShow: false,
+            checked: false
         };
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
         this.duplicatePage = this.duplicatePage.bind(this);
         this.exportPage = this.exportPage.bind(this);
+        this.changePrivacy = this.changePrivacy.bind(this)
     }
 
 
@@ -122,7 +124,7 @@ class UserPage extends Component {
     }
 
 
-    createNewPage() {
+    createNewPage(name, publicToggle) {
         getUser(this.state.currentUser).then(data =>{
             console.log(this.state.currentUser);
             console.log(data.pagecount);
@@ -132,7 +134,12 @@ class UserPage extends Component {
             }
             else {
                 updateUser(data.email, data.password, data.pagecount + 1, data._id, data.theme, data.autoSave);
-                uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                // uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                // var pub = false;
+                // if(publicToggle === "on") {
+                //     pub = true;
+                // }
+                uploadPage(this.state.currentUser, name, null, this.state.checked, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
     }
@@ -277,6 +284,12 @@ class UserPage extends Component {
         this.setState({ modalShow: false });
     }
 
+    changePrivacy() {
+        this.setState((state) => {
+          return {checked: !state.checked}
+        });
+      }
+
     render() {
         return (
             <div class="UserPage">
@@ -321,8 +334,9 @@ class UserPage extends Component {
                         </Modal.Header>
                         <Modal.Body>
                             <h6>
-                                Email
+                                Project Name
                                 <input
+                                    id="projectName"
                                     type="text"
                                     // value={this.state.email}
                                     name="pagename"
@@ -332,12 +346,23 @@ class UserPage extends Component {
                             </h6>
                             <h6>
                                 Would you like the project to be public?<br/>
-                                <SwitchButton 
-                                    id="61857cd4eb35f7826e9e315a"
-                                    // id={props.page._id} 
-                                    // disabled={!props.access}
-                                >
-                                </SwitchButton>
+                                <Switch
+                                    // id="publicToggle"
+                                    onChange={this.changePrivacy} 
+                                    checked={this.state.checked}
+                                    // offColor="#ffc220"
+                                    onColor="#0071ce"
+                                    checkedIcon={
+                                        <div className="toggleS">
+                                        <i class="bi bi-unlock-fill"></i>
+                                        </div>
+                                    }
+                                    uncheckedIcon={
+                                        <div className="toggleM">
+                                        <i class="bi bi-lock-fill"></i>
+                                        </div>
+                                    }
+                                />
                             </h6>
                             <h6>
                                 Templates
@@ -367,7 +392,7 @@ class UserPage extends Component {
                             </h7>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={() => this.createNewPage()}>
+                            <Button onClick={() => this.createNewPage(document.getElementById("projectName").value)}>
                                     Create
                             </Button>
                         </Modal.Footer>
