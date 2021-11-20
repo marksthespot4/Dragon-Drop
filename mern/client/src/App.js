@@ -24,6 +24,7 @@ import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
+import ForgotPassword from "./components/forgot_password.js";
 import Faq from "./components/faq";
 
 /* Mark's comments
@@ -89,6 +90,10 @@ const App = () => {
           <Settings email={email}/>
           <Footer/>
         </Route>
+        <Route path="/forgot-password">
+          <ForgotPassword/>
+          <Footer/>
+        </Route>        
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} footer={Footer}/>
           {/* <PrivateRoute exact path="/dashboard">

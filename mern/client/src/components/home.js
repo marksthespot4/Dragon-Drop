@@ -266,6 +266,9 @@ class Home extends Component {
                             onChange={this.handlePasswordChange}
                             // className="form-control"
                         />
+                        <a href={"forgot-password"}>
+                            forgot password?
+                        </a> 
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
                         
