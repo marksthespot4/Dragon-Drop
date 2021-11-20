@@ -1,9 +1,9 @@
-import MUIButton from "@material-ui/core/Button"
+import Button from "@mui/material/Button"
 import clsx from "clsx";
 import React from "react";
 import useStyle from './style/Button'
 
-const Button = React.forwardRef(({
+const ButtonMain = React.forwardRef(({
     text,
     style,
     className,
@@ -22,16 +22,16 @@ const Button = React.forwardRef(({
     return <div
         className = {classAll}
     >
-        <MUIButton 
+        <Button 
             color = {style.backgroundColor}
             ref = {ref}
             className = {classButton}
             {...rest}
         >
             {text}
-        </MUIButton>
+        </Button>
         {children}
     </div> 
 });
 
-export default Button;
+export default ButtonMain;

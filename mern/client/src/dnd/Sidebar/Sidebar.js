@@ -10,6 +10,8 @@ import ShapeTools from "../components/Shape/ShapeTools";
 import ShapePanel from "../components/Shape/ShapePanel";
 import ImageTools from "../components/Image/ImageTools";
 import ImagePanel from "../components/Image/ImagePanel";
+import VideoTools from "../components/Video/VideoTools";
+import VideoPanel from "../components/Video/VideoPanel";
 import CanvasPanel from "../components/canvas/CanvasPanel";
 import SectionPanel from "../components/Section/SectionPanel";
 import SectionTools from "../components/Section/SectionTools";
@@ -57,6 +59,7 @@ const Sidebar = () => {
     Image: ImagePanel,
     Text: TextPanel,
     Button: ButtonPanel,
+    Video: VideoPanel,
     Shape: ShapePanel
   };
 
@@ -83,6 +86,7 @@ const Sidebar = () => {
           <div className='center'>
             <TextTools />
             <ImageTools />
+            <VideoTools />
             <ButtonTools />
             <ShapeTools />
             {/* <SectionTools /> */}
