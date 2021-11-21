@@ -6,7 +6,9 @@ const keys = require("../db/keys")
 
 const User = require("../db/user.js")
 const ObjectId = require("mongodb").ObjectId;
-
+const { useParams } = require("react-router");
+const { default: useDragonEditor } = require("../../client/src/dnd/hooks/useDragonEditor");
+const nodemailer = require('nodemailer');
 
 /* Mark's comments
 This is where user routes are made. Due to using mongoose models for users,
@@ -17,6 +19,59 @@ CRUD operations. Good luck!
 // @route POST /routes/users/register
 // @desc Register user
 // @access Public
+
+router.post("/forgotPassword", (req, res) =>
+{
+    User.findOne({
+        where: {
+            email: req.body.email,
+        },
+    }).then((user) => {
+        if(user === null) {
+            return res.status(403).json({email: "Email doesn't exist."});
+        }
+        else {
+            //generate a unique hash token
+            const token = crypto.randomBytes(20).toString('hex');
+
+            //update the user with the token and set it to expire in 10 minutes
+            user.update({
+                resetPasswordToken: token,
+                resetPasswordExpires: Date.now() + 600000,
+            });
+
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+
+                //put credentials into an .env file later and include it in .gitignore
+                // user: `${process.env.EMAIL_ADDRESSS}`,
+                // pass: `${process.env.EMAIL_PASSWORD}`,
+
+                auth: {
+                    user: "dragonDropDoNotReply@gmail.com",
+                    pass: "Dragondrop@2021",
+                }
+            });
+
+            const mailOptions = {
+                from: 'dragonDropDoNotReply@gmail.com',
+                to: `${user.email}`,
+                subject: 'Password Reset Link',
+                text: 'test',
+            };
+
+            transporter.sendMail(mailOptions, (err, response) => {
+                if(err) {
+                    //error
+                }
+                else {
+                    //sent
+                }
+            });
+        }
+    })
+    
+});
 
 router.post("/register", (req, res) =>
 {

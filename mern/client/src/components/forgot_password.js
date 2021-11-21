@@ -1,19 +1,40 @@
 import Button from 'react-bootstrap/Button';
 import { getUser } from "./user";
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class ForgotPassword extends Component{
     
-    validateEmail(email){
+    constructor() {
+        super();
+        this.state = {
+            email: '',
+        }
+    }
+
+    setEmail() {
+        this.setState({email: document.getElementById("userEmail").value},
+        this.validateEmail);
+    }
+
+    validateEmail(){
+        var email = this.state.email;
         getUser(email).then(data =>{
             if (data == null) { // Account was not found
                 alert("Account under given email not found");
             }
             else {
-                //email is good
+                this.sendEmail();
             }
         });
     }  
+
+    sendEmail() {
+        axios
+            .post('http://localhost:5000/routes/users/forgotPassword', {
+                email: this.state.email,
+            })
+    }
 
     render() {
         return (
@@ -26,7 +47,7 @@ class ForgotPassword extends Component{
                     type="email"
                     placeholder="Email">
                 </input>
-                <Button onClick={() => this.validateEmail(document.getElementById("userEmail").value)}>
+                <Button onClick={() => this.setEmail()}>
                     Reset Password
                 </Button>
             
