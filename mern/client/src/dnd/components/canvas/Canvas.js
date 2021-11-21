@@ -9,7 +9,8 @@ const Canvas = React.forwardRef(({
 }, ref) => {
     const classes = useStyle(style);
     const classAll = clsx(
-        className, 
+        className,
+        classes.ui,
         classes.canvas,
     );
     return <div

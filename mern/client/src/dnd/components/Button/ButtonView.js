@@ -1,12 +1,12 @@
 import { DnDBuilderHOC } from "build-ui";
 import useDragonEditor from "../../hooks/useDragonEditor";
 import useDragonStyler from "../../hooks/useDragonStyler";
-import Button from "./Button";
+import ButtonMain from "./ButtonMain";
 import useStyle from "./style/ButtonView";
 import Resizable from "../../resizable/Resizable";
 
 //const ResizableButton = Resizable(Button);
-const BuilderButton = DnDBuilderHOC(Button);
+const BuilderButton = DnDBuilderHOC(ButtonMain);
 
 const ButtonView = ({
                          id,
