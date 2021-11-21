@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="push back to actual page.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Google actually works now lets go.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/db/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/routes/google.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/creator_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/creator_page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,14 +94,7 @@
       <workItem from="1635966369728" duration="14980000" />
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
-      <workItem from="1637531380474" duration="1049000" />
-    </task>
-    <task id="LOCAL-00007" summary="integrated with sarah branch">
-      <created>1633571188862</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1633571188862</updated>
+      <workItem from="1637531380474" duration="1890000" />
     </task>
     <task id="LOCAL-00008" summary="Added a dropdown menu to each project.&#10;installed popper.">
       <created>1633640866395</created>
@@ -445,7 +432,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636937519255</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Google actually works now lets go.">
+      <created>1637532592909</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1637532592910</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +459,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added some files for redux" />
     <MESSAGE value="added redux to front end connections and some console prints for debugging." />
     <MESSAGE value="Stopping point, where the home page works, but logging in and registering have issues." />
     <MESSAGE value="fixed the CORS issue lol" />
@@ -490,6 +483,7 @@
     <MESSAGE value="added routes to update by id, and an axios call in user.js for it." />
     <MESSAGE value="changed password info incorrect popup" />
     <MESSAGE value="general google stuff, attempted to make it not crash." />
-    <option name="LAST_COMMIT_MESSAGE" value="general google stuff, attempted to make it not crash." />
+    <MESSAGE value="Google actually works now lets go." />
+    <option name="LAST_COMMIT_MESSAGE" value="Google actually works now lets go." />
   </component>
 </project>

@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import stock from "../imgs/stock_photo.jpg";
 import sarah from "../imgs/sarah.jpg";
 import mark from "../imgs/mark.jpg";
+import ancil from "../imgs/ancil.png";
 import "../CSS/creators.css";
 
 class Creator_page extends Component {
@@ -64,11 +65,12 @@ class Creator_page extends Component {
                         <Col>
                             <Container className="card">
                                 <Card border="dark" >
-                                    <Card.Img className="border" variant="top" src={stock} />
+                                    <Card.Img className="border" variant="top" src={ancil} />
                                     <Card.Body>
                                         <Card.Title>Ancil Trent</Card.Title>
                                         <Card.Text>
                                             Ancil is a CS student in the Cybersecurity track.
+                                            <br/>He has a pet snake named Jerry!
                                         </Card.Text>
                                         <Card.Link href="https://github.com/bdtrent">GitHub</Card.Link>
                                         <Card.Link href="https://www.linkedin.com/in/ancil-trent-438b361b8/">LinkedIn</Card.Link>
