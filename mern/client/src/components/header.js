@@ -24,14 +24,14 @@ class Header extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount() {
-        getUser(this.props.email).then(data=>{
-            console.log(data);
-            this.setState({
-                theme: data.theme,
-            });
-        });
-      }
+    // componentDidMount() {
+    //     getUser(this.props.email).then(data=>{
+    //         console.log(data);
+    //         this.setState({
+    //             theme: data.theme,
+    //         });
+    //     });
+    //   }
 
     handleChange() {
         return this.changeTheme();
@@ -39,10 +39,9 @@ class Header extends Component {
 
     changeTheme() {
         this.setState((state) => {
-          getUser(this.props.email).then(data=>{
-            // console.log(!data.theme);
-            updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, false);
-          });
+        //   getUser(this.props.email).then(data=>{
+        //     updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, false);
+        //   });
           return {theme: !state.theme}
         });
     }
