@@ -51,7 +51,7 @@ module.exports = passport => {
             {
                 clientID:"420851960111-fhomo6kgo1enmke21ouqv1fdos9lm4jm.apps.googleusercontent.com",
                 clientSecret: "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",
-                callbackURL: '/auth/google/callback'
+                callbackURL: 'http://localhost:5000/auth/google/callback',
             },
             function(token, tokenSecret, profile, done) {
                 // testing
@@ -59,8 +59,11 @@ module.exports = passport => {
                 console.log(profile)
                 console.log('======== END ===========')
                 // code
-                const { id, name, photos } = profile
-                User.findOne({ 'google.googleId': id }, (err, userMatch) => {
+                const id = profile.id;
+                const gmail = profile.emails[0].value;
+                console.log(gmail)
+                console.log(id)
+                User.findOne({ 'googleId': id }, (err, userMatch) => {
                     // handle errors here:
                     if (err) {
                         console.log('Error!! trying to find user with googleId')
@@ -72,15 +75,11 @@ module.exports = passport => {
                         return done(null, userMatch)
                     } else {
                         // if no user in our db, create a new user with that googleId
-                        console.log('====== PRE SAVE =======')
-                        console.log(id)
-                        console.log(profile)
-                        console.log('====== post save ....')
                         const newGoogleUser = new User({
-                            'google.googleId': id,
-                            firstName: name.givenName,
-                            lastName: name.familyName,
-                            photos: photos
+                            googleId: id,
+                            email: gmail,
+                            password: "GOOGLE",
+                            pagecount: 0
                         })
                         // save this user
                         newGoogleUser.save((err, savedUser) => {

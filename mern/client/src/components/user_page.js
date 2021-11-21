@@ -10,14 +10,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
-
-
+import setAuthToken from "../utils/setAuthToken";
+import {setCurrentUser} from "../actions/authActions";
 import Button from 'react-bootstrap/Button';
+import store from "../store"
 
 // This will require to npm install axios
 import axios from 'axios';
 import SwitchButton from "./switch_button";
-import { getUser, updateUser } from "./user";
+import { getUser, updateUser, getUserID } from "./user";
 import PropTypes from "prop-types";
 
 
@@ -95,9 +96,25 @@ class UserPage extends Component {
 
 
     componentDidMount() {
+        if (this.props.match.params.id != null)
+        {
+            //it means the google login passed this.
+            //check if the user exists in database by ID.
+            //then if it does, update our Redux store
+            //and set the local email in storage as the gmail.
+            //also, set our currentUser and searchUser as gmail.
+            //set our jwtToken
+            getUserID(this.props.match.params.id).then(data => {
+                //console.log(data);
+                localStorage.setItem('localEmail', data.email);
+                store.dispatch(setCurrentUser(data));
+            });
+            this.props.history.push("/user_page");
+        }
         if (this.props.auth.isAuthenticated)
         {
             console.log("USER IS AUTHENTICATED ON USER PAGE");
+
         }
         else
         {

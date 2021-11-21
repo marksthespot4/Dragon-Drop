@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="general google stuff, attempted to make it not crash.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="push back to actual page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/db/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/db/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/server/routes/google.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +100,7 @@
       <workItem from="1635966369728" duration="14980000" />
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
+      <workItem from="1637531380474" duration="1049000" />
     </task>
     <task id="LOCAL-00007" summary="integrated with sarah branch">
       <created>1633571188862</created>
