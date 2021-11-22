@@ -20,6 +20,27 @@ CRUD operations. Good luck!
 // @desc Register user
 // @access Public
 
+// route.get('/reset', (req, res) => {
+//     User.findOne({
+//         where: {
+//             resetPasswordToken: req.query.resetPasswordToken,
+//             resetPasswordExpires: {
+//             [Op.gt]: Date.now(),
+//             },
+//         },
+//     }).then((user) => {
+//         if (user == null) {
+//             console.error('password reset link is invalid or has expired');
+//             res.status(403).send('password reset link is invalid or has expired');
+//         } else {
+//             res.status(200).send({
+//                 username: user.username,
+//                 message: 'valid-link',
+//             });
+//         }
+//     });
+// });
+
 router.post("/forgotPassword", (req, res) =>
 {
     User.findOne({
@@ -58,7 +79,7 @@ router.post("/forgotPassword", (req, res) =>
                 to: req.body.email,
                 // to: 'hyun.changsoo7@gmail.com',
                 subject: `Password Reset Link`,
-                text: `click the link below to change your password:\n\nhttp://localhost:5000/reset/${token}`,
+                text: `click the link below to change your password:\n\nhttp://localhost:3000/reset/${token}`,
             };
 
             transporter.sendMail(mailOptions, (err, response) => {

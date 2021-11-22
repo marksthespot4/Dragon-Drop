@@ -26,6 +26,7 @@ import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
 import ForgotPassword from "./components/forgot_password.js";
 import Faq from "./components/faq";
+import ResetPassword from "./components/resetPassword.js";
 
 /* Mark's comments
   This part up here will check our localStorage token
@@ -67,6 +68,7 @@ const App = () => {
           <Home setEmail={setEmail}/>
           <Footer/>
         </Route>
+        <Route path="/reset/:token" component={ResetPassword} />
         <Route path="/edit/:id" component={Edit} />
         <Route path="/create-page/:id" component={Save} />
         <Route path="/view-page/:id" component={View} />
