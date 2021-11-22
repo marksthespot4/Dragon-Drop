@@ -15,8 +15,8 @@ const Section = React.forwardRef(({
         classes.position
     );
     return <div
-        className = {classAll}
-        ref = {ref}
+        className={classAll}
+        ref={ref}
         {...props}
     />
 });
