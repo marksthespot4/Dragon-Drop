@@ -44,7 +44,8 @@ const Page = (props) => (
             : 
             <a href={"/view-page/" + props.page._id}>
                 <img src={props.page.pagepreview} className="yellowOutline float-start" />
-            </a>             }
+            </a>
+            }
             {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
             {props.access ?
@@ -128,8 +129,8 @@ class UserPage extends Component {
 
     createNewPage(name, publicToggle) {
         getUser(this.state.currentUser).then(data =>{
-            console.log(this.state.currentUser);
-            console.log(data.pagecount);
+            // console.log(this.state.currentUser);
+            // console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
                 return;
@@ -274,8 +275,9 @@ class UserPage extends Component {
     }
 
     backToAccount() {
-        console.log(this.state.currentUser);
+        // console.log(this.state.currentUser);
         this.setState({searchUser: this.state.currentUser});
+        document.getElementById("userQuery").value = "";
     }
 
     modalOpen = () => {

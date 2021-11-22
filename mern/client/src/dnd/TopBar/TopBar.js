@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useEffect } from "react";
 import { getPage } from "./../../components/page";
 import html2canvas from 'html2canvas';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const TopBar = (props) => {
     const builder = useBuilder();
@@ -41,15 +41,38 @@ const TopBar = (props) => {
         console.log(json());
     }
 
+    const handleShare = () => {
+        handleSave();
+        navigator.clipboard.writeText("http://localhost:3000/view-page/" + props.id);
+        // props.history.push("/view-page/" + props.id)
+        notify();
+    }
+
     const keydownHandler = (e) => {
         if(e.ctrlKey && e.keyCode == 90) handleUndo()
         else if(e.ctrlKey && e.keyCode == 89) handleRedo()
-      }
+    }
+
+    const notify = () => { 
+        toast.info('Shareable link copied to clipboard');
+    }
     
     return <div>
         {/* <button onClick = {load}>
             Load
         </button> */}
+
+        <ToastContainer 
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+        />
         <Button disabled = {!canUndo} onClick = {handleUndo}>
             Undo
         </Button>
@@ -59,6 +82,16 @@ const TopBar = (props) => {
         <Button onClick={() => {handleSave()}}>
             Save
         </Button>
+        {/* <a href={"/view-page/" + props.id} style={{"color":"white"}} id="share" onClick={() => {handleShare()}}> */}
+            <Button
+                style={{right:"0px", position:"absolute"}}
+                onClick={() => {handleShare()}}
+            >
+                    Share&nbsp;
+                    <i class="bi bi-share"></i>
+                    {/* <img src={props.pagepreview}/> */}
+            </Button>
+        {/* </a>  */}
     </div>
 }
 
