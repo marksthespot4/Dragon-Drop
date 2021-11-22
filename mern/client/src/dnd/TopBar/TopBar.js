@@ -84,6 +84,7 @@ const TopBar = (props) => {
         </Button>
         {/* <a href={"/view-page/" + props.id} style={{"color":"white"}} id="share" onClick={() => {handleShare()}}> */}
             <Button
+                variant="secondary"
                 style={{right:"0px", position:"absolute"}}
                 onClick={() => {handleShare()}}
             >
