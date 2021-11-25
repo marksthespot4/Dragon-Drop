@@ -41,7 +41,7 @@ class Creator_page extends Component {
                                 <Card.Body>
                                     <Card.Title>Brandon Xu</Card.Title>
                                     <Card.Text>
-                                        Brandon Xu is a CS/DS Student.
+                                        Brandon Xu is a CS/DS Student on the Software Engineering track.
                                     </Card.Text>
                                     <Card.Link href="https://github.com/brandonxu9">GitHub</Card.Link>
                                     <Card.Link href="https://www.linkedin.com/in/brandon-xu-32ab13191/">LinkedIn</Card.Link>
