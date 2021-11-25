@@ -5,7 +5,7 @@ import ButtonMain from "./ButtonMain";
 import useStyle from "./style/ButtonView";
 import Resizable from "../../resizable/Resizable";
 
-//const ResizableButton = Resizable(Button);
+//const ResizableButton = Resizable(ButtonMain);
 const BuilderButton = DnDBuilderHOC(ButtonMain);
 
 const ButtonView = ({
@@ -23,6 +23,7 @@ const ButtonView = ({
     });
     const classes = useStyle({
         selected: editor.indexes.selected,
+        //hovering: editor.hovering,
         fixed: editor.meta.fixed,
     })
     return <BuilderButton
