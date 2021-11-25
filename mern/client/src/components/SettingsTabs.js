@@ -70,6 +70,11 @@ class SettingsTabs extends Component {
                 });
                 return;
             }
+            if(data.googleId != null)
+            {
+                alert("Password not changed!");
+                return;
+            }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
                 if (isMatch)
                 {
