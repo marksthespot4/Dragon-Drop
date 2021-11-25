@@ -68,9 +68,9 @@ const App = () => {
           <Home setEmail={setEmail}/>
           <Footer/>
         </Route>
-        <Route path="/reset/:token" component={ResetPassword} />
         <Route path="/edit/:id" component={Edit} />
         <Route path="/create-page/:id" component={Save} />
+        <Route path="/reset/:token" component={ResetPassword} />
         <Route path="/view-page/:id" component={View} />
         <Route path="/create">
           <Create />

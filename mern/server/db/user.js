@@ -21,7 +21,17 @@ const userSchema = new Schema({
         type: Number,
         required: true,
         default: 0
-    }
+    },
+    // resetPasswordToken: {
+    //     type: String,
+    //     required: true,
+    //     default: ""
+    // },
+    // resetPasswordExpires: {
+    //     type:Number,
+    //     required: false
+    // },
+
 })
 
 // // Define schema methods

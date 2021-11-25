@@ -20,26 +20,26 @@ CRUD operations. Good luck!
 // @desc Register user
 // @access Public
 
-// route.get('/reset', (req, res) => {
-//     User.findOne({
-//         where: {
-//             resetPasswordToken: req.query.resetPasswordToken,
-//             resetPasswordExpires: {
-//             [Op.gt]: Date.now(),
-//             },
-//         },
-//     }).then((user) => {
-//         if (user == null) {
-//             console.error('password reset link is invalid or has expired');
-//             res.status(403).send('password reset link is invalid or has expired');
-//         } else {
-//             res.status(200).send({
-//                 username: user.username,
-//                 message: 'valid-link',
-//             });
-//         }
-//     });
-// });
+router.get('/reset/', (req, res, next) => {
+    User.findOne({
+        where: {
+            resetPasswordToken: req.query.resetPasswordToken,
+            resetPasswordExpires: {
+            $gt: Date.now(),
+            },
+        },
+    }).then((user) => {
+        if (user == null) {
+            console.error('password reset link is invalid or has expired');
+            res.status(403).send('password reset link is invalid or has expired');
+        } else {
+            res.status(200).send({
+                username: user.username,
+                message: 'valid-link',
+            });
+        }
+    });
+});
 
 router.post("/forgotPassword", (req, res) =>
 {
@@ -61,6 +61,12 @@ router.post("/forgotPassword", (req, res) =>
                 resetPasswordToken: token,
                 resetPasswordExpires: Date.now() + 600000,
             });
+
+            // user.resetPasswordToken = token;
+            // user.resetPasswordExpires = Date.now() + 600000;
+            // user.save()
+            //     .then(user => res.json(user))
+            //     .catch(err => console.log(err));
 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
