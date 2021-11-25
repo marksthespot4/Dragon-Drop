@@ -34,7 +34,7 @@ render() {
                         </NavLink>
 
                         <Navbar.Toggle onClick={() => this.onClick()}/>
-                        {localStorage.getItem( 'jwtToken' ) === null
+                        {!this.props.auth.isAuthenticated
                         ?
                         <></>
                         :
