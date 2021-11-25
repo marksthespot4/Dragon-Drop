@@ -10,6 +10,8 @@ import stock from "../imgs/stock_photo.jpg";
 import sarah from "../imgs/sarah.jpg";
 import mark from "../imgs/mark.jpg";
 import ancil from "../imgs/ancil.png";
+import lucy from "../imgs/lucy.jfif";
+import charlie from "../imgs/charlie.jpg";
 import "../CSS/creators.css";
 
 class Creator_page extends Component {
@@ -50,11 +52,12 @@ class Creator_page extends Component {
                         <Col>
                             <Container className="card">
                                 <Card border="dark" >
-                                    <Card.Img className="border" variant="top" src={stock} />
+                                    <Card.Img className="border" variant="top" src={lucy} />
                                     <Card.Body>
                                         <Card.Title>Lucy Cheng</Card.Title>
                                         <Card.Text>
-                                            Lucy is a CS Student.
+                                            Lucy is a CS Student on the Software Engineering track.
+                                            <br/>She likes to play Tetris in her free time.
                                         </Card.Text>
                                         <Card.Link href="https://github.com/lucyc998">GitHub</Card.Link>
                                         <Card.Link href="https://www.linkedin.com/in/lucy-cheng-a93ab4192/">LinkedIn</Card.Link>
@@ -69,7 +72,7 @@ class Creator_page extends Component {
                                     <Card.Body>
                                         <Card.Title>Ancil Trent</Card.Title>
                                         <Card.Text>
-                                            Ancil is a CS student in the Cybersecurity track.
+                                            Ancil is a CS student currently on the Cybersecurity track.
                                             <br/>He has a pet snake named Jerry!
                                         </Card.Text>
                                         <Card.Link href="https://github.com/bdtrent">GitHub</Card.Link>
@@ -99,12 +102,12 @@ class Creator_page extends Component {
                         <Col>
                             <Container className="card">
                                 <Card border="dark" >
-                                    <Card.Img className="border" variant="top" src={stock} />
+                                    <Card.Img className="border" variant="top" src={charlie} />
                                     <Card.Body>
                                         <Card.Title>Charlie Hyun</Card.Title>
                                         <Card.Text>
                                             Charlie is a CS/DS student on the Software Engineering and Machine Intelligence track.
-                                            <br/>He loves eating Indiana's famous food, especially barbecue!
+                                            <br/>He's never had good barbecue, and won't stop till he gets it.
                                         </Card.Text>
                                         <Card.Link href="https://github.com/charliehyun">GitHub</Card.Link>
                                         <Card.Link href="https://www.linkedin.com/in/charlie-hyun-21a7691b4/">LinkedIn</Card.Link>
