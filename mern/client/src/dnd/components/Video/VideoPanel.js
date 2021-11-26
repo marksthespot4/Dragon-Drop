@@ -26,7 +26,7 @@ const VideoPanel = ({id}) => {
 
     const videoFileUpload = event => {
         const url = URL.createObjectURL(event.target.files[0])
-        console.log(url)
+        // console.log(url)
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {videoUrl: url, extLink:link}

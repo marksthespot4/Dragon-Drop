@@ -21,7 +21,7 @@ import { registerUser } from "../actions/authActions";
 import { loginUser} from "../actions/authActions";
 import { ToastContainer, toast } from 'react-toastify';
 
-import classnames from "classnames";
+// import classnames from "classnames";
 
 /* Mark's COMMENTS
 So HOME has now been modified to use redux store. This is shown at the bottom, where
@@ -139,8 +139,8 @@ class Home extends Component {
     modalSignup = () => {
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
-        console.log("pswd: "+password);
-        console.log("cnfpswd: "+confirmPassword);
+        // console.log("pswd: "+password);
+        // console.log("cnfpswd: "+confirmPassword);
         if (password !== confirmPassword) { // Passwords don't match
             alert("Passwords do not match");
         }
@@ -156,7 +156,7 @@ class Home extends Component {
             alert("Password must have at least one upper case and lower case character");
         }
         else {
-            console.log(this.state.email);
+            // console.log(this.state.email);
             this.props.setEmail(this.state.email);
             //uploadUser(this.state.email, this.state.password, 0);
             const newUser = {
@@ -224,7 +224,7 @@ class Home extends Component {
     }
 
     login(props) {
-        console.log(this.state.email);
+        // console.log(this.state.email);
         this.props.setEmail(this.state.email);
         props.history.push("/user_page");
     }
@@ -295,7 +295,7 @@ class Home extends Component {
                                 Log In
                         </Button>
                         <a href="http://localhost:5000/auth/google">
-                        <img className="googleLogin" src={googleButton}/>
+                            <img className="googleLogin" src={googleButton}/>
                         </a>
                     </Modal.Footer>
                 </Modal>

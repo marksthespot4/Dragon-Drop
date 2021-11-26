@@ -80,8 +80,8 @@ class SettingsTabs extends Component {
                 {
                     var password = "" + this.state.password;
                     var confirmPassword =  "" + this.state.confirmPassword;
-                    console.log("pswd: "+password);
-                    console.log("cnfpswd: "+confirmPassword);
+                    // console.log("pswd: "+password);
+                    // console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
                         alert("Passwords do not match");
                     }

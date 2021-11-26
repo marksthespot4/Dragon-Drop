@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
 "mdbreact";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { getUser, updateUser } from "./user";
 import { getPages, updatePage } from "./page"
-import { FormControlLabel } from '@mui/material';
+// import { FormControlLabel } from '@mui/material';
 
 class TabsDefault extends Component {
 

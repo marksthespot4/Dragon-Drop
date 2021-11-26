@@ -15,12 +15,12 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import Switch from "react-switch";
 
 import Button from 'react-bootstrap/Button';
-import setAuthToken from "../utils/setAuthToken";
+// import setAuthToken from "../utils/setAuthToken";
 import {setCurrentUser} from "../actions/authActions";
 import store from "../store"
 
 // This will require to npm install axios
-import axios from 'axios';
+// import axios from 'axios';
 import SwitchButton from "./switch_button";
 import { getUser, updateUser, getUserID } from "./user";
 import PropTypes from "prop-types";
@@ -165,9 +165,9 @@ class UserPage extends Component {
     }
 
     duplicatePage(pagename, pagedata, pub, pagepreview) {
-        console.log(pagename, pagedata, pub, pagepreview);
+        // console.log(pagename, pagedata, pub, pagepreview);
         getUser(this.state.currentUser).then(data =>{
-            console.log(data.pagecount);
+            // console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 alert("Cannot create new page: Reached maximum page count!");
                 return;
@@ -187,7 +187,7 @@ class UserPage extends Component {
 
     renamePage(id) {
         if(this.state.currentUser === this.state.searchUser) {
-            console.log(id);
+            // console.log(id);
             getPage(id).then(data=>{
                 var newName = prompt("New Name:");
                 updatePage(data.user, newName, data.pub, data.pagedata, data.pagepreview, id);
@@ -198,7 +198,7 @@ class UserPage extends Component {
     exportPage(id) {
         getPage(id).then(data => {
             var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data.pagedata));
-            console.log(dataStr);
+            // console.log(dataStr);
             var downloadAnchorNode = document.createElement('a');
             downloadAnchorNode.setAttribute("href",     dataStr);
             downloadAnchorNode.setAttribute("download", data.pagename + ".json");
@@ -210,8 +210,8 @@ class UserPage extends Component {
     }
 
     deleteMyPage(id) {
-        console.log(this.state.currentUser);
-        console.log(this.state.searchUser);
+        // console.log(this.state.currentUser);
+        // console.log(this.state.searchUser);
         if(this.state.currentUser === this.state.searchUser) {
             getUser(this.state.currentUser).then(data =>{
                 updateUser(data.email, data.password, data.pagecount - 1, data._id, data.theme, data.autoSave);
