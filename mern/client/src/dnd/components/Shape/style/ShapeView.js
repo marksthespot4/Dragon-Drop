@@ -3,7 +3,7 @@ import combineStyles from "../../../utils/combine";
 import { viewStyles } from "../../../styles/views";
 
 const useStyle = makeStyles(combineStyles(
-    viewStyles
+    viewStyles,
 ));
 
 export default useStyle;

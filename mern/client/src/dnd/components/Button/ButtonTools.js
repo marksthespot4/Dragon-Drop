@@ -6,15 +6,15 @@ const ButtonTools = ({
     ...rest
 }) => {
     const tools = useTools();
-    const handleDragStart = () => {
+    const handleDragTool = () => {
         const buttonStyle ={
-            width: '50px',
-            height: '50px'
+            width: '75px',
+            height: '50px',
         }
         const buttonProps = {
             text: 'Button',
             color: 'primary',
-            variant: 'contained',
+            variant: 'outlined',
             style: buttonStyle
         };
         const button = item({
@@ -27,7 +27,7 @@ const ButtonTools = ({
         });
     }
     return <DnDBuilder
-        onDragStart = {handleDragStart}
+        onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
         {...rest}

@@ -22,6 +22,10 @@ const userSchema = new Schema({
         required: true,
         default: 0
     },
+    googleId: {
+        type:String,
+        required: false
+    },
     theme: {
         type: Boolean,
         required: true,

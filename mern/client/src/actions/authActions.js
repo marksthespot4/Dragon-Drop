@@ -55,7 +55,7 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err =>
-            alert("Login Information Incorrect!")
+            alert("Password Incorrect!")
          /*dispatch({
              type: GET_ERRORS,
              payload: err.response.data

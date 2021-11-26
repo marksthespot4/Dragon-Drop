@@ -11,7 +11,8 @@ import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import CloseButton from 'react-bootstrap/CloseButton'
+import CloseButton from 'react-bootstrap/CloseButton';
+import googleButton from "../imgs/login.png";
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -228,6 +229,7 @@ class Home extends Component {
         props.history.push("/user_page");
     }
 
+
     render() {
         return (
             <div className="Home" style={{height:"90vh"}}>
@@ -238,6 +240,7 @@ class Home extends Component {
                     <Button onClick={() => this.modalOpen("signup")}>
                         Sign Up
                     </Button>
+
                 </div>
                 
                 <div class="homepage" align="center">
@@ -291,6 +294,9 @@ class Home extends Component {
                         <Button onClick={() => this.modalLogin()}>
                                 Log In
                         </Button>
+                        <a href="http://localhost:5000/auth/google">
+                        <img className="googleLogin" src={googleButton}/>
+                        </a>
                     </Modal.Footer>
                 </Modal>
 
