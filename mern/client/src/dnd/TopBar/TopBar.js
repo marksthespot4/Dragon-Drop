@@ -4,6 +4,9 @@ import { useEffect } from "react";
 import { getPage } from "./../../components/page";
 import html2canvas from 'html2canvas';
 import { ToastContainer, toast } from 'react-toastify';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const TopBar = (props) => {
     const builder = useBuilder();
@@ -82,17 +85,24 @@ const TopBar = (props) => {
         <Button onClick={() => {handleSave()}}>
             Save
         </Button>
-        {/* <a href={"/view-page/" + props.id} style={{"color":"white"}} id="share" onClick={() => {handleShare()}}> */}
+    
+        <a href={"/view-page/" + props.id} style={{"color":"white"}} id="share">
             <Button
                 variant="secondary"
-                style={{right:"0px", position:"absolute"}}
-                onClick={() => {handleShare()}}
+                style={{right:"95px",position:"absolute"}}
+                // onClick={() => {handlePreview()}}
             >
-                    Share&nbsp;
-                    <i class="bi bi-share"></i>
-                    {/* <img src={props.pagepreview}/> */}
+                Preview Page
             </Button>
-        {/* </a>  */}
+        </a>
+        <Button
+            variant="secondary"
+            style={{right:"0px", position:"absolute"}}
+            onClick={() => {handleShare()}}
+        >
+                Share&nbsp;
+                <i class="bi bi-share"></i>
+        </Button>
     </div>
 }
 

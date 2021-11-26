@@ -2,12 +2,12 @@ import React, { Component } from "react";
 
 import "../CSS/footer.css";
 import { withRouter } from "react-router";
-import Navbar from 'react-bootstrap/Navbar';
-import logo from "../imgs/dragonNoText.png";
+// import Navbar from 'react-bootstrap/Navbar';
+// import logo from "../imgs/dragonNoText.png";
 import { NavLink } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col';
 
 class Footer extends Component {
     constructor(props) {
