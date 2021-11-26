@@ -26,7 +26,7 @@ const ImagePanel = ({id}) => {
 
     const imageFileUpload = event => {
         const url = URL.createObjectURL(event.target.files[0])
-        console.log(url)
+        // console.log(url)
         actions.timeBatched.triggerUpdate({
             id: id,
             props: {imageUrl: url, extLink:link}
