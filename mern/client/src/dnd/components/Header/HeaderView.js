@@ -24,16 +24,16 @@ const HeaderView = ({
         fixed: editor.meta.fixed,
     });
     return <BuilderHeader
-        // onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
-        // onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
-        // onDrop = {editor.handlePositionedDrop}
-        // onDragEnter = {editor.handlePaintDropZone}
-        // onDragLeave = {editor.handleEraseDropZone}
-        // draggable = {!editor.meta.fixed}
-        // isResizing = {editor.indexes.selected}
-        // onResizeStart = {editor.handleResizeStart}
-        // onResize = {editor.handleResize}
-        // onResizeEnd = {editor.handleResizeEnd}
+        onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
+        onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
+        onDrop = {editor.handlePositionedDrop}
+        onDragEnter = {editor.handlePaintDropZone}
+        onDragLeave = {editor.handleEraseDropZone}
+        draggable = {!editor.meta.fixed}
+        isResizing = {editor.indexes.selected}
+        onResizeStart = {editor.handleResizeStart}
+        onResize = {editor.handleResize}
+        onResizeEnd = {editor.handleResizeEnd}
         ref = {editor.builder}
         onClick = {editor.handleSelect}
         className = {classes.view} 

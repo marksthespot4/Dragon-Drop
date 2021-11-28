@@ -7,21 +7,37 @@ const HeaderTools = ({
 }) => {
     const tools = useTools();
     const handleDragTool = () => {
+        const titleStyle = {
+            color: '#000000',
+            fontSize: '22px',
+            fontFamily: 'Arial',
+            width: '200px',
+            height: '50px'
+        }
+        const titleProps = {
+            text: 'My Text',
+            extLink: 'https://google.com',
+            style: titleStyle,
+        }
+        const title = item({
+            type: 'Text',
+            props: titleProps
+        })
+
         const headerStyle = {
             width: '100%',
             height: '100px',
-            x: "0",
-            y: "0",
             backgroundColor: '#D3D3D3',
         }
         const headerProps = {
             style: headerStyle,
         }
+
         const header = item({
             type: 'Header',
             props: headerProps
         })
-        const data = branch(header);
+        const data = branch(header, title);
         tools.triggerDragStart({
             data: data,
         });
