@@ -11,14 +11,14 @@ class ResetPassword extends Component{
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:5000/routes/users/reset', {
-            params: {
-                resetPasswordToken: this.props.match.params.token,
-            },
-        })
-        .then(response => {
-            console.log(response);
-        });
+        // await axios.get('http://localhost:5000/routes/users/reset', {
+        //     params: {
+        //         resetPasswordToken: this.props.match.params.token,
+        //     },
+        // })
+        // .then(response => {
+        //     console.log(response);
+        // });
         getUser("hyun.changsoo7@gmail.com").then(data =>{
             console.log(data.resetPasswordToken);
         });

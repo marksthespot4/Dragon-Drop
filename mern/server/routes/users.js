@@ -43,30 +43,24 @@ router.get('/reset/', (req, res, next) => {
 
 router.post("/forgotPassword", (req, res) =>
 {
-    User.findOne({
-        where: {
-            email: req.body.email,
-        },
-    }).then((user) => {
-        if(user === null) {
-            return res.status(403).json({email: "Email doesn't exist."});
-        }
-        else {
+    User.findOne({email: req.body.email}).then((user) => {
+
+        if(user) {
             //generate a unique hash token
             const token = crypto.randomBytes(20).toString('hex');
 
             //update the user with the token and set it to expire in 10 minutes
 
-            user.update({
-                resetPasswordToken: token,
-                resetPasswordExpires: Date.now() + 600000,
-            });
+            // user.update({
+            //     resetPasswordToken: token,
+            //     resetPasswordExpires: Date.now() + 600000,
+            // });
 
-            // user.resetPasswordToken = token;
-            // user.resetPasswordExpires = Date.now() + 600000;
-            // user.save()
-            //     .then(user => res.json(user))
-            //     .catch(err => console.log(err));
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 600000;
+            user.save()
+                .then(user => res.json(user))
+                .catch(err => console.log(err));
 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -97,6 +91,9 @@ router.post("/forgotPassword", (req, res) =>
                     console.log("email sent");
                 }
             });
+        }
+        else {
+            return res.status(403).json({email: "Email doesn't exist."});
         }
     })
     

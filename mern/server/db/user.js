@@ -22,15 +22,15 @@ const userSchema = new Schema({
         required: true,
         default: 0
     },
-    // resetPasswordToken: {
-    //     type: String,
-    //     required: true,
-    //     default: ""
-    // },
-    // resetPasswordExpires: {
-    //     type:Number,
-    //     required: false
-    // },
+    resetPasswordToken: {
+        type: String,
+        required: true,
+        default: ""
+    },
+    resetPasswordExpires: {
+        type:Number,
+        required: false
+    },
 
 })
 
