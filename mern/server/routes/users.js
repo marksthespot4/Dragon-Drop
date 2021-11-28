@@ -21,22 +21,39 @@ CRUD operations. Good luck!
 // @access Public
 
 router.get('/reset/', (req, res, next) => {
-    User.findOne({
-        where: {
-            resetPasswordToken: req.query.resetPasswordToken,
-            resetPasswordExpires: {
-            $gt: Date.now(),
-            },
-        },
-    }).then((user) => {
+    // User.findOne({
+    //     where: {
+    //         resetPasswordToken: req.query.resetPasswordToken,
+    //         resetPasswordExpires: {
+    //         $gt: Date.now(),
+    //         },
+    //     },
+    // }).then((user) => {
+    User.findOne({resetPasswordToken: req.query.resetPasswordToken}).then((user) => {
+
         if (user == null) {
-            console.error('password reset link is invalid or has expired');
-            res.status(403).send('password reset link is invalid or has expired');
-        } else {
             res.status(200).send({
-                username: user.username,
-                message: 'valid-link',
+                // username: user.username,
+                message: 'invalid-link',
             });
+            // console.error('password reset link is invalid or has expired');
+            // res.status(403).send({message: 'password reset link is invalid or has expired'});
+        } else {
+            if(user.resetPasswordExpires > Date.now()) {
+                res.status(200).send({
+                    username: user.username,
+                    message: 'valid-link',
+                });
+            }
+            else {
+                res.status(200).send({
+                    // username: user.username,
+                    message: 'invalid-link',
+                });
+                // console.error('password reset link is invalid or has expired');
+                // res.status(403).send({message: 'password reset link is invalid or has expired'});
+            }
+
         }
     });
 });
@@ -57,7 +74,7 @@ router.post("/forgotPassword", (req, res) =>
             // });
 
             user.resetPasswordToken = token;
-            user.resetPasswordExpires = Date.now() + 600000;
+            user.resetPasswordExpires = Date.now() + 60000;
             user.save()
                 .then(user => res.json(user))
                 .catch(err => console.log(err));
