@@ -101,11 +101,6 @@ class Home extends Component {
 
     toggleShowL() {
         this.setState({ hiddenL: !this.state.hiddenL });
-        // if(this.state.hidden) {
-        //     icon = "bi bi-eye"
-        // } else {
-        //     icon = "bi bi-eye-slash"
-        // }
     }
 
     toggleShowS1() {
@@ -229,8 +224,8 @@ class Home extends Component {
         props.history.push("/user_page");
     }
 
-
     render() {
+        document.body.style = "background: wheat;";
         return (
             <div className="Home" style={{height:"90vh"}}>
                 <div align="right">

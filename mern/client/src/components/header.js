@@ -26,7 +26,7 @@ class Header extends Component {
     componentDidMount() {
         this.setState({theme: true})
         getUser(this.props.email).then(data=>{
-            console.log(data);
+            // console.log(data);
             if(data) {
                 this.setState({
                     theme: data.theme,
@@ -42,6 +42,7 @@ class Header extends Component {
     changeTheme() {
         this.setState((state) => {
           getUser(this.props.email).then(data=>{
+            //   console.log(data)
             updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, data.autoSave);
             // console.log(data.theme)
           });

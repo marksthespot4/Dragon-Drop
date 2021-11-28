@@ -25,6 +25,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
 import Faq from "./components/faq";
+import { getUser } from "./components/user";
 
 /* Mark's comments
   This part up here will check our localStorage token
@@ -56,6 +57,14 @@ if(localStorage.jwtToken) {
 const App = () => {
 
   const [email, setEmail] = useState("");
+  // var test = false;
+
+  // if(email !== "") {
+  //   getUser(email).then(data=>{
+  //     test = data.theme
+  //   });
+  // }
+  // document.body.style = (test || email === "") ? 'background: wheat;' : 'background: green;';
   document.body.style = 'background: wheat;';
   return (
     <div>
