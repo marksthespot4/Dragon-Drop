@@ -6,7 +6,7 @@ export default (props) => {
 
     useEffect(() => {
         getPage(props.match.params.id).then(data => {
-            console.log(data.pagepreview);
+            // console.log(data.pagepreview);
             setPagePreview(data.pagepreview);
         }); 
     }, []);   

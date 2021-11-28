@@ -25,6 +25,16 @@ const userSchema = new Schema({
     googleId: {
         type:String,
         required: false
+    },
+    theme: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    autoSave: {
+        type: Boolean,
+        required: true,
+        default: true
     }
 })
 

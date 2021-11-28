@@ -26,6 +26,8 @@ class Edit extends Component {
         email: data.email,
         password: data.password,
         pagecount: data.pagecount,
+        theme: data.theme,
+        autoSave: data.autoSave
       });
     });
     //console.log("email "+this.state.email);
@@ -48,7 +50,7 @@ class Edit extends Component {
   // This function will handle the submission.
   onSubmit(e) {
     e.preventDefault();
-    updateUser(this.state.email, this.state.password, this.state.pagecount, this.props.match.params.id);
+    updateUser(this.state.email, this.state.password, this.state.pagecount, this.props.match.params.id, this.state.theme, this.state.autoSave);
 
     this.props.history.push("/");
   }
