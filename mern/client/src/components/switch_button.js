@@ -39,8 +39,25 @@ export default class SwitchButton extends Component {
   render() {
     return (
       <label>
-        <span>public</span>
-        <Switch onChange={this.handleChange} disabled={this.props.disabled} checked={this.state.checked} />
+        {/* <span>public</span> */}
+        <Switch 
+            onChange={this.handleChange} 
+            disabled={this.props.disabled}
+            checked={this.state.checked}
+            // offColor="#ffc220"
+            onColor="#0071ce"
+            checkedIcon={
+                <div className="toggleS">
+                  <i class="bi bi-unlock-fill"></i>
+                </div>
+            }
+            uncheckedIcon={
+                <div className="toggleM">
+                  <i class="bi bi-lock-fill"></i>
+                </div>
+            }
+        />
+        {/* <Switch onChange={this.handleChange} disabled={this.props.disabled} checked={this.state.checked} /> */}
       </label>
     );
   }

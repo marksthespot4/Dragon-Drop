@@ -179,13 +179,18 @@ class SettingsTabs extends Component {
                 });
                 return;
             }
+            if(data.googleId != null)
+            {
+                alert("Password not changed!");
+                return;
+            }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
                 if (isMatch)
                 {
                     var password = "" + this.state.password;
                     var confirmPassword =  "" + this.state.confirmPassword;
-                    console.log("pswd: "+password);
-                    console.log("cnfpswd: "+confirmPassword);
+                    // console.log("pswd: "+password);
+                    // console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
                         alert("Passwords do not match");
                     }
@@ -205,7 +210,7 @@ class SettingsTabs extends Component {
                             bcrypt.hash(this.state.password, salt, (err, hash) => {
                                 if (err) throw err;
                                 this.state.password = hash;
-                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
                                 alert("Password has been updated!");
                                 this.setState({
                                     currentPassword: '',

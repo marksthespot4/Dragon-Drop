@@ -9,10 +9,11 @@ const DragonLayers = () => {
         Shape: LayerDraggable,
         Image: LayerDraggable,
         Text: LayerDraggable,
+        Video: LayerDraggable,
         Button: LayerDraggable,
         Header: LayerDraggable,
     }
-    return <Layers view = {view} />
+    return <Layers view={view} />
 }
 
 export default DragonLayers;

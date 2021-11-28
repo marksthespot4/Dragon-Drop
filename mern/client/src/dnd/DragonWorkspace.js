@@ -7,6 +7,7 @@ import ImageView from "./components/Image/ImageView";
 import ButtonView from "./components/Button/ButtonView";
 import BuilderSelector from "./hooks/BuilderSelector";
 import { HeaderView } from "./components/Header";
+import VideoView from "./components/Video/VideoView";
 
 const DragonWorkspace = props => {
     const view = {
@@ -15,7 +16,8 @@ const DragonWorkspace = props => {
         Text: TextView,
         Image: ImageView,
         Button: ButtonView,
-        Header: HeaderView
+        Header: HeaderView,
+        Video: VideoView
     }
 
     return <React.Fragment {...props}>

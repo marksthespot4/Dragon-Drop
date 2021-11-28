@@ -22,17 +22,21 @@ export function uploadUser(email, password, pagecount) {
         .then((res) => console.log(res.data));
 }
 
-export function updateUser(email, password, pagecount, id) {
+export function updateUser(email, password, pagecount, id, theme, autoSave) {
+    // console.log(theme);
     const updatedUser = {
         email: email.toLowerCase(),
         password: password,
         pagecount: pagecount,
+        theme: theme,
+        autoSave: theme,
     }
     axios
         .post("http://localhost:5000/routes/users/update/" + email, updatedUser)
         .then((res) => console.log(res.data));
 }
 
+<<<<<<< HEAD
 export function updateEmail(email, newEmail, password, pagecount) {
     const updatedUser = {
         email: newEmail.toLowerCase(),
@@ -41,10 +45,24 @@ export function updateEmail(email, newEmail, password, pagecount) {
     }
     axios
         .post("http://localhost:5000/routes/users/update/" + email, updatedUser)
+=======
+export function updateUserById(email, password, pagecount, id) {
+    const updatedUser = {
+        email: email.toLowerCase(),
+        password: password,
+        pagecount: pagecount
+    }
+    axios
+        .post("http://localhost:5000/routes/users/update/id/" + id, updatedUser)
+>>>>>>> 5dcf31b6f5fa11c7ec2e2256ac3e636faa95a794
         .then((res) => console.log(res.data));
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5dcf31b6f5fa11c7ec2e2256ac3e636faa95a794
 export function getUserID(id) {
         return axios.get("http://localhost:5000/routes/users/get/id/" + id)
             .then(res => res.data)

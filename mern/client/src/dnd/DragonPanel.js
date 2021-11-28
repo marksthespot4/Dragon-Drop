@@ -14,7 +14,8 @@ const DragonPanel = props => {
         Button: ButtonPanel,
         TextBox: TextPanel,
         Shape: ShapePanel,
-        Header: HeaderPanel
+        Header: HeaderPanel,
+        Video: VideoPanel
     };
     return <Panel
         view = {view}

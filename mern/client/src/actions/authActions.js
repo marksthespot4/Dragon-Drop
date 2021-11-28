@@ -22,8 +22,8 @@ export const registerUser = (userData, history) => dispatch => {
         .post("http://localhost:5000/routes/users/register", userData)
         .then(res =>
         {
-            console.log(userData.email);
-            console.log(userData.password);
+            // console.log(userData.email);
+            // console.log(userData.password);
             history.push("/");
 
         }) //redirect to create page after register
@@ -55,7 +55,7 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err =>
-            alert("Login Information Incorrect!")
+            alert("Password Incorrect!")
          /*dispatch({
              type: GET_ERRORS,
              payload: err.response.data
