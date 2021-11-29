@@ -22,16 +22,32 @@ export function uploadUser(email, password, pagecount) {
         .then((res) => console.log(res.data));
 }
 
-export function updateUser(email, password, pagecount, id) {
+export function updateUser(email, password, pagecount, id, theme, autoSave) {
+    // console.log(theme);
     const updatedUser = {
         email: email.toLowerCase(),
         password: password,
         pagecount: pagecount,
+        theme: theme,
+        autoSave: theme,
     }
     axios
         .post("http://localhost:5000/routes/users/update/" + email, updatedUser)
         .then((res) => console.log(res.data));
 }
+
+export function updateUserById(email, password, pagecount, id) {
+    const updatedUser = {
+        email: email.toLowerCase(),
+        password: password,
+        pagecount: pagecount
+    }
+    axios
+        .post("http://localhost:5000/routes/users/update/id/" + id, updatedUser)
+        .then((res) => console.log(res.data));
+}
+
+
 
 export function getUserID(id) {
         return axios.get("http://localhost:5000/routes/users/get/id/" + id)

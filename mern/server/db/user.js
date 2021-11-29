@@ -31,7 +31,20 @@ const userSchema = new Schema({
         type:Number,
         required: false
     },
-
+    googleId: {
+        type:String,
+        required: false
+    },
+    theme: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    autoSave: {
+        type: Boolean,
+        required: true,
+        default: true
+    }
 })
 
 // // Define schema methods

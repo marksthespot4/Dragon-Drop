@@ -76,7 +76,7 @@ const App = () => {
           <Create />
         </Route>
         <Route path="/test" component={MyBuilder}/>
-        <Route path="/user_page">
+        <Route path="/user_page/:id?">
           <UserPage email = {email}/>
           <Footer/>
         </Route>

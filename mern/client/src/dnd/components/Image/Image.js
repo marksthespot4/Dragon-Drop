@@ -7,10 +7,11 @@ const Image = React.forwardRef(({
     extLink,
     children,
     className,
+    style,
     ...props
 }, ref) => {
-    const classes = useStyle();
-    const classImage = clsx(classes.image);
+    const classes = useStyle(style);
+    const classImage = clsx(classes.image, classes.fill);
     const classAll = clsx(className, classes.ui)
     const update = () => (
         console.log(imageUrl)

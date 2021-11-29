@@ -24,16 +24,16 @@ const LayerChild = ({
         className,
     )
     return <DnDLayers
-        onDragOver = {drag.handleDragOver}
-        onDragEnter = {drag.handleDragEnter}
-        onDragLeave = {drag.handleDragLeave}
-        className = {classAll}
+        onDragOver={drag.handleDragOver}
+        onDragEnter={drag.handleDragEnter}
+        onDragLeave={drag.handleDragLeave}
+        className={classAll}
         {...rest}
     >
-        <Layer 
-            id = {id}
-            depth = {depth}
-            view = {view}
+        <Layer
+            id={id}
+            depth={depth}
+            view={view}
         />
     </DnDLayers>
 }
