@@ -74,7 +74,7 @@ const TopBar = (props) => {
     //     }
     // }, [json()]);  
 
-    const notify = () => { 
+    const notifySaved = () => { 
         toast.success('Project Saved');
       }
 
@@ -144,7 +144,7 @@ const TopBar = (props) => {
         <Button disabled = {!canRedo} onClick = {handleRedo}>
             Redo
         </Button>
-        <Button onClick={() => {handleSave(); notify()}}>
+        <Button onClick={() => {handleSave(); notifySaved()}}>
             Save
         </Button>
         {lastSave === null
