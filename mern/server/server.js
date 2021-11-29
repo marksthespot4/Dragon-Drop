@@ -1,3 +1,4 @@
+var proxy = require('html2canvas-proxy');
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -17,6 +18,8 @@ app.use(express.json({limit: '16mb'}));
 //https://stackoverflow.com/questions/52166434/how-to-get-mongoclient-object-from-mongoose
 //use dis to figure out how to get mongoclient (page) to our mongoose connection (user).
 
+
+
 /*
 Mark's comments
 
@@ -27,6 +30,7 @@ now uses passport.
 const dbo = require("./db/conn2");
 //const dbo = require("./db/conn");
 //const db = require("./db/keys").mongoURI;
+
 app.use(
     express.urlencoded ({
       limit: "10mb",
@@ -47,6 +51,7 @@ app.use(passport.initialize());
 app.use("/routes/users", users);
 app.use("/routes/pages", pageRoutes);
 app.use("/auth", google);
+app.use('/', proxy());
 
 const port = process.env.PORT || 5000;
 app.listen(port, ()=> {
