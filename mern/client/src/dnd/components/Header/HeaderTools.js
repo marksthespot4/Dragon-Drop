@@ -42,6 +42,27 @@ const HeaderTools = ({
         })
         const titleData = branch(title);
 
+        const buttonStyle ={
+            width: '75px',
+            height: '50px',
+            left: '90%',
+            top: '20%',
+        }
+        const buttonProps = {
+            text: 'Header Button!',
+            color: 'primary',
+            variant: 'outlined',
+            style: buttonStyle,
+        };
+        const button = item({
+            type: 'Button',
+            props: buttonProps
+        })
+        const buttonData = branch(button);
+        tools.triggerDragStart({
+            data: buttonData
+        });
+
 
         const headerStyle = {
             width: '100%',
@@ -58,7 +79,7 @@ const HeaderTools = ({
             type: 'Header',
             props: headerProps,
         })
-        const data = branch(header).with_child(titleData).with_child(imageData);
+        const data = branch(header).with_child(titleData).with_child(imageData).with_child(buttonData);
         console.log(data);
         tools.triggerDragStart({
             data: data
