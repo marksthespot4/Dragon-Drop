@@ -2,13 +2,15 @@ import Button from 'react-bootstrap/Button';
 import React, { Component } from 'react';
 import axios from "axios";
 import {getUser, updateUser} from "./user"
-import { useHistory } from 'react-router-dom';
+import badImage from "../imgs/invalid_psswd_reset.png"
 
 
 class ResetPassword extends Component{
+    
     constructor() {
         super();
         this.state = {
+            good: false,
             email: "",
             password: "",
             confirmPassword: "",
@@ -25,9 +27,10 @@ class ResetPassword extends Component{
             console.log(response);
             if(response.data.message === "valid-link") {
                 this.setState({email: response.data.username});
+                this.setState({good: true});
             }
             else {
-                this.props.history.push("invalid-resetpassword/");
+                //reroute to bad link
                 console.log("bad");
             }
         });
@@ -63,26 +66,59 @@ class ResetPassword extends Component{
     }
 
     render() {
-        return (
-            <div>
-                <h1>Reset your password</h1>
-                <p>Enter your new password</p>
-                <input
-                    id="userPassword"
-                    type="password"
-                    placeholder="new password">
-                </input>
-                <p>Confirm your new password</p>
-                <input
-                    id="confirmPassword"
-                    type="password"
-                    placeholder="confirm password">
-                </input>
-                <Button onClick={() => this.resetPassword()}>
-                    Reset Password
-                </Button>
-            </div>
-        );
+        const good = this.state.good;
+
+        if (good) {
+            return (
+                <div>
+                    <h1>Reset your password</h1>
+                    <p>Enter your new password</p>
+                    <input
+                        id="userPassword"
+                        type="password"
+                        placeholder="new password">
+                    </input>
+                    <p>Confirm your new password</p>
+                    <input
+                        id="confirmPassword"
+                        type="password"
+                        placeholder="confirm password">
+                    </input>
+                    <Button onClick={() => this.resetPassword()}>
+                        Reset Password
+                    </Button>
+                </div>
+            );        
+        }
+        else {
+            return (
+                <div>
+                    <h1>Uh Oh!</h1>
+                    <img src={badImage}/>
+                </div>
+            );
+        }
+
+        // return (
+        //     <div>
+        //         <h1>Reset your password</h1>
+        //         <p>Enter your new password</p>
+        //         <input
+        //             id="userPassword"
+        //             type="password"
+        //             placeholder="new password">
+        //         </input>
+        //         <p>Confirm your new password</p>
+        //         <input
+        //             id="confirmPassword"
+        //             type="password"
+        //             placeholder="confirm password">
+        //         </input>
+        //         <Button onClick={() => this.resetPassword()}>
+        //             Reset Password
+        //         </Button>
+        //     </div>
+        // );
     }
 }
 
