@@ -16,7 +16,8 @@ import RecordList from "./components/recordList";
 import UserPage from "./components/user_page";
 import Home from "./components/home";
 import Save from "./components/save";
-import View from "./components/view"
+// import View from "./components/view"
+import View from "./dnd/viewPage.js";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Settings from "./components/settings";
