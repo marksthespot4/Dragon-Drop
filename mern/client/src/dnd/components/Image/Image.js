@@ -29,7 +29,8 @@ const Image = React.forwardRef(({
         }
     }
     return <div className = {classAll}>
-            <img src={imageUrl} onClick={update} crossorigin="anonymous" onContextMenu={() => openTab()} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
+            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
+
             {children}
         </div>
 });

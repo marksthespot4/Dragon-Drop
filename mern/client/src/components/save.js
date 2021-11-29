@@ -28,7 +28,8 @@ export default (props) => {
     setSaveData(currTree);
     // takeScreenShot(ref.current);
     html2canvas(document.querySelector("#capture"), {
-      allowTaint: true, 
+      // proxy: 'server.js',
+      // allowTaint: true, 
       useCORS: true, 
       // foreignObjectRendering: true
     } ).then(canvas => {

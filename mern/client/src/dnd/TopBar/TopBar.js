@@ -42,18 +42,20 @@ const TopBar = (props) => {
         // }
       }, []);  
 
-      useEffect(() => {
-        const interval = setInterval(() => {
-            setCount(count + 1);
-            handleSave();
-            var currentTime = new Date();
-            var hour = ('0'+currentTime.getHours()).substr(-2);
-            var minute = ('0'+currentTime.getMinutes()).substr(-2);
-            var second = ('0'+currentTime.getSeconds()).substr(-2);
-            setLastSave(hour + ':' + minute + ':' + second)
-        }, 15000);
-        return () => {clearInterval(interval); setCount(0)}
-      }, [count]);
+
+    //Most recent attempt at autosave  
+    //   useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         setCount(count + 1);
+    //         handleSave();
+    //         var currentTime = new Date();
+    //         var hour = ('0'+currentTime.getHours()).substr(-2);
+    //         var minute = ('0'+currentTime.getMinutes()).substr(-2);
+    //         var second = ('0'+currentTime.getSeconds()).substr(-2);
+    //         setLastSave(hour + ':' + minute + ':' + second)
+    //     }, 15000);
+    //     return () => {clearInterval(interval); setCount(0)}
+    //   }, [count]);
 
     //save every time the tree size increases. 
     //Too many updates to the tree. Checking if the tree was increased in size is too much computation
