@@ -4,7 +4,7 @@ import useDragonStyler from "../../hooks/useDragonStyler";
 import {BackgroundPanel} from "../../panels/PalettePanel";
 import SizingPanel from "../../panels/SizingPanel";
 import PositionPanel from "../../panels/PositionPanel";
-import useStyle from "./style/FooterPanel";
+import useStyle from "./style/FooterTools";
 
 const FooterPanel = ({
     id,
