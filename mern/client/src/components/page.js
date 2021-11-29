@@ -29,7 +29,7 @@ export function updatePage(user, pagename, pub, pagedata, pagepreview, id) {
 
     axios
         .post("http://localhost:5000/routes/pages/update/" + id, updatedPage)
-        .then((res) => console.log(res.data));
+        // .then((res) => console.log(res.data));
 }
 
 export function getPage(id) {
