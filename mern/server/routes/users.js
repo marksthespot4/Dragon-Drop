@@ -41,7 +41,7 @@ router.get('/reset/', (req, res, next) => {
         } else {
             if(user.resetPasswordExpires > Date.now()) {
                 res.status(200).send({
-                    username: user.username,
+                    username: user.email,
                     message: 'valid-link',
                 });
             }
@@ -74,7 +74,7 @@ router.post("/forgotPassword", (req, res) =>
             // });
 
             user.resetPasswordToken = token;
-            user.resetPasswordExpires = Date.now() + 60000;
+            user.resetPasswordExpires = Date.now() + 600000;
             user.save()
                 .then(user => res.json(user))
                 .catch(err => console.log(err));

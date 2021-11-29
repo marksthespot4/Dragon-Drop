@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {getUser, updateUser} from "./user"
 import badImage from "../imgs/invalid_psswd_reset.png"
+const bcrypt = require("bcryptjs");
 
 
 class ResetPassword extends Component{
@@ -59,9 +60,24 @@ class ResetPassword extends Component{
             alert("Password must have at least one upper case and lower case character");
         }
         else {
-            getUser(this.state.email).then(data =>{
-                updateUser(data.email, this.state.password, data.pagecount, data._id);
-            });
+            bcrypt.genSalt(10, (err, salt) => {
+                bcrypt.hash(this.state.password, salt, (err, hash) => {
+                    if (err) throw err;
+                    // this.state.password = hash;
+                    getUser(this.state.email).then(data =>{
+                        // updateUser(data.email, this.state.password, data.pagecount, data._id);
+                        updateUser(data.email, hash, data.pagecount, data._id);
+
+                    });
+                    alert("Password has been updated!");
+                    this.setState({
+                        password: '',
+                        confirmPassword: ''
+                    });
+                
+                })
+            })
+
         }
     }
 
