@@ -30,30 +30,30 @@ const LayerDetail = ({
         className,
         classes.layer,
     )
-    return <div 
+    return <div
         {...rest}
-        onClick = {editor.handleSelect}
-        className = {classAll}
+        onClick={editor.handleSelect}
+        className={classAll}
     >
-        {depth > 0 && <span 
-            onClick = {editor.handleToggleFix}
+        {depth > 0 && <span
+            onClick={editor.handleToggleFix}
         >
-            {editor.meta.fixed 
-            ? <LockOutlinedIcon 
-                className = {classes.lockIcon} 
-            />
-            : <LockOpenOutlinedIcon
-                className = {classes.lockIcon} 
-            />}
+            {editor.meta.fixed
+                ? <LockOutlinedIcon
+                    className={classes.lockIcon}
+                />
+                : <LockOpenOutlinedIcon
+                    className={classes.lockIcon}
+                />}
         </span>}
-        <span className = {classes.type}>
+        <span className={classes.type}>
             - {collected.node.type}
         </span>
-        {depth > 0 && <span 
-            onClick = {editor.handleDelete}
+        {depth > 0 && <span
+            onClick={editor.handleDelete}
         >
-            <DeleteIcon 
-                className = {classes.deleteIcon}
+            <DeleteIcon
+                className={classes.deleteIcon}
             />
         </span>}
         {children}

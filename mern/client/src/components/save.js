@@ -19,27 +19,36 @@ export default (props) => {
   // console.log(props.match.params.id);
   const ref = createRef(null);
   const [width, setWidth] = useState(400);
-  const [image, takeScreenShot] = useScreenshot();
+  // const [image, takeScreenShot] = useScreenshot();
+  const [image, setImage] = useState(null);
   const [saveData, setSaveData] = useState(null);
 
   const getImage = (currTree) => {
+    // console.log(currTree);
     setSaveData(currTree);
-    takeScreenShot(ref.current);
-    notify();
+    // takeScreenShot(ref.current);
+    html2canvas(document.querySelector("#capture"), {
+      // proxy: 'server.js',
+      // allowTaint: true, 
+      useCORS: true, 
+      // foreignObjectRendering: true
+    } ).then(canvas => {
+      // document.body.appendChild(canvas)
+      // console.log(canvas.toDataURL('image/png'));
+      setImage(canvas.toDataURL('image/png'));
+    });
+    // notify();
   }
 
   useEffect(() => { 
     save();
   }, [image])
 
-  const notify = () => { 
-    toast.success('Project Saved');
-  }
+  // const notify = () => { 
+  //   toast.success('Project Saved');
+  // }
 
   const save = () => {
-    // html2canvas(document.querySelector("#capture")).then(canvas => {
-    //   document.body.appendChild(canvas)
-    // });
     if(saveData != null) {
       getPage(props.match.params.id).then(data => {
         updatePage(data.user, data.pagename, data.pub, saveData, image, data._id);
@@ -49,7 +58,7 @@ export default (props) => {
 
   return (
     <div>
-      <div align="right">
+      {/* <div align="right">
           <ToastContainer 
             position="top-center"
             autoClose={3000}
@@ -61,10 +70,10 @@ export default (props) => {
             draggable
             pauseOnHover
           />
-      </div>
+      </div> */}
       {/* <img width={width} src={image} alt={""} /> */}
       {/* <div>{image}</div> */}
-      <div
+      {/* <div
         ref={ref}
         style={{
           border: "1px solid #ccc",
@@ -72,11 +81,11 @@ export default (props) => {
           marginTop: "20px"
         }}
       >
-       <MyBuilder save={getImage} id={props.match.params.id}/>
-      </div>
-      {/* <div id="capture">
         <MyBuilder save={getImage} id={props.match.params.id}/>
       </div> */}
+      <div id="capture">
+        <MyBuilder save={getImage} id={props.match.params.id}/>
+      </div>
     </div>
   );
 };
