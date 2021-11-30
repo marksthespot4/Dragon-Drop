@@ -9,6 +9,7 @@ import SizingPanel from '../../panels/SizingPanel';
 import { useState } from 'react';
 import { useActions } from 'build-ui';
 import Button from 'react-bootstrap/Button';
+import TextStylePanel from '../../panels/TextStylePanel';
 
 const TextPanel = ({
     id,
@@ -60,6 +61,7 @@ const TextPanel = ({
         <FontPanel id = {id} />
         <SizingPanel id = {id} />
         <PositionPanel id = {id} />
+        <TextStylePanel id = {id} />
 
     </div> 
 }

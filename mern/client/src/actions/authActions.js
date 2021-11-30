@@ -1,6 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import { toast } from 'react-toastify';
 
 import {
     GET_ERRORS,
@@ -55,7 +56,7 @@ export const loginUser = userData => dispatch => {
             dispatch(setCurrentUser(decoded));
         })
         .catch(err =>
-            alert("Password Incorrect!")
+            toast.error("Login Information Incorrect!")
          /*dispatch({
              type: GET_ERRORS,
              payload: err.response.data

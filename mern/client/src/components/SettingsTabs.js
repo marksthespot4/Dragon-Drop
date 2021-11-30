@@ -4,8 +4,10 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { getUser, updateUser, updateEmail } from "./user";
+import { getUser, updateUser, updateUserById } from "./user";
 import { getPages, updatePage } from "./page"
+import { registerUser } from "../actions/authActions";
+import { ToastContainer, toast } from 'react-toastify';
 import Container from '@material-ui/core/Container';
 //import * as React from 'react';
 import PropTypes from 'prop-types';
@@ -91,6 +93,7 @@ class SettingsTabs extends Component {
         this.setState({
             newEmail: e.target.value,
         })
+    
     }
 
     handleConfirmEmailChange = (e) => {
@@ -117,6 +120,18 @@ class SettingsTabs extends Component {
         })
     }
 
+    handleKeyDownEmail = (e) => {
+        if (e.key == 'Enter') {
+            this.changeEmail();
+        }
+    }
+
+    handleKeyDownPassword = (e) => {
+        if (e.key == 'Enter') {
+            this.changePassword();
+        }
+    }
+
     changeActiveState = (e, newValue) => {
         console.log(newValue)
         if (this.state.activeItem !== newValue) {
@@ -128,10 +143,10 @@ class SettingsTabs extends Component {
     }
 
     changeEmail = () => {
+       // alert(this.state.userEmail)
         getUser(this.state.userEmail).then(data =>{
-            
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
@@ -143,29 +158,38 @@ class SettingsTabs extends Component {
                     var email = "" + this.state.newEmail;
                     var confirmEmail =  "" + this.state.confirmEmail;
                     if (email !== confirmEmail) { // Passwords don't match
-                        alert("Emails do not match!");
+                        toast.error("Emails do not match!")
                     }
                     else {
-
-                        updateEmail(this.state.userEmail, this.state.newEmail, this.state.password, data.pagecount);
-                        alert("Email has been updated!");
+                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        getPages().then(data=>{
+                            this.setState({
+                                pages: data || [],
+                            });
+                            for (var i = 0; i < this.state.pages.length; i++) {
+                                if (this.state.pages[i].user === this.state.userEmail) {
+                                    updatePage(this.state.newEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                                }
+                            }
+                        });
+                        toast.success('Email has been updated!');
                         this.setState({
                             currentPassword: '',
                             newEmail: '',
-                            confirmEmail: ''
+                            confirmEmail: '',
+                            userEmail: this.state.newEmail
                         });
+                        this.props.setEmail(this.state.newEmail);
                     }
                 }
                 else
                 {
-                    alert("Incorrect password");
+                    toast.error("Incorrect password")
                     this.setState({
                         currentPassword: ''
                     });
                 }
             });
-
-
     });
     }
 
@@ -173,7 +197,7 @@ class SettingsTabs extends Component {
         getUser(this.state.userEmail).then(data =>{
             
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
@@ -192,26 +216,26 @@ class SettingsTabs extends Component {
                     // console.log("pswd: "+password);
                     // console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
-                        alert("Passwords do not match");
+                        toast.error("Passwords do not match");
                     }
                     else if (password.length < 8) { // Password too short
-                        alert("Passwords must be at least 8 characters long")
+                        toast.error("Passwords must be at least 8 characters long")
                     }
                     else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
                             && !password.includes('$') && !password.includes('%') && !password.includes('^') 
                             && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                                alert("Password must include at least one special character");
+                                toast.error("Password must include at least one special character");
                     }
                     else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-                        alert("Password must have at least one upper case and lower case character");
+                        toast.error("Password must have at least one upper case and lower case character");
                     }
                     else {
                         bcrypt.genSalt(10, (err, salt) => {
                             bcrypt.hash(this.state.password, salt, (err, hash) => {
                                 if (err) throw err;
                                 this.state.password = hash;
-                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
-                                alert("Password has been updated!");
+                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                                toast.error("Password has been updated!");
                                 this.setState({
                                     currentPassword: '',
                                     password: '',
@@ -225,7 +249,7 @@ class SettingsTabs extends Component {
                 }
                 else
                 {
-                    alert("Incorrect password");
+                    toast.error("Incorrect password")
                     this.setState({
                         currentPassword: ''
                     });
@@ -254,6 +278,7 @@ class SettingsTabs extends Component {
   render() {
       return (
         <Container fit-content>
+            
             <h1  style={{ backgroundColor: '#ffffff'}}>
             <Box fit-content>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -273,6 +298,7 @@ class SettingsTabs extends Component {
                         value={this.state.currentPassword}
                         name="currentPassword"
                         onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                     />
                 <h6><br></br>New Email</h6>
@@ -281,6 +307,7 @@ class SettingsTabs extends Component {
                     value={this.state.newEmail}
                     name="newEmail"
                     onChange={this.handleNewEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                 />    
                 <h6><br></br>Confirm New Email</h6>
@@ -289,6 +316,7 @@ class SettingsTabs extends Component {
                     value={this.state.confirmEmail}
                     name="confirmEmail"
                     onChange={this.handleConfirmEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
                     // className="form-control"
                 />
                 <div align="left">
@@ -307,6 +335,7 @@ class SettingsTabs extends Component {
                         value={this.state.currentPassword}
                         name="currentPassword"
                         onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <h6>New Password</h6>
@@ -315,6 +344,7 @@ class SettingsTabs extends Component {
                         value={this.state.password}
                         name="password"
                         onChange={this.handlePasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <OverlayTrigger
@@ -337,6 +367,7 @@ class SettingsTabs extends Component {
                         value={this.state.confirmPassword}
                         name="confirmPassword"
                         onChange={this.handleConfirmPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                         // className="form-control"
                     />
                     <div align="left">
