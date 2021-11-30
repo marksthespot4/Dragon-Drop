@@ -111,7 +111,7 @@ class Home extends Component {
         }
     }
 
-    toggleShow() {
+    toggleShowL() {
         this.setState({ hidden: !this.state.hidden });
         // if(this.state.hidden) {
         //     icon = "bi bi-eye"
