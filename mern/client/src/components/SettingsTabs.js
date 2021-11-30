@@ -152,6 +152,11 @@ class SettingsTabs extends Component {
                 });
                 return;
             }
+            if(data.googleId != null)
+            {
+                alert("E-mail cannot be changed if you are signed in through Google.");
+                return;
+            }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
                 if (isMatch)
                 {
@@ -205,7 +210,7 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("Password not changed!");
+                alert("Password cannot be changed you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {

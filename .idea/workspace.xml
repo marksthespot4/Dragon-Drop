@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made the google login buton on the login screen.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="made password change impossible on gogggles">
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/Snapchat-511700995.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_5.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" afterDir="false" />
     </list>
@@ -43,9 +49,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1yrfQPsMF8AcvQsQaMQki7RNOHn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -95,14 +98,9 @@
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
       <workItem from="1637531380474" duration="3573000" />
-      <workItem from="1637859784969" duration="2551000" />
-    </task>
-    <task id="LOCAL-00012" summary="Make the edit button and create button redirect to new page.">
-      <created>1633896675418</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1633896675418</updated>
+      <workItem from="1637859784969" duration="4241000" />
+      <workItem from="1638160989819" duration="477000" />
+      <workItem from="1638288241935" duration="3714000" />
     </task>
     <task id="LOCAL-00013" summary="added dependency to page.js">
       <created>1633903873768</created>
@@ -440,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637861766937</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="made password change impossible on gogggles">
+      <created>1637862541478</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1637862541479</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +465,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed dashboard crashing" />
     <MESSAGE value="fixed merge error" />
     <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
     <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
@@ -485,6 +489,7 @@
     <MESSAGE value="added ancil" />
     <MESSAGE value="added lucy" />
     <MESSAGE value="Made the google login buton on the login screen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the google login buton on the login screen." />
+    <MESSAGE value="made password change impossible on gogggles" />
+    <option name="LAST_COMMIT_MESSAGE" value="made password change impossible on gogggles" />
   </component>
 </project>
