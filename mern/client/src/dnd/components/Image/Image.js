@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import useStyle from './style/Image'
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Image = React.forwardRef(({
     imageUrl, 
@@ -25,7 +26,7 @@ const Image = React.forwardRef(({
         }
         else
         {
-            alert("Please enter a valid http url.");
+            toast.error("Please enter a valid http url.");
         }
     }
     return <div className = {classAll}>

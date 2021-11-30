@@ -149,7 +149,7 @@ class UserPage extends Component {
             // console.log(this.state.currentUser);
             // console.log(data.pagecount);
             if(data.pagecount >= 5) {
-                alert("Cannot create new page: Reached maximum page count!");
+                toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {
@@ -169,7 +169,7 @@ class UserPage extends Component {
         getUser(this.state.currentUser).then(data =>{
             // console.log(data.pagecount);
             if(data.pagecount >= 5) {
-                alert("Cannot create new page: Reached maximum page count!");
+                toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {

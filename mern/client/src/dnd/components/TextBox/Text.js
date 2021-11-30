@@ -1,6 +1,7 @@
 import useStyle from './style/Text';
 import clsx from 'clsx';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Text = React.forwardRef(({
     children,
@@ -28,7 +29,7 @@ const Text = React.forwardRef(({
         }
         else
         {
-            alert("Please enter a valid http url.");
+            toast.error("Please enter a valid http url.");
         }
     }
     return <div

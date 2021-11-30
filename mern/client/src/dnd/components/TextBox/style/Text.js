@@ -8,6 +8,8 @@ export const textStyles = ({
         fontFamily: props.fontFamily,
         fontSize: props.fontSize,
         fontWeight: props.fontWeight,
+        fontStyle: props.fontStyle,
+        textDecorationLine: props.textDecorationLine,
         textAlign: props.textAlign,
         margin: props.margin || 0,
         padding: props.padding || 0,
