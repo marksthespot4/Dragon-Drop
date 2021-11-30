@@ -10,14 +10,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import {connect} from "react-redux";
 import { withRouter } from "react-router-dom";
-
+import Modal from 'react-bootstrap/Modal';
+import CloseButton from 'react-bootstrap/CloseButton'
+import Switch from "react-switch";
 
 import Button from 'react-bootstrap/Button';
+// import setAuthToken from "../utils/setAuthToken";
+import {setCurrentUser} from "../actions/authActions";
+import store from "../store"
 
 // This will require to npm install axios
-import axios from 'axios';
+// import axios from 'axios';
 import SwitchButton from "./switch_button";
-import { getUser, updateUser } from "./user";
+import { getUser, updateUser, getUserID } from "./user";
 import PropTypes from "prop-types";
 
 
@@ -40,7 +45,8 @@ const Page = (props) => (
             : 
             <a href={"/view-page/" + props.page._id}>
                 <img src={props.page.pagepreview} className="yellowOutline float-start" />
-            </a>             }
+            </a>
+            }
             {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg" >Create a New Project</NavLink> */}
 
             {props.access ?
@@ -85,19 +91,43 @@ class UserPage extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
-        this.state = { pages: [], currentUser: email, searchUser: email, pagecount: 0};
+        this.state = { 
+            pages: [], 
+            currentUser: email, 
+            searchUser: email, 
+            pagecount: 0,
+            modalShow: false,
+            checked: false
+        };
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
         this.renamePage = this.renamePage.bind(this);
         this.duplicatePage = this.duplicatePage.bind(this);
         this.exportPage = this.exportPage.bind(this);
+        this.changePrivacy = this.changePrivacy.bind(this)
     }
 
 
     componentDidMount() {
+        if (this.props.match.params.id != null)
+        {
+            //it means the google login passed this.
+            //check if the user exists in database by ID.
+            //then if it does, update our Redux store
+            //and set the local email in storage as the gmail.
+            //also, set our currentUser and searchUser as gmail.
+            //set our jwtToken
+            getUserID(this.props.match.params.id).then(data => {
+                //console.log(data);
+                localStorage.setItem('localEmail', data.email);
+                store.dispatch(setCurrentUser(data));
+            });
+            this.props.history.push("/user_page");
+        }
         if (this.props.auth.isAuthenticated)
         {
             console.log("USER IS AUTHENTICATED ON USER PAGE");
+
         }
         else
         {
@@ -114,31 +144,36 @@ class UserPage extends Component {
     }
 
 
-    createNewPage() {
+    createNewPage(name, publicToggle) {
         getUser(this.state.currentUser).then(data =>{
-            console.log(this.state.currentUser);
-            console.log(data.pagecount);
+            // console.log(this.state.currentUser);
+            // console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {
-                updateUser(data.email, data.password, data.pagecount + 1, data._id);
-                uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                updateUser(data.email, data.password, data.pagecount + 1, data._id, data.theme, data.autoSave);
+                // uploadPage(this.state.currentUser, "New Page", null, true, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                // var pub = false;
+                // if(publicToggle === "on") {
+                //     pub = true;
+                // }
+                uploadPage(this.state.currentUser, name, null, this.state.checked, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
     }
 
     duplicatePage(pagename, pagedata, pub, pagepreview) {
-        console.log(pagename, pagedata, pub, pagepreview);
+        // console.log(pagename, pagedata, pub, pagepreview);
         getUser(this.state.currentUser).then(data =>{
-            console.log(data.pagecount);
+            // console.log(data.pagecount);
             if(data.pagecount >= 5) {
                 toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {
-                updateUser(data.email, data.password, data.pagecount + 1, data._id);
+                updateUser(data.email, data.password, data.pagecount + 1, data._id, data.theme, data.autoSave);
                 uploadPage(this.state.currentUser, pagename, pagedata, pub, pagepreview);
                 getPages().then(data=>{
                     this.setState({
@@ -151,19 +186,19 @@ class UserPage extends Component {
     }
 
     renamePage(id) {
-
         if(this.state.currentUser === this.state.searchUser) {
-            console.log(id);
+            // console.log(id);
             getPage(id).then(data=>{
                 var newName = prompt("New Name:");
                 updatePage(data.user, newName, data.pub, data.pagedata, data.pagepreview, id);
             });
         }
     }
+
     exportPage(id) {
         getPage(id).then(data => {
             var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data.pagedata));
-            console.log(dataStr);
+            // console.log(dataStr);
             var downloadAnchorNode = document.createElement('a');
             downloadAnchorNode.setAttribute("href",     dataStr);
             downloadAnchorNode.setAttribute("download", data.pagename + ".json");
@@ -173,12 +208,13 @@ class UserPage extends Component {
         })
 
     }
+
     deleteMyPage(id) {
-        console.log(this.state.currentUser);
-        console.log(this.state.searchUser);
+        // console.log(this.state.currentUser);
+        // console.log(this.state.searchUser);
         if(this.state.currentUser === this.state.searchUser) {
             getUser(this.state.currentUser).then(data =>{
-                updateUser(data.email, data.password, data.pagecount - 1, data._id);
+                updateUser(data.email, data.password, data.pagecount - 1, data._id, data.theme, data.autoSave);
             });        
             deletePage(id);
             this.setState({ pages: this.state.pages.filter((el) => el._id !== id),
@@ -256,9 +292,24 @@ class UserPage extends Component {
     }
 
     backToAccount() {
-        console.log(this.state.currentUser);
+        // console.log(this.state.currentUser);
         this.setState({searchUser: this.state.currentUser});
+        document.getElementById("userQuery").value = "";
     }
+
+    modalOpen = () => {
+        this.setState({ modalShow: true });
+    }
+
+    modalClose = () => {
+        this.setState({ modalShow: false });
+    }
+
+    changePrivacy() {
+        this.setState((state) => {
+          return {checked: !state.checked}
+        });
+      }
 
     render() {
         return (
@@ -284,7 +335,131 @@ class UserPage extends Component {
                 <div style={{margin: 20}}>
 
                     {/* <NavLink to="/create-page" className="btn btn-outline-primary btn-lg">Create a New Project</NavLink> */}
-                    <div className="btn btn-lg" onClick={() => this.createNewPage()}>Create Project</div>
+                    {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>Create Project</div> */}
+                    <div className="btn btn-lg" onClick={() => this.modalOpen()}>Create Project</div>
+
+                    <Modal 
+                        handleClose={e => this.modalClose(e)} 
+                        aria-labelledby="contained-modal-title-vcenter" 
+                        centered
+                        show={this.state.modalShow}
+                        onEscapeKeyDown={e => this.modalClose(e)}
+                        scrollable="true"
+                        // size="lg"
+                    >
+                        <Modal.Header>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                                New Project
+                            </Modal.Title>
+                            <CloseButton onClick={e => this.modalClose(e)}></CloseButton>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <h6>
+                                Project Name
+                                <input
+                                    id="projectName"
+                                    type="text"
+                                    // value={this.state.email}
+                                    name="pagename"
+                                    // onChange={this.handleEmailChange}
+                                    // className="form-control"
+                                />
+                            </h6>
+                            <h6>
+                                Would you like the project to be public?<br/>
+                                <Switch
+                                    // id="publicToggle"
+                                    onChange={this.changePrivacy} 
+                                    checked={this.state.checked}
+                                    // offColor="#ffc220"
+                                    onColor="#0071ce"
+                                    checkedIcon={
+                                        <div className="toggleS">
+                                        <i class="bi bi-unlock-fill"></i>
+                                        </div>
+                                    }
+                                    uncheckedIcon={
+                                        <div className="toggleM">
+                                        <i class="bi bi-lock-fill"></i>
+                                        </div>
+                                    }
+                                />
+                            </h6>
+                            <h6>
+                                Templates
+                            </h6>
+                            <h7>
+{/* 
+                            <input type="radio" value="Male" name="gender" /> Male
+                            <input type="radio" value="Female" name="gender" /> Female
+                            <input type="radio" value="Other" name="gender" /> Other */}
+                                <label>
+                                    <input type="radio" value="blank" name="template"/> 
+                                    blank<br/>
+                                    <img 
+                                        height="350px" 
+                                        style={{ border: "3px solid #555" }}
+                                        src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                    >
+                                    </img>
+                                    </label>
+                                    <br/>
+                                <label>
+                                    <input type="radio" value="Resume" name="template"/>
+                                    resume<br/>
+                                    <img 
+                                        height="350px" 
+                                        style={{ border: "3px solid #555" }}
+                                        src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
+                                    >
+                                    </img>
+                                </label>
+                                <br/>
+                                <label>
+                                    <input type="radio" value="artPortfolio" name="template"/>
+                                    art portfolio<br/>
+                                    <img
+                                        height="350px" 
+                                        style={{ border: "3px solid #555" }}
+                                        src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                    >
+                                    </img>
+                                </label>
+                            </h7>
+                            {/* <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
+                                <ToggleButton id="tbg-radio-1" value={1}>
+                                    <img 
+                                    height="350px" 
+                                    style={{ border: "5px solid #555" }}
+                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                    >
+                                    </img>                                
+                                </ToggleButton>
+                                <br/>
+                                <ToggleButton id="tbg-radio-2" value={2}>
+                                    <img 
+                                    height="350px" 
+                                    style={{ border: "5px solid #555" }}
+                                    src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
+                                    >
+                                    </img>                                
+                                </ToggleButton>
+                                <ToggleButton id="tbg-radio-3" value={3}>
+                                    <img 
+                                    height="350px" 
+                                    style={{ border: "5px solid #555" }}
+                                    src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                    >
+                                    </img>
+                                </ToggleButton>
+                            </ToggleButtonGroup> */}
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => this.createNewPage(document.getElementById("projectName").value)}>
+                                    Create
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                     
                     {/* <div className="btn btn-lg" onClick={() => this.createNewPage()}>
                         Test

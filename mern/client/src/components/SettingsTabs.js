@@ -203,13 +203,18 @@ class SettingsTabs extends Component {
                 });
                 return;
             }
+            if(data.googleId != null)
+            {
+                alert("Password not changed!");
+                return;
+            }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
                 if (isMatch)
                 {
                     var password = "" + this.state.password;
                     var confirmPassword =  "" + this.state.confirmPassword;
-                    console.log("pswd: "+password);
-                    console.log("cnfpswd: "+confirmPassword);
+                    // console.log("pswd: "+password);
+                    // console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
                         toast.error("Passwords do not match");
                     }

@@ -12,15 +12,15 @@ const LayerDraggable = ({
     })
     const classes = useStyle();
     return <DnDLayers
-        onDragStart = {layers.handleDragStart}
-        onDragEnd = {layers.handleDragEnd}
-        className = {classes.draggable}
-        draggable = {true}
+        onDragStart={layers.handleDragStart}
+        onDragEnd={layers.handleDragEnd}
+        className={classes.draggable}
+        draggable={true}
     >
-        <LayerDetail 
-            id = {id} 
-            depth = {depth}
-            draggable = {true}
+        <LayerDetail
+            id={id}
+            depth={depth}
+            draggable={true}
         />
     </DnDLayers>
 }

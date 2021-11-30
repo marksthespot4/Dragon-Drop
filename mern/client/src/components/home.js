@@ -11,7 +11,8 @@ import logo from '../imgs/dragonNoText.png';
 import Modal from 'react-bootstrap/Modal';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import CloseButton from 'react-bootstrap/CloseButton'
+import CloseButton from 'react-bootstrap/CloseButton';
+import googleButton from "../imgs/login.png";
 import { getUser, uploadUser } from "./user";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -20,7 +21,7 @@ import { registerUser } from "../actions/authActions";
 import { loginUser} from "../actions/authActions";
 import { ToastContainer, toast } from 'react-toastify';
 
-import classnames from "classnames";
+// import classnames from "classnames";
 
 /* Mark's COMMENTS
 So HOME has now been modified to use redux store. This is shown at the bottom, where
@@ -46,13 +47,18 @@ class Home extends Component {
             email: "",
             password: "",
             confirmPassword: "",
-            hidden: true,
+            hiddenL: true,
+            hiddenS: true,
+            hiddenSc: true,
             errors: {}
         };
 
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
-        this.toggleShow = this.toggleShow.bind(this);
+        this.toggleShowL = this.toggleShowL.bind(this);
+        this.toggleShowS1 = this.toggleShowS1.bind(this);
+        this.toggleShowS2 = this.toggleShowS2.bind(this);
+
         //this.handleConfirmPasswordChange = this.handleConfirmPasswordChange(this);
     }
 
@@ -114,6 +120,14 @@ class Home extends Component {
         // }
     }
 
+    toggleShowS1() {
+        this.setState({ hiddenS: !this.state.hiddenS });
+    }
+
+    toggleShowS2() {
+        this.setState({ hiddenSc: !this.state.hiddenSc });
+    }
+
     modalOpen = (active) => {
         this.setState({ show: true, activeModal: active });
     }
@@ -125,7 +139,8 @@ class Home extends Component {
             confirmPassword: "",
             show: false,
             activeModal: "",
-            hidden: true,
+            hiddenL: true,
+            hiddenS: true
         });
     }
 
@@ -136,8 +151,8 @@ class Home extends Component {
     modalSignup = () => {
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
-        console.log("pswd: "+password);
-        console.log("cnfpswd: "+confirmPassword);
+        // console.log("pswd: "+password);
+        // console.log("cnfpswd: "+confirmPassword);
         if (password !== confirmPassword) { // Passwords don't match
             toast.error("Passwords do not match");
         }
@@ -153,7 +168,7 @@ class Home extends Component {
             toast.error("Password must have at least one upper case and lower case character");
         }
         else {
-            console.log(this.state.email);
+            // console.log(this.state.email);
             this.props.setEmail(this.state.email);
             //uploadUser(this.state.email, this.state.password, 0);
             const newUser = {
@@ -221,10 +236,11 @@ class Home extends Component {
     }
 
     login(props) {
-        console.log(this.state.email);
+        // console.log(this.state.email);
         this.props.setEmail(this.state.email);
         props.history.push("/user_page");
     }
+
 
     render() {
         return (
@@ -236,6 +252,7 @@ class Home extends Component {
                     <Button onClick={() => this.modalOpen("signup")}>
                         Sign Up
                     </Button>
+
                 </div>
                 
                 <div class="homepage" align="center">
@@ -269,17 +286,20 @@ class Home extends Component {
                         />
 
                         <h6>
-                            <br></br>Password&nbsp;
-                             <i class={ this.state.hidden ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShow}></i>
+                            <br/>Password&nbsp;
+                             <i class={ this.state.hiddenL ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowL}></i>
                         </h6>
                         <input
-                            type={this.state.hidden ? "password" : "text"}
+                            type={this.state.hiddenL ? "password" : "text"}
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
                             onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
+                        <a href={"forgot-password"}>
+                            forgot password?
+                        </a> 
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
                         
@@ -291,6 +311,9 @@ class Home extends Component {
                         <Button onClick={() => this.modalLogin()}>
                                 Log In
                         </Button>
+                        <a href="http://localhost:5000/auth/google">
+                            <img className="googleLogin" src={googleButton}/>
+                        </a>
                     </Modal.Footer>
                 </Modal>
 
@@ -328,32 +351,37 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownSignUp}
                         />
 
-                        <h6><br></br>Password&nbsp;
+                        <h6><br/>Password&nbsp;
                         <OverlayTrigger
-                            placement="right"
+                            placement="auto"
                             overlay={
-                                <Tooltip >
-                                    <b>Requires at least one:</b><br></br>
-                                    Uppercase and lowercase <br></br>
-                                    Number<br></br>
-                                    Special character (!, @, etc.)<br></br>
+                                <Tooltip>
+                                    <b>Requires at least one:</b><br/>
+                                    Uppercase and lowercase <br/>
+                                    Number<br/>
+                                    Special character (!, @, etc.)<br/>
                                     <b>Must be at least 8 characters</b>
                                 </Tooltip>
                             }
+                            trigger="click"
+                            // style={{"z-index": "-1", position: "relative"}}
                         >
                             <i class="bi bi-info-circle"></i>
-                        </OverlayTrigger>
+                        </OverlayTrigger>&nbsp;
+                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
                         </h6>
                         <input
-                            type="password"
+                            type={this.state.hiddenS ? "password" : "text"}
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
                             onKeyDown={this.handleKeyDownSignUp}
                         />
-                        <h6><br></br>Confirm Password</h6>
+                        <h6><br/>Confirm Password&nbsp;
+                        <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
+                        </h6>
                         <input
-                            type="password"
+                            type={this.state.hiddenSc ? "password" : "text"}
                             value={this.state.confirmPassword}
                             name="confirmPassword"
                             onChange={this.handleConfirmPasswordChange}

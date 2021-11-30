@@ -43,56 +43,7 @@ const ButtonPanel = ({
             className = {classes.input}
         />
         </div>
-
-        <div className = {classes.field}>
-        <label
-            htmlFor = 'color'
-            className = {classes.label}
-        >
-            Type
-        </label>
-        <Select
-            variant = 'outlined'
-            native = {true} 
-            value = {editor.props.color}
-            id = 'color'
-            name = 'color' 
-            onChange = {editor.handleUpdate}
-            className = {classes.input}
-        >
-            <option value = 'primary'>
-                Primary
-            </option>
-            <option value = 'secondary'>
-                Secondary
-            </option>
-        </Select>
-        </div>
-
-        <div className = {classes.field}>
-        <label 
-            htmlFor = 'variant'
-            className = {classes.label}
-        >
-            Fill
-        </label>
-        <Select 
-            variant = 'outlined'
-            native = {true}
-            value = {editor.props.variant} 
-            name = 'variant'
-            onChange = {editor.handleUpdate}
-            className = {classes.input}
-        >
-            <option value = 'contained'>
-                Contained
-            </option>
-            <option value = 'outlined'>
-                Outlined
-            </option>
-        </Select>
-        </div>
-
+        
         <div className = {classes.field}>
         <label 
             htmlFor = 'has_link'

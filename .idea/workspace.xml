@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="added routes to update by id, and an axios call in user.js for it." />
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made the google login buton on the login screen.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +18,8 @@
       <list>
         <option value="Sass File" />
         <option value="SCSS File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -91,55 +94,8 @@
       <workItem from="1635966369728" duration="14980000" />
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
-    </task>
-    <task id="LOCAL-00005" summary="Edited UI and made easier to read">
-      <created>1633442518297</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1633442518297</updated>
-    </task>
-    <task id="LOCAL-00006" summary="messed with icons">
-      <created>1633568257815</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1633568257815</updated>
-    </task>
-    <task id="LOCAL-00007" summary="integrated with sarah branch">
-      <created>1633571188862</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1633571188862</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added a dropdown menu to each project.&#10;installed popper.">
-      <created>1633640866395</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1633640866395</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added a GEAR dropdown menu">
-      <created>1633646281804</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1633646281804</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Redid formatting on the project previews">
-      <created>1633889367983</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1633889367983</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added delete functionality for the dropdown.">
-      <created>1633895886198</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1633895886198</updated>
+      <workItem from="1637531380474" duration="3573000" />
+      <workItem from="1637859784969" duration="2551000" />
     </task>
     <task id="LOCAL-00012" summary="Make the edit button and create button redirect to new page.">
       <created>1633896675418</created>
@@ -435,7 +391,56 @@
       <option name="project" value="LOCAL" />
       <updated>1636926860429</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="changed password info incorrect popup">
+      <created>1636933725746</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1636933725746</updated>
+    </task>
+    <task id="LOCAL-00055" summary="general google stuff, attempted to make it not crash.">
+      <created>1636937519255</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1636937519255</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Google actually works now lets go.">
+      <created>1637532592909</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1637532592910</updated>
+    </task>
+    <task id="LOCAL-00057" summary="added ancil">
+      <created>1637533474377</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1637533474377</updated>
+    </task>
+    <task id="LOCAL-00058" summary="added ancil">
+      <created>1637533480824</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1637533480824</updated>
+    </task>
+    <task id="LOCAL-00059" summary="added lucy">
+      <created>1637859810067</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1637859810068</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Made the google login buton on the login screen.">
+      <created>1637861766937</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1637861766937</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,12 +460,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="installations" />
-    <MESSAGE value="basic backend with user schema prototype" />
-    <MESSAGE value="added some files for redux" />
-    <MESSAGE value="added redux to front end connections and some console prints for debugging." />
-    <MESSAGE value="Stopping point, where the home page works, but logging in and registering have issues." />
-    <MESSAGE value="fixed the CORS issue lol" />
     <MESSAGE value="fixed dashboard crashing" />
     <MESSAGE value="fixed merge error" />
     <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
@@ -480,6 +479,12 @@
     <MESSAGE value="changes to faq / creator" />
     <MESSAGE value="updated our SEO / html title thing / icon" />
     <MESSAGE value="added routes to update by id, and an axios call in user.js for it." />
-    <option name="LAST_COMMIT_MESSAGE" value="added routes to update by id, and an axios call in user.js for it." />
+    <MESSAGE value="changed password info incorrect popup" />
+    <MESSAGE value="general google stuff, attempted to make it not crash." />
+    <MESSAGE value="Google actually works now lets go." />
+    <MESSAGE value="added ancil" />
+    <MESSAGE value="added lucy" />
+    <MESSAGE value="Made the google login buton on the login screen." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the google login buton on the login screen." />
   </component>
 </project>

@@ -21,6 +21,29 @@ const userSchema = new Schema({
         type: Number,
         required: true,
         default: 0
+    },
+    resetPasswordToken: {
+        type: String,
+        required: false,
+        default: ""
+    },
+    resetPasswordExpires: {
+        type:Number,
+        required: false
+    },
+    googleId: {
+        type:String,
+        required: false
+    },
+    theme: {
+        type: Boolean,
+        required: true,
+        default: true
+    },
+    autoSave: {
+        type: Boolean,
+        required: true,
+        default: true
     }
 })
 

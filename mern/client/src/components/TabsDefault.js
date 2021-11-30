@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
 "mdbreact";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { getUser, updateUser } from "./user";
 import { getPages, updatePage } from "./page"
-import { FormControlLabel } from '@mui/material';
+// import { FormControlLabel } from '@mui/material';
 
 class TabsDefault extends Component {
 
@@ -90,7 +90,7 @@ class TabsDefault extends Component {
                     alert("Password must have at least one upper case and lower case character");
                 }
                 else {
-                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                    updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
                     alert("Password has been updated!");
                 }
             }

@@ -23,39 +23,39 @@ const LayerDroppable = ({
         setExpanded(expanded => !expanded);
     }
     const classes = useStyle({
-        border: layers.hover === layers.hover_inside, 
+        border: layers.hover === layers.hover_inside,
         expanded: expanded
     });
     return <DnDLayers
-        onDragStart = {layers.handleDragStart}
-        onDragEnd = {layers.handleDragEnd}
-        onDragEnter = {layers.handleDragEnter}
-        onDragLeave = {layers.handleDragLeave}
-        onDragOver = {handleDragOver}
-        onDrop = {handleDrop}
-        className = {classes.droppable}
+        onDragStart={layers.handleDragStart}
+        onDragEnd={layers.handleDragEnd}
+        onDragEnter={layers.handleDragEnter}
+        onDragLeave={layers.handleDragLeave}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        className={classes.droppable}
     >
         <LayerDetail
-            depth = {depth}
-            draggable = {depth > 0}
-            id = {id} 
+            depth={depth}
+            draggable={depth > 0}
+            id={id}
         >
-            <span onClick = {handleToggleExpand}> {expanded 
-            ? <ArrowDropUp className = {classes.dropdownIcon} /> 
-            : <ArrowDropDown className = {classes.dropdownIcon} />
+            <span onClick={handleToggleExpand}> {expanded
+                ? <ArrowDropUp className={classes.dropdownIcon} />
+                : <ArrowDropDown className={classes.dropdownIcon} />
             } </span>
         </LayerDetail>
         {layers.node.childIds.map((childId, index) => {
-            const {handleChildYDrop} = layers; 
+            const { handleChildYDrop } = layers;
             const handleChildDrop = event => (
                 handleChildYDrop(event, index)
             );
             return <LayerChild
-                key = {childId}
-                id = {childId}
-                depth = {depth + 1}
-                onDrop = {handleChildDrop}
-                className = {classes.child}
+                key={childId}
+                id={childId}
+                depth={depth + 1}
+                onDrop={handleChildDrop}
+                className={classes.child}
             />
         })}
     </DnDLayers>

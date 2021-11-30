@@ -24,7 +24,9 @@ import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
+import ForgotPassword from "./components/forgot_password.js";
 import Faq from "./components/faq";
+import ResetPassword from "./components/resetPassword.js";
 
 /* Mark's comments
   This part up here will check our localStorage token
@@ -79,12 +81,13 @@ const App = () => {
         </Route>
         <Route path="/edit/:id" component={Edit} />
         <Route path="/create-page/:id" component={Save} />
+        <Route path="/reset/:token" component={ResetPassword} />
         <Route path="/view-page/:id" component={View} />
         <Route path="/create">
           <Create />
         </Route>
         <Route path="/test" component={MyBuilder}/>
-        <Route path="/user_page">
+        <Route path="/user_page/:id?">
           <UserPage email = {email}/>
           <Footer/>
         </Route>
@@ -100,6 +103,10 @@ const App = () => {
           <Settings email={email} setEmail={setEmail}/>
           <Footer/>
         </Route>
+        <Route path="/forgot-password">
+          <ForgotPassword/>
+          <Footer/>
+        </Route>        
         <Switch>
           <PrivateRoute exact path="/dashboard" component={Dashboard} footer={Footer}/>
           {/* <PrivateRoute exact path="/dashboard">

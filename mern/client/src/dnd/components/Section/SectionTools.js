@@ -1,5 +1,5 @@
-import {branch, DnDBuilder, item, useTools} from 'build-ui'
-import {Button} from "@material-ui/core";
+import { branch, DnDBuilder, item, useTools } from 'build-ui'
+import { Button } from "@material-ui/core";
 
 const SectionTools = ({
     className,
@@ -25,9 +25,9 @@ const SectionTools = ({
         });
     }
     return <DnDBuilder
-        onDragStart = {handleDragTool}
-        onDragEnd = {tools.handleDragEnd}
-        draggable = {true}
+        onDragStart={handleDragTool}
+        onDragEnd={tools.handleDragEnd}
+        draggable={true}
         {...rest}
     >
         <Button>Section</Button>
