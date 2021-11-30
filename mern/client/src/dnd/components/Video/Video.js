@@ -13,9 +13,7 @@ const Video = React.forwardRef(({
     const classes = useStyle(style);
     const classVideo = clsx(classes.video, classes.fill);
     const classAll = clsx(className, classes.ui)
-    const update = () => (
-        console.log(videoUrl)
-    )
+
     const openTab = () =>
     {
         var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(extLink);
@@ -35,7 +33,6 @@ const Video = React.forwardRef(({
     }
     return <div className = {classAll}>
             <iframe height="100%" width="100%" src={videoUrl.replace("watch?v=", "embed/")}> </iframe>
-            <button onClick={update} />
             {children}
         </div>
 });
