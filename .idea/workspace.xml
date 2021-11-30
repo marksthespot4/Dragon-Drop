@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="made password change impossible on gogggles">
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/Snapchat-511700995.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mern/client/src/imgs/slide_5.jpg" afterDir="false" />
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="made password and email not possible on google accs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/CSS/creators.css" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/CSS/creators.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/creator_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/creator_page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,14 +95,7 @@
       <workItem from="1637531380474" duration="3573000" />
       <workItem from="1637859784969" duration="4241000" />
       <workItem from="1638160989819" duration="477000" />
-      <workItem from="1638288241935" duration="3714000" />
-    </task>
-    <task id="LOCAL-00013" summary="added dependency to page.js">
-      <created>1633903873768</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1633903873768</updated>
+      <workItem from="1638288241935" duration="4865000" />
     </task>
     <task id="LOCAL-00014" summary="fixed dependency">
       <created>1633903893500</created>
@@ -445,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637862541479</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="made password and email not possible on google accs">
+      <created>1638312778149</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1638312778151</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +460,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed merge error" />
     <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
     <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
     <MESSAGE value="made all the functionality work with my calls." />
@@ -490,6 +484,7 @@
     <MESSAGE value="added lucy" />
     <MESSAGE value="Made the google login buton on the login screen." />
     <MESSAGE value="made password change impossible on gogggles" />
-    <option name="LAST_COMMIT_MESSAGE" value="made password change impossible on gogggles" />
+    <MESSAGE value="made password and email not possible on google accs" />
+    <option name="LAST_COMMIT_MESSAGE" value="made password and email not possible on google accs" />
   </component>
 </project>
