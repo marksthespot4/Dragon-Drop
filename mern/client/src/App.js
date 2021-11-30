@@ -7,7 +7,7 @@ import setAuthToken from "./utils/setAuthToken";
 import {setCurrentUser, logoutUser} from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-
+import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
 import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
@@ -71,6 +71,17 @@ const App = () => {
   document.body.style = 'background: wheat;';
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
       <Provider store={store}>
       <Header email={email}/>
       {/* <Navbar /> */}
@@ -99,7 +110,7 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/settings">
-          <Settings email={email}/>
+          <Settings email={email} setEmail={setEmail}/>
           <Footer/>
         </Route>
         <Route path="/forgot-password">

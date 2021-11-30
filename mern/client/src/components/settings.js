@@ -22,7 +22,7 @@ class Settings extends Component {
   render() {
     return (      
       <div className="Settings">
-        <SettingsTabs email={this.props.email}/>
+        <SettingsTabs email={this.props.email} setEmail={this.props.setEmail}/>
       </div>
     );  
  }
