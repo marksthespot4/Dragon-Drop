@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const User = require('../db/user')
 const passport = require("passport")
+const jwt = require("jsonwebtoken");
+const keys = require("../db/keys");
 
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'],}))
 router.get(
@@ -11,7 +13,11 @@ router.get(
         session: false
     }),
     function(req, res) {
-        var user = req.user;
+        const user = req.user;
+        const payload = {
+            id:user.id,
+            email: user.email
+        };
         res.redirect("http://localhost:3000/user_page/" + user._id);
     }
 )

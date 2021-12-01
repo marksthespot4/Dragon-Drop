@@ -84,7 +84,7 @@ router.route("/all").get(function(req,res) {
         .find({})
         .toArray(function (err, result) {
             if (err) throw err;
-            console.log(result);
+            //console.log(result);
             res.json(result);
         });
 });
