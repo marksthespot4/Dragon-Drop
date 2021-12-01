@@ -55,7 +55,7 @@ class Header extends Component {
                             <img className="logo" src={logo} className="img-fluid" style={{width: 50, margin: 2}}/>
                         </NavLink>
 
-                        <Navbar.Toggle onClick={() => this.onClick()}/>
+                        <Navbar.Toggle/>
                         {!this.props.auth.isAuthenticated
                         ?
                         <></>

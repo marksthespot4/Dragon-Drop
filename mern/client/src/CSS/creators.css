@@ -11,6 +11,15 @@
     max-height: 65%;
 }
 
+.slideShow {
+    max-width: 60%;
+    max-height: 60%;
+    border: thin black solid;
+}
+.slideShowBar {
+    padding: 2rem;
+    color: black;
+}
 .card {
     align-content:center;
     align-items: center;

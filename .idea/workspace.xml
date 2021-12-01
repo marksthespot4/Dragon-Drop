@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made the google login buton on the login screen.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Added this stupid carousel thing to the creator page.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/SettingsTabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/google.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +52,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1yrfQPsMF8AcvQsQaMQki7RNOHn" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -95,28 +101,9 @@
       <workItem from="1636422896259" duration="3554000" />
       <workItem from="1636755298566" duration="17240000" />
       <workItem from="1637531380474" duration="3573000" />
-      <workItem from="1637859784969" duration="2551000" />
-    </task>
-    <task id="LOCAL-00012" summary="Make the edit button and create button redirect to new page.">
-      <created>1633896675418</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1633896675418</updated>
-    </task>
-    <task id="LOCAL-00013" summary="added dependency to page.js">
-      <created>1633903873768</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1633903873768</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fixed dependency">
-      <created>1633903893500</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1633903893500</updated>
+      <workItem from="1637859784969" duration="4241000" />
+      <workItem from="1638160989819" duration="477000" />
+      <workItem from="1638288241935" duration="11500000" />
     </task>
     <task id="LOCAL-00015" summary="xml files">
       <created>1633904239506</created>
@@ -440,7 +427,28 @@
       <option name="project" value="LOCAL" />
       <updated>1637861766937</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="made password change impossible on gogggles">
+      <created>1637862541478</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1637862541479</updated>
+    </task>
+    <task id="LOCAL-00062" summary="made password and email not possible on google accs">
+      <created>1638312778149</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1638312778151</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Added this stupid carousel thing to the creator page.">
+      <created>1638313942923</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1638313942923</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,9 +468,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed dashboard crashing" />
-    <MESSAGE value="fixed merge error" />
-    <MESSAGE value="some refactoring to be able to use mongoClient instead of mongoose for pages." />
     <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
     <MESSAGE value="made all the functionality work with my calls." />
     <MESSAGE value="comments back again?" />
@@ -485,6 +490,9 @@
     <MESSAGE value="added ancil" />
     <MESSAGE value="added lucy" />
     <MESSAGE value="Made the google login buton on the login screen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the google login buton on the login screen." />
+    <MESSAGE value="made password change impossible on gogggles" />
+    <MESSAGE value="made password and email not possible on google accs" />
+    <MESSAGE value="Added this stupid carousel thing to the creator page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added this stupid carousel thing to the creator page." />
   </component>
 </project>
