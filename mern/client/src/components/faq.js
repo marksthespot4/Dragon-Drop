@@ -25,15 +25,15 @@ class Faq extends Component {
                 <Container fluid>
                     <Accordion >
                         <Accordion.Item eventKey="0" className="colorBody">
-                            <Accordion.Header>Why can't I see my user-name anywhere when I log in?</Accordion.Header>
+                            <Accordion.Header>Can I login with my gmail and with Google?</Accordion.Header>
                             <Accordion.Body >
-                                Good question. Let's find out on the next episode.
+                                Sorry, but due to limitations we suggest that you limit it to just either or.
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1" className="colorBody">
                             <Accordion.Header>How do I export my created portfolio?</Accordion.Header>
                             <Accordion.Body>
-                                LOL
+                                We have not quite yet figured it out, be patient!
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2" className="colorBody">
@@ -44,9 +44,9 @@ class Faq extends Component {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3" className="colorBody">
-                            <Accordion.Header>Why is the default image Among Us?</Accordion.Header>
+                            <Accordion.Header>Why is the default image Mario?</Accordion.Header>
                             <Accordion.Body>
-                                Sus.
+                                We here at the Dragon Drop team love Mari!
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="4" className="colorBody">
@@ -59,7 +59,7 @@ class Faq extends Component {
                         <Accordion.Item eventKey="5" className="colorBody">
                             <Accordion.Header>Why can I only have 5 pages?</Accordion.Header>
                             <Accordion.Body>
-                                We can't do more than 5, it's illegal.
+                                Too many pages would decrease the focus of your portfolios!
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
