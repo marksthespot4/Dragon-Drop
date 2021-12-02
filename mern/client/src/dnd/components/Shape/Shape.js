@@ -1,6 +1,22 @@
+import {useState} from "react"
+import { toast } from 'react-toastify';
 import clsx from 'clsx';
 import useStyle from './style/Shape';
 import React from 'react';
+
+window.document.addEventListener('contextmenu', function(event){event.preventDefault();})
+export const Shape = ({
+                        shapeType = "Rectangle",
+                        shapeText = "http://google.com",
+                        starUrl = "https://upload.wikimedia.org/wikipedia/commons/b/bf/A_Black_Star.png",
+                        squareUrl = "https://static.vecteezy.com/system/resources/previews/001/209/957/non_2x/square-png.png",
+                        heightProp = 100,
+                        widthProp = 200,
+                        radius = 50,
+                        color
+                      }) => {
+    const [type, setType] = useState(shapeType);
+    const [url, setUrl] = useState(shapeText);
 
 const Shape = React.forwardRef(({
     shapeType,
@@ -25,7 +41,7 @@ const Shape = React.forwardRef(({
             }
             else
             {
-                alert("Please enter a valid http url.");
+                toast.error("Please enter a valid http url.");
             }
         }
         return <div className = {classAll}>
@@ -33,5 +49,5 @@ const Shape = React.forwardRef(({
                 {children}
             </div>
 });
-
+}
 export default Shape;

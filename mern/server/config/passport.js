@@ -4,6 +4,7 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
 const User = mongoose.model("users");
 const keys = require("../db/keys");
+const jwt = require("jsonwebtoken");
 const opts = {};
 
 /* Mark's Comments
@@ -63,6 +64,7 @@ module.exports = passport => {
                 const gmail = profile.emails[0].value;
                 console.log(gmail)
                 console.log(id)
+
                 User.findOne({ 'googleId': id }, (err, userMatch) => {
                     // handle errors here:
                     if (err) {
@@ -81,6 +83,7 @@ module.exports = passport => {
                             password: "GOOGLE",
                             pagecount: 0
                         })
+
                         // save this user
                         newGoogleUser.save((err, savedUser) => {
                             if (err) {

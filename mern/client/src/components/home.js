@@ -99,8 +99,20 @@ class Home extends Component {
         })
     }
 
+    handleKeyDownLogIn = (e) => {
+        if (e.key == 'Enter') {
+            this.modalLogin();
+        }
+    }
+
+    handleKeyDownSignUp = (e) => {
+        if (e.key == 'Enter') {
+            this.modalSignup();
+        }
+    }
+
     toggleShowL() {
-        this.setState({ hiddenL: !this.state.hiddenL });
+        this.setState({ hidden: !this.state.hidden });
         // if(this.state.hidden) {
         //     icon = "bi bi-eye"
         // } else {
@@ -137,23 +149,29 @@ class Home extends Component {
     }
 
     modalSignup = () => {
+        var email = "" + this.state.email;
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
         // console.log("pswd: "+password);
         // console.log("cnfpswd: "+confirmPassword);
-        if (password !== confirmPassword) { // Passwords don't match
-            alert("Passwords do not match");
+        var valid = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(email);
+        if (!valid)
+        {
+            toast.error("Email is not valid.");
+        }
+        else if (password !== confirmPassword) { // Passwords don't match
+            toast.error("Passwords do not match");
         }
         else if (password.length < 8) { // Password too short
-            alert("Passwords must be at least 8 characters long")
+            toast.error("Passwords must be at least 8 characters long")
         }
         else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
                 && !password.includes('$') && !password.includes('%') && !password.includes('^') 
                 && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                    alert("Password must include at least one special character");
+                    toast.error("Password must include at least one special character");
         }
         else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-            alert("Password must have at least one upper case and lower case character");
+            toast.error("Password must have at least one upper case and lower case character");
         }
         else {
             // console.log(this.state.email);
@@ -181,7 +199,7 @@ class Home extends Component {
 
         getUser(this.state.email).then(data =>{
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
 
                 this.setState({
                     email: '',
@@ -269,6 +287,7 @@ class Home extends Component {
                             value={this.state.email}
                             name="email"
                             onChange={this.handleEmailChange}
+                            onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
 
@@ -281,6 +300,7 @@ class Home extends Component {
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
+                            onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
                         <a href={"forgot-password"}>
@@ -334,6 +354,7 @@ class Home extends Component {
                             type="email"
                             value={this.state.email}
                             onChange={this.handleEmailChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                         />
 
                         <h6><br/>Password&nbsp;
@@ -360,6 +381,7 @@ class Home extends Component {
                             value={this.state.password}
                             name="password"
                             onChange={this.handlePasswordChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                         />
                         <h6><br/>Confirm Password&nbsp;
                         <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
@@ -369,6 +391,7 @@ class Home extends Component {
                             value={this.state.confirmPassword}
                             name="confirmPassword"
                             onChange={this.handleConfirmPasswordChange}
+                            onKeyDown={this.handleKeyDownSignUp}
                             // className="form-control"
                         />
                     </Modal.Body>

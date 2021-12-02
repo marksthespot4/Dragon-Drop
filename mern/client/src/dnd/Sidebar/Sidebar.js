@@ -15,6 +15,8 @@ import VideoPanel from "../components/Video/VideoPanel";
 import CanvasPanel from "../components/canvas/CanvasPanel";
 import SectionPanel from "../components/Section/SectionPanel";
 import SectionTools from "../components/Section/SectionTools";
+import HeaderPanel from "../components/Header/HeaderPanel";
+import FooterTools from "../components/Footer/FooterTools";
 import { SidebarLayers } from "../layout/SideBar";
 import { Panel } from "build-ui";
 
@@ -40,6 +42,8 @@ import { BiCog } from "react-icons/bi";
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Sidebar.css";
 import DragonLayers from "../layers/DragonLayers";
+import HeaderTools from "../components/Header/HeaderTools";
+import FooterPanel from "../components/Footer/FooterPanel";
 
 
 
@@ -60,7 +64,9 @@ const Sidebar = () => {
     Text: TextPanel,
     Button: ButtonPanel,
     Video: VideoPanel,
-    Shape: ShapePanel
+    Shape: ShapePanel,
+    Header: HeaderPanel,
+    Footer: FooterPanel,
   };
 
   return (
@@ -89,6 +95,8 @@ const Sidebar = () => {
             <VideoTools />
             <ButtonTools />
             <ShapeTools />
+            <HeaderTools />
+            <FooterTools />
             {/* <SectionTools /> */}
             <br/><br/>
           </div>

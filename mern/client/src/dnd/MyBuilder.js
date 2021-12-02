@@ -1,7 +1,7 @@
 import {useState} from "react";
 import "./styles/builder.css"
 import Sidebar from "./Sidebar/Sidebar"
-import {Grid} from "@material-ui/core"
+import {Grid, Button} from "@material-ui/core"
 import {Builder, Workspace, Panel, branch, item} from 'build-ui';
 import CounterView from "./components/Counter/CounterView";
 import TextView from "./components/TextBox/TextView";
@@ -12,10 +12,12 @@ import ShapeView from "./components/Shape/ShapeView"
 import SectionView from "./components/Section/SectionView";
 import TopBar from "./TopBar/TopBar";
 import CanvasView from "./components/canvas/CanvasView";
+import HeaderView from "./components/Header/HeaderView";
 //import TopBar from './TopBar';
 
 import { RiAlignJustify } from "react-icons/ri";
 import BuilderSelector from "./hooks/BuilderSelector";
+import { FooterView } from "./components/Footer";
 
 const MyBuilder = (props) => {
 
@@ -28,7 +30,10 @@ const MyBuilder = (props) => {
         Section: SectionView,
         Button: ButtonView,
         Shape: ShapeView,
-        Canvas: CanvasView
+        Canvas: CanvasView,
+        Header: HeaderView,
+        // TextBox: TextView,
+        Footer: FooterView,
     };
 
     const tree = branch(
@@ -43,9 +48,13 @@ const MyBuilder = (props) => {
             }
         })
     );
+    const clicking = () => {
+        console.log(tree);
+    }
 
     return ( 
     <div>
+        
         <Builder initialTree={tree}>
 
             <Grid 
@@ -89,6 +98,7 @@ const MyBuilder = (props) => {
             </Grid>
             </Grid>
         </Builder>
+
     </div>
     )
 }

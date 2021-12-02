@@ -4,11 +4,63 @@ import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, M
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { getUser, updateUser } from "./user";
+import { getUser, updateUser, updateUserById } from "./user";
 import { getPages, updatePage } from "./page"
+import { registerUser } from "../actions/authActions";
+import { ToastContainer, toast } from 'react-toastify';
+import Container from '@material-ui/core/Container';
+//import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+ 
 const bcrypt = require("bcryptjs");
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
+
 class SettingsTabs extends Component {
+
+
+ /* const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };*/
+
     constructor(props) {
         super(props);
         var email;
@@ -28,12 +80,27 @@ class SettingsTabs extends Component {
             confirmPassword: "",
             hidden: true,
             userEmail: email,
+            newEmail: "",
+            confirmEmail: "",
             private: false,
         };
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.handleNewEmailChange = this.handleNewEmailChange.bind(this);
     }
 
+    handleNewEmailChange = (e) => {
+        this.setState({
+            newEmail: e.target.value,
+        })
+    
+    }
+
+    handleConfirmEmailChange = (e) => {
+        this.setState({
+            confirmEmail: e.target.value,
+        })
+    }
 
     handleCurrentPasswordChange = (e) => {
         this.setState({
@@ -53,18 +120,33 @@ class SettingsTabs extends Component {
         })
     }
 
-    toggle = tab => () => {
-        if (this.state.activeItem !== tab) {
+    handleKeyDownEmail = (e) => {
+        if (e.key == 'Enter') {
+            this.changeEmail();
+        }
+    }
+
+    handleKeyDownPassword = (e) => {
+        if (e.key == 'Enter') {
+            this.changePassword();
+        }
+    }
+
+    changeActiveState = (e, newValue) => {
+        console.log(newValue)
+        if (this.state.activeItem !== newValue) {
             this.setState({
-                activeItem: tab
+                activeItem: newValue,
+                confirmPassword: ""
             });
         }
     }
-    changePassword = () => {
+
+    changeEmail = () => {
+       // alert(this.state.userEmail)
         getUser(this.state.userEmail).then(data =>{
-            
             if (data == null) { // Account was not found
-                alert("Account under given email not found");
+                toast.error("Account under given email not found");
                 this.setState({
                     currentPassword: ''
                 });
@@ -72,7 +154,63 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("Password not changed!");
+                alert("E-mail cannot be changed if you are signed in through Google.");
+                return;
+            }
+            bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
+                if (isMatch)
+                {
+                    var email = "" + this.state.newEmail;
+                    var confirmEmail =  "" + this.state.confirmEmail;
+                    if (email !== confirmEmail) { // Passwords don't match
+                        toast.error("Emails do not match!")
+                    }
+                    else {
+                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        getPages().then(data=>{
+                            this.setState({
+                                pages: data || [],
+                            });
+                            for (var i = 0; i < this.state.pages.length; i++) {
+                                if (this.state.pages[i].user === this.state.userEmail) {
+                                    updatePage(this.state.newEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                                }
+                            }
+                        });
+                        toast.success('Email has been updated!');
+                        this.setState({
+                            currentPassword: '',
+                            newEmail: '',
+                            confirmEmail: '',
+                            userEmail: this.state.newEmail
+                        });
+                        this.props.setEmail(this.state.newEmail);
+                    }
+                }
+                else
+                {
+                    toast.error("Incorrect password")
+                    this.setState({
+                        currentPassword: ''
+                    });
+                }
+            });
+    });
+    }
+
+    changePassword = () => {
+        getUser(this.state.userEmail).then(data =>{
+            
+            if (data == null) { // Account was not found
+                toast.error("Account under given email not found");
+                this.setState({
+                    currentPassword: ''
+                });
+                return;
+            }
+            if(data.googleId != null)
+            {
+                alert("Password cannot be changed you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
@@ -83,26 +221,26 @@ class SettingsTabs extends Component {
                     // console.log("pswd: "+password);
                     // console.log("cnfpswd: "+confirmPassword);
                     if (password !== confirmPassword) { // Passwords don't match
-                        alert("Passwords do not match");
+                        toast.error("Passwords do not match");
                     }
                     else if (password.length < 8) { // Password too short
-                        alert("Passwords must be at least 8 characters long")
+                        toast.error("Passwords must be at least 8 characters long")
                     }
                     else if (!password.includes('!') && !password.includes('@') && !password.includes('#') 
                             && !password.includes('$') && !password.includes('%') && !password.includes('^') 
                             && !password.includes('&') && !password.includes('*')) { // Password doesn't contain any special characters
-                                alert("Password must include at least one special character");
+                                toast.error("Password must include at least one special character");
                     }
                     else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
-                        alert("Password must have at least one upper case and lower case character");
+                        toast.error("Password must have at least one upper case and lower case character");
                     }
                     else {
                         bcrypt.genSalt(10, (err, salt) => {
                             bcrypt.hash(this.state.password, salt, (err, hash) => {
                                 if (err) throw err;
                                 this.state.password = hash;
-                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id, data.theme, data.autoSave);
-                                alert("Password has been updated!");
+                                updateUser(this.state.userEmail, this.state.password, data.pagecount, data._id);
+                                toast.error("Password has been updated!");
                                 this.setState({
                                     currentPassword: '',
                                     password: '',
@@ -111,21 +249,21 @@ class SettingsTabs extends Component {
                             
                             })
                         })
-                       
+                    
                     }
                 }
                 else
                 {
-                    alert("Incorrect password");
+                    toast.error("Incorrect password")
                     this.setState({
                         currentPassword: ''
                     });
                 }
             });
 
-    
+
     });
-}
+    }
 
     changePrivacy = () => {
         this.state.private = !this.state.private;
@@ -139,50 +277,70 @@ class SettingsTabs extends Component {
                 }
             }
         });
-       
+    
     }
 
-    render() {
-        return (
-            <MDBContainer>
-                <MDBCard className="text-center">
-                    <MDBNav>
-                        <MDBNavItem>
-                            <MDBNavLink
-                            link
-                            to="#"
-                            active={this.state.activeItem === "1"}
-                            onClick={this.toggle("1")}
-                            role="tab"
-                            >
-                            <MDBIcon icon="heart" /> Change password
-                            </MDBNavLink>
-                        </MDBNavItem>
-                        <MDBNavItem>
-                            <MDBNavLink
-                            link
-                            to="#"
-                            active={this.state.activeItem === "2"}
-                            onClick={this.toggle("2")}
-                            role="tab"
-                            >
-                            <MDBIcon icon="envelope" /> Change privacy
-                            </MDBNavLink>
-                        </MDBNavItem>
-                    </MDBNav>
-                </MDBCard> 
-                <MDBTabContent
-                className="card"
-                activeItem={this.state.activeItem}
-                >
-                <MDBTabPane tabId="1" role="tabpanel">
-                    <MDBCardBody>
+  render() {
+      return (
+        <Container fit-content>
+            
+            <h1  style={{ backgroundColor: '#ffffff'}}>
+            <Box fit-content>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                
+                <Tabs value={this.state.activeItem} onChange={this.changeActiveState}>
+                <Tab label="Change Email" {...a11yProps(0)} />
+                <Tab label="Change Password" {...a11yProps(1)} />
+                <Tab label="Change Privacy" {...a11yProps(2)} />
+                </Tabs>
+            </Box>
+            
+            <TabPanel value={this.state.activeItem} index = {0}>
+            <Container>
+                <h6>Current Password</h6>
+                    <input
+                        type="password"
+                        value={this.state.currentPassword}
+                        name="currentPassword"
+                        onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownEmail}
+                    // className="form-control"
+                    />
+                <h6><br></br>New Email</h6>
+                <input
+                    type="email"
+                    value={this.state.newEmail}
+                    name="newEmail"
+                    onChange={this.handleNewEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
+                    // className="form-control"
+                />    
+                <h6><br></br>Confirm New Email</h6>
+                <input
+                    type="email"
+                    value={this.state.confirmEmail}
+                    name="confirmEmail"
+                    onChange={this.handleConfirmEmailChange}
+                    onKeyDown={this.handleKeyDownEmail}
+                    // className="form-control"
+                />
+                <div align="left">
+                <Button onClick={() => this.changeEmail()}>
+                    Submit
+                </Button>
+                </div>
+            </Container>
+                
+            </TabPanel>
+            <TabPanel value={this.state.activeItem} index = {1}>
+            <Container>
                     <h6>Current Password</h6>
                     <input
                         type="password"
                         value={this.state.currentPassword}
                         name="currentPassword"
                         onChange={this.handleCurrentPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <h6>New Password</h6>
@@ -191,6 +349,7 @@ class SettingsTabs extends Component {
                         value={this.state.password}
                         name="password"
                         onChange={this.handlePasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
                     <OverlayTrigger
@@ -213,6 +372,7 @@ class SettingsTabs extends Component {
                         value={this.state.confirmPassword}
                         name="confirmPassword"
                         onChange={this.handleConfirmPasswordChange}
+                        onKeyDown={this.handleKeyDownPassword}
                         // className="form-control"
                     />
                     <div align="left">
@@ -220,20 +380,17 @@ class SettingsTabs extends Component {
                         Submit
                     </Button>
                     </div>
-                    </MDBCardBody>
-                </MDBTabPane>
-                <MDBTabPane tabId="2" role="tabpanel">
-                    <MDBCardBody>
-                    <Button onClick={() => this.changePrivacy()}>
-                        {this.state.private ? "Make all pages private" : "Make all pages public"}
-                    </Button>
-                    </MDBCardBody>
-                </MDBTabPane>
-                </MDBTabContent>
-               
-            </MDBContainer>
-        );
-    }
+                </Container>
+            </TabPanel>
+            <TabPanel value={this.state.activeItem} index = {2}>
+                <Button onClick={() => this.changePrivacy()}>
+                    {this.state.private ? "Make all pages private" : "Make all pages public"}
+                </Button>
+            </TabPanel>
+            </Box>
+            </h1>
+            </Container>  
+  );
 }
-
-export default SettingsTabs; 
+}
+export default SettingsTabs;
