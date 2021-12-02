@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
-"mdbreact";
+// import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from "mdbreact";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -343,7 +342,26 @@ class SettingsTabs extends Component {
                         onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
-                    <h6>New Password</h6>
+                    <h6>
+                        <br/>
+                        New Password&nbsp;
+                        <OverlayTrigger
+                            placement="right"
+                            overlay={
+                                <Tooltip>
+                                    <b>Requires at least one:</b><br></br>
+                                    <ul style={{"text-align":"left"}}>
+                                        <li>Uppercase and lowercase</li>
+                                        <li>Number</li>
+                                        <li>Special character (!, @, etc.)</li>
+                                    </ul>
+                                    <b>Must be at least 8 characters</b>
+                                </Tooltip>
+                            }
+                        >
+                            <i class="bi bi-info-circle"></i>
+                        </OverlayTrigger>
+                    </h6>
                     <input
                         type="password"
                         value={this.state.password}
@@ -352,20 +370,6 @@ class SettingsTabs extends Component {
                         onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
-                    <OverlayTrigger
-                        placement="right"
-                        overlay={
-                            <Tooltip >
-                                <b>Requires at least one:</b><br></br>
-                                Uppercase and lowercase <br></br>
-                                Number<br></br>
-                                Special character (!, @, etc.)<br></br>
-                                <b>Must be at least 8 characters</b>
-                            </Tooltip>
-                        }
-                    >
-                        <i class="bi bi-info-circle"></i>
-                    </OverlayTrigger>
                     <h6><br></br>Confirm Password</h6>
                     <input
                         type="password"

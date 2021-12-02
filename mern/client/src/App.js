@@ -59,35 +59,7 @@ if(localStorage.jwtToken) {
 }
 
 const App = () => {
-
   const [email, setEmail] = useState("");
-  // var test = false;
-
-  // if(email !== "") {
-  //   getUser(email).then(data=>{
-  //     test = data.theme
-  //   });
-  // }
-  // document.body.style = (test || email === "") ? 'background: wheat;' : 'background: green;';
-
-  // useEffect(() => { 
-  //   console.log("working?")
-  //   getUser(email).then(data=>{
-  //     if(data) {
-  //       document.body.style = (data.theme) ? 'background: black;' : 'background: green;';
-  //     } else {
-  //       document.body.style = 'background: wheat;';
-  //     }
-  //   })
-  // }, [  
-  //     getUser(email).then(data=>{
-  //       if(email === "") {
-  //         return true;
-  //       }
-  //       return data.theme;
-  //     })
-  // ])
-  // document.body.style = 'background: wheat;';
   return (
     <div>
       <ToastContainer
@@ -103,7 +75,6 @@ const App = () => {
         />
       <Provider store={store}>
       <Header email={email}/>
-      {/* <Navbar /> */}
         <Route exact path="/">
           <Home setEmail={setEmail}/>
           <Footer/>
