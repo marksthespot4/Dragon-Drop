@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
-"mdbreact";
+import { setCurrentUser } from "../actions/authActions";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -143,7 +142,7 @@ class SettingsTabs extends Component {
     }
 
     changeEmail = () => {
-       // alert(this.state.userEmail)
+        var oldEmail = this.state.userEmail;
         getUser(this.state.userEmail).then(data =>{
             if (data == null) { // Account was not found
                 toast.error("Account under given email not found");
@@ -154,7 +153,7 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("E-mail cannot be changed if you are signed in through Google.");
+                toast.error("E-mail cannot be changed if you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
@@ -166,25 +165,27 @@ class SettingsTabs extends Component {
                         toast.error("Emails do not match!")
                     }
                     else {
-                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
                         getPages().then(data=>{
                             this.setState({
                                 pages: data || [],
                             });
                             for (var i = 0; i < this.state.pages.length; i++) {
-                                if (this.state.pages[i].user === this.state.userEmail) {
-                                    updatePage(this.state.newEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                                if (this.state.pages[i].user === oldEmail) {
+                                    updatePage(this.state.userEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
                                 }
                             }
                         });
-                        toast.success('Email has been updated!');
+                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        setCurrentUser(this.state.newEmail);
+                        this.props.onChangeEmail(this.state.newEmail);
                         this.setState({
                             currentPassword: '',
                             newEmail: '',
                             confirmEmail: '',
                             userEmail: this.state.newEmail
                         });
-                        this.props.setEmail(this.state.newEmail);
+                        toast.success('Email has been updated!');
+                        //this.props.setEmail(this.state.newEmail);
                     }
                 }
                 else
@@ -210,7 +211,7 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("Password cannot be changed you are signed in through Google.");
+                toast.error("Password cannot be changed you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
