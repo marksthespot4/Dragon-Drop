@@ -1,4 +1,4 @@
-import {branch, DnDBuilder, item, useTools} from 'build-ui'
+import {branch, DnDBuilder, item, useActions, useTools} from 'build-ui'
 import {Button} from "@material-ui/core";
 
 const HeaderTools = ({
@@ -6,6 +6,7 @@ const HeaderTools = ({
     ...rest
 }) => {
     const tools = useTools();
+    const actions = useActions();
     const handleDragTool = () => {
         const imageStyle = {
             width: '70px',
@@ -42,6 +43,27 @@ const HeaderTools = ({
         })
         const titleData = branch(title);
 
+        const buttonStyle ={
+            width: '75px',
+            height: '50px',
+            left: '90%',
+            top: '20%',
+        }
+        const buttonProps = {
+            text: 'Header Button!',
+            color: 'primary',
+            variant: 'outlined',
+            style: buttonStyle,
+        };
+        const button = item({
+            type: 'Button',
+            props: buttonProps
+        })
+        const buttonData = branch(button);
+        tools.triggerDragStart({
+            data: buttonData
+        });
+
 
         const headerStyle = {
             width: '100%',
@@ -58,16 +80,15 @@ const HeaderTools = ({
             type: 'Header',
             props: headerProps,
         })
-        const data = branch(header).with_child(titleData).with_child(imageData);
-        console.log(data);
+        const data = branch(header).with_child(titleData).with_child(imageData).with_child(buttonData);
         tools.triggerDragStart({
             data: data
         });
     }
     const handleDrop = () => {
         tools.handleDragEnd();
-        
     }
+
     return <DnDBuilder
         onDragStart = {handleDragTool}
         onDragEnd = {handleDrop}

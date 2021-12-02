@@ -144,11 +144,17 @@ class Home extends Component {
     }
 
     modalSignup = () => {
+        var email = "" + this.state.email;
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
         // console.log("pswd: "+password);
         // console.log("cnfpswd: "+confirmPassword);
-        if (password !== confirmPassword) { // Passwords don't match
+        var valid = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(email);
+        if (!valid)
+        {
+            toast.error("Email is not valid.");
+        }
+        else if (password !== confirmPassword) { // Passwords don't match
             toast.error("Passwords do not match");
         }
         else if (password.length < 8) { // Password too short

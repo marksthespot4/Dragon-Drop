@@ -28,6 +28,7 @@ const BuilderSelector = () => {
             'click',
             handleDeselect
         );
+
         return () => {
             document.removeEventListener(
                 'click',
