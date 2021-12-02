@@ -272,7 +272,7 @@ class SettingsTabs extends Component {
             });
             for (var i = 0; i < this.state.pages.length; i++) {
                 if (this.state.pages[i].user === this.state.userEmail) {
-                    updatePage(this.state.pages[i].user, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                    updatePage(this.state.pages[i].user, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, this.state.pages[i].pagepreview, this.state.pages[i]._id);
                 }
             }
         });
