@@ -14,6 +14,9 @@ import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/CloseButton'
 import Switch from "react-switch";
 import jwt from "jsonwebtoken";
+import resumeTemplate from "../imgs/resumeTemplate.png";
+import blankTemplate from "../imgs/blankTemplate.png";
+
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -31,6 +34,7 @@ import { getUser, updateUser, getUserID } from "./user";
 import PropTypes from "prop-types";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "../utils/setAuthToken";
+import { getSliderUtilityClass } from "@material-ui/unstyled";
 
 
 /* Mark's Comments
@@ -104,7 +108,8 @@ class UserPage extends Component {
             searchUser: email, 
             pagecount: 0,
             modalShow: false,
-            checked: false
+            checked: false,
+            template: null,
         };
         this.deleteMyPage = this.deleteMyPage.bind(this);
         this.createNewPage = this.createNewPage.bind(this);
@@ -175,12 +180,29 @@ class UserPage extends Component {
     }
 
 
-    createNewPage(name, publicToggle) {
-        var checkRadio = document.querySelector('input[name="template"]:checked');
-        if(checkRadio == null) {
+    selectTemplate(name) {
+        if(document.getElementById('blank').checked) {
+            this.setState({template: null}, this.createNewPage(name));
+        } else if(document.getElementById('resume').checked) {
+            getPage("61a913c56746e497dfc090d6").then(data => {
+                this.setState({template: data.pagedata}, this.createNewPage(name));
+            });
+        } else if(document.getElementById('artPortfolio').checked) {
+            getPage("61a93cc064818fd83e11e7b4").then(data => {
+                this.setState({template: data.pagedata}, this.createNewPage(name));
+            });
+        } else if(document.getElementById('recipe').checked) {
+            getPage("61a93cce64818fd83e11e7b8").then(data => {
+                this.setState({template: data.pagedata}, this.createNewPage(name));
+            });
+        } else {
             toast.error("Cannot create new page: Please select a template to get started");
             return;
         }
+    }
+
+    createNewPage(name) {
+        console.log("create") 
         getUser(this.state.currentUser).then(data =>{
             // console.log(this.state.currentUser);
             // console.log(data.pagecount);
@@ -195,7 +217,7 @@ class UserPage extends Component {
                 // if(publicToggle === "on") {
                 //     pub = true;
                 // }
-                uploadPage(this.state.currentUser, name, null, this.state.checked, example).then(data => this.props.history.push("create-page/" + data.insertedId));
+                uploadPage(this.state.currentUser, name, this.state.template, this.state.checked, example).then(data => this.props.history.push("create-page/" + data.insertedId));
             }
         });
     }
@@ -392,12 +414,14 @@ class UserPage extends Component {
                         <Modal.Body>
                             <h6>
                                 Project Name
+                                <form>
                                 <input
                                     id="projectName"
                                     type="text"
-                                    value="Untitled"
+                                    defaultValue="Untitled"
                                     name="pagename"
                                 />
+                                </form>
                             </h6>
                             <h6>
                                 Would you like the project to be public?<br/>
@@ -427,34 +451,32 @@ class UserPage extends Component {
                                     <Row className="justify-content-md-center">
                                         <Col >
                                             <label>
-                                                <input type="radio" value="blank" name="template"/> 
+                                                <input type="radio" id="blank" name="template"/> 
                                                 Blank<br/>
                                                 <img 
-                                                    width="150px" 
+                                                    width="250px"
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
-                                                >
-                                                </img>
+                                                    src={blankTemplate}
+                                                />
                                             </label>
                                         </Col>
                                         <Col>
                                             <label>
-                                                <input type="radio" value="Resume" name="template"/>
+                                                <input type="radio" id="resume" name="template"/>
                                                 Resume<br/>
                                                 <img 
-                                                    width="150px" 
+                                                    width="250px"
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
-                                                >
-                                                </img>
+                                                    src={resumeTemplate}
+                                                />
                                             </label>
                                         </Col>
                                         <Col>
                                             <label>
-                                                <input type="radio" value="artPortfolio" name="template"/>
+                                                <input type="radio" id="artPortfolio" name="template"/>
                                                 Art portfolio<br/>
                                                 <img
-                                                    width="150px" 
+                                                    width="250px" 
                                                     style={{ border: "3px solid #555" }}
                                                     src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
                                                 >
@@ -463,10 +485,10 @@ class UserPage extends Component {
                                         </Col>
                                         <Col >
                                             <label>
-                                                <input type="radio" value="recipe" name="template"/> 
+                                                <input type="radio" id="recipe" name="template"/> 
                                                 Recipe<br/>
                                                 <img 
-                                                    width="150px" 
+                                                    width="250px" 
                                                     style={{ border: "3px solid #555" }}
                                                     src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
                                                 >
@@ -478,7 +500,7 @@ class UserPage extends Component {
                             </h7>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={() => this.createNewPage(document.getElementById("projectName").value)}>
+                            <Button onClick={() => this.selectTemplate(document.getElementById("projectName").value)}>
                                     Create
                             </Button>
                         </Modal.Footer>
