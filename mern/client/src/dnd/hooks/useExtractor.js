@@ -1,27 +1,37 @@
 import {useActions, useCollector} from 'build-ui';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
 
 const useExtractor = (
     id,
     root
 ) => {
+
     const actions = useActions();
 
-    const selector = selectors => (selectors.selectById(id));
+    const selector = selectors => (
+        selectors.selectById(id)
+    );
     const collected = useCollector({
         selector: selector
     });
-    const exporting = (collected.meta.exporting || false);
+
+    const exporting = (
+        collected.meta.exporting ||
+        false
+    );
+
+    const triggerMetaUpdate = (
+        actions.unrecorded.triggerMetaUpdate
+    );
 
     useEffect(() => {
         const htmlRoot = root.current;
         if (!exporting || !htmlRoot) return;
         const html = htmlRoot.outerHTML;
         const cssNodes = [
-            htmlRoot,
+            htmlRoot, 
             ...htmlRoot.getElementsByTagName('*')
         ];
-        
         function shouldIncludeCSSRule(cssRule) {
             if (cssRule.selectorText) {
                 const selectorText = cssRule.selectorText;
@@ -38,7 +48,7 @@ const useExtractor = (
             }
             if (cssRule.cssRules) {
                 const cssSubrules = cssRule.cssRules;
-                return [...cssSubrules].some(shouldIncludeCSSRule);
+                return [...cssSubrules].some(shouldIncludeCSSRule)
             }
             else {
                 return true;
@@ -51,26 +61,26 @@ const useExtractor = (
                     if (shouldIncludeCSSRule(cssRule)) {
                         return cssRule.cssText;
                     }
-                    else {
-                        return '';
-                    }
+                    else return '';
                 })
                 return rules.join('');
             }
-            catch (e) {}
+            catch (e) { }
         })
         .filter(Boolean)
         .join('');
+
         const meta = {
             exporting: false,
             html: html,
-            css: css
+            css: css,
         };
         triggerMetaUpdate({
             id: id,
             meta: meta,
         });
     });
+
 }
 
 export default useExtractor;

@@ -1,18 +1,31 @@
 import {useBuilder} from "build-ui";
 import Button from 'react-bootstrap/Button';
-import React, { useEffect, useLayoutEffect, useState, useReducer } from "react";
+import React, { useEffect, useLayoutEffect, useState, useReducer, useRef } from "react";
 import { getPage } from "./../../components/page";
 import html2canvas from 'html2canvas';
 import { ToastContainer, toast } from 'react-toastify';
 import "./save.css";
+import useExporter from "../hooks/useExporter";
+import {unstable_batchedUpdates as batch} from "react-dom";
 
-const TopBar = (props) => {
+const TopBar = ({
+    className,
+    ...props
+}) => {
     const [tree, setTree] = useState(null);
     const [lastSave, setLastSave] = useState(null);
     const [count, setCount] = useState(0);
     // const [treeSize, setTreeSize] = useState(0);
 
     const builder = useBuilder();
+    const exporter = useExporter();
+    const exporterHTML = useRef();
+    const exporterCSS = useRef();
+    const [exporting, setExporting] = useState(false);
+    const [htmlLink, setHTMLLink] = useState(null);
+    const [cssLink, setCSSLink] = useState(null);
+    const [file, setFile] = useState(null);
+    
     const {
         canUndo,
         canRedo,
@@ -22,6 +35,7 @@ const TopBar = (props) => {
         loadTree
     } = builder;
 
+    
     useEffect(() => {
         getPage(props.id).then(data => {
             // console.log(data.pagedata);
@@ -41,7 +55,6 @@ const TopBar = (props) => {
         //     clearInterval(interval);
         // }
       }, []);  
-
 
     //Most recent attempt at autosave  
     //   useEffect(() => {
@@ -91,6 +104,67 @@ const TopBar = (props) => {
         props.save(json());
         console.log(json());
     }
+
+    const handleExport = () => {
+        exporter.handleExport();
+        console.log('exporting!');
+        setExporting(true);
+    }
+
+    useEffect(() => {
+        if (!file) return;
+        const content = file.text();
+        content.then(text => JSON.parse(text))
+        .then(tree => batch(() => {
+            loadTree(tree);
+            setFile(null);
+        })).catch();
+    });
+
+    const css = exporter.css;
+    const html = exporter.html;
+    useEffect(() => {
+        if (!exporting) return;
+        console.log(css);
+        console.log(html);
+        if (css) {
+            const file = new Blob([css], {type: 'text/css'});
+            const link = URL.createObjectURL(file);
+            setCSSLink(link);
+            setExporting(false);
+        }
+        if (html) {
+            const formatHTML = html => (
+                '<html>' +
+                '<head></head>' +
+                '<body>' + html + '</body>' +
+                '</html>'
+            );
+            const formattedHTML = formatHTML(html);
+            const file = new Blob([formattedHTML], {type: 'text/html'});
+            const link = URL.createObjectURL(file);
+            setHTMLLink(link);
+            setExporting(false);
+        }
+    }, [
+        html, 
+        css, 
+        exporting,
+    ]);
+
+    useEffect(() => {
+        if (!htmlLink) return;
+        exporterHTML.current.click();
+        URL.revokeObjectURL(htmlLink);
+        setHTMLLink(null);
+    }, [htmlLink]);
+
+    useEffect(() => {
+        if (!cssLink) return;
+        exporterCSS.current.click();
+        URL.revokeObjectURL(cssLink);
+        setCSSLink(null);
+    }, [cssLink]);
 
     // const handleSave = () => {
     //     setTree(json());
@@ -146,6 +220,7 @@ const TopBar = (props) => {
         <Button disabled = {!canRedo} onClick = {handleRedo}>
             Redo
         </Button>
+        
         <Button onClick={() => {handleSave(); notifySaved()}}>
             Save
         </Button>
@@ -157,6 +232,22 @@ const TopBar = (props) => {
             Last Saved: {lastSave}
         </span>
         }
+        <Button onClick={handleExport}>
+            Download
+        </Button>
+        <a
+            hidden = {false}
+            download = {true}
+            href = {htmlLink}
+            ref = {exporterHTML}
+        />
+        <a
+            hidden = {false}
+            download = {true}
+            href = {cssLink}
+            ref = {exporterCSS}
+        />
+        
     
         <a href={"/view-page/" + props.id} style={{"color":"white"}} id="share">
             <Button
