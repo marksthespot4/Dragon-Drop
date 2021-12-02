@@ -153,6 +153,8 @@ class Home extends Component {
         var confirmPassword =  "" + this.state.confirmPassword;
         // console.log("pswd: "+password);
         // console.log("cnfpswd: "+confirmPassword);
+        var email = "" + this.state.email;
+        const emailregexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if (password !== confirmPassword) { // Passwords don't match
             toast.error("Passwords do not match");
         }
@@ -167,6 +169,9 @@ class Home extends Component {
         else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
             toast.error("Password must have at least one upper case and lower case character");
         }
+        else if (!emailregexp.test(email)) {
+            toast.error("Invalid email!");
+        }    
         else {
             // console.log(this.state.email);
             this.props.setEmail(this.state.email);

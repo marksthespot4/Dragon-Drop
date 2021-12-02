@@ -161,9 +161,13 @@ class SettingsTabs extends Component {
                 {
                     var email = "" + this.state.newEmail;
                     var confirmEmail =  "" + this.state.confirmEmail;
+                    const emailregexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     if (email !== confirmEmail) { // Passwords don't match
                         toast.error("Emails do not match!")
                     }
+                    else if (!emailregexp.test(email)) {
+                        toast.error("Invalid email!");
+                    }  
                     else {
                         getPages().then(data=>{
                             this.setState({
