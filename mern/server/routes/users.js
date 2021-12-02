@@ -94,7 +94,6 @@ router.post("/forgotPassword", (req, res) =>
             const mailOptions = {
                 from: `dragonDropDoNotReply@gmail.com`,
                 to: req.body.email,
-                // to: 'hyun.changsoo7@gmail.com',
                 subject: `Password Reset Link`,
                 text: `click the link below to change your password:\n\nhttp://localhost:3000/reset/${token}`,
             };
