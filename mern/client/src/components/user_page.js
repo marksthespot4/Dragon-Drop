@@ -39,7 +39,7 @@ The rest of the user info is still stored as before, in localStorage as email.
 const Page = (props) => (
     <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
-            <h2>{props.page.pagename}</h2>
+            <h2 style={{"color": "#0071ce"}}>{props.page.pagename}</h2>
             
             {props.access ? 
             <a href={"/create-page/" + props.page._id}>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // We use Route in order to define the different routes of our application
 import { Route, render, Switch } from "react-router-dom";
@@ -9,10 +9,9 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
-import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
-import RecordList from "./components/recordList";
+// import RecordList from "./components/recordList";
 import UserPage from "./components/user_page";
 import Home from "./components/home";
 import Save from "./components/save";
@@ -27,7 +26,7 @@ import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
 import ForgotPassword from "./components/forgot_password.js";
 import Faq from "./components/faq";
-// import { getUser } from "./components/user";
+import { getUser } from "./components/user";
 import ResetPassword from "./components/resetPassword.js";
 
 /* Mark's comments
@@ -70,7 +69,25 @@ const App = () => {
   //   });
   // }
   // document.body.style = (test || email === "") ? 'background: wheat;' : 'background: green;';
-  document.body.style = 'background: wheat;';
+
+  // useEffect(() => { 
+  //   console.log("working?")
+  //   getUser(email).then(data=>{
+  //     if(data) {
+  //       document.body.style = (data.theme) ? 'background: black;' : 'background: green;';
+  //     } else {
+  //       document.body.style = 'background: wheat;';
+  //     }
+  //   })
+  // }, [  
+  //     getUser(email).then(data=>{
+  //       if(email === "") {
+  //         return true;
+  //       }
+  //       return data.theme;
+  //     })
+  // ])
+  // document.body.style = 'background: wheat;';
   return (
     <div>
       <ToastContainer
