@@ -14,24 +14,36 @@ import { getUser, updateUser } from "./user";
 // import Button from 'react-bootstrap/Button';
 
 class Header extends Component {
-
     constructor(props) {
         super(props);
+        var email;
+        if(this.props.email !== "") {
+            email = this.props.email; 
+            localStorage.setItem( 'localEmail', email);
+        }
+        else {
+            email = localStorage.getItem( 'localEmail' );
+        }
+
         this.state = {
+            email: email,
             isLoggedIn :false,
             theme: true
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
-    // componentDidMount() {
-    //     getUser(this.props.email).then(data=>{
-    //         console.log(data);
-    //         this.setState({
-    //             theme: data.theme,
-    //         });
-    //     });
-    //   }
+    componentDidMount() {
+        this.setState({theme: true})
+        getUser(this.state.email).then(data=>{
+            // console.log(data);
+            if(data) {
+                this.setState({
+                    theme: data.theme,
+                });
+            }
+        });
+      }
 
     handleChange() {
         return this.changeTheme();
@@ -39,17 +51,20 @@ class Header extends Component {
 
     changeTheme() {
         this.setState((state) => {
-        //   getUser(this.props.email).then(data=>{
-        //     updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, false);
-        //   });
+          getUser(this.state.email).then(data=>{
+            //   console.log(data)
+            updateUser(data.email, data.password, data.pagecount, data._id, !data.theme, data.autoSave);
+            // console.log(data.theme)
+          });
           return {theme: !state.theme}
         });
     }
 
     render() {
+        document.body.style = (this.state.theme) ? 'background: wheat;' : 'background: #2F2F30;';
         return (
             <div>
-                <div className={ this.state.theme ? "headerL" : "headerD"}>
+                <div className={ (this.state.theme || !this.props.auth.isAuthenticated) ? "headerL" : "headerD"}>
                     <Navbar fixed="top" expand="lg">
                         <NavLink className="navbar-brand" to="/">
                             <img className="logo" src={logo} className="img-fluid" style={{width: 50, margin: 2}}/>

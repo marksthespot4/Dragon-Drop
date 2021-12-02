@@ -95,9 +95,9 @@ const Sidebar = () => {
             <VideoTools />
             <ButtonTools />
             <ShapeTools />
+            <SectionTools />
             <HeaderTools />
             <FooterTools />
-            {/* <SectionTools /> */}
             <br/><br/>
           </div>
           

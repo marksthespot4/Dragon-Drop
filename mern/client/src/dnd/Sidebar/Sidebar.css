@@ -3,9 +3,6 @@
     position: absolute;
     width: 220px;
   }
-  #header .pro-sidebar {
-    height: 100vh;
-  }
   #header .closemenu {
     color: #000;
     position: absolute;
@@ -19,6 +16,7 @@
     cursor: pointer;
   }
   #header .pro-sidebar {
+    height: 100vh;
     width: 100%;
     min-width: 100%;
   }
@@ -27,7 +25,7 @@
     min-width: 120px;
   }
   #header .pro-sidebar-inner {
-    background-color: white;
+    background-color: lightgray;
     box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
   }
   #header .pro-sidebar-inner .pro-sidebar-layout .logotext p {

@@ -112,12 +112,7 @@ class Home extends Component {
     }
 
     toggleShowL() {
-        this.setState({ hidden: !this.state.hidden });
-        // if(this.state.hidden) {
-        //     icon = "bi bi-eye"
-        // } else {
-        //     icon = "bi bi-eye-slash"
-        // }
+        this.setState({ hiddenL: !this.state.hiddenL });
     }
 
     toggleShowS1() {
@@ -247,8 +242,8 @@ class Home extends Component {
         props.history.push("/user_page");
     }
 
-
     render() {
+        document.body.style = "background: wheat;";
         return (
             <div className="Home" style={{height:"90vh"}}>
                 <div align="right">
@@ -357,24 +352,26 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownSignUp}
                         />
 
-                        <h6><br/>Password&nbsp;
-                        <OverlayTrigger
-                            placement="auto"
-                            overlay={
-                                <Tooltip>
-                                    <b>Requires at least one:</b><br/>
-                                    Uppercase and lowercase <br/>
-                                    Number<br/>
-                                    Special character (!, @, etc.)<br/>
-                                    <b>Must be at least 8 characters</b>
-                                </Tooltip>
-                            }
-                            trigger="click"
-                            // style={{"z-index": "-1", position: "relative"}}
-                        >
-                            <i class="bi bi-info-circle"></i>
-                        </OverlayTrigger>&nbsp;
-                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
+                        <h6><br/>
+                            Password&nbsp;
+                            <OverlayTrigger
+                                placement="right"
+                                overlay={
+                                    <Tooltip>
+                                        <b>Requires at least one:</b><br></br>
+                                        <ul style={{"text-align":"left"}}>
+                                            <li>Uppercase and lowercase</li>
+                                            <li>Number</li>
+                                            <li>Special character (!, @, etc.)</li>
+                                        </ul>
+                                        <b>Must be at least 8 characters</b>
+                                    </Tooltip>
+                                }
+                                style={{position:"absolute"}}
+                            >
+                                <i class="bi bi-info-circle"></i>
+                            </OverlayTrigger>&nbsp;
+                            <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
                         </h6>
                         <input
                             type={this.state.hiddenS ? "password" : "text"}
@@ -384,7 +381,7 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownSignUp}
                         />
                         <h6><br/>Confirm Password&nbsp;
-                        <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
+                            <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
                         </h6>
                         <input
                             type={this.state.hiddenSc ? "password" : "text"}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // We use Route in order to define the different routes of our application
 import { Route, render, Switch } from "react-router-dom";
@@ -9,14 +9,14 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
-import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
-import RecordList from "./components/recordList";
+// import RecordList from "./components/recordList";
 import UserPage from "./components/user_page";
 import Home from "./components/home";
 import Save from "./components/save";
 import View from "./components/view"
+// import View from "./dnd/viewPage.js";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Settings from "./components/settings";
@@ -26,6 +26,7 @@ import Dashboard from "./components/Dashboard";
 import Creator_page from "./components/creator_page";
 import ForgotPassword from "./components/forgot_password.js";
 import Faq from "./components/faq";
+import { getUser } from "./components/user";
 import ResetPassword from "./components/resetPassword.js";
 
 /* Mark's comments
@@ -58,9 +59,7 @@ if(localStorage.jwtToken) {
 }
 
 const App = () => {
-
   const [email, setEmail] = useState("");
-  document.body.style = 'background: wheat;';
   return (
     <div>
       <ToastContainer
@@ -76,7 +75,6 @@ const App = () => {
         />
       <Provider store={store}>
       <Header email={email}/>
-      {/* <Navbar /> */}
         <Route exact path="/">
           <Home setEmail={setEmail}/>
           <Footer/>

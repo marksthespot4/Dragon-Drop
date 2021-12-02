@@ -15,6 +15,10 @@ import CloseButton from 'react-bootstrap/CloseButton'
 import Switch from "react-switch";
 import jwt from "jsonwebtoken";
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 import Button from 'react-bootstrap/Button';
 // import setAuthToken from "../utils/setAuthToken";
 import {setCurrentUser} from "../actions/authActions";
@@ -39,7 +43,7 @@ The rest of the user info is still stored as before, in localStorage as email.
 const Page = (props) => (
     <div className="col" style={{height:"80vh"}}>
         <div className="container-fluid">
-            <h2>{props.page.pagename}</h2>
+            <h2 style={{"color": "#0071ce"}}>{props.page.pagename}</h2>
             
             {props.access ? 
             <a href={"/create-page/" + props.page._id}>
@@ -78,7 +82,7 @@ const Page = (props) => (
 )
 
 
-const delete_notify = () => toast.info('Page Successfully Deleted!');
+const delete_notify = () => toast.success('Page Successfully Deleted!');
 
 class UserPage extends Component {
 
@@ -172,6 +176,11 @@ class UserPage extends Component {
 
 
     createNewPage(name, publicToggle) {
+        var checkRadio = document.querySelector('input[name="template"]:checked');
+        if(checkRadio == null) {
+            toast.error("Cannot create new page: Please select a template to get started");
+            return;
+        }
         getUser(this.state.currentUser).then(data =>{
             // console.log(this.state.currentUser);
             // console.log(data.pagecount);
@@ -372,7 +381,7 @@ class UserPage extends Component {
                         show={this.state.modalShow}
                         onEscapeKeyDown={e => this.modalClose(e)}
                         scrollable="true"
-                        // size="lg"
+                        size="lg"
                     >
                         <Modal.Header>
                             <Modal.Title id="contained-modal-title-vcenter">
@@ -386,10 +395,8 @@ class UserPage extends Component {
                                 <input
                                     id="projectName"
                                     type="text"
-                                    // value={this.state.email}
+                                    value="Untitled"
                                     name="pagename"
-                                    // onChange={this.handleEmailChange}
-                                    // className="form-control"
                                 />
                             </h6>
                             <h6>
@@ -416,70 +423,59 @@ class UserPage extends Component {
                                 Templates
                             </h6>
                             <h7>
-{/* 
-                            <input type="radio" value="Male" name="gender" /> Male
-                            <input type="radio" value="Female" name="gender" /> Female
-                            <input type="radio" value="Other" name="gender" /> Other */}
-                                <label>
-                                    <input type="radio" value="blank" name="template"/> 
-                                    blank<br/>
-                                    <img 
-                                        height="350px" 
-                                        style={{ border: "3px solid #555" }}
-                                        src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
-                                    >
-                                    </img>
-                                    </label>
-                                    <br/>
-                                <label>
-                                    <input type="radio" value="Resume" name="template"/>
-                                    resume<br/>
-                                    <img 
-                                        height="350px" 
-                                        style={{ border: "3px solid #555" }}
-                                        src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
-                                    >
-                                    </img>
-                                </label>
-                                <br/>
-                                <label>
-                                    <input type="radio" value="artPortfolio" name="template"/>
-                                    art portfolio<br/>
-                                    <img
-                                        height="350px" 
-                                        style={{ border: "3px solid #555" }}
-                                        src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
-                                    >
-                                    </img>
-                                </label>
+                                <Container>
+                                    <Row className="justify-content-md-center">
+                                        <Col >
+                                            <label>
+                                                <input type="radio" value="blank" name="template"/> 
+                                                Blank<br/>
+                                                <img 
+                                                    width="150px" 
+                                                    style={{ border: "3px solid #555" }}
+                                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                                >
+                                                </img>
+                                            </label>
+                                        </Col>
+                                        <Col>
+                                            <label>
+                                                <input type="radio" value="Resume" name="template"/>
+                                                Resume<br/>
+                                                <img 
+                                                    width="150px" 
+                                                    style={{ border: "3px solid #555" }}
+                                                    src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
+                                                >
+                                                </img>
+                                            </label>
+                                        </Col>
+                                        <Col>
+                                            <label>
+                                                <input type="radio" value="artPortfolio" name="template"/>
+                                                Art portfolio<br/>
+                                                <img
+                                                    width="150px" 
+                                                    style={{ border: "3px solid #555" }}
+                                                    src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                                >
+                                                </img>
+                                            </label>
+                                        </Col>
+                                        <Col >
+                                            <label>
+                                                <input type="radio" value="recipe" name="template"/> 
+                                                Recipe<br/>
+                                                <img 
+                                                    width="150px" 
+                                                    style={{ border: "3px solid #555" }}
+                                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                                >
+                                                </img>
+                                            </label>
+                                        </Col>
+                                    </Row>
+                                </Container>
                             </h7>
-                            {/* <ToggleButtonGroup type="radio" name="options" defaultValue={1}>
-                                <ToggleButton id="tbg-radio-1" value={1}>
-                                    <img 
-                                    height="350px" 
-                                    style={{ border: "5px solid #555" }}
-                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
-                                    >
-                                    </img>                                
-                                </ToggleButton>
-                                <br/>
-                                <ToggleButton id="tbg-radio-2" value={2}>
-                                    <img 
-                                    height="350px" 
-                                    style={{ border: "5px solid #555" }}
-                                    src={"https://purepng.com/public/uploads/large/purepng.com-luigimariofictional-charactervideo-gamefranchisenintendodesigner-1701528624294qfchn.png"}
-                                    >
-                                    </img>                                
-                                </ToggleButton>
-                                <ToggleButton id="tbg-radio-3" value={3}>
-                                    <img 
-                                    height="350px" 
-                                    style={{ border: "5px solid #555" }}
-                                    src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
-                                    >
-                                    </img>
-                                </ToggleButton>
-                            </ToggleButtonGroup> */}
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={() => this.createNewPage(document.getElementById("projectName").value)}>
