@@ -98,6 +98,7 @@ const Sidebar = () => {
             <SectionTools />
             <HeaderTools />
             <FooterTools />
+            <SectionTools />
             <br/><br/>
           </div>
           
