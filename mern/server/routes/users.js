@@ -197,8 +197,8 @@ router.post("/update/id/:id", (req, res) =>
             user.email = req.body.email;
             user.password = req.body.password;
             user.pagecount = req.body.pagecount;
-            user.theme = req.body.theme;
-            user.autoSave = req.body.autoSave;
+          /*  user.theme = req.body.theme;
+            user.autoSave = req.body.autoSave;*/
             user.save()
                 .then(user => res.json(user))
                 .catch(err => console.log(err));

@@ -212,7 +212,9 @@ class SettingsTabs extends Component {
                                 }
                             }
                         });
+                        console.log(this.state.newEmail);
                         updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        console.log(this.state.newEmail);
                         setCurrentUser(this.state.newEmail);
                         this.props.onChangeEmail(this.state.newEmail);
                         this.setState({

@@ -1,8 +1,8 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import useStyle from './style/TextTools'
 import clsx from 'clsx';
-import {useEffect} from 'react';
-import {Button} from "@material-ui/core"
+import {useEffect, useState} from 'react';
+import {Button, Tooltip} from "@material-ui/core";
 
 const TextTools = ({
     className,
@@ -38,13 +38,6 @@ const TextTools = ({
             data: data
         })
     }
-    useEffect(() => {
-        window.addEventListener('keydown', keydownHandler);
-      }, []);  
-    
-    const keydownHandler = (e) => {
-        if(e.ctrlKey && e.keyCode == 88) handleDragTool()
-    }
 
     return <DnDBuilder
         onDragStart = {handleDragTool}
@@ -52,8 +45,11 @@ const TextTools = ({
         draggable = {true}
         {...rest}
     >
+    <Tooltip title="Shortcut: ctrl + x">
         <Button> Text </Button>
+    </Tooltip>
     </DnDBuilder>
+    
 }
 
 export default TextTools;
