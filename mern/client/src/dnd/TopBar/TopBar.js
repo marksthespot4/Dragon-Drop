@@ -91,7 +91,15 @@ const TopBar = ({
 
     const notifySaved = () => { 
         toast.success('Project Saved');
-      }
+    }
+
+    const notifyCopied = () => {
+        toast.success('Component Copied!');
+    }
+
+    const notifyPasted = () => {
+        toast.success('Component Pasted!');
+    }
 
     const load = (saveData) => {
         if(saveData != null) {  
@@ -177,8 +185,10 @@ const TopBar = ({
     }
 
     const keydownHandler = (e) => {
-        if(e.ctrlKey && e.keyCode == 90) handleUndo()
-        else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+        if(e.ctrlKey && e.keyCode === 90) handleUndo()
+        else if(e.ctrlKey && e.keyCode === 89) handleRedo()
+        else if(e.ctrlKey && e.keyCode === 67) notifyCopied()
+        else if(e.ctrlKey && e.keyCode === 86) notifyPasted()
     }
 
     const notify = () => { 
