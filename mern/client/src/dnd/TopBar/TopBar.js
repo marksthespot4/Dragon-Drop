@@ -73,7 +73,7 @@ const TopBar = ({
                 var minute = ('0'+currentTime.getMinutes()).substr(-2);
                 var second = ('0'+currentTime.getSeconds()).substr(-2);
                 setLastSave(hour + ':' + minute + ':' + second)
-            }, 15000);
+            }, 5000);
             return () => {clearInterval(interval); setCount(0)}
         }
       }, [count]);
