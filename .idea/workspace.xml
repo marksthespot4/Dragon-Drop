@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made FAQ not as terrible.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="added email validation.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/TopBar/TopBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/TopBar/TopBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,14 +95,7 @@
       <workItem from="1637859784969" duration="4241000" />
       <workItem from="1638160989819" duration="477000" />
       <workItem from="1638288241935" duration="13323000" />
-      <workItem from="1638395555656" duration="6483000" />
-    </task>
-    <task id="LOCAL-00017" summary="merged wih main.">
-      <created>1634087262811</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1634087262811</updated>
+      <workItem from="1638395555656" duration="7322000" />
     </task>
     <task id="LOCAL-00018" summary="Pushing the multiple creation bug to get help from chang.">
       <created>1634097765604</created>
@@ -440,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638409747851</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="added email validation.">
+      <created>1638413105657</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1638413105657</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,7 +460,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="comments back again?" />
     <MESSAGE value="Fixed right click for image and added basic support on Text." />
     <MESSAGE value="Made sure that the login form gives correct errors." />
     <MESSAGE value="changed shape back" />
@@ -485,6 +484,7 @@
     <MESSAGE value="Added this stupid carousel thing to the creator page." />
     <MESSAGE value="Fixed google not maintaining login status on refresh.&#10;added json web token creation in the front end cause lol&#10;removed navbar toggle function that broke it." />
     <MESSAGE value="Made FAQ not as terrible." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made FAQ not as terrible." />
+    <MESSAGE value="added email validation." />
+    <option name="LAST_COMMIT_MESSAGE" value="added email validation." />
   </component>
 </project>
