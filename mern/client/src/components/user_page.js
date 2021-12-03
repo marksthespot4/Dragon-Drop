@@ -87,7 +87,7 @@ const Page = (props) => (
 const delete_notify = () => toast.success('Page Successfully Deleted!');
 
 class UserPage extends Component {
-
+    
     constructor(props) {
 
         super(props);
@@ -127,6 +127,7 @@ class UserPage extends Component {
             //and set the local email in storage as the gmail.
             //also, set our currentUser and searchUser as gmail.
             //set our jwtToken
+            
             getUserID(this.props.match.params.id).then(data => {
                 //console.log(data);
                 localStorage.clear();
@@ -160,6 +161,7 @@ class UserPage extends Component {
         }
         if (this.props.auth.isAuthenticated)
         {
+            console.log(this.state.currentUser);
             console.log("USER IS AUTHENTICATED ON USER PAGE");
 
         }
