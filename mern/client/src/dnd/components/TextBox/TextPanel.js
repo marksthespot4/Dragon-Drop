@@ -57,6 +57,23 @@ const TextPanel = ({
         />
         </div>
 
+        <div className = {classes.field}>
+        <label 
+            htmlFor = 'style.fontSize'
+            className = {classes.label}
+        >
+            Text Size
+        </label>
+        <TextField
+            variant = 'outlined'
+            name = 'style.fontSize'
+            id = 'style.fontSize'
+            value = {editor.props.style.fontSize || ''}
+            onChange = {editor.handleUpdate}
+            className = {classes.input}
+        />
+        </div>
+
         <ColorPanel id = {id} />
         {/* <FontPanel id = {id} /> */}
         <SizingPanel id = {id} />
