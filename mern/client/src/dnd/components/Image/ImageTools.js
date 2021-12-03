@@ -1,5 +1,6 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
 import { Button } from "@material-ui/core";
+import mario from "../../../imgs/new_mario.png"
 // import useStyle from "./style/ImageTools";
 // import clsx from 'clsx';
 
@@ -18,7 +19,7 @@ const ImageTools = ({
         }
         
         const imageProps = {
-            imageUrl: "https://pngimg.com/uploads/mario/mario_PNG55.png",
+            imageUrl: mario,
             extLink: "https://youtube.com",
             style: imageStyle
         }
