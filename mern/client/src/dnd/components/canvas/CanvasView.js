@@ -3,6 +3,7 @@ import { DnDBuilderHOC } from "build-ui";
 import useDragonEditor from "../../hooks/useDragonEditor";
 import useStyle from "./style/CanvasView";
 import Canvas from './Canvas'
+import useExtractor from "../../hooks/useExtractor";
 
 const BuilderCanvas = DnDBuilderHOC(Canvas);
 
@@ -19,6 +20,7 @@ const CanvasView = ({
         fixed: true,
     });
     const ref = useRef();
+    useExtractor(id, ref);
     return <BuilderCanvas
         onDrop = {editor.handlePositionedDrop}
         onDragEnter = {editor.handlePaintDropZone}

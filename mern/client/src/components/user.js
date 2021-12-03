@@ -29,7 +29,7 @@ export function updateUser(email, password, pagecount, id, theme, autoSave) {
         password: password,
         pagecount: pagecount,
         theme: theme,
-        autoSave: theme,
+        autoSave: autoSave
     }
     axios
         .post("http://localhost:5000/routes/users/update/" + email, updatedUser)

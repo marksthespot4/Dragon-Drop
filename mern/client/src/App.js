@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
-import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";

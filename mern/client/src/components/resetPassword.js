@@ -74,6 +74,7 @@ class ResetPassword extends Component{
                         password: '',
                         confirmPassword: ''
                     });
+                    //TODO update the user to clear the reset password token and time
                 
                 })
             })

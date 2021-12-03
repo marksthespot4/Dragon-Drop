@@ -112,12 +112,7 @@ class Home extends Component {
     }
 
     toggleShowL() {
-        this.setState({ hidden: !this.state.hidden });
-        // if(this.state.hidden) {
-        //     icon = "bi bi-eye"
-        // } else {
-        //     icon = "bi bi-eye-slash"
-        // }
+        this.setState({ hiddenL: !this.state.hiddenL });
     }
 
     toggleShowS1() {
@@ -149,13 +144,17 @@ class Home extends Component {
     }
 
     modalSignup = () => {
+        var email = "" + this.state.email;
         var password = "" + this.state.password;
         var confirmPassword =  "" + this.state.confirmPassword;
         // console.log("pswd: "+password);
         // console.log("cnfpswd: "+confirmPassword);
-        var email = "" + this.state.email;
-        const emailregexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (password !== confirmPassword) { // Passwords don't match
+        var valid = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/.test(email);
+        if (!valid)
+        {
+            toast.error("Email is not valid.");
+        }
+        else if (password !== confirmPassword) { // Passwords don't match
             toast.error("Passwords do not match");
         }
         else if (password.length < 8) { // Password too short
@@ -169,9 +168,6 @@ class Home extends Component {
         else if (password === password.toUpperCase() || password === password.toLowerCase()) { // Password doesn't have upper and lowercase characters
             toast.error("Password must have at least one upper case and lower case character");
         }
-        else if (!emailregexp.test(email)) {
-            toast.error("Invalid email!");
-        }    
         else {
             // console.log(this.state.email);
             this.props.setEmail(this.state.email);
@@ -246,8 +242,8 @@ class Home extends Component {
         props.history.push("/user_page");
     }
 
-
     render() {
+        document.body.style = "background: wheat;";
         return (
             <div className="Home" style={{height:"90vh"}}>
                 <div align="right">
@@ -302,8 +298,8 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
-                        <a href={"forgot-password"}>
-                            forgot password?
+                        <a href={"forgot-password"} style={{color:"#0071ce"}}>
+                            Forgot password?
                         </a> 
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
@@ -356,24 +352,26 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownSignUp}
                         />
 
-                        <h6><br/>Password&nbsp;
-                        <OverlayTrigger
-                            placement="auto"
-                            overlay={
-                                <Tooltip>
-                                    <b>Requires at least one:</b><br/>
-                                    Uppercase and lowercase <br/>
-                                    Number<br/>
-                                    Special character (!, @, etc.)<br/>
-                                    <b>Must be at least 8 characters</b>
-                                </Tooltip>
-                            }
-                            trigger="click"
-                            // style={{"z-index": "-1", position: "relative"}}
-                        >
-                            <i class="bi bi-info-circle"></i>
-                        </OverlayTrigger>&nbsp;
-                        <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
+                        <h6><br/>
+                            Password&nbsp;
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={
+                                    <Tooltip>
+                                        <b>Requires at least one:</b><br></br>
+                                        <ul style={{"text-align":"left"}}>
+                                            <li>Uppercase and lowercase</li>
+                                            <li>Number</li>
+                                            <li>Special character (!, @, etc.)</li>
+                                        </ul>
+                                        <b>Must be at least 8 characters</b>
+                                    </Tooltip>
+                                }
+                                style={{position:"absolute"}}
+                            >
+                                <i class="bi bi-info-circle"></i>
+                            </OverlayTrigger>&nbsp;
+                            <i class={ this.state.hiddenS ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS1}></i>
                         </h6>
                         <input
                             type={this.state.hiddenS ? "password" : "text"}
@@ -383,7 +381,7 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownSignUp}
                         />
                         <h6><br/>Confirm Password&nbsp;
-                        <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
+                            <i class={ this.state.hiddenSc ? "bi bi-eye-slash" : "bi bi-eye"} onClick={this.toggleShowS2}></i>
                         </h6>
                         <input
                             type={this.state.hiddenSc ? "password" : "text"}

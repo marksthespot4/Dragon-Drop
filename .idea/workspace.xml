@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Added this stupid carousel thing to the creator page.">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="Made FAQ not as terrible.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/actions/authActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/header.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/src/components/user_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/user_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/config/passport.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/config/passport.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/routes/google.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/google.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/pageRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/server/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/server/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/home.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,21 +94,8 @@
       <workItem from="1637531380474" duration="3573000" />
       <workItem from="1637859784969" duration="4241000" />
       <workItem from="1638160989819" duration="477000" />
-      <workItem from="1638288241935" duration="11500000" />
-    </task>
-    <task id="LOCAL-00015" summary="xml files">
-      <created>1633904239506</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1633904239506</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added a generate button to the page.">
-      <created>1634081121506</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1634081121506</updated>
+      <workItem from="1638288241935" duration="13323000" />
+      <workItem from="1638395555656" duration="6483000" />
     </task>
     <task id="LOCAL-00017" summary="merged wih main.">
       <created>1634087262811</created>
@@ -448,7 +426,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638313942923</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Fixed google not maintaining login status on refresh.&#10;added json web token creation in the front end cause lol&#10;removed navbar toggle function that broke it.">
+      <created>1638322298479</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1638322298479</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Made FAQ not as terrible.">
+      <created>1638409747851</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1638409747851</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,8 +460,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="DID ALL THE PAGE AND USER STUFF" />
-    <MESSAGE value="made all the functionality work with my calls." />
     <MESSAGE value="comments back again?" />
     <MESSAGE value="Fixed right click for image and added basic support on Text." />
     <MESSAGE value="Made sure that the login form gives correct errors." />
@@ -493,6 +483,8 @@
     <MESSAGE value="made password change impossible on gogggles" />
     <MESSAGE value="made password and email not possible on google accs" />
     <MESSAGE value="Added this stupid carousel thing to the creator page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added this stupid carousel thing to the creator page." />
+    <MESSAGE value="Fixed google not maintaining login status on refresh.&#10;added json web token creation in the front end cause lol&#10;removed navbar toggle function that broke it." />
+    <MESSAGE value="Made FAQ not as terrible." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made FAQ not as terrible." />
   </component>
 </project>

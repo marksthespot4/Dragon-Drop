@@ -1,7 +1,7 @@
 import {useState} from "react";
 import "./styles/builder.css"
 import Sidebar from "./Sidebar/Sidebar"
-import {Grid, Button} from "@material-ui/core"
+import {Grid} from "@material-ui/core"
 import {Builder, Workspace, Panel, branch, item} from 'build-ui';
 import CounterView from "./components/Counter/CounterView";
 import TextView from "./components/TextBox/TextView";
@@ -10,16 +10,14 @@ import VideoView from "./components/Video/VideoView";
 import ButtonView from "./components/Button/ButtonView"
 import ShapeView from "./components/Shape/ShapeView"
 import SectionView from "./components/Section/SectionView";
-import TopBar from "./TopBar/TopBar";
+import TopBarView from "./TopBar/TopBarView";
 import CanvasView from "./components/canvas/CanvasView";
-import HeaderView from "./components/Header/HeaderView";
 //import TopBar from './TopBar';
 
 import { RiAlignJustify } from "react-icons/ri";
 import BuilderSelector from "./hooks/BuilderSelector";
-import { FooterView } from "./components/Footer";
 
-const MyBuilder = (props) => {
+const ViewBuilder = (props) => {
 
 
     const view = {
@@ -30,10 +28,7 @@ const MyBuilder = (props) => {
         Section: SectionView,
         Button: ButtonView,
         Shape: ShapeView,
-        Canvas: CanvasView,
-        Header: HeaderView,
-        // TextBox: TextView,
-        Footer: FooterView,
+        Canvas: CanvasView
     };
 
     const tree = branch(
@@ -48,13 +43,9 @@ const MyBuilder = (props) => {
             }
         })
     );
-    const clicking = () => {
-        console.log(tree);
-    }
 
     return ( 
     <div>
-        
         <Builder initialTree={tree}>
 
             <Grid 
@@ -70,7 +61,7 @@ const MyBuilder = (props) => {
                     xs = {12} 
                     md = {6}
                 >
-                    <TopBar save={props.save} id={props.id} style={"position: sticky;"}/>
+                    <TopBarView id={props.id} style={"position: sticky;"}/>
                 </Grid>
 
             </Grid>
@@ -84,7 +75,7 @@ const MyBuilder = (props) => {
                     item = {true}
                     xs={2}
                 >
-                    <Sidebar/>
+                    {/* <Sidebar/> */}
                 </Grid>
                 <Grid 
                     item = {true} 
@@ -98,9 +89,8 @@ const MyBuilder = (props) => {
             </Grid>
             </Grid>
         </Builder>
-
     </div>
     )
 }
 
-export default MyBuilder;
+export default ViewBuilder;
