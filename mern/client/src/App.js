@@ -9,7 +9,6 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
-import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
 import Create from "./components/create";
 import RecordList from "./components/recordList";
@@ -20,6 +19,7 @@ import View from "./components/view"
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Settings from "./components/settings";
+import SettingsTabs from "./components/SettingsTabs";
 import MyBuilder from "./dnd/MyBuilder"
 import PrivateRoute from "./components/PrivateRoute";
 import Dashboard from "./components/Dashboard";
@@ -60,6 +60,11 @@ if(localStorage.jwtToken) {
 const App = () => {
 
   const [email, setEmail] = useState("");
+  function changeEmail(newEmail) {
+    console.log(newEmail);
+    setEmail(newEmail);
+  }
+
   document.body.style = 'background: wheat;';
   return (
     <div>
@@ -102,7 +107,7 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/settings">
-          <Settings email={email} setEmail={setEmail}/>
+          <SettingsTabs email={email} onChangeEmail={changeEmail}/>
           <Footer/>
         </Route>
         <Route path="/forgot-password">

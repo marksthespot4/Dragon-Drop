@@ -15,3 +15,12 @@
 .center {
     text-align: center;
 }
+
+.copyright {
+    color: black;
+    text-shadow:
+    -0.5px -0.5px 0 white,
+    0.5px -0.5px 0 white,
+    -0.5px 0.5px 0 white,
+    0.5px 0.5px 0 white; 
+}

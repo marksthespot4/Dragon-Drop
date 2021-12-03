@@ -94,7 +94,6 @@ router.post("/forgotPassword", (req, res) =>
             const mailOptions = {
                 from: `dragonDropDoNotReply@gmail.com`,
                 to: req.body.email,
-                // to: 'hyun.changsoo7@gmail.com',
                 subject: `Password Reset Link`,
                 text: `click the link below to change your password:\n\nhttp://localhost:3000/reset/${token}`,
             };
@@ -177,6 +176,8 @@ router.post("/update/:email", (req, res) =>
             user.email = req.body.email;
             user.password = req.body.password;
             user.pagecount = req.body.pagecount;
+            user.theme = req.body.theme;
+            user.autoSave = req.body.autoSave;
             user.save()
                 .then(user => res.json(user))
                 .catch(err => console.log(err));
@@ -196,6 +197,8 @@ router.post("/update/id/:id", (req, res) =>
             user.email = req.body.email;
             user.password = req.body.password;
             user.pagecount = req.body.pagecount;
+            user.theme = req.body.theme;
+            user.autoSave = req.body.autoSave;
             user.save()
                 .then(user => res.json(user))
                 .catch(err => console.log(err));

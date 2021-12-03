@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBCard, MDBCardBody,MDBCardHeader, MDBCol, MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBIcon } from
-"mdbreact";
+import { setCurrentUser } from "../actions/authActions";
 import Button from 'react-bootstrap/Button';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
@@ -15,6 +14,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import emailjs from 'emailjs-com';
  
 const bcrypt = require("bcryptjs");
 
@@ -87,6 +87,7 @@ class SettingsTabs extends Component {
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleNewEmailChange = this.handleNewEmailChange.bind(this);
+        this.changeEmail = this.changeEmail.bind(this);
     }
 
     handleNewEmailChange = (e) => {
@@ -122,7 +123,7 @@ class SettingsTabs extends Component {
 
     handleKeyDownEmail = (e) => {
         if (e.key == 'Enter') {
-            this.changeEmail();
+            this.changeEmail(e);
         }
     }
 
@@ -142,8 +143,27 @@ class SettingsTabs extends Component {
         }
     }
 
-    changeEmail = () => {
-       // alert(this.state.userEmail)
+    sendEmail(e, oldEmail) {
+        e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
+        var info = {
+            to_name: oldEmail
+        }
+    
+        emailjs.send("service_80crbyd", "template_xqokuvy", info, "user_njLgAxwhnmvVRvRjylC0J")
+          .then((result) => {
+              //window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+              console.log("worked");
+              console.log(result);
+          }, (error) => {
+              console.log("error");
+              console.log(error.text);
+          });
+      }
+    
+
+    changeEmail = (e) => {
+        console.log(e);
+        var oldEmail = this.state.userEmail;
         getUser(this.state.userEmail).then(data =>{
             if (data == null) { // Account was not found
                 toast.error("Account under given email not found");
@@ -154,7 +174,7 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("E-mail cannot be changed if you are signed in through Google.");
+                toast.error("E-mail cannot be changed if you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
@@ -162,29 +182,36 @@ class SettingsTabs extends Component {
                 {
                     var email = "" + this.state.newEmail;
                     var confirmEmail =  "" + this.state.confirmEmail;
+                    const emailregexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     if (email !== confirmEmail) { // Passwords don't match
                         toast.error("Emails do not match!")
                     }
+                    else if (!emailregexp.test(email)) {
+                        toast.error("Invalid email!");
+                    }  
                     else {
-                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
                         getPages().then(data=>{
                             this.setState({
                                 pages: data || [],
                             });
                             for (var i = 0; i < this.state.pages.length; i++) {
-                                if (this.state.pages[i].user === this.state.userEmail) {
-                                    updatePage(this.state.newEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                                if (this.state.pages[i].user === oldEmail) {
+                                    updatePage(this.state.userEmail, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
                                 }
                             }
                         });
-                        toast.success('Email has been updated!');
+                        updateUserById(this.state.newEmail, data.password, data.pagecount, data._id);
+                        setCurrentUser(this.state.newEmail);
+                        this.props.onChangeEmail(this.state.newEmail);
                         this.setState({
                             currentPassword: '',
                             newEmail: '',
                             confirmEmail: '',
                             userEmail: this.state.newEmail
                         });
-                        this.props.setEmail(this.state.newEmail);
+                        toast.success('Email has been updated!');
+                        //this.props.setEmail(this.state.newEmail);
+                        this.sendEmail(e, oldEmail);
                     }
                 }
                 else
@@ -210,7 +237,7 @@ class SettingsTabs extends Component {
             }
             if(data.googleId != null)
             {
-                alert("Password cannot be changed you are signed in through Google.");
+                toast.error("Password cannot be changed you are signed in through Google.");
                 return;
             }
             bcrypt.compare(this.state.currentPassword, data.password).then(isMatch => {
@@ -273,7 +300,7 @@ class SettingsTabs extends Component {
             });
             for (var i = 0; i < this.state.pages.length; i++) {
                 if (this.state.pages[i].user === this.state.userEmail) {
-                    updatePage(this.state.pages[i].user, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, null, this.state.pages[i]._id);
+                    updatePage(this.state.pages[i].user, this.state.pages[i].pagename, this.state.private, this.state.pages[i].pagedata, this.state.pages[i].pagepreview, this.state.pages[i]._id);
                 }
             }
         });
@@ -325,7 +352,7 @@ class SettingsTabs extends Component {
                     // className="form-control"
                 />
                 <div align="left">
-                <Button onClick={() => this.changeEmail()}>
+                <Button onClick={this.changeEmail}>
                     Submit
                 </Button>
                 </div>
@@ -343,7 +370,26 @@ class SettingsTabs extends Component {
                         onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
-                    <h6>New Password</h6>
+                    <h6>
+                        <br/>
+                        New Password&nbsp;
+                        <OverlayTrigger
+                            placement="right"
+                            overlay={
+                                <Tooltip>
+                                    <b>Requires at least one:</b><br></br>
+                                    <ul style={{"text-align":"left"}}>
+                                        <li>Uppercase and lowercase</li>
+                                        <li>Number</li>
+                                        <li>Special character (!, @, etc.)</li>
+                                    </ul>
+                                    <b>Must be at least 8 characters</b>
+                                </Tooltip>
+                            }
+                        >
+                            <i class="bi bi-info-circle"></i>
+                        </OverlayTrigger>
+                    </h6>
                     <input
                         type="password"
                         value={this.state.password}
@@ -352,20 +398,6 @@ class SettingsTabs extends Component {
                         onKeyDown={this.handleKeyDownPassword}
                     // className="form-control"
                     />
-                    <OverlayTrigger
-                        placement="right"
-                        overlay={
-                            <Tooltip >
-                                <b>Requires at least one:</b><br></br>
-                                Uppercase and lowercase <br></br>
-                                Number<br></br>
-                                Special character (!, @, etc.)<br></br>
-                                <b>Must be at least 8 characters</b>
-                            </Tooltip>
-                        }
-                    >
-                        <i class="bi bi-info-circle"></i>
-                    </OverlayTrigger>
                     <h6><br></br>Confirm Password</h6>
                     <input
                         type="password"

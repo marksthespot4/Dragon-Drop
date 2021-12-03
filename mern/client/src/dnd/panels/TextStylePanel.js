@@ -21,7 +21,7 @@ const TextStylePanel = ({
 
     const handleBoldChange = () => {
         setBoldFont(!boldFont);
-        console.log(boldFont)
+        // console.log(boldFont)
         const updateStyle = {
             fontWeight: boldFont ? 'bold' : 'normal'
         };
@@ -34,7 +34,7 @@ const TextStylePanel = ({
 
     const handleItalicizeChange = () => {
         setItalics(!italics)
-        console.log(italics)
+        // console.log(italics)
         const updateStyle = {
             fontStyle: italics ? 'italic' : 'normal'
         };
@@ -46,7 +46,7 @@ const TextStylePanel = ({
     }
     const handleUnderlineChange = () => {
         setUnderline(!underline)
-        console.log(underline)
+        // console.log(underline)
         const updateStyle = {
             textDecorationLine: underline ? 'underline' : 'none'
         };

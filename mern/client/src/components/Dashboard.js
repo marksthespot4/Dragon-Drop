@@ -4,11 +4,11 @@ import {connect} from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Button from "react-bootstrap/Button";
 import logo from "../imgs/dragonNoText.png";
-import Modal from "react-bootstrap/Modal";
-import CloseButton from "react-bootstrap/CloseButton";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-
+// import Modal from "react-bootstrap/Modal";
+// import CloseButton from "react-bootstrap/CloseButton";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// import Tooltip from "react-bootstrap/Tooltip";
+import { getUserID } from "./user";
 
 /* MARK'S COMMENTS
 This file is the "logout" page, called dashboard because
@@ -24,8 +24,20 @@ class Dashboard extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            background: true
+        }
     }
 
+    theme(id) {
+        if(this.props.auth.isAuthenticated)
+        {
+            getUserID(id).then(data=>{
+                this.setState({background: data.theme})
+            });
+        }
+    }
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -34,8 +46,10 @@ class Dashboard extends Component {
 
     render() {
         const {user} = this.props.auth;
-        console.log(user.id);
+        // console.log(user.id);
+        // this.theme(user.id);
 
+        // document.body.style = this.state.background ? "background: wheat;" : "background: slategray;";
 
         return (
             <div className="Home" style={{height: "90vh"}}>
