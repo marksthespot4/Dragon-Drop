@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="added popups for ctrl c and ctrl V">
+    <list default="true" id="3e64a645-ee07-45a8-b194-6d9d3b04dc1a" name="Changes" comment="updated packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mern/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/components/faq.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/components/faq.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mern/client/src/dnd/components/Shape/Shape.js" beforeDir="false" afterPath="$PROJECT_DIR$/mern/client/src/dnd/components/Shape/Shape.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,14 +96,7 @@
       <workItem from="1637859784969" duration="4241000" />
       <workItem from="1638160989819" duration="477000" />
       <workItem from="1638288241935" duration="13323000" />
-      <workItem from="1638395555656" duration="8918000" />
-    </task>
-    <task id="LOCAL-00019" summary="Fixed button generating on refresh.">
-      <created>1634099743569</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1634099743569</updated>
+      <workItem from="1638395555656" duration="10042000" />
     </task>
     <task id="LOCAL-00020" summary="Created basic button for the drag and drop editor.">
       <created>1634174795964</created>
@@ -441,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638551778485</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="updated packages">
+      <created>1638565969284</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1638565969285</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -461,7 +461,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Made sure that the login form gives correct errors." />
     <MESSAGE value="changed shape back" />
     <MESSAGE value="fixed register!" />
     <MESSAGE value="fixed email searching for lowercase instead of regular case" />
@@ -486,6 +485,7 @@
     <MESSAGE value="Made FAQ not as terrible." />
     <MESSAGE value="added email validation." />
     <MESSAGE value="added popups for ctrl c and ctrl V" />
-    <option name="LAST_COMMIT_MESSAGE" value="added popups for ctrl c and ctrl V" />
+    <MESSAGE value="updated packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated packages" />
   </component>
 </project>

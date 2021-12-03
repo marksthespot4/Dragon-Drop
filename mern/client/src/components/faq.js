@@ -41,7 +41,7 @@ class Faq extends Component {
                         <Accordion.Item eventKey="1" className="colorBody">
                             <Accordion.Header>How do I export my created portfolio?</Accordion.Header>
                             <Accordion.Body>
-                                We have not quite yet figured it out, be patient!
+                                Press Download on the edit page!
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2" className="colorBody">
