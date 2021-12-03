@@ -7,7 +7,7 @@ import setAuthToken from "./utils/setAuthToken";
 import {setCurrentUser, logoutUser} from "./actions/authActions";
 import { Provider } from "react-redux";
 import store from "./store";
-
+import { ToastContainer} from 'react-toastify';
 // We import all the components we need in our app
 import Navbar from "./components/navbarDD";
 import Edit from "./components/edit";
@@ -39,8 +39,10 @@ if(localStorage.jwtToken) {
   //set auth token header auth
   const token = localStorage.jwtToken;
   setAuthToken(token);
+  console.log(token);
   // Decode token and get user info and exp
   const decoded = jwt_decode(token);
+  console.log("HERE's THE TOKEN");
   console.log(decoded);
   //set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
@@ -61,6 +63,17 @@ const App = () => {
   document.body.style = 'background: wheat;';
   return (
     <div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        />
       <Provider store={store}>
       <Header email={email}/>
       {/* <Navbar /> */}
@@ -89,7 +102,7 @@ const App = () => {
           <Footer/>
         </Route>
         <Route path="/settings">
-          <Settings email={email}/>
+          <Settings email={email} setEmail={setEmail}/>
           <Footer/>
         </Route>
         <Route path="/forgot-password">

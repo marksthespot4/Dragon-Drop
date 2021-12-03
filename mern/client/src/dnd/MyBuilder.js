@@ -33,7 +33,6 @@ const MyBuilder = (props) => {
         Canvas: CanvasView,
         Header: HeaderView,
         // TextBox: TextView,
-        Canvas: CanvasView,
         Footer: FooterView,
     };
 

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import useStyle from './style/Image'
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Image = React.forwardRef(({
     imageUrl, 

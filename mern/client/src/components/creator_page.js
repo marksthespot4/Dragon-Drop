@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import Settings from "./settings";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container"
+import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
@@ -12,6 +13,11 @@ import mark from "../imgs/mark.jpg";
 import ancil from "../imgs/ancil.png";
 import lucy from "../imgs/lucy.jfif";
 import charlie from "../imgs/charlie.jpg";
+import slide_1 from "../imgs/slide_1.jpg";
+import slide_2 from "../imgs/slide_2.jpg";
+import slide_3 from "../imgs/slide_3.jpg";
+import slide_4 from "../imgs/slide_4.jpg";
+import slide_5 from "../imgs/slide_5.jpg";
 import "../CSS/creators.css";
 
 class Creator_page extends Component {
@@ -132,9 +138,66 @@ class Creator_page extends Component {
                             </Container>
                         </Col>
                     </Row>
+                    <div className="bar"/>
                 </Container>
+
                 <Container className="center" fluid>
-                    <p>Add a slideshow of fun pictures here</p>
+                    <Carousel fade className="slideShowBar">
+                        <Carousel.Item>
+                            <img
+                                className="slideShow"
+                                src={slide_1}
+                                alt="First slide"
+                            />
+                            <Carousel.Caption>
+                                <p>Ancil helps Brandon out.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="slideShow"
+                                src={slide_2}
+                                alt="Second slide"
+                            />
+
+                            <Carousel.Caption>
+                                <p>Charlie takes a photo for his scrapbook.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="slideShow"
+                                src={slide_3}
+                                alt="Third slide"
+                            />
+
+                            <Carousel.Caption>
+                                <p>Sarah laughs.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="slideShow"
+                                src={slide_4}
+                                alt="Fourth slide"
+                            />
+
+                            <Carousel.Caption>
+                                <p style={{color: "black"}}>The team deliberates.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <img
+                                className="slideShow"
+                                src={slide_5}
+                                alt="Fifth slide"
+                            />
+
+                            <Carousel.Caption>
+                                <p>Ancil and Charlie talk it out.</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
                 </Container>
             </div>
         )

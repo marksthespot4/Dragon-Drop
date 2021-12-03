@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import useStyle from './style/Shape';
 import React from 'react';
+import { toast } from 'react-toastify';
 
 const Shape = React.forwardRef(({
     shapeType,
@@ -25,7 +26,7 @@ const Shape = React.forwardRef(({
             }
             else
             {
-                alert("Please enter a valid http url.");
+                toast.error("Please enter a valid http url.");
             }
         }
         return <div className = {classAll}>

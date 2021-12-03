@@ -13,6 +13,7 @@ import { withRouter } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import CloseButton from 'react-bootstrap/CloseButton'
 import Switch from "react-switch";
+import jwt from "jsonwebtoken";
 
 import Button from 'react-bootstrap/Button';
 // import setAuthToken from "../utils/setAuthToken";
@@ -24,6 +25,8 @@ import store from "../store"
 import SwitchButton from "./switch_button";
 import { getUser, updateUser, getUserID } from "./user";
 import PropTypes from "prop-types";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "../utils/setAuthToken";
 
 
 /* Mark's Comments
@@ -119,8 +122,32 @@ class UserPage extends Component {
             //set our jwtToken
             getUserID(this.props.match.params.id).then(data => {
                 //console.log(data);
+                localStorage.clear();
                 localStorage.setItem('localEmail', data.email);
-                store.dispatch(setCurrentUser(data));
+                const payload = {
+                    id:data.id,
+                    email: data.email
+                };
+                jwt.sign(
+                    payload,
+                    "secret",
+                    {
+                        expiresIn:31556926
+                    },
+                    (err, token) =>
+                    {
+                        console.log("TOKEN");
+                        const realToken = "Bearer " + token;
+                        localStorage.setItem("jwtToken", realToken);
+                        const local = localStorage.getItem("jwtToken");
+                        console.log(local);
+                        setAuthToken(local);
+                        const decoded = jwt_decode(local);
+                        console.log(decoded);
+                        store.dispatch(setCurrentUser(decoded));
+                    }
+                );
+
             });
             this.props.history.push("/user_page");
         }
@@ -132,7 +159,7 @@ class UserPage extends Component {
         else
         {
             console.log("USER NOT LOGGED IN");
-            this.props.history.push("/");
+            //this.props.history.push("/");
         }
 
         getPages().then(data=>{
@@ -149,7 +176,7 @@ class UserPage extends Component {
             // console.log(this.state.currentUser);
             // console.log(data.pagecount);
             if(data.pagecount >= 5) {
-                alert("Cannot create new page: Reached maximum page count!");
+                toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {
@@ -169,7 +196,7 @@ class UserPage extends Component {
         getUser(this.state.currentUser).then(data =>{
             // console.log(data.pagecount);
             if(data.pagecount >= 5) {
-                alert("Cannot create new page: Reached maximum page count!");
+                toast.error("Cannot create new page: Reached maximum page count!");
                 return;
             }
             else {
