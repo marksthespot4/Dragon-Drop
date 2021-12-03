@@ -14,23 +14,11 @@ const Image = React.forwardRef(({
     const classes = useStyle(style);
     const classImage = clsx(classes.image, classes.fill);
     const classAll = clsx(className, classes.ui)
-    const update = () => (
-        console.log(imageUrl)
-    )
-    const openTab = () =>
-    {
-        var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(extLink);
-        if (valid)
-        {
-            window.open(extLink);
-        }
-        else
-        {
-            toast.error("Please enter a valid http url.");
-        }
-    }
+    
     return <div className = {classAll}>
-            <img src={imageUrl} onClick={update} onContextMenu={() => openTab()} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
+            <a href={extLink}>
+            <img src={imageUrl} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
+            </a>
 
             {children}
         </div>

@@ -25,7 +25,7 @@ const ShapeView = ({
     })
 
     return <BuilderShape
-        onClick = {editor.handleSelect}
+        onContextMenu = {editor.handleSelect}
         onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
         onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
         draggable = {!editor.meta.fixed}
