@@ -193,8 +193,8 @@ const TopBar = ({
     }
 
     const keydownHandler = (e) => {
-        if(e.ctrlKey && e.keyCode == 90) handleUndo()
-        else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+        if(e.ctrlKey && e.keyCode === 90) handleUndo()
+        else if(e.ctrlKey && e.keyCode === 89) handleRedo()
         else if(e.ctrlKey && e.keyCode === 67) notifyCopied()
         else if(e.ctrlKey && e.keyCode === 86) notifyPasted()
         else if (e.ctrlKey && e.keyCode == 88) toast.info("Text selected")
