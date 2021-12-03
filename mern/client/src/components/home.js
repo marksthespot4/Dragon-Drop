@@ -298,8 +298,8 @@ class Home extends Component {
                             onKeyDown={this.handleKeyDownLogIn}
                             // className="form-control"
                         />
-                        <a href={"forgot-password"}>
-                            forgot password?
+                        <a href={"forgot-password"} style={{color:"#0071ce"}}>
+                            Forgot password?
                         </a> 
 
                         {/* PUT IN FUNCTIONALITY FOR "FORGOT PASSWORD" LATER */}
@@ -355,7 +355,7 @@ class Home extends Component {
                         <h6><br/>
                             Password&nbsp;
                             <OverlayTrigger
-                                placement="right"
+                                placement="top"
                                 overlay={
                                     <Tooltip>
                                         <b>Requires at least one:</b><br></br>
