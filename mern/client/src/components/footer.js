@@ -44,34 +44,10 @@ render() {
                         </NavLink>
                     </Col>
                 </Row>
-                <Row className="justify-content-md-center">
+                <Row className="copyright justify-content-md-center">
                   Copyright 2021 ©
                 </Row>
             </Container>
-
-    {/* <Box>
-      <h1 style={{ color: "green", 
-                   textAlign: "center", 
-                   marginTop: "-50px" }}>
-        GeeksforGeeks: A Computer Science Portal for Geeks
-      </h1>
-      <Container>
-        <Row>
-          <Column>
-            <Heading>About Us</Heading>
-            <FooterLink href="#">Aim</FooterLink>
-          </Column>
-          <Column>
-            <Heading>Services</Heading>
-            <FooterLink href="#">Writing</FooterLink>
-          </Column>
-          <Column>
-            <Heading>Contact Us</Heading>
-            <FooterLink href="#">Uttar Pradesh</FooterLink>
-          </Column>
-        </Row>
-      </Container>
-    </Box> */}
         </div>
     )}
 }
