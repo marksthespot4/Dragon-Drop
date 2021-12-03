@@ -16,6 +16,8 @@ import Switch from "react-switch";
 import jwt from "jsonwebtoken";
 import resumeTemplate from "../imgs/resumeTemplate.png";
 import blankTemplate from "../imgs/blankTemplate.png";
+import artTemplate from "../imgs/artTemplate.png";
+import recipeTemplate from "../imgs/recipeTemplate.png";
 
 
 import Container from 'react-bootstrap/Container';
@@ -476,7 +478,7 @@ class UserPage extends Component {
                                                 <img
                                                     width="250px" 
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                                    src={artTemplate}
                                                 >
                                                 </img>
                                             </label>
@@ -488,7 +490,7 @@ class UserPage extends Component {
                                                 <img 
                                                     width="250px" 
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                                    src={recipeTemplate}
                                                 >
                                                 </img>
                                             </label>

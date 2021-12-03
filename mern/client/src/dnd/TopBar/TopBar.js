@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "./save.css";
 import useExporter from "../hooks/useExporter";
 import {unstable_batchedUpdates as batch} from "react-dom";
+import { getUser } from "../../components/user";
 
 const TopBar = ({
     className,
@@ -25,6 +26,7 @@ const TopBar = ({
     const [htmlLink, setHTMLLink] = useState(null);
     const [cssLink, setCSSLink] = useState(null);
     const [file, setFile] = useState(null);
+    const [autoSave, setAutoSave] = useState(false);
     
     const {
         canUndo,
@@ -40,6 +42,10 @@ const TopBar = ({
         getPage(props.id).then(data => {
             // console.log(data.pagedata);
             load(data.pagedata);
+            getUser(data.user).then(data => {
+                setAutoSave(data.autoSave);
+                setCount(count + 1);
+            });
         });
         window.addEventListener('keydown', keydownHandler);
         // const interval = setInterval(() => {
@@ -57,18 +63,20 @@ const TopBar = ({
       }, []);  
 
     //Most recent attempt at autosave  
-    //   useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         setCount(count + 1);
-    //         handleSave();
-    //         var currentTime = new Date();
-    //         var hour = ('0'+currentTime.getHours()).substr(-2);
-    //         var minute = ('0'+currentTime.getMinutes()).substr(-2);
-    //         var second = ('0'+currentTime.getSeconds()).substr(-2);
-    //         setLastSave(hour + ':' + minute + ':' + second)
-    //     }, 15000);
-    //     return () => {clearInterval(interval); setCount(0)}
-    //   }, [count]);
+      useEffect(() => {
+        if(autoSave) {
+            const interval = setInterval(() => {
+                setCount(count + 1);
+                handleSave();
+                var currentTime = new Date();
+                var hour = ('0'+currentTime.getHours()).substr(-2);
+                var minute = ('0'+currentTime.getMinutes()).substr(-2);
+                var second = ('0'+currentTime.getSeconds()).substr(-2);
+                setLastSave(hour + ':' + minute + ':' + second)
+            }, 5000);
+            return () => {clearInterval(interval); setCount(0)}
+        }
+      }, [count]);
 
     //save every time the tree size increases. 
     //Too many updates to the tree. Checking if the tree was increased in size is too much computation
@@ -91,7 +99,15 @@ const TopBar = ({
 
     const notifySaved = () => { 
         toast.success('Project Saved');
-      }
+    }
+
+    const notifyCopied = () => {
+        toast.success('Component Copied!');
+    }
+
+    const notifyPasted = () => {
+        toast.success('Component Pasted!');
+    }
 
     const load = (saveData) => {
         if(saveData != null) {  
@@ -179,12 +195,14 @@ const TopBar = ({
     const keydownHandler = (e) => {
         if(e.ctrlKey && e.keyCode == 90) handleUndo()
         else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+        else if(e.ctrlKey && e.keyCode === 67) notifyCopied()
+        else if(e.ctrlKey && e.keyCode === 86) notifyPasted()
         else if (e.ctrlKey && e.keyCode == 88) toast.info("Text selected")
         else if(e.ctrlKey && e.keyCode == 73) toast.info("Image selected")
         else if(e.ctrlKey && e.keyCode == 66) toast.info("Button selected")
         else if(e.ctrlKey && e.keyCode == 77) toast.info("Shape selected")
         else if(e.ctrlKey && e.keyCode == 69) toast.info("Section selected")
-
+       
     }
 
     const notify = () => { 
@@ -231,6 +249,10 @@ const TopBar = ({
         <Button onClick={() => {handleSave(); notifySaved()}}>
             Save
         </Button>
+
+        <Button onClick={handleExport}>
+            Download
+        </Button>
         {lastSave === null
         ?
         <></>
@@ -239,9 +261,6 @@ const TopBar = ({
             Last Saved: {lastSave}
         </span>
         }
-        <Button onClick={handleExport}>
-            Download
-        </Button>
         <a
             hidden = {false}
             download = {true}

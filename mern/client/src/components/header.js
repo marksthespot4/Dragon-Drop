@@ -35,14 +35,16 @@ class Header extends Component {
 
     componentDidMount() {
         this.setState({theme: true})
-        getUser(this.state.email).then(data=>{
-            // console.log(data);
-            if(data) {
-                this.setState({
-                    theme: data.theme,
-                });
-            }
-        });
+        if (this.state.email) {
+            getUser(this.state.email).then(data=>{
+                // console.log(data);
+                if(data) {
+                    this.setState({
+                        theme: data.theme,
+                    });
+                }
+            });
+        }
       }
 
     handleChange() {

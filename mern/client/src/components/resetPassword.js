@@ -66,7 +66,7 @@ class ResetPassword extends Component{
                     // this.state.password = hash;
                     getUser(this.state.email).then(data =>{
                         // updateUser(data.email, this.state.password, data.pagecount, data._id);
-                        updateUser(data.email, hash, data.pagecount, data._id);
+                        updateUser(data.email, hash, data.pagecount, data._id, data.theme, data.autoSave);
 
                     });
                     alert("Password has been updated!");

@@ -14,8 +14,16 @@ class Faq extends Component {
         return (
             <div>
                 <Container fluid>
-                    <h1 className="center"> Frequently Asked Questions </h1>
-                    <h5 className="center">
+                    <h1 
+                        className="center" 
+                        style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                    >  
+                        Frequently Asked Questions
+                    </h1>
+                    <h5 
+                        className="center" 
+                        style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                    > 
                         We know you probably have a lot of questions.
                         <br/> We did too. (Still do.)
                         <br/> Here's a place to get some clarification!
@@ -33,7 +41,7 @@ class Faq extends Component {
                         <Accordion.Item eventKey="1" className="colorBody">
                             <Accordion.Header>How do I export my created portfolio?</Accordion.Header>
                             <Accordion.Body>
-                                We have not quite yet figured it out, be patient!
+                                Press Download on the edit page!
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2" className="colorBody">
