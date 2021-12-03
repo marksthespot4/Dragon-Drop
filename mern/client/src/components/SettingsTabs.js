@@ -14,7 +14,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
- 
+import Switch from "react-switch";
+
 const bcrypt = require("bcryptjs");
 
 function TabPanel(props) {
@@ -71,6 +72,7 @@ class SettingsTabs extends Component {
             email = localStorage.getItem( 'localEmail' );
         }
 
+
         this.state = {
             pages: [],
             activeItem: "1",
@@ -82,11 +84,20 @@ class SettingsTabs extends Component {
             newEmail: "",
             confirmEmail: "",
             private: false,
+            save: false,
         };
 
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.handleNewEmailChange = this.handleNewEmailChange.bind(this);
     }
+
+    componentDidMount() {
+        getUser(this.state.userEmail).then(data=>{
+          this.setState({
+            save: data.autoSave,
+          });
+        });
+      }
 
     handleNewEmailChange = (e) => {
         this.setState({
@@ -278,6 +289,16 @@ class SettingsTabs extends Component {
         });
     
     }
+    changeSave = () => {
+        this.setState((state) => {
+            return {save: !state.save}
+          }, this.updateSave());    
+    }
+    updateSave = () => {
+        getUser(this.state.userEmail).then(data =>{
+            updateUser(data.email, data.password, data.pagecount, data._id, data.theme, this.state.save);
+        });
+    }
 
   render() {
       return (
@@ -291,6 +312,7 @@ class SettingsTabs extends Component {
                 <Tab label="Change Email" {...a11yProps(0)} />
                 <Tab label="Change Password" {...a11yProps(1)} />
                 <Tab label="Change Privacy" {...a11yProps(2)} />
+                <Tab label="Auto save setting" {...a11yProps(3)} />
                 </Tabs>
             </Box>
             
@@ -390,6 +412,14 @@ class SettingsTabs extends Component {
                 <Button onClick={() => this.changePrivacy()}>
                     {this.state.private ? "Make all pages private" : "Make all pages public"}
                 </Button>
+            </TabPanel>
+            <TabPanel value={this.state.activeItem} index = {3}>
+                Autosave
+                <Switch
+                    onChange={this.changeSave} 
+                    checked={this.state.save}
+                    >
+                </Switch>
             </TabPanel>
             </Box>
             </h1>
