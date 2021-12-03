@@ -14,8 +14,16 @@ class Faq extends Component {
         return (
             <div>
                 <Container fluid>
-                    <h1 className="center"> Frequently Asked Questions </h1>
-                    <h5 className="center">
+                    <h1 
+                        className="center" 
+                        style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                    >  
+                        Frequently Asked Questions
+                    </h1>
+                    <h5 
+                        className="center" 
+                        style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                    > 
                         We know you probably have a lot of questions.
                         <br/> We did too. (Still do.)
                         <br/> Here's a place to get some clarification!
