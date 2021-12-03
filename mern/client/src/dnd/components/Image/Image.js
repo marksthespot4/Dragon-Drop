@@ -16,7 +16,7 @@ const Image = React.forwardRef(({
     const classAll = clsx(className, classes.ui)
     
     return <div className = {classAll}>
-            <a href={extLink}>
+            <a href={extLink} target="_blank">
             <img src={imageUrl} className={classImage} ref={ref} {...props} alt={"Invalid input"}/>
             </a>
 

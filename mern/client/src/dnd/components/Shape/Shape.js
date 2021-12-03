@@ -16,7 +16,7 @@ const Shape = React.forwardRef(({
         const classAll = clsx(className, classes.ui)
 
         return <div className = {classAll}>
-                <a href={shapeText}>
+                <a href={shapeText} target="_blank">
                 <img src={shapeType} className={classShape} ref={ref} {...props} alt={"Invalid input"}/>
                 </a>
                 {children}
