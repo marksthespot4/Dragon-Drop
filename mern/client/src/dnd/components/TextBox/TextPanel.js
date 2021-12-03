@@ -58,7 +58,7 @@ const TextPanel = ({
         </div>
 
         <ColorPanel id = {id} />
-        {/* <FontPanel id = {id} /> */}
+        <FontPanel id = {id} />
         <SizingPanel id = {id} />
         <PositionPanel id = {id} />
         <TextStylePanel id = {id} />
