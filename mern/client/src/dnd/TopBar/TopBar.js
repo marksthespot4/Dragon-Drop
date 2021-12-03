@@ -91,7 +91,15 @@ const TopBar = ({
 
     const notifySaved = () => { 
         toast.success('Project Saved');
-      }
+    }
+
+    const notifyCopied = () => {
+        toast.success('Component Copied!');
+    }
+
+    const notifyPasted = () => {
+        toast.success('Component Pasted!');
+    }
 
     const load = (saveData) => {
         if(saveData != null) {  
@@ -177,14 +185,15 @@ const TopBar = ({
     }
 
     const keydownHandler = (e) => {
-        if(e.ctrlKey && e.keyCode == 90) handleUndo()
-        else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+        if(e.ctrlKey && e.keyCode === 90) handleUndo()
+        else if(e.ctrlKey && e.keyCode === 89) handleRedo()
+        else if(e.ctrlKey && e.keyCode === 67) notifyCopied()
+        else if(e.ctrlKey && e.keyCode === 86) notifyPasted()
         else if (e.ctrlKey && e.keyCode == 88) toast.info("Text selected")
         else if(e.ctrlKey && e.keyCode == 73) toast.info("Image selected")
         else if(e.ctrlKey && e.keyCode == 66) toast.info("Button selected")
         else if(e.ctrlKey && e.keyCode == 77) toast.info("Shape selected")
         else if(e.ctrlKey && e.keyCode == 69) toast.info("Section selected")
-
     }
 
     const notify = () => { 
