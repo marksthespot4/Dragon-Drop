@@ -2,7 +2,7 @@
 #header {
     position: fixed;
     overflow: auto;
-    width: 300px;
+    width: 220px;
   }
   #header .closemenu {
     color: #000;

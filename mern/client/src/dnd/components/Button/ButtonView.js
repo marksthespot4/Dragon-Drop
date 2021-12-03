@@ -34,7 +34,7 @@ const ButtonView = ({
     onResizeStart = {editor.handleResizeStart}
     onResize = {editor.handleResize}
     onResizeEnd = {editor.handleResizeEnd}
-    onClick = {editor.handleSelect}
+    onContextMenu = {editor.handleSelect}
     className = {classes.view}
     {...props}
     style = {styler.completeStyle(props.style)}
