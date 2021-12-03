@@ -1,5 +1,7 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
-import { Button } from "@material-ui/core";
+import {useEffect} from 'react';
+import {Button, Tooltip} from "@material-ui/core";
+import { toast } from 'react-toastify';
 import mario from "../../../imgs/new_mario.png"
 // import useStyle from "./style/ImageTools";
 // import clsx from 'clsx';
@@ -32,6 +34,18 @@ const ImageTools = ({
             data: data
         });
     }
+    useEffect(() => {
+        window.addEventListener('keydown', keydownHandler);
+      }, []); 
+
+    const handleShortcut = () => {
+        toast.info("Image selected");
+    }   
+    
+    const keydownHandler = (e) => {
+        if(e.ctrlKey && e.keyCode == 73) handleShortcut()
+    }
+
     return <DnDBuilder
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
@@ -39,7 +53,9 @@ const ImageTools = ({
         //className = {classAll}
         {...rest}
     >
+    <Tooltip title="Shortcut: ctrl + i">
         <Button> Image </Button>
+    </Tooltip>  
     </DnDBuilder>
 }
 

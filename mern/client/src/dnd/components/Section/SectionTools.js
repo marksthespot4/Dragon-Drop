@@ -1,5 +1,5 @@
 import { branch, DnDBuilder, item, useTools } from 'build-ui'
-import { Button } from "@material-ui/core";
+import {Button, Tooltip} from "@material-ui/core";
 
 const SectionTools = ({
     className,
@@ -24,13 +24,16 @@ const SectionTools = ({
             data: data,
         });
     }
+    
     return <DnDBuilder
         onDragStart={handleDragTool}
         onDragEnd={tools.handleDragEnd}
         draggable={true}
         {...rest}
     >
-        <Button>Section</Button>
+      <Tooltip title="Shortcut: ctrl + e">
+        <Button> Section </Button>
+    </Tooltip>  
     </DnDBuilder>
 }
 

@@ -179,6 +179,12 @@ const TopBar = ({
     const keydownHandler = (e) => {
         if(e.ctrlKey && e.keyCode == 90) handleUndo()
         else if(e.ctrlKey && e.keyCode == 89) handleRedo()
+        else if (e.ctrlKey && e.keyCode == 88) toast.info("Text selected")
+        else if(e.ctrlKey && e.keyCode == 73) toast.info("Image selected")
+        else if(e.ctrlKey && e.keyCode == 66) toast.info("Button selected")
+        else if(e.ctrlKey && e.keyCode == 77) toast.info("Shape selected")
+        else if(e.ctrlKey && e.keyCode == 69) toast.info("Section selected")
+
     }
 
     const notify = () => { 
@@ -205,7 +211,7 @@ const TopBar = ({
 
         <ToastContainer 
             position="top-center"
-            autoClose={3000}
+            autoClose={1000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick
@@ -213,6 +219,7 @@ const TopBar = ({
             pauseOnFocusLoss
             draggable
             pauseOnHover
+            limit={1}
         />
         <Button disabled = {!canUndo} onClick = {handleUndo}>
             Undo

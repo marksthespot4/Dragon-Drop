@@ -1,5 +1,5 @@
 import {branch, item, useTools, DnDBuilder} from "build-ui";
-import { Button } from "@material-ui/core"
+import {Button, Tooltip} from "@material-ui/core";
 
 const ShapeTools = () => {
     const tools = useTools();
@@ -24,12 +24,15 @@ const ShapeTools = () => {
             data: data
         });
     }
+  
     return <DnDBuilder
         onDragStart = {handleDragTool}
         onDragEnd = {tools.handleDragEnd}
         draggable = {true}
     >
-        <Button>Shape</Button>
+    <Tooltip title="Shortcut: ctrl + m">
+        <Button> Shape </Button>
+    </Tooltip>  
     </DnDBuilder>
 }
 
