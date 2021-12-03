@@ -11,8 +11,8 @@ const DragonLayers = () => {
         Text: LayerDraggable,
         Video: LayerDraggable,
         Button: LayerDraggable,
-        Header: LayerDraggable,
-        Footer: LayerDraggable,
+        Header: LayerDroppable,
+        Footer: LayerDroppable,
     }
     return <Layers view={view} />
 }
