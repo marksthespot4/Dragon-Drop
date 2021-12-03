@@ -1,6 +1,6 @@
 import {Motion, spring} from 'react-motion';
 import {Component} from 'react';
-import { Button } from "@material-ui/core";
+import Button from 'react-bootstrap/Button';
 
 class RichEditorMenu extends Component {
     constructor() {
