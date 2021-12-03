@@ -29,7 +29,9 @@ const Shape = React.forwardRef(({
             }
         }
         return <div className = {classAll}>
+                <a href={shapeText}>
                 <img src={shapeType} onClick={update} onContextMenu={() => openTab()} className={classShape} ref={ref} {...props} alt={"Invalid input"}/>
+                </a>
                 {children}
             </div>
 });
