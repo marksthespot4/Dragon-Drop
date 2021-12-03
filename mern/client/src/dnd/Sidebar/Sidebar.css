@@ -1,7 +1,7 @@
 
 #header {
     position: fixed;
-    overflow: scroll;
+    overflow: auto;
     width: 220px;
   }
   #header .closemenu {
@@ -17,9 +17,10 @@
     cursor: pointer;
   }
   #header .pro-sidebar {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     min-width: 100%;
+    overflow: auto;
   }
   #header .pro-sidebar.collapsed {
     width: 120px;
@@ -61,11 +62,12 @@
   @media only screen and (max-width: 720px) {
   }
 .tools {
+  overflow: auto;
   display: 'flex';
   align-items: 'center';
   justify-content: 'center';
 }
 
 .overflow {
-  overflow-y: auto
+  overflow: auto
 }

@@ -31,9 +31,18 @@ class Creator_page extends Component {
         return (
             <div>
             <Container fluid>
-                <h1 className="center"> Meet the Team! </h1>
-                <h5 className="center"> Our hardworking engineers are determined to help you!
-                <br/>Hit them up on LinkedIn or check out their GitHubs!
+                <h1 
+                    className="center" 
+                    style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                > 
+                    Meet the Team! 
+                </h1>
+                <h5 
+                    className="center" 
+                    style={{color: "black", "text-shadow":"-0.5px -0.5px 0 white,0.5px -0.5px 0 white,-0.5px 0.5px 0 white,0.5px 0.5px 0 white"}}
+                > 
+                    Our hardworking engineers are determined to help you!
+                    <br/>Hit them up on LinkedIn or check out their GitHubs!
                 </h5>
             </Container>
 
@@ -47,7 +56,8 @@ class Creator_page extends Component {
                                 <Card.Body>
                                     <Card.Title>Brandon Xu</Card.Title>
                                     <Card.Text>
-                                        Brandon Xu is a CS/DS Student on the Software Engineering track.
+                                        Brandon is a CS/DS Student on the Software Engineering track.
+                                        <br/>This is Brandon.
                                     </Card.Text>
                                     <Card.Link href="https://github.com/brandonxu9">GitHub</Card.Link>
                                     <Card.Link href="https://www.linkedin.com/in/brandon-xu-32ab13191/">LinkedIn</Card.Link>

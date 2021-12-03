@@ -16,6 +16,8 @@ import Switch from "react-switch";
 import jwt from "jsonwebtoken";
 import resumeTemplate from "../imgs/resumeTemplate.png";
 import blankTemplate from "../imgs/blankTemplate.png";
+import artTemplate from "../imgs/artTemplate.png";
+import recipeTemplate from "../imgs/recipeTemplate.png";
 
 
 import Container from 'react-bootstrap/Container';
@@ -66,13 +68,9 @@ const Page = (props) => (
                    data-bs-toggle="dropdown" aria-expanded="false">
                     <span className="visually-hidden"> Toggle Dropdown</span>
                 </i>
-
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a className="dropdown-item" href="/create-page">Edit</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => {props.renamePage(props.page._id)}}>Rename</a></li>
                     <li><a className="dropdown-item" href="#" onClick={() => {props.duplicatePage(props.page.pagename, props.page.pagedata, props.page.pub, props.page.pagepreview)}}>Duplicate</a></li>
-                    <li><a className="dropdown-item" href="#" onClick={() => {props.exportPage(props.page._id)}}>Download</a></li>
-                    <li><a className="dropdown-item" href={props.page.pagepreview} download="image.jpg">Download as Image </a></li>
                     <li><a className="dropdown-item" style={{color:"red"}} href ="#" onClick={() => {props.deleteMyPage(props.page._id); delete_notify();}}>Delete</a></li>
                 </ul>
             </div>
@@ -89,7 +87,7 @@ const Page = (props) => (
 const delete_notify = () => toast.success('Page Successfully Deleted!');
 
 class UserPage extends Component {
-
+    
     constructor(props) {
 
         super(props);
@@ -129,6 +127,7 @@ class UserPage extends Component {
             //and set the local email in storage as the gmail.
             //also, set our currentUser and searchUser as gmail.
             //set our jwtToken
+            
             getUserID(this.props.match.params.id).then(data => {
                 //console.log(data);
                 localStorage.clear();
@@ -162,6 +161,7 @@ class UserPage extends Component {
         }
         if (this.props.auth.isAuthenticated)
         {
+            console.log(this.state.currentUser);
             console.log("USER IS AUTHENTICATED ON USER PAGE");
 
         }
@@ -478,7 +478,7 @@ class UserPage extends Component {
                                                 <img
                                                     width="250px" 
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://ssb.wiki.gallery/images/d/de/PeachSuperMarioParty.png"}
+                                                    src={artTemplate}
                                                 >
                                                 </img>
                                             </label>
@@ -490,7 +490,7 @@ class UserPage extends Component {
                                                 <img 
                                                     width="250px" 
                                                     style={{ border: "3px solid #555" }}
-                                                    src={"https://static.wixstatic.com/media/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png/v1/fill/w_320,h_331,q_90/2cd43b_1094e370f17341469e87f5b397249ab7~mv2.png"}
+                                                    src={recipeTemplate}
                                                 >
                                                 </img>
                                             </label>
