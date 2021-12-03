@@ -14,24 +14,10 @@ const Shape = React.forwardRef(({
         const classes = useStyle(style);
         const classShape = clsx(classes.shape, classes.fill);
         const classAll = clsx(className, classes.ui)
-        const update = () => (
-            console.log(shapeType)
-        )
-        const openTab = () =>
-        {
-            var valid = /^(ftp|http|https):\/\/[^ "]+$/.test(shapeText);
-            if (valid)
-            {
-                window.open(shapeText);
-            }
-            else
-            {
-                toast.error("Please enter a valid http url.");
-            }
-        }
+
         return <div className = {classAll}>
                 <a href={shapeText}>
-                <img src={shapeType} onClick={update} onContextMenu={() => openTab()} className={classShape} ref={ref} {...props} alt={"Invalid input"}/>
+                <img src={shapeType} className={classShape} ref={ref} {...props} alt={"Invalid input"}/>
                 </a>
                 {children}
             </div>
