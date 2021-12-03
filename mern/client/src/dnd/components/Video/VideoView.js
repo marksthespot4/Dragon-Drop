@@ -5,8 +5,7 @@ import useDragonStyler from "../../hooks/useDragonStyler"
 import Video from "./Video";
 import useStyle from "./style/VideoView"
 
-const ResizableVideo = Resizable(Video);
-const BuilderVideo = DnDBuilderHOC(ResizableVideo);
+const BuilderVideo = DnDBuilderHOC(Video);
 
 const VideoView = ({
     id,
@@ -25,16 +24,16 @@ const VideoView = ({
     })
 
     return <BuilderVideo
-        // onClick = {editor.handleSelect}
-        // onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
-        // onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
-        // draggable = {!editor.meta.fixed}
+        onClick = {editor.handleSelect}
+        onDragStart = {!editor.meta.fixed && editor.handlePositionedDragStart}
+        onDragEnd = {!editor.meta.fixed && editor.handleDragEnd}
+        draggable = {!editor.meta.fixed}
         // isResizing = {editor.indexes.selected}
         // onResizeStart = {editor.handleResizeStart}
         // onResize = {editor.handleResize}
         // onResizeEnd = {editor.handleResizeEnd}
-        // ref = {editor.builder}
-        // className = {classes.view}
+        ref = {editor.builder}
+        className = {classes.view}
         {...props}
         style = {styler.completeStyle(props.style)}
     />
